@@ -1,0 +1,41 @@
+{
+  "name": "weekofcharity-de",
+  "source": "index.html",
+  "version": "2.0.0",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "lint": "eslint",
+    "lint:all": "eslint .",
+    "lint:fix": "npm run lint --fix",
+    "format": "prettier --write",
+    "format:all": "prettier --write ."
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "parcel": "^2.6.0",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.1.6"
+  },
+  "dependencies": {
+    "@mdi/js": "^6.9.96",
+    "@mdi/react": "^1.6.0",
+    "classnames": "^2.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  }
+}

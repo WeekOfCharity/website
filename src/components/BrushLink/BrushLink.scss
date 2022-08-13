@@ -1,0 +1,45 @@
+.woc-brush-link {
+  &::after {
+    background-color: #262626;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: width 0.5s cubic-bezier(0.87, 0, 0.13, 1) 0.5s,
+      clip-path 0.5s cubic-bezier(0.87, 0, 0.13, 1);
+    width: 0%;
+  }
+
+  & > span {
+    background-image: linear-gradient(
+      to right,
+      #262626,
+      #262626 50%,
+      var(--accent-500) 50%,
+      var(--accent-500) 100%
+    );
+    background-clip: text;
+    background-position: 0 0;
+    background-size: 200% 100%;
+    color: transparent !important;
+    display: block;
+    transition: all 0.5s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+
+  .group:hover & {
+    &::after {
+      background-color: var(--accent-500);
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      transition: width 0.5s cubic-bezier(0.87, 0, 0.13, 1),
+        clip-path 0.5s cubic-bezier(0.87, 0, 0.13, 1) 0.5s;
+      width: 100%;
+    }
+
+    & > span {
+      background-position: -100% 0;
+    }
+  }
+}

@@ -1,4 +1,42 @@
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
+import tailwind from '../../../tailwind.config.js';
+import './DonationMeter.scss';
+
+const easeInOutCirc = (t: number) => (t < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * t, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * t + 2, 2)) + 1) / 2);
+const frameDuration = 1000 / 60;
+const total = 250;
+
 export const DonationMeter = () => {
+  const [amount, setAmount] = useState(105.5);
+  const [animatedAmount, setAnimatedAmount] = useState(105.5);
+  const [isAnimatingAmount, setIsAnimatingAmount] = useState(false);
+
+  useEffect(() => {
+    if (animatedAmount >= amount) return;
+
+    let frame = 0;
+    const initialAmount = animatedAmount;
+    const totalFrames = Math.round(2000 / frameDuration);
+
+    setIsAnimatingAmount(true);
+    const counter = setInterval(() => {
+      frame++;
+
+      const progress = easeInOutCirc(frame / totalFrames);
+      setAnimatedAmount(initialAmount + (amount - initialAmount) * progress);
+
+      if (frame >= totalFrames) {
+        clearInterval(counter);
+        setIsAnimatingAmount(false);
+      }
+    }, frameDuration);
+  }, [amount]);
+
+  setTimeout(() => {
+    setAmount(175.5);
+  }, 4000);
+
   return (
     <section className="mx-5 md:mx-10 relative">
       <div className="bg-opacity-50 flex flex-col items-center p-5 md:p-10">
@@ -9,14 +47,28 @@ export const DonationMeter = () => {
             Spendenstand
           </div>
         </div>
-        <div className="font-fat text-neutral-500 text-4xl md:text-8xl">
-          <span>2.471,30</span>
+        <div className="font-fat text-arctic-500 text-7xl md:text-9xl">
+          <span className={classNames('woc-donation-amount', { 'is-current': !isAnimatingAmount })}>
+            {animatedAmount.toLocaleString('de', { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
+          </span>
         </div>
-        <div className="font-round2 font-bold text-neutral-400">EURO</div>
+        <div className="font-round2 font-bold mt-4 text-arctic-700 text-lg">EURO</div>
 
-        <div className="h-48 px-10 md:px-20 w-screen">
-          <div className="bg-persian-500 h-10 w-full"></div>
+        <div className="h-10 my-10 w-full">
+          <div className="bg-arctic-100 ring-2 ring-offset-2 ring-arctic-600 ring-offset-white rounded w-full">
+            <div
+              className=" bg-no-repeat h-10 rounded woc-donation-meter"
+              style={{
+                backgroundImage: `repeating-linear-gradient(-45deg, ${tailwind.theme.colors.arctic[500]} 0 6px, transparent 6px 12px)`,
+                backgroundSize: '200% 100%',
+                width: `${(100 / total) * amount}%`,
+              }}
+            ></div>
+          </div>
         </div>
+
+        <div className="font-fat text-neutral-500 text-4xl md:text-7xl">250,00</div>
+        <div className="font-round2 font-bold text-neutral-400">aktuelles Spendenziel</div>
       </div>
 
       <div className="absolute bg-neutral-100 left-1/2 h-full max-w-xs min-w-[160px] top-0 transform-gpu -translate-x-1/2 w-1/3 -z-10"></div>

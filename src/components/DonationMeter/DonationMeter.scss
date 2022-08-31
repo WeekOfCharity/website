@@ -1,0 +1,47 @@
+@keyframes meter {
+  0% {
+    background-position-x: -34px;
+  }
+
+  to {
+    background-position-x: 0px;
+  }
+}
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%,
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.woc-donation-amount.is-current {
+  animation: tada 2s linear;
+  display: inline-block;
+}
+
+.woc-donation-meter {
+  animation: meter 2s linear infinite;
+  transition: width 4s cubic-bezier(0.85, 0, 0.15, 1);
+}

@@ -6,11 +6,11 @@ import { Nav } from './components/Nav/Nav';
 import Player from './components/Player/Player';
 
 const accents = {
-  '/program': 'woc-accent-aqua',
-  '/games': 'woc-accent-arctic',
+  '/streams': 'woc-accent-aqua',
+  '/spiele': 'woc-accent-arctic',
   '/team': 'woc-accent-lavender',
-  '/privacy': 'woc-accent-neutral',
-  '/imprint': 'woc-accent-neutral',
+  '/datenschutz': 'woc-accent-neutral',
+  '/impressum': 'woc-accent-neutral',
 };
 
 export const App = () => {
@@ -18,11 +18,7 @@ export const App = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    setAccent(
-      Object.entries(accents).find(([path]) =>
-        pathname.startsWith(path)
-      )?.[1] ?? 'woc-accent-persian'
-    );
+    setAccent(Object.entries(accents).find(([path]) => pathname.startsWith(path))?.[1] ?? 'woc-accent-persian');
   }, [pathname]);
 
   return (

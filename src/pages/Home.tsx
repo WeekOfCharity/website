@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Brush1 } from '../components/Brushes/Brush1';
 import { Brush4 } from '../components/Brushes/Brush4';
 import { Brush5 } from '../components/Brushes/Brush5';
+import { DonationGoal } from '../components/DonationGoal/DonationGoal';
 import { DonationMeter } from '../components/DonationMeter/DonationMeter';
 import { Ticket } from '../components/Ticket/Ticket';
 
@@ -13,9 +14,9 @@ export const Home = () => {
   return (
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-persian-400 uppercase">Neues Jahr, neue Woche</div>
+        <div className="font-round2 font-bold text-accent-900 uppercase">Neues Jahr, neue Woche</div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-persian-500 text-4xl md:text-7xl w-4/5">Wir streamen wieder für den guten Zweck</div>
+        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">Wir streamen wieder für den guten Zweck</div>
 
         <div className="absolute flex justify-center left-1/2 mt-8 rotate-3 transform-gpu -translate-x-1/2 w-full">
           <span className="font-handwriting font-semibold text-xl">dein Ticket zu guter Unterhaltung</span>
@@ -64,7 +65,7 @@ export const Home = () => {
             </section>
           </div> */}
 
-          <Link className="contents" to="/program">
+          <Link className="contents" to="/streams">
             <div className="group relative">
               <Brush1 className="absolute h-96 pointer-events-none -right-24 text-aqua-500 -top-36 z-[1]" />
 
@@ -108,6 +109,15 @@ export const Home = () => {
         </div>
 
         <DonationMeter />
+
+        <div className="flex flex-col gap-5 xl:grid grid-cols-3 mx-5 md:mx-10">
+          <DonationGoal achieved amount={100} description="Bei 100€ kochen wir alle live gemeinsam ein Gericht, dass die Viewer aussuchen" title="Viele Köche..." />
+          <DonationGoal amount={250} description='Bei 250€ muss Fabian "The Swedish Number" anrufen und auf Schwedisch Fragen stellen' title="Vem ringer?" />
+          <DonationGoal amount={500} description="Bei 500€ wird sich Tobias die Haare Blau färben" title="Jetzt wird's bunt" />
+          <DonationGoal amount={750} description="Bei 750€ probiert Benedikt Sojasauce im Sodastream zu sprudeln" title="Wenn Big Baba Ricebowl das wüsste" />
+          <DonationGoal amount={1000} description="" title="" />
+          <DonationGoal amount={2000} description="" title="" />
+        </div>
       </div>
     </main>
   );

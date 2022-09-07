@@ -41,7 +41,7 @@ export const DonationMeter = () => {
     <section className="mx-5 md:mx-10 relative">
       <div className="bg-opacity-50 flex flex-col items-center p-5 md:p-10">
         <div className="pb-10">
-          <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-neutral-900 text-center transform-gpu uppercase">
+          <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-arctic-900 text-center transform-gpu uppercase">
             Aktueller
             <br />
             Spendenstand
@@ -52,7 +52,7 @@ export const DonationMeter = () => {
             {animatedAmount.toLocaleString('de', { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
           </span>
         </div>
-        <div className="font-round2 font-bold mt-4 text-arctic-700 text-lg">EURO</div>
+        <div className="font-semibold mt-4 text-arctic-600 text-lg">EURO</div>
 
         <div className="h-10 my-10 w-full">
           <div className="bg-arctic-100 ring-2 ring-offset-2 ring-arctic-600 ring-offset-white rounded w-full">
@@ -68,10 +68,10 @@ export const DonationMeter = () => {
         </div>
 
         <div className="font-fat text-neutral-500 text-4xl md:text-7xl">250,00</div>
-        <div className="font-round2 font-bold text-neutral-400">aktuelles Spendenziel</div>
+        <div className="font-semibold mt-4 text-neutral-900">aktuelles Spendenziel</div>
       </div>
 
-      <div className="absolute bg-neutral-100 left-1/2 h-full max-w-xs min-w-[160px] top-0 transform-gpu -translate-x-1/2 w-1/3 -z-10"></div>
+      <div className="absolute bg-neutral-100 left-1/2 h-full max-w-xs min-w-[160px] top-0 transform-gpu -translate-x-1/2 w-1/2 md:w-1/3 -z-10"></div>
     </section>
   );
 };

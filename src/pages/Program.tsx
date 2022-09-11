@@ -3,12 +3,15 @@ import Icon from '@mdi/react';
 import { Brush4 } from '../components/Brushes/Brush4';
 import { Carousel } from '../components/Carousel/Carousel';
 import { Stream } from '../components/Stream/Stream';
+import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 export const Program = () => {
+  document.title = getDocumentTitle('Programm');
+
   return (
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-accent-900 uppercase">Streamkalender</div>
+        <div className="font-round2 font-bold text-accent-900 uppercase">Keine Events verpassen</div>
 
         <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">Das Programm der Week of Charity</div>
 

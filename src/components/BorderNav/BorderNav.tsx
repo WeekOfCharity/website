@@ -17,9 +17,6 @@ export const BorderNav = () => {
       <a className="flex h-[52px] items-center px-5" href="#">
         <span className="font-semibold">Spenden</span>
       </a>
-      <a className="bg-neutral-700 flex h-[52px] items-center px-5" href="#">
-        <span className="font-semibold">Anmelden</span>
-      </a>
     </nav>
   );
 };

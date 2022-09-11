@@ -7,7 +7,7 @@ import Player from './components/Player/Player';
 
 const accents = {
   '/streams': 'woc-accent-aqua',
-  '/spiele': 'woc-accent-arctic',
+  '/aktivitaeten': 'woc-accent-arctic',
   '/team': 'woc-accent-lavender',
   '/datenschutz': 'woc-accent-neutral',
   '/impressum': 'woc-accent-neutral',

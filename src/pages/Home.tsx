@@ -7,10 +7,13 @@ import { Brush5 } from '../components/Brushes/Brush5';
 import { DonationGoal } from '../components/DonationGoal/DonationGoal';
 import { DonationMeter } from '../components/DonationMeter/DonationMeter';
 import { Ticket } from '../components/Ticket/Ticket';
+import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
 
 export const Home = () => {
+  document.title = getDocumentTitle();
+
   return (
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">

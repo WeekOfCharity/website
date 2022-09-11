@@ -1,7 +1,7 @@
 import { mdiClose, mdiMenu, mdiTwitter } from '@mdi/js';
 import Icon from '@mdi/react';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Brush1 } from '../Brushes/Brush1';
 import { Brush2 } from '../Brushes/Brush2';
@@ -10,6 +10,14 @@ const logo = new URL('../../assets/inverted-favicon-22.png', import.meta.url);
 
 export const Nav = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [isMenuOpen]);
 
   return (
     <nav className="flex items-center p-5 md:p-10 select-none sticky text-neutral-800 top-0 w-full z-[99999]">
@@ -32,8 +40,8 @@ export const Nav = () => {
         <NavLink className={({ isActive }) => classNames(isActive ? 'text-aqua-500' : 'hover:text-aqua-500')} to="/streams">
           <span className="font-pally font-medium text-lg">Programm</span>
         </NavLink>
-        <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/spiele">
-          <span className="font-pally font-medium text-lg">Spiele</span>
+        <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/aktivitaeten">
+          <span className="font-pally font-medium text-lg">Aktivitäten</span>
         </NavLink>
         <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} to="/team">
           <span className="font-pally font-medium text-lg">Team</span>
@@ -76,8 +84,8 @@ export const Nav = () => {
           <NavLink className={({ isActive }) => classNames(isActive ? 'text-aqua-500' : 'hover:text-aqua-500')} onClick={() => setMenuOpen(false)} to="/streams">
             <span className="font-pally font-medium text-2xl">Programm</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} onClick={() => setMenuOpen(false)} to="/spiele">
-            <span className="font-pally font-medium text-2xl">Spiele</span>
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} onClick={() => setMenuOpen(false)} to="/aktivitaeten">
+            <span className="font-pally font-medium text-2xl">Aktivitäten</span>
           </NavLink>
           <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} onClick={() => setMenuOpen(false)} to="/team">
             <span className="font-pally font-medium text-2xl">Team</span>
@@ -91,9 +99,6 @@ export const Nav = () => {
         </menu>
 
         <menu className="border-t flex flex-col mt-10 pt-5 space-y-2 text-neutral-400">
-          <a className="hover:text-white" href="#">
-            <span className="font-semibold">Anmelden</span>
-          </a>
           <Link className="hover:text-white" onClick={() => setMenuOpen(false)} to="/datenschutz">
             <span className="font-semibold">Datenschutz</span>
           </Link>

@@ -2,6 +2,7 @@ import { mdiAccount } from '@mdi/js';
 import Icon from '@mdi/react';
 import { Brush4 } from '../components/Brushes/Brush4';
 import { Carousel } from '../components/Carousel/Carousel';
+import { Stream } from '../components/Stream/Stream';
 
 export const Program = () => {
   return (
@@ -37,7 +38,7 @@ export const Program = () => {
                 <span className="font-round font-bold">Pia</span>
               </div>
 
-              <div className="font-round font-bold mt-6 text-aqua-100">Dienstag, 17:00 &ndash; 19:00</div>
+              <div className="font-round font-bold mt-6 text-aqua-100">Dienstag, 17:00 &mdash; 19:00</div>
             </div>
           </article>
 
@@ -58,7 +59,7 @@ export const Program = () => {
                 <span className="bg-aqua-100 font-semibold px-2 py-0.5 rounded text-aqua-900 text-xs">+3 Mitspieler</span>
               </div>
 
-              <div className="font-round font-bold mt-6 text-aqua-100">Mittwoch, 22:00 &ndash; 24:00</div>
+              <div className="font-round font-bold mt-6 text-aqua-100">Mittwoch, 22:00 &mdash; 24:00</div>
             </div>
           </article>
 
@@ -79,7 +80,7 @@ export const Program = () => {
                 <span className="bg-aqua-100 font-semibold px-2 py-0.5 rounded text-aqua-900 text-xs">+155 Mitspieler</span>
               </div>
 
-              <div className="font-round font-bold mt-6 text-aqua-100">Donnerstag, 01:00 &ndash; 01:30</div>
+              <div className="font-round font-bold mt-6 text-aqua-100">Donnerstag, 01:00 &mdash; 01:30</div>
             </div>
           </article>
 
@@ -99,7 +100,7 @@ export const Program = () => {
                 <span className="font-round font-bold">Fabian</span>
               </div>
 
-              <div className="font-round font-bold mt-6 text-aqua-100">Donnerstag, 03:00 &ndash; 03:10</div>
+              <div className="font-round font-bold mt-6 text-aqua-100">Donnerstag, 03:00 &mdash; 03:10</div>
             </div>
           </article>
 
@@ -120,7 +121,7 @@ export const Program = () => {
                 <span className="font-round font-bold">Noah</span>
               </div>
 
-              <div className="font-round font-bold mt-6 text-aqua-100">Freitag, 10:00 &ndash; 10:00</div>
+              <div className="font-round font-bold mt-6 text-aqua-100">Freitag, 10:00 &mdash; 10:00</div>
             </div>
           </article>
 
@@ -141,7 +142,7 @@ export const Program = () => {
                 <span className="bg-aqua-100 font-semibold px-2 py-0.5 rounded text-aqua-900 text-xs">+7 Mitspieler</span>
               </div>
 
-              <div className="font-round font-bold mt-6 text-aqua-100">Freitag, 10:00 &ndash; 10:00</div>
+              <div className="font-round font-bold mt-6 text-aqua-100">Freitag, 10:00 &mdash; 10:00</div>
             </div>
           </article>
 
@@ -162,10 +163,79 @@ export const Program = () => {
                 <span className="bg-aqua-100 font-semibold px-2 py-0.5 rounded text-aqua-900 text-xs">+6 Mitspieler</span>
               </div>
 
-              <div className="font-round font-bold mt-6 text-aqua-100">Freitag, 10:00 &ndash; 10:00</div>
+              <div className="font-round font-bold mt-6 text-aqua-100">Freitag, 10:00 &mdash; 10:00</div>
             </div>
           </article>
         </Carousel>
+      </section>
+
+      <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
+        <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">Alle Streams</div>
+
+        <div className="gap-x-5 gap-y-10 grid xl:grid-cols-2">
+          <div className="space-y-4">
+            <div>
+              <div className="font-round2 font-bold text-aqua-900 uppercase">Mittwoch, 28.9.</div>
+              <div className="bg-aqua-900 h-0.5 w-full"></div>
+            </div>
+
+            <Stream
+              endTime="10:00"
+              gameImageUrl="https://fs-prod-cdn.nintendo-europe.com/media/images/06_screenshots/games_5/nintendo_switch_download_software_2/nswitchds_portalcompanioncollection/NSwitchDS_PortalCompanionCollection_02.jpg"
+              startTime="7:30"
+              streamer="Cave Johnson"
+              title="Portal 2"
+            />
+
+            <Stream
+              endTime="13:00"
+              gameImageUrl="https://img.zeit.de/digital/games/2016-07/inside-game-2/wide__980x551"
+              startTime="10:00"
+              streamer="Junge im roten Shirt"
+              title="INSIDE"
+            />
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <div className="font-round2 font-bold text-aqua-900 uppercase">Donnerstag, 29.9.</div>
+              <div className="bg-aqua-900 h-0.5 w-full"></div>
+            </div>
+
+            <Stream
+              endTime="3:00"
+              gameImageUrl="https://images.cgames.de/images/gamestar/287/voxel-tycoon-screenshots_6135134.jpg"
+              startTime="1:00"
+              streamer="Bürgermeister der Stadt Bad Gottleuba-Berggießhübel"
+              title="Voxel Tycoon"
+            />
+
+            <Stream
+              endTime="16:00"
+              gameImageUrl="https://cdn2.unrealengine.com/rl-playerschoice-bundle-3840x2160-723248b32611.jpg"
+              startTime="12:30"
+              streamer="Octane"
+              title="Rocket League"
+            />
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <div className="font-round2 font-bold text-aqua-900 uppercase">Freitag, 30.9.</div>
+              <div className="bg-aqua-900 h-0.5 w-full"></div>
+            </div>
+
+            <Stream endTime="9:45" gameImageUrl="https://images.cgames.de/images/gsgp/290/mario-kart-8-deluxe_2793943.jpg" startTime="7:15" streamer="Luigi" title="Mario Kart 8" />
+
+            <Stream
+              endTime="24:00"
+              gameImageUrl="https://sportshub.cbsistatic.com/i/2022/08/24/e935963e-0f11-4aa0-8e80-b538dc1efe83/among-us-update.jpg"
+              startTime="21:00"
+              streamer="Sus?"
+              title="Among Us"
+            />
+          </div>
+        </div>
       </section>
     </main>
   );

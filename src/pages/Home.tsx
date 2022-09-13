@@ -44,15 +44,15 @@ export const Home = () => {
             <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-persian-900 text-opacity-75 w-auto" />
 
             <div className="leading-relaxed mx-5 text-center">
-              Spicy jalapeno bacon ipsum dolor amet prosciutto lorem short loin in et, ullamco beef ribs hamburger short ribs jowl cupim occaecat pork belly. Rump proident
-              prosciutto, et cupidatat frankfurter labore. Boudin dolor occaecat, consequat chislic irure shank chuck tail. Tri-tip tongue exercitation laboris beef, pig quis ball
-              tip. Salami filet mignon occaecat, cillum anim proident magna beef alcatra fatback.
+              Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder
+              durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter anderem gezeichnet, Dungeons and Dragons
+              gespielt, gebacken und eine Quizshow abgehalten. Abgerundet wird das Ganze am Ende vom großen 24-Stunden-Schachstream.
               <br />
               <br />
-              Officia t-bone frankfurter shankle eiusmod ut, pariatur velit ham hock laboris. Ut chislic tri-tip flank shoulder reprehenderit sint bacon venison in jowl short ribs
-              shankle lorem. Pig porchetta duis frankfurter fatback jerky adipisicing. Ipsum brisket picanha pork, in andouille shoulder prosciutto pastrami chicken. Chuck minim
-              nisi aliquip proident nostrud chicken landjaeger beef ribs fatback adipisicing enim salami. Magna sint sirloin tenderloin pork chop. Short loin jowl fugiat ham hock
-              swine adipisicing in tenderloin.
+              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an Queere Vielfalt leben, ein LGBTQ+ Jugendwohnheim in Köln, das queere Jugendliche aufnimmt und
+              ihnen eine Unterkunft bietet, die sensibel und liebevoll ist. Unser Projekt wurde zuerst 2021 auf die Beine gestellt und geht nun nach großem Erfolg und 2526
+              erzielten Euro in die zweite Runde! Im Programm sind fast alle Streamer*Innen des letzten Jahres + einige Neuzugänge dabei. Wir hoffen, die Woche wird euch genau so
+              viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!
             </div>
           </section>
 
@@ -122,6 +122,10 @@ export const Home = () => {
           <DonationGoal amount={2000} description="" title="" />
         </div>
       </div>
+
+      <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
+        <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">Häufige Fragen und Antworten</div>
+      </section>
     </main>
   );
 };

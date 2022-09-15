@@ -2,8 +2,8 @@ export const Brush1 = ({ className }: { className?: string }) => {
   return (
     <svg
       className={className}
-      width="356"
-      height="170"
+      // width="356"
+      // height="170"
       viewBox="0 0 356 170"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

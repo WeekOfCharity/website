@@ -25,7 +25,7 @@ function Player() {
           }
         )}
       >
-        <Brush1 className="absolute -bottom-52 h-96 -left-40 -scale-100 text-accent-500 transform-gpu -z-10" />
+        <Brush1 className="absolute -bottom-24 -left-40 -scale-100 text-accent-500 transform-gpu w-[400px] -z-10" />
 
         <div className="flex items-center justify-between p-5">
           <div>
@@ -43,8 +43,10 @@ function Player() {
 
         <div className="flex justify-end p-5 space-x-2">
           <div className="bottom-4 flex mr-1 relative">
-            <span className="font-handwriting font-semibold mr-3 mt-3 text-xl whitespace-nowrap">jetzt zusehen</span>
-            <img className="rotate-12" src={arrowRight.toString()} />
+            <span className="font-handwriting font-semibold mr-3 mt-3 text-xl whitespace-nowrap" style={{ textShadow: '0 0 3px #26262680, 0 0 2px #262626' }}>
+              jetzt zusehen
+            </span>
+            <img className="rotate-12 w-[78px]" src={arrowRight.toString()} />
           </div>
 
           <button className="bg-accent-500 p-3 rounded-full text-neutral-800">

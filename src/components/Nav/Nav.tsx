@@ -13,8 +13,10 @@ export const Nav = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
+      document.body.style.height = '100vh';
       document.body.style.overflowY = 'hidden';
     } else {
+      document.body.style.height = 'auto';
       document.body.style.overflowY = 'auto';
     }
   }, [isMenuOpen]);
@@ -67,7 +69,7 @@ export const Nav = () => {
           'translate-x-full': !isMenuOpen,
         })}
       >
-        <Brush1 className="absolute h-96 -right-24 text-accent-500 -top-36 -z-10" />
+        <Brush1 className="absolute -right-24 text-accent-500 -top-8 w-[400px] -z-10" />
 
         <div className="flex items-center mb-10">
           <img className="h-12" src={logo.toString()} />

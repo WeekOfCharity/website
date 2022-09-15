@@ -70,7 +70,7 @@ export const Home = () => {
 
           <Link className="contents" to="/streams">
             <div className="group relative">
-              <Brush1 className="absolute h-96 pointer-events-none -right-24 text-aqua-500 -top-36 z-[1]" />
+              <Brush1 className="absolute pointer-events-none -right-24 text-aqua-500 -top-8 w-[356px] z-[1]" />
 
               <section className="bg-aqua-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 relative hover:text-aqua-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">

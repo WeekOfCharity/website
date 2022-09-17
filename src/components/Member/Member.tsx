@@ -1,3 +1,5 @@
+import { Shimmer } from '../Shimmer/Shimmer';
+
 type MemberProps = {
   avatarUrl: string;
   name: string;
@@ -7,7 +9,7 @@ type MemberProps = {
 
 export const Member = ({ avatarUrl, name, onClick, pronouns }: MemberProps) => {
   return (
-    <div className="aspect-square bg-lavender-500 cursor-pointer flex flex-col group overflow-hidden relative rounded-md" onClick={onClick}>
+    <div className="aspect-square bg-lavender-500 cursor-pointer flex flex-col group overflow-hidden relative rounded-md select-none" onClick={onClick}>
       <div
         className="bg-center bg-cover duration-300 flex-grow group-hover:mb-8 rounded-md group-hover:rounded-b-none transition-all"
         style={{ backgroundImage: `url("${avatarUrl}")` }}
@@ -30,3 +32,9 @@ export const Member = ({ avatarUrl, name, onClick, pronouns }: MemberProps) => {
     </div>
   );
 };
+
+const Loading = () => {
+  return <Shimmer className="aspect-square rounded-md" />;
+};
+
+Member.Loading = Loading;

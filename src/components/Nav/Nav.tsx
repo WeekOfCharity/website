@@ -1,4 +1,4 @@
-import { mdiClose, mdiMenu, mdiTwitter } from '@mdi/js';
+import { mdiClose, mdiMenu, mdiMusicNote, mdiTwitter, mdiYoutube } from '@mdi/js';
 import Icon from '@mdi/react';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
@@ -48,16 +48,31 @@ export const Nav = () => {
         <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} to="/team">
           <span className="font-pally font-medium text-lg">Team</span>
         </NavLink>
-        <a href="#">
+        <a href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiTwitter} size="1.25rem" />
           </span>
         </a>
+        <a href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
+          <span>
+            <Icon path={mdiMusicNote} size="1.25rem" />
+          </span>
+        </a>
+        <a href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
+          <span>
+            <Icon path={mdiYoutube} size="1.25rem" />
+          </span>
+        </a>
       </menu>
 
-      <button className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white">
+      <a
+        className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white"
+        href="https://www.tipeeestream.com/week-of-charity/donation"
+        rel="nofollow noreferrer"
+        target="_blank"
+      >
         <span className="font-semibold">Spenden</span>
-      </button>
+      </a>
 
       <button className="bg-neutral-800 md:hidden inline-flex items-center leading-none ml-2 p-3 rounded-full text-white" onClick={() => setMenuOpen(true)}>
         <Icon path={mdiMenu} size="1.25rem" />
@@ -92,12 +107,20 @@ export const Nav = () => {
           <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} onClick={() => setMenuOpen(false)} to="/team">
             <span className="font-pally font-medium text-2xl">Team</span>
           </NavLink>
-          <a href="#">
+          <a href="https://www.shirtee.com/de/store/weekofcharity/" rel="nofollow noreferrer" target="_blank">
             <span className="font-pally font-medium hover:text-mustard-500 text-2xl">Merchandise</span>
           </a>
-          <a href="#">
-            <Icon path={mdiTwitter} size="1.5rem" />
-          </a>
+          <div className="flex items-center space-x-5">
+            <a href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
+              <Icon path={mdiTwitter} size="1.5rem" />
+            </a>
+            <a href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
+              <Icon path={mdiMusicNote} size="1.5rem" />
+            </a>
+            <a href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
+              <Icon path={mdiYoutube} size="1.5rem" />
+            </a>
+          </div>
         </menu>
 
         <menu className="border-t flex flex-col mt-10 pt-5 space-y-2 text-neutral-400">

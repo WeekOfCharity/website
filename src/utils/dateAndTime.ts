@@ -1,7 +1,7 @@
 export const formatDay = (value: string) => {
   const date = new Date(value);
 
-  return `${date.toLocaleDateString(undefined, { weekday: 'long' })}, ${date.toLocaleDateString(undefined, { day: 'numeric', month: 'numeric' })}`;
+  return `${date.toLocaleDateString(undefined, { weekday: 'long' })}, ${date.toLocaleDateString(undefined, { day: '2-digit', month: 'numeric' })}`;
 };
 
 export const formatTime = (value: string) => {

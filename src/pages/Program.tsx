@@ -25,7 +25,7 @@ export const Program = () => {
   }, [streams]);
 
   return (
-    <main className="text-neutral-800">
+    <main className="text-neutral-800 woc-accent-aqua">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-accent-900 uppercase">Keine Events verpassen</div>
 
@@ -36,7 +36,7 @@ export const Program = () => {
 
       <section className="mb-20 md:mb-40 mt-12 md:mt-20">
         <div className="max-w-screen-2xl mb-6 mx-auto">
-          <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">Die Highlights der Woche</div>
+          <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">Die Highlights 👑 der Woche</div>
         </div>
 
         {status === 'success' && (
@@ -56,14 +56,22 @@ export const Program = () => {
               ))}
           </Carousel>
         )}
+
+        {status !== 'success' && (
+          <Carousel>
+            {[...Array(4)].map((stream) => (
+              <HighlightStream.Loading key={stream} />
+            ))}
+          </Carousel>
+        )}
       </section>
 
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
         <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">Alle Streams</div>
 
-        {status === 'success' && (
-          <div className="gap-x-5 gap-y-10 grid xl:grid-cols-2">
-            {Object.keys(streamsGrouped).map((day) => (
+        <div className="gap-x-5 gap-y-10 grid xl:grid-cols-2">
+          {status === 'success' &&
+            Object.keys(streamsGrouped).map((day) => (
               <div className="space-y-4" key={day}>
                 <div>
                   <div className="font-round2 font-bold text-aqua-900 uppercase">{day}</div>
@@ -72,6 +80,7 @@ export const Program = () => {
 
                 {streamsGrouped[day].map((stream) => (
                   <Stream
+                    activityId={stream.activity.id}
                     endTime={stream.end}
                     gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
                     highlight={stream.highlight}
@@ -83,8 +92,16 @@ export const Program = () => {
                 ))}
               </div>
             ))}
-          </div>
-        )}
+
+          {status !== 'success' &&
+            [...Array(8)].map((day) => (
+              <div className="space-y-4" key={day}>
+                {[...Array(5)].map((stream) => (
+                  <Stream.Loading key={stream} />
+                ))}
+              </div>
+            ))}
+        </div>
       </section>
     </main>
   );

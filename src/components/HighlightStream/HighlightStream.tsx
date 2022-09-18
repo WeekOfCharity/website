@@ -14,9 +14,9 @@ type HighlightStreamProps = {
 
 export const HighlightStream = ({ endTime, fellowCount, gameImageUrl, startTime, streamer, title }: HighlightStreamProps) => {
   return (
-    <article className="flex flex-col h-[400px] rounded-md select-none">
+    <article className="flex flex-col h-[400px] max-h-[400px] rounded-md select-none">
       <img className="h-full object-cover object-center rounded-t-md" src={gameImageUrl} />
-      <div className="bg-[#EAB308] p-4 rounded-b-md">
+      <div className="bg-[#EAB308] flex-shrink-0 p-4 rounded-b-md">
         <div className="font-semibold text-2xl text-white" style={{ textShadow: '0 0 20px #000F1E33, 0 0 3px #000F1E4D' }}>
           {title}
         </div>

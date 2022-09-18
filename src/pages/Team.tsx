@@ -225,7 +225,7 @@ export const Team = () => {
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithHost(activeMember.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-lavender-500">{activeMember.name} hosted</div>
+                      <div className="font-round2 font-bold text-lavender-500">{activeMember.name} hostet</div>
                       {getStreamsWithHost(activeMember.id).map((stream) => (
                         <Stream
                           activityId={stream.activity.id}
@@ -244,7 +244,7 @@ export const Team = () => {
 
                   {getStreamsWithFellow(activeMember.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-lavender-500">{activeMember.name} ist dabei</div>
+                      <div className="font-round2 font-bold text-lavender-500">{activeMember.name} begleitet</div>
                       {getStreamsWithFellow(activeMember.id).map((stream) => (
                         <Stream
                           activityId={stream.activity.id}

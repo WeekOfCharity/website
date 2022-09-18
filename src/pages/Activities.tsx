@@ -2,14 +2,15 @@ import { mdiClose, mdiOpenInNew } from '@mdi/js';
 import Icon from '@mdi/react';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Activity } from '../components/Activity/Activity';
 import { Brush1 } from '../components/Brushes/Brush1';
 import { Brush4 } from '../components/Brushes/Brush4';
+import { Member } from '../components/Member/Member';
 import { OutsideAlerter } from '../components/OutsideAlerter/OutsideAlerter';
 import { Stream } from '../components/Stream/Stream';
 import { Activity as ActivityData, useActivities } from '../hooks/useActivities';
-import { useStreams } from '../hooks/useStreams';
+import { Stream as StreamData, useStreams } from '../hooks/useStreams';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
@@ -35,6 +36,30 @@ export const Activities = () => {
 
   const opening = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === 30) : undefined;
   const finale = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === 58) : undefined;
+
+  const getFellowsWithActivity = (activityId: number) => {
+    const fellows: StreamData['fellows'] = [];
+
+    getStreamsWithActivity(activityId).forEach((stream) => {
+      stream.fellows.forEach((fellow) => {
+        if (!fellows.some((f) => f.people_id.id === fellow.people_id.id)) {
+          fellows.push(fellow);
+        }
+      });
+    });
+
+    return fellows.sort((a, b) => a.people_id.name.localeCompare(b.people_id.name));
+  };
+
+  const getStreamersWithActivity = (activityId: number) => {
+    return getStreamsWithActivity(activityId).reduce<StreamData['streamer'][]>((streamers, stream) => {
+      if (!streamers.some((streamer) => streamer.id === stream.streamer.id)) {
+        return [...streamers, stream.streamer];
+      }
+
+      return streamers;
+    }, []);
+  };
 
   const getStreamsWithActivity = (activityId: number) => {
     return typeof streams !== 'undefined' && streams.length > 0 ? streams.filter((stream) => stream.activity.id === activityId) : [];
@@ -179,6 +204,32 @@ export const Activities = () => {
                           key={stream.id}
                         />
                       ))}
+                    </div>
+                  )}
+
+                  {getStreamsWithActivity(activeActivity.id).length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      <div className="font-round2 font-bold text-arctic-500">{activeActivity.name} wird gehostet von</div>
+                      <div className="flex gap-2">
+                        {getStreamersWithActivity(activeActivity.id).map((streamer) => (
+                          <Link to={`/team?id=${streamer.id}`} key={streamer.id}>
+                            <Member avatarUrl={`https://directus.weekofcharity.de/assets/${streamer.icon}`} condensed name={streamer.name} />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {getFellowsWithActivity(activeActivity.id).length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      <div className="font-round2 font-bold text-arctic-500">{activeActivity.name} wird begleitet von</div>
+                      <div className="flex flex-wrap gap-2">
+                        {getFellowsWithActivity(activeActivity.id).map((fellow) => (
+                          <Link to={`/team?id=${fellow.people_id.id}`} key={fellow.people_id.id}>
+                            <Member avatarUrl={`https://directus.weekofcharity.de/assets/${fellow.people_id.icon}`} condensed name={fellow.people_id.name} />
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </section>

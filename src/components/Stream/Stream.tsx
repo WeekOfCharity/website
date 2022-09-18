@@ -99,11 +99,7 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
                   {formatTime(startTime)} &mdash; {formatTime(endTime)}
                 </span>
 
-                {condensed && (
-                  <span className="md:block font-round2 font-bold hidden text-[#EAB308] text-xs uppercase" style={{ marginLeft: 'auto !important' }}>
-                    👑 Highlight
-                  </span>
-                )}
+                {condensed && <span className="md:block font-round2 font-bold hidden text-[#EAB308] text-xs uppercase woc-highlight-label">👑 Highlight</span>}
               </div>
             ) : (
               <div className="md:flex hidden items-center space-x-4 text-sm">

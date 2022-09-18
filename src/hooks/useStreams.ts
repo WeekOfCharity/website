@@ -10,6 +10,7 @@ export type Stream = {
   end: string;
   fellows: {
     people_id: {
+      icon: string;
       id: number;
       name: string;
     };
@@ -19,6 +20,7 @@ export type Stream = {
   start: string;
   status: boolean;
   streamer: {
+    icon: string;
     id: number;
     name: string;
   };
@@ -26,7 +28,7 @@ export type Stream = {
 
 export const useStreams = () => {
   return useQuery(['streams'], async () => {
-    const { data } = await axios.get<{ data: Stream[]; }>('https://directus.weekofcharity.de/items/timeslots?fields=*,activity.icon,activity.id,activity.name,fellows.people_id.id,fellows.people_id.name,streamer.id,streamer.name&sort=start');
+    const { data } = await axios.get<{ data: Stream[]; }>('https://directus.weekofcharity.de/items/timeslots?fields=*,activity.icon,activity.id,activity.name,fellows.people_id.icon,fellows.people_id.id,fellows.people_id.name,streamer.icon,streamer.id,streamer.name&sort=start');
     return data.data;
   });
 };

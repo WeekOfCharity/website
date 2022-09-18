@@ -161,7 +161,10 @@ export const Activities = () => {
             }
           )}
         >
-          <button className="absolute bg-white inline-flex items-center leading-none p-3 right-5 rounded-full top-5 z-[9999]" onClick={closeActivity}>
+          <button
+            className="absolute bg-white hover:bg-neutral-200 duration-300 inline-flex items-center leading-none p-3 right-5 rounded-full top-5 transition-all z-[9999]"
+            onClick={closeActivity}
+          >
             <Icon path={mdiClose} size="1.25rem" />
           </button>
 
@@ -177,7 +180,12 @@ export const Activities = () => {
                 <div className="font-pally font-bold mr-auto text-4xl">{activeActivity.name}</div>
 
                 {activeActivity.reference_link && (
-                  <a className="bg-accent-500 p-3 rounded-full text-neutral-800" href={activeActivity.reference_link} rel="nofollow noreferrer" target="_blank">
+                  <a
+                    className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    href={activeActivity.reference_link}
+                    rel="nofollow noreferrer"
+                    target="_blank"
+                  >
                     <Icon path={mdiOpenInNew} size="1.25rem" />
                   </a>
                 )}

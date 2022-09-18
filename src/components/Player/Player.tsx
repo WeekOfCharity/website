@@ -1,14 +1,31 @@
-import { mdiBroadcast, mdiClose, mdiInformation, mdiPlay } from '@mdi/js';
+import { mdiBroadcast, mdiCalendar, mdiClose, mdiInformation, mdiPlay } from '@mdi/js';
 import Icon from '@mdi/react';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Stream, useStreams } from '../../hooks/useStreams';
+import { formatTime, getState } from '../../utils/dateAndTime';
 import { Brush1 } from '../Brushes/Brush1';
+import { Shimmer } from '../Shimmer/Shimmer';
 import './Player.scss';
 
 const arrowRight = new URL('../../assets/arrow-right.svg', import.meta.url);
 
 function Player() {
   const [isPlayerOpen, setPlayerOpen] = useState(false);
+  const [running, setRunning] = useState<Stream | undefined>(undefined);
+  const [time, setTime] = useState(new Date(Date.now()));
+
+  const { data: streams, status: streamsStatus } = useStreams();
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date(time.getTime() - 1000));
+      setRunning(typeof streams !== 'undefined' ? streams.find((stream) => getState(stream.start, stream.end) === 'running') : undefined);
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, [time]);
 
   return (
     <>
@@ -25,37 +42,73 @@ function Player() {
           }
         )}
       >
-        <Brush1 className="absolute -bottom-24 -left-40 -scale-100 text-accent-500 transform-gpu w-[400px] -z-10" />
+        <Brush1 className="absolute -bottom-24 duration-300 -left-40 -scale-100 text-accent-500 transform-gpu transition-all w-[400px] -z-10" />
 
-        <div className="flex items-center justify-between p-5">
-          <div>
-            <div className="flex items-center">
-              <Icon className="mr-2 text-accent-500" path={mdiBroadcast} size="1rem" />
-              <div className="font-bold text-accent-500 text-xs uppercase">Aktueller Stream</div>
+        {running && (
+          <div className="flex items-center justify-between p-5">
+            <div>
+              <div className="flex items-center">
+                <Icon className="mr-2 text-accent-500" path={mdiBroadcast} size="1rem" />
+                <div className="font-bold text-accent-500 text-xs uppercase">Aktueller Stream</div>
+              </div>
+              <div className="font-round font-bold">
+                <Link to={`/aktivitaeten?id=${running.id}`}>{running.activity.name}</Link> <span className="font-normal">mit</span>{' '}
+                <Link to={`/team?id=${running.streamer.id}`}>{running.streamer.name}</Link>
+              </div>
             </div>
-            <div className="font-round font-bold">
-              Super Mario Galaxy <span className="font-normal">mit</span> Eugen
+
+            <div className="font-round font-bold ml-5 text-neutral-400 whitespace-nowrap">
+              {formatTime(running.start)} &mdash; {formatTime(running.end)}
             </div>
           </div>
+        )}
 
-          <div className="font-round font-bold text-neutral-400">17:00 &mdash; 19:00</div>
-        </div>
+        {!running && streamsStatus === 'success' && (
+          <div className="font-round font-bold p-5">
+            Die Week of Charity ist aktuell nicht aktiv.
+            <br />
+            Sieh dir unser Programm an, um keine Events zu verpassen.
+          </div>
+        )}
+
+        {streamsStatus !== 'success' && (
+          <div className="p-5">
+            <Shimmer className="h-5 w-8/12" />
+          </div>
+        )}
 
         <div className="flex justify-end p-5 space-x-2">
-          <div className="bottom-4 flex mr-1 relative">
-            <span className="font-handwriting font-semibold mr-3 mt-3 text-xl whitespace-nowrap" style={{ textShadow: '0 0 3px #26262680, 0 0 2px #262626' }}>
-              jetzt zusehen
-            </span>
-            <img className="rotate-12 w-[78px]" src={arrowRight.toString()} />
-          </div>
+          {running && (
+            <>
+              <div className="bottom-4 flex mr-1 relative">
+                <span className="font-handwriting font-semibold mr-3 mt-3 text-xl whitespace-nowrap" style={{ textShadow: '0 0 3px #26262680, 0 0 2px #262626' }}>
+                  jetzt zusehen
+                </span>
+                <img className="rotate-12 w-[78px]" src={arrowRight.toString()} />
+              </div>
 
-          <button className="bg-accent-500 p-3 rounded-full text-neutral-800">
-            <Icon path={mdiPlay} size="1.25rem" />
-          </button>
-          <button className="bg-accent-500 p-3 rounded-full text-neutral-800">
-            <Icon path={mdiInformation} size="1.25rem" />
-          </button>
-          <button className="bg-white p-3 rounded-full text-neutral-800" onClick={() => setPlayerOpen(false)}>
+              <a
+                className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all woc-player-button"
+                href={running.streamer.stream_link}
+                rel="nofollow noreferrer"
+                target="_blank"
+              >
+                <Icon path={mdiPlay} size="1.25rem" />
+              </a>
+              <Link className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all" to={`/aktivitaeten?id=${running.id}`}>
+                <Icon path={mdiInformation} size="1.25rem" />
+              </Link>
+            </>
+          )}
+
+          {!running && streamsStatus === 'success' && (
+            <Link className="bg-accent-500 hover:bg-accent-200 duration-300 flex items-center px-3 py-2 rounded-full text-neutral-800 transition-all" to="/streams">
+              <Icon path={mdiCalendar} size="1.25rem" />
+              <span className="font-semibold ml-3">Programm</span>
+            </Link>
+          )}
+
+          <button className="bg-white hover:bg-neutral-200 duration-300 p-3 rounded-full text-neutral-800 transition-all" onClick={() => setPlayerOpen(false)}>
             <Icon path={mdiClose} size="1.25rem" />
           </button>
         </div>

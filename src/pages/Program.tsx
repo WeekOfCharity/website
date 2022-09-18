@@ -4,7 +4,7 @@ import { Carousel } from '../components/Carousel/Carousel';
 import { HighlightStream } from '../components/HighlightStream/HighlightStream';
 import { Stream } from '../components/Stream/Stream';
 import { Stream as StreamData, useStreams } from '../hooks/useStreams';
-import { formatDay } from '../utils/dateAndTime';
+import { formatDay, getState } from '../utils/dateAndTime';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 export const Program = () => {
@@ -42,7 +42,7 @@ export const Program = () => {
         {status === 'success' && (
           <Carousel>
             {streams
-              .filter((stream) => stream.highlight)
+              .filter((stream) => stream.highlight && getState(stream.start, stream.end) !== 'ended')
               .map((stream) => (
                 <HighlightStream
                   endTime={stream.end}
@@ -85,6 +85,7 @@ export const Program = () => {
                     gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
                     highlight={stream.highlight}
                     startTime={stream.start}
+                    state={getState(stream.start, stream.end)}
                     streamer={stream.streamer.name}
                     title={stream.activity.name}
                     key={stream.id}

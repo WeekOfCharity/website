@@ -11,3 +11,12 @@ export const formatTime = (value: string) => {
 export const getWeekday = (value: string) => {
   return new Date(value).toLocaleDateString(undefined, { weekday: 'long' });
 };
+
+export const getState = (start: string, end: string) => {
+  const hasStarted = new Date(start).valueOf() < Date.now();
+  const hasEnded = new Date(end).valueOf() < Date.now();
+
+  if (!hasStarted) return 'upcoming';
+  if (hasStarted && !hasEnded) return 'running';
+  if (hasEnded) return 'ended';
+};

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const BorderNav = () => {
   return (
     <nav className="bg-neutral-800 md:flex hidden text-white w-full">
@@ -11,12 +13,12 @@ export const BorderNav = () => {
       <a className="flex h-[52px] items-center px-5" href="https://www.shirtee.com/de/store/weekofcharity/" rel="nofollow noreferrer" target="_blank">
         <span className="font-semibold">Merchandise</span>
       </a>
-      <a className="flex h-[52px] items-center px-5" href="/datenschutz">
+      <Link className="flex h-[52px] items-center px-5" to="/datenschutz">
         <span className="font-semibold">Datenschutz</span>
-      </a>
-      <a className="flex h-[52px] items-center px-5" href="/impressum">
+      </Link>
+      <Link className="flex h-[52px] items-center px-5" to="/impressum">
         <span className="font-semibold">Impressum</span>
-      </a>
+      </Link>
     </nav>
   );
 };

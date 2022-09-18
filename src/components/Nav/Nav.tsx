@@ -48,17 +48,17 @@ export const Nav = () => {
         <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} to="/team">
           <span className="font-pally font-medium text-lg">Team</span>
         </NavLink>
-        <a href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
+        <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiTwitter} size="1.25rem" />
           </span>
         </a>
-        <a href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
+        <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiMusicNote} size="1.25rem" />
           </span>
         </a>
-        <a href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
+        <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiYoutube} size="1.25rem" />
           </span>
@@ -111,13 +111,13 @@ export const Nav = () => {
             <span className="font-pally font-medium hover:text-mustard-500 text-2xl">Merchandise</span>
           </a>
           <div className="flex items-center space-x-5">
-            <a href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
+            <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
               <Icon path={mdiTwitter} size="1.5rem" />
             </a>
-            <a href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
+            <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
               <Icon path={mdiMusicNote} size="1.5rem" />
             </a>
-            <a href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
+            <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
               <Icon path={mdiYoutube} size="1.5rem" />
             </a>
           </div>

@@ -5,11 +5,16 @@ import './DonationMeter.scss';
 
 const easeInOutCirc = (t: number) => (t < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * t, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * t + 2, 2)) + 1) / 2);
 const frameDuration = 1000 / 60;
-const total = 250;
 
-export const DonationMeter = () => {
-  const [amount, setAmount] = useState(105.5);
-  const [animatedAmount, setAnimatedAmount] = useState(105.5);
+type DonationMeterProps = {
+  currentValue: number;
+  nextGoalValue?: number;
+  startValue: number;
+};
+
+export const DonationMeter = ({ currentValue, nextGoalValue, startValue }: DonationMeterProps) => {
+  const [amount, setAmount] = useState(currentValue);
+  const [animatedAmount, setAnimatedAmount] = useState(startValue);
   const [isAnimatingAmount, setIsAnimatingAmount] = useState(false);
 
   useEffect(() => {
@@ -32,10 +37,6 @@ export const DonationMeter = () => {
       }
     }, frameDuration);
   }, [amount]);
-
-  setTimeout(() => {
-    setAmount(175.5);
-  }, 4000);
 
   return (
     <section className="mx-5 md:mx-10 relative">
@@ -61,14 +62,16 @@ export const DonationMeter = () => {
               style={{
                 backgroundImage: `repeating-linear-gradient(-45deg, ${tailwind.theme.colors.arctic[500]} 0 6px, transparent 6px 12px)`,
                 backgroundSize: '200% 100%',
-                width: `${(100 / total) * amount}%`,
+                width: `${(100 / nextGoalValue ?? currentValue) * amount}%`,
               }}
             ></div>
           </div>
         </div>
 
-        <div className="font-fat text-neutral-500 text-4xl md:text-7xl">250,00</div>
-        <div className="font-semibold mt-4 text-neutral-900">aktuelles Spendenziel</div>
+        <div className="font-fat text-neutral-500 text-4xl md:text-7xl">
+          {nextGoalValue !== undefined ? nextGoalValue.toLocaleString('de', { maximumFractionDigits: 2, minimumFractionDigits: 2 }) : '❤️'}
+        </div>
+        <div className="font-semibold mt-4 text-neutral-900">{nextGoalValue !== undefined ? 'aktuelles Spendenziel' : 'Alle Ziele wurden erreicht!'}</div>
       </div>
 
       <div className="absolute bg-neutral-100 left-1/2 h-full max-w-xs min-w-[160px] top-0 transform-gpu -translate-x-1/2 w-1/2 md:w-1/3 -z-10"></div>

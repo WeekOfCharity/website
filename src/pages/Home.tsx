@@ -1,5 +1,6 @@
 import { mdiArrowRight } from '@mdi/js';
 import Icon from '@mdi/react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Brush1 } from '../components/Brushes/Brush1';
 import { Brush4 } from '../components/Brushes/Brush4';
@@ -7,12 +8,37 @@ import { Brush5 } from '../components/Brushes/Brush5';
 import { DonationGoal } from '../components/DonationGoal/DonationGoal';
 import { DonationMeter } from '../components/DonationMeter/DonationMeter';
 import { Ticket } from '../components/Ticket/Ticket';
+import { useDonationGoals } from '../hooks/useDonationGoals';
+import { useDonations } from '../hooks/useDonations';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
 
 export const Home = () => {
   document.title = getDocumentTitle();
+
+  const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
+  const [lastDonationGoal, setLastDonationGoal] = useState(0);
+  const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(undefined);
+
+  const { data: donations, status: donationsStatus } = useDonations();
+  const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
+
+  useEffect(() => {
+    if (!donations || !donationGoals) return;
+
+    setCurrentDonation(donations && donations.length > 0 ? donations[0].data.data.datas.series['Donations amount'].total : undefined);
+
+    let lastIndex = -1;
+    donationGoals.forEach((goal, index) => {
+      if (goal.reached_at <= currentDonation) {
+        lastIndex = index;
+      }
+    });
+
+    setLastDonationGoal(lastIndex > -1 ? donationGoals[lastIndex].reached_at : 0);
+    setNextDonationGoal(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].reached_at : undefined);
+  }, [donations, donationGoals]);
 
   return (
     <main className="text-neutral-800">
@@ -111,16 +137,24 @@ export const Home = () => {
           </Link>
         </div>
 
-        <DonationMeter />
+        {donationsStatus === 'success' && donationGoalsStatus === 'success' && (
+          <>
+            <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
 
-        <div className="flex flex-col gap-5 xl:grid grid-cols-3 mx-5 md:mx-10">
-          <DonationGoal achieved amount={100} description="Bei 100€ kochen wir alle live gemeinsam ein Gericht, dass die Viewer aussuchen" title="Viele Köche..." />
-          <DonationGoal amount={250} description='Bei 250€ muss Fabian "The Swedish Number" anrufen und auf Schwedisch Fragen stellen' title="Vem ringer?" />
-          <DonationGoal amount={500} description="Bei 500€ wird sich Tobias die Haare Blau färben" title="Jetzt wird's bunt" />
-          <DonationGoal amount={750} description="Bei 750€ probiert Benedikt Sojasauce im Sodastream zu sprudeln" title="Wenn Big Baba Ricebowl das wüsste" />
-          <DonationGoal amount={1000} description="" title="" />
-          <DonationGoal amount={2000} description="" title="" />
-        </div>
+            <div className="flex flex-col gap-5 xl:grid grid-cols-2 mx-5 md:mx-10">
+              {donationGoals.map((goal) => (
+                <DonationGoal
+                  achieved={goal.reached_at <= currentDonation}
+                  amount={goal.reached_at}
+                  description={goal.description}
+                  key={goal.id}
+                  timeslot={goal.activity}
+                  title={goal.name}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">

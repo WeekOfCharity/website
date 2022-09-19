@@ -7,11 +7,12 @@ type DonationGoalProps = {
   achieved?: boolean;
   amount: number;
   description: string;
+  hidden?: boolean;
   timeslot?: StreamData | null;
   title: string;
 };
 
-export const DonationGoal = ({ achieved = false, amount, description, timeslot = undefined, title }: DonationGoalProps) => {
+export const DonationGoal = ({ achieved = false, amount, description, hidden = false, timeslot = undefined, title }: DonationGoalProps) => {
   return (
     <article className={classNames('flex flex-col', { 'bg-arctic-200': achieved, 'bg-neutral-100': !achieved })}>
       <div className="flex items-center my-auto p-5">
@@ -20,8 +21,8 @@ export const DonationGoal = ({ achieved = false, amount, description, timeslot =
           <div className={classNames('absolute font-fat ml-2 text-5xl z-10', { 'text-arctic-900': achieved, 'text-neutral-500': !achieved })}>{amount}</div>
         </div>
         <div>
-          <div className="font-semibold text-lg">{title || 'Dieses Spendenziel ist noch geheim'}</div>
-          {description && <div>{description}</div>}
+          <div className="font-semibold text-lg">{!hidden ? title : 'Dieses Spendenziel ist noch geheim'}</div>
+          {description && !hidden && <div>{description}</div>}
         </div>
       </div>
 

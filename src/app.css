@@ -3,3 +3,9 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.woc-html a {
+  color: var(--accent-500);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

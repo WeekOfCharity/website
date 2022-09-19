@@ -7,9 +7,11 @@ import { Brush4 } from '../components/Brushes/Brush4';
 import { Brush5 } from '../components/Brushes/Brush5';
 import { DonationGoal } from '../components/DonationGoal/DonationGoal';
 import { DonationMeter } from '../components/DonationMeter/DonationMeter';
+import { Shimmer } from '../components/Shimmer/Shimmer';
 import { Ticket } from '../components/Ticket/Ticket';
 import { useDonationGoals } from '../hooks/useDonationGoals';
 import { useDonations } from '../hooks/useDonations';
+import { useFAQ } from '../hooks/useFAQ';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
@@ -23,6 +25,7 @@ export const Home = () => {
 
   const { data: donations, status: donationsStatus } = useDonations();
   const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
+  const { data: faq, status: faqStatus } = useFAQ();
 
   useEffect(() => {
     if (!donations || !donationGoals) return;
@@ -159,6 +162,28 @@ export const Home = () => {
 
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
         <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">Häufige Fragen und Antworten</div>
+
+        {faqStatus === 'success' && (
+          <div className="md:gap-8 md:grid md:grid-cols-2 space-y-5 md:space-y-0">
+            {faq.map((item) => (
+              <div key={item.id}>
+                <div className="font-semibold text-lg">{item.question}</div>
+                <div className="leading-relaxed woc-html" dangerouslySetInnerHTML={{ __html: item.answer }} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {faqStatus !== 'success' && (
+          <div className="md:gap-8 md:grid md:grid-cols-2 space-y-5 md:space-y-0">
+            {[...Array(8)].map((item) => (
+              <div key={item}>
+                <Shimmer className="h-7 mb-2" />
+                <Shimmer className="h-14" />
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

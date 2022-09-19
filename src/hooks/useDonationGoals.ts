@@ -5,6 +5,7 @@ import { Stream } from './useStreams';
 export type DonationGoal = {
   activity: Stream | null;
   description: string | null;
+  hidden: boolean | null;
   id: number;
   name: string;
   reached_at: number;

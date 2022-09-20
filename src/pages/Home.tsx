@@ -164,10 +164,10 @@ export const Home = () => {
         <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">Häufige Fragen und Antworten</div>
 
         {faqStatus === 'success' && (
-          <div className="md:gap-8 md:grid md:grid-cols-2 space-y-5 md:space-y-0">
+          <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
             {faq.map((item) => (
               <div key={item.id}>
-                <div className="font-semibold text-lg">{item.question}</div>
+                <div className="font-semibold mb-2 text-lg">{item.question}</div>
                 <div className="leading-relaxed woc-html" dangerouslySetInnerHTML={{ __html: item.answer }} />
               </div>
             ))}
@@ -175,7 +175,7 @@ export const Home = () => {
         )}
 
         {faqStatus !== 'success' && (
-          <div className="md:gap-8 md:grid md:grid-cols-2 space-y-5 md:space-y-0">
+          <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
             {[...Array(8)].map((item) => (
               <div key={item}>
                 <Shimmer className="h-7 mb-2" />

@@ -140,6 +140,8 @@ export const Home = () => {
           </Link>
         </div>
 
+        <div id="spenden" />
+
         {donationsStatus === 'success' && donationGoalsStatus === 'success' && (
           <>
             <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
@@ -161,7 +163,9 @@ export const Home = () => {
       </div>
 
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
-        <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">Häufige Fragen und Antworten</div>
+        <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left" id="faq">
+          Häufige Fragen und Antworten
+        </div>
 
         {faqStatus === 'success' && (
           <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">

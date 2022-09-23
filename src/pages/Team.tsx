@@ -89,7 +89,7 @@ export const Team = () => {
                 {charity && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={`https://directus.weekofcharity.de/assets/${charity.icon}`}
+                      avatarUrl={`https://directus.weekofcharity.de/assets/${charity.icon}?width=512&height=512&fit=cover`}
                       name={charity.name}
                       onClick={() => openMember(charity)}
                       pronouns={charity.pronouns}
@@ -99,7 +99,7 @@ export const Team = () => {
                 {chesster && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={`https://directus.weekofcharity.de/assets/${chesster.icon}`}
+                      avatarUrl={`https://directus.weekofcharity.de/assets/${chesster.icon}?width=512&height=512&fit=cover`}
                       name={chesster.name}
                       onClick={() => openMember(chesster)}
                       pronouns={chesster.pronouns}
@@ -117,7 +117,7 @@ export const Team = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={`https://directus.weekofcharity.de/assets/${member.icon}`}
+                    avatarUrl={`https://directus.weekofcharity.de/assets/${member.icon}?width=512&height=512&fit=cover`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -133,7 +133,7 @@ export const Team = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={`https://directus.weekofcharity.de/assets/${member.icon}`}
+                    avatarUrl={`https://directus.weekofcharity.de/assets/${member.icon}?width=512&height=512&fit=cover`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -179,7 +179,10 @@ export const Team = () => {
               <Brush1 className="absolute -right-24 text-accent-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
-                <img className="bg-lavender-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={`https://directus.weekofcharity.de/assets/${activeMember.icon}`} />
+                <img
+                  className="bg-lavender-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
+                  src={`https://directus.weekofcharity.de/assets/${activeMember.icon}?width=160&height=160&fit=cover`}
+                />
               </div>
 
               <div className="flex items-start space-x-2">

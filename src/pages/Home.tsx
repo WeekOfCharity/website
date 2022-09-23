@@ -164,6 +164,7 @@ export const Home = () => {
                   achieved={goal.reached_at <= currentDonation}
                   amount={goal.reached_at}
                   description={goal.description}
+                  hidden={goal.hidden}
                   key={goal.id}
                   timeslot={goal.activity}
                   title={goal.name}

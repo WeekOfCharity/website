@@ -43,6 +43,18 @@ export const Home = () => {
     setNextDonationGoal(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].reached_at : undefined);
   }, [donations, donationGoals]);
 
+  useEffect(() => {
+    const path = window.location.hash;
+
+    if (path && path.includes('#')) {
+      const id = path.replace('#', '');
+
+      if (id) {
+        document.querySelector('#' + id).scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+
   return (
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">

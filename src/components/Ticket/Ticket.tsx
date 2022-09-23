@@ -21,7 +21,7 @@ export const Ticket = () => {
 
             <div className="mr-6 text-right">
               <p className="font-semibold text-lavender-800 text-xs uppercase">Beginn</p>
-              <p className="font-round font-bold">18:00</p>
+              <p className="font-round font-bold">13:00</p>
             </div>
 
             <div className="text-right">

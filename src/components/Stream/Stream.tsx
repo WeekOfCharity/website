@@ -29,7 +29,7 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
   return (
     <RootElement
       className={classNames('flex select-none', {
-        'cursor-pointer duration-300 hover:-mx-2 transition-all': condensed,
+        'cursor-pointer duration-300 hover:-mx-1.5 transition-all': condensed,
         'opacity-50': state === 'ended',
         'pointer-events-none': noLink,
       })}

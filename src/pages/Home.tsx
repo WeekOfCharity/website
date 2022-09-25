@@ -30,11 +30,12 @@ export const Home = () => {
   useEffect(() => {
     if (!donations || !donationGoals) return;
 
-    setCurrentDonation(donations && donations.length > 0 ? donations[0].data.data.datas.series['Donations amount'].total : undefined);
+    const current = donations && donations.length > 0 ? donations[0].data.data.datas.series['Donations amount'].total : undefined;
+    setCurrentDonation(current);
 
     let lastIndex = -1;
     donationGoals.forEach((goal, index) => {
-      if (goal.reached_at <= currentDonation) {
+      if (goal.reached_at <= current) {
         lastIndex = index;
       }
     });

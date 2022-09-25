@@ -10,6 +10,7 @@ import { OutsideAlerter } from '../components/OutsideAlerter/OutsideAlerter';
 import { Stream } from '../components/Stream/Stream';
 import { useStreams } from '../hooks/useStreams';
 import { Member as MemberData, useTeam } from '../hooks/useTeam';
+import { getState } from '../utils/dateAndTime';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
@@ -250,6 +251,7 @@ export const Team = () => {
                           gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
                           highlight={stream.highlight}
                           startTime={stream.start}
+                          state={getState(stream.start, stream.end)}
                           streamer={stream.streamer.name}
                           title={stream.activity.name}
                           key={stream.id}
@@ -269,6 +271,7 @@ export const Team = () => {
                           gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
                           highlight={stream.highlight}
                           startTime={stream.start}
+                          state={getState(stream.start, stream.end)}
                           streamer={stream.streamer.name}
                           title={stream.activity.name}
                           key={stream.id}

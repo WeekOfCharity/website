@@ -11,6 +11,7 @@ import { OutsideAlerter } from '../components/OutsideAlerter/OutsideAlerter';
 import { Stream } from '../components/Stream/Stream';
 import { Activity as ActivityData, useActivities } from '../hooks/useActivities';
 import { Stream as StreamData, useStreams } from '../hooks/useStreams';
+import { getState } from '../utils/dateAndTime';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
@@ -215,6 +216,7 @@ export const Activities = () => {
                           highlight={stream.highlight}
                           noLink
                           startTime={stream.start}
+                          state={getState(stream.start, stream.end)}
                           streamer={stream.streamer.name}
                           title={stream.activity.name}
                           key={stream.id}

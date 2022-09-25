@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { Stream, useStreams } from '../../hooks/useStreams';
 import { formatTime, getState } from '../../utils/dateAndTime';
 import { Brush1 } from '../Brushes/Brush1';
-import { Shimmer } from '../Shimmer/Shimmer';
 import './Player.scss';
 
 const arrowRight = new URL('../../assets/arrow-right.svg', import.meta.url);
@@ -14,6 +13,7 @@ const arrowRight = new URL('../../assets/arrow-right.svg', import.meta.url);
 function Player() {
   const [isPlayerOpen, setPlayerOpen] = useState(true);
   const [running, setRunning] = useState<Stream | undefined>(undefined);
+  const [showInactive, setShowInactive] = useState(false);
   const [time, setTime] = useState(new Date(Date.now()));
 
   const { data: streams, status: streamsStatus } = useStreams();
@@ -21,7 +21,11 @@ function Player() {
   useEffect(() => {
     const id = setInterval(() => {
       setTime(new Date(time.getTime() - 1000));
-      setRunning(typeof streams !== 'undefined' ? streams.find((stream) => getState(stream.start, stream.end) === 'running') : undefined);
+
+      const stream = (streams ?? []).find((stream) => getState(stream.start, stream.end) === 'running');
+
+      setRunning(stream);
+      setShowInactive(streamsStatus === 'success' && stream === undefined);
     }, 1000);
 
     return () => clearInterval(id);
@@ -68,7 +72,7 @@ function Player() {
           </div>
         )}
 
-        {!running && streamsStatus === 'success' && (
+        {showInactive && (
           <div className="font-round font-bold p-5">
             Die Week of Charity ist aktuell nicht aktiv.
             <br />
@@ -76,11 +80,7 @@ function Player() {
           </div>
         )}
 
-        {streamsStatus !== 'success' && (
-          <div className="p-5">
-            <Shimmer className="h-5 w-8/12" />
-          </div>
-        )}
+        {(streamsStatus !== 'success' || (!running && !showInactive)) && <div className="font-round font-bold p-5">Aktueller Stream wird geladen...</div>}
 
         <div className="flex justify-end p-5 space-x-2">
           {running && (
@@ -106,7 +106,7 @@ function Player() {
             </>
           )}
 
-          {!running && streamsStatus === 'success' && (
+          {showInactive && (
             <Link className="bg-accent-500 hover:bg-accent-200 duration-300 flex items-center px-3 py-2 rounded-full text-neutral-800 transition-all" to="/streams">
               <Icon path={mdiCalendar} size="1.25rem" />
               <span className="font-semibold ml-3">Programm</span>

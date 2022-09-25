@@ -13,7 +13,7 @@ type DonationMeterProps = {
 };
 
 export const DonationMeter = ({ currentValue, nextGoalValue, startValue }: DonationMeterProps) => {
-  const [amount, setAmount] = useState(currentValue);
+  const [amount, setAmount] = useState(startValue);
   const [animatedAmount, setAnimatedAmount] = useState(startValue);
   const [isAnimatingAmount, setIsAnimatingAmount] = useState(false);
 
@@ -37,6 +37,8 @@ export const DonationMeter = ({ currentValue, nextGoalValue, startValue }: Donat
       }
     }, frameDuration);
   }, [amount]);
+
+  setTimeout(() => setAmount(currentValue));
 
   return (
     <section className="mx-5 md:mx-10 relative">

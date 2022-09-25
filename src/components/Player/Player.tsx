@@ -12,7 +12,7 @@ import './Player.scss';
 const arrowRight = new URL('../../assets/arrow-right.svg', import.meta.url);
 
 function Player() {
-  const [isPlayerOpen, setPlayerOpen] = useState(false);
+  const [isPlayerOpen, setPlayerOpen] = useState(true);
   const [running, setRunning] = useState<Stream | undefined>(undefined);
   const [time, setTime] = useState(new Date(Date.now()));
 

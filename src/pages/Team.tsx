@@ -195,7 +195,7 @@ export const Team = () => {
                 {activeMember.theme && (
                   <a
                     className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
-                    href={`https://directus.weekofcharity.de/assets/${activeMember.theme}`}
+                    href={`https://directus.weekofcharity.de/assets/${activeMember.theme}.mp3`}
                     rel="nofollow noreferrer"
                     target="_blank"
                   >

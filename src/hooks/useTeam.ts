@@ -16,7 +16,7 @@ export type Member = {
 
 export const useTeam = () => {
   return useQuery(['team'], async () => {
-    const { data } = await axios.get<{ data: Member[]; }>('https://directus.weekofcharity.de/items/people');
+    const { data } = await axios.get<{ data: Member[]; }>((process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/people');
     return data.data;
   });
 };

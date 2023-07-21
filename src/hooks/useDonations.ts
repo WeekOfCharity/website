@@ -18,7 +18,7 @@ export type Donations = {
 
 export const useDonations = () => {
   return useQuery(['donations'], async () => {
-    const { data } = await axios.get<{ data: Donations[]; }>('https://directus.weekofcharity.de/items/donations');
+    const { data } = await axios.get<{ data: Donations[]; }>((process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/donations');
     return data.data;
   });
 };

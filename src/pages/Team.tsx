@@ -90,7 +90,7 @@ export const Team = () => {
                 {charity && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={`https://directus.weekofcharity.de/assets/${charity.icon}?width=512&height=512&fit=cover`}
+                      avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${charity.icon}?width=512&height=512&fit=cover`}
                       name={charity.name}
                       onClick={() => openMember(charity)}
                       pronouns={charity.pronouns}
@@ -100,7 +100,7 @@ export const Team = () => {
                 {chesster && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={`https://directus.weekofcharity.de/assets/${chesster.icon}?width=512&height=512&fit=cover`}
+                      avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${chesster.icon}?width=512&height=512&fit=cover`}
                       name={chesster.name}
                       onClick={() => openMember(chesster)}
                       pronouns={chesster.pronouns}
@@ -118,7 +118,7 @@ export const Team = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={`https://directus.weekofcharity.de/assets/${member.icon}?width=512&height=512&fit=cover`}
+                    avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${member.icon}?width=512&height=512&fit=cover`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -134,7 +134,7 @@ export const Team = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={`https://directus.weekofcharity.de/assets/${member.icon}?width=512&height=512&fit=cover`}
+                    avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${member.icon}?width=512&height=512&fit=cover`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -182,7 +182,7 @@ export const Team = () => {
               <div className="flex items-start mb-5">
                 <img
                   className="bg-lavender-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={`https://directus.weekofcharity.de/assets/${activeMember.icon}?width=160&height=160&fit=cover`}
+                  src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.icon}?width=160&height=160&fit=cover`}
                 />
               </div>
 
@@ -195,7 +195,7 @@ export const Team = () => {
                 {activeMember.theme && (
                   <a
                     className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
-                    href={`https://directus.weekofcharity.de/assets/${activeMember.theme}.mp3`}
+                    href={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`}
                     rel="nofollow noreferrer"
                     target="_blank"
                   >
@@ -248,7 +248,7 @@ export const Team = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
+                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
                           highlight={stream.highlight}
                           startTime={stream.start}
                           state={getState(stream.start, stream.end)}
@@ -268,7 +268,7 @@ export const Team = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
+                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
                           highlight={stream.highlight}
                           startTime={stream.start}
                           state={getState(stream.start, stream.end)}

@@ -47,7 +47,7 @@ export const Program = () => {
                 <HighlightStream
                   endTime={stream.end}
                   fellowCount={stream.fellows.length}
-                  gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
+                  gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
                   startTime={stream.start}
                   streamer={stream.streamer.name}
                   title={stream.activity.name}
@@ -82,7 +82,7 @@ export const Program = () => {
                   <Stream
                     activityId={stream.activity.id}
                     endTime={stream.end}
-                    gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
+                    gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
                     highlight={stream.highlight}
                     startTime={stream.start}
                     state={getState(stream.start, stream.end)}

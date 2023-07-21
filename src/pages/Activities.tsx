@@ -111,7 +111,7 @@ export const Activities = () => {
                 {opening && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Activity
-                      gameImageUrl={`https://directus.weekofcharity.de/assets/${opening.icon}?width=512&height=512&fit=cover`}
+                      gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${opening.icon}?width=512&height=512&fit=cover`}
                       name={opening.name}
                       onClick={() => openActivity(opening)}
                     />
@@ -120,7 +120,7 @@ export const Activities = () => {
                 {finale && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Activity
-                      gameImageUrl={`https://directus.weekofcharity.de/assets/${finale.icon}?width=512&height=512&fit=cover`}
+                      gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${finale.icon}?width=512&height=512&fit=cover`}
                       name={finale.name}
                       onClick={() => openActivity(finale)}
                     />
@@ -137,7 +137,7 @@ export const Activities = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((activity) => (
                   <Activity
-                    gameImageUrl={`https://directus.weekofcharity.de/assets/${activity.icon}?width=512&height=512&fit=cover`}
+                    gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activity.icon}?width=512&height=512&fit=cover`}
                     name={activity.name}
                     onClick={() => openActivity(activity)}
                     key={activity.id}
@@ -182,7 +182,7 @@ export const Activities = () => {
               <Brush1 className="absolute -right-24 text-accent-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
-                <img className="bg-arctic-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={`https://directus.weekofcharity.de/assets/${activeActivity.icon}`} />
+                <img className="bg-arctic-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}`} />
               </div>
 
               <div className="flex items-start space-x-2">
@@ -212,7 +212,7 @@ export const Activities = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={`https://directus.weekofcharity.de/assets/${stream.activity.icon}`}
+                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
                           highlight={stream.highlight}
                           noLink
                           startTime={stream.start}
@@ -231,7 +231,7 @@ export const Activities = () => {
                       <div className="flex gap-2">
                         {getStreamersWithActivity(activeActivity.id).map((streamer) => (
                           <Link to={`/team?id=${streamer.id}`} key={streamer.id}>
-                            <Member avatarUrl={`https://directus.weekofcharity.de/assets/${streamer.icon}?width=80&height=80&fit=cover`} condensed name={streamer.name} />
+                            <Member avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${streamer.icon}?width=80&height=80&fit=cover`} condensed name={streamer.name} />
                           </Link>
                         ))}
                       </div>
@@ -245,7 +245,7 @@ export const Activities = () => {
                         {getFellowsWithActivity(activeActivity.id).map((fellow) => (
                           <Link to={`/team?id=${fellow.people_id.id}`} key={fellow.people_id.id}>
                             <Member
-                              avatarUrl={`https://directus.weekofcharity.de/assets/${fellow.people_id.icon}?width=80&height=80&fit=cover`}
+                              avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${fellow.people_id.icon}?width=80&height=80&fit=cover`}
                               condensed
                               name={fellow.people_id.name}
                             />

@@ -12,7 +12,9 @@ export type Activity = {
 
 export const useActivities = () => {
   return useQuery(['activities'], async () => {
-    const { data } = await axios.get<{ data: Activity[]; }>('https://directus.weekofcharity.de/items/activities');
+    const { data } = await axios.get<{ data: Activity[]; }>(
+      (process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/activities');
     return data.data;
   });
 };
+

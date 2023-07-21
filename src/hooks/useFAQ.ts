@@ -9,7 +9,7 @@ export type FAQItem = {
 
 export const useFAQ = () => {
   return useQuery(['faq'], async () => {
-    const { data } = await axios.get<{ data: FAQItem[]; }>('https://directus.weekofcharity.de/items/faq');
+    const { data } = await axios.get<{ data: FAQItem[]; }>((process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/faq');
     return data.data;
   });
 };

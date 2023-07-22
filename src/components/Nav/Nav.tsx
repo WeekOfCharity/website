@@ -32,7 +32,7 @@ export const Nav = () => {
           <span className="ml-3">Charity</span>
         </div>
 
-        <span className="absolute font-fat right-1 rotate-3 text-accent-500 top-3">'22</span>
+        <span className="absolute font-fat right-1 rotate-3 text-accent-500 top-3">'23</span>
       </div>
 
       <menu className="md:flex hidden items-center ml-auto space-x-5">

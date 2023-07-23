@@ -9,6 +9,7 @@ import { DonationGoal } from '../components/DonationGoal/DonationGoal';
 import { DonationMeter } from '../components/DonationMeter/DonationMeter';
 import { Shimmer } from '../components/Shimmer/Shimmer';
 import { Ticket } from '../components/Ticket/Ticket';
+import TwitchEmbed from '../components/TwitchEmbed/TwitchEmbed';
 import { useDonationGoals } from '../hooks/useDonationGoals';
 import { useDonations } from '../hooks/useDonations';
 import { useFAQ } from '../hooks/useFAQ';
@@ -63,15 +64,18 @@ export const Home = () => {
 
         <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">Wir streamen wieder für den guten Zweck</div>
 
+        {/*
         <div className="absolute flex justify-center left-1/2 mt-8 rotate-3 transform-gpu -translate-x-1/2 w-full">
           <span className="font-handwriting font-semibold text-xl">dein Ticket zu guter Unterhaltung</span>
           <img className="mt-4 ml-3 -scale-x-100" src={arrowDown.toString()} />
         </div>
-
+        */}
         <Brush4 className="absolute h-96 left-1/2 text-neutral-100 bottom-0 transform-gpu -translate-x-1/2 translate-y-1/3 md:translate-y-1/4 w-auto -z-10" />
+        
       </header>
 
-      <Ticket />
+      <TwitchEmbed />
+      {/*<Ticket />*/}
 
       <div className="max-w-screen-2xl my-20 md:my-40 mx-auto space-y-20 md:space-y-40">
         <div className="flex flex-col gap-5 xl:grid grid-cols-2 grid-rows-2 mx-5 md:mx-10">

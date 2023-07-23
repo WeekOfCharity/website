@@ -10,17 +10,17 @@ function getUserFromTwitchLink(link: string) {
 function TwitchEmbed(){
     const [running, setRunning] = useState<Stream | undefined>(undefined);
     const [showInactive, setShowInactive] = useState(false);
-    const [time, setTime] = useState(new Date(Date.now()));
 
     const { data: streams, status: streamsStatus } = useStreams();
 
     function checkRunningStream(){
+        console.log("CheckRunningStream");
         const stream = (streams ?? []).find((stream) => getState(stream.start, stream.end) === 'running');
         setRunning(stream);
         setShowInactive(streamsStatus === 'success' && stream === undefined);
     }
 
-    useEffect(checkRunningStream, []);
+    useEffect(checkRunningStream, [streams, streamsStatus]);
 
     const embed = useRef(); // We use a ref instead of state to avoid rerenders.
   

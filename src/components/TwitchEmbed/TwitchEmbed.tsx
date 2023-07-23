@@ -35,10 +35,8 @@ function TwitchEmbed(){
     return (
         <>
         {running && (
-            <section className="flex justify-center pt-5 select-none">
-                <div className="flex m-5 max-w-lg transform-gpu w-full">
-                    <TwitchPlayer channel={getUserFromTwitchLink(running.streamer.stream_link)} autoplay muted onReady={handleReady} onOffline={handleOffline} />
-                </div>
+            <section className="flex justify-center select-none" style={{width : "100vw"}}>
+                <TwitchPlayer channel={getUserFromTwitchLink(running.streamer.stream_link)} autoplay muted onReady={handleReady} onOffline={handleOffline} />
             </section>
         )}
         </>

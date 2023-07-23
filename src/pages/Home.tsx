@@ -77,7 +77,7 @@ export const Home = () => {
       <TwitchEmbed />
       {/*<Ticket />*/}
 
-      <div className="max-w-screen-2xl my-20 md:my-40 mx-auto space-y-20 md:space-y-40">
+      <div className="max-w-screen-2xl my-20 mx-auto space-y-20 md:space-y-40">
         <div className="flex flex-col gap-5 xl:grid grid-cols-2 grid-rows-2 mx-5 md:mx-10">
           <section className="bg-persian-100 bg-opacity-50 pb-5 pt-10 row-span-2">
             <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-persian-900 text-center transform-gpu uppercase">Week of Was?</div>

@@ -4,6 +4,7 @@ import axios from 'axios';
 export type Configuration = {
     id: number;
     twitch_embed: boolean;
+    woc_start: string;
 };
 
 export const useConfiguration = () => {

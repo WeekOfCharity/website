@@ -14,6 +14,7 @@ import { useConfiguration } from '../hooks/useConfiguration';
 import { useDonationGoals } from '../hooks/useDonationGoals';
 import { useDonations } from '../hooks/useDonations';
 import { useFAQ } from '../hooks/useFAQ';
+import { useStreams } from '../hooks/useStreams';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
@@ -24,11 +25,45 @@ export const Home = () => {
   const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
   const [lastDonationGoal, setLastDonationGoal] = useState(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(undefined);
+  const [wocStatus, setWocStatus] = useState("");
 
   const { data: donations, status: donationsStatus } = useDonations();
   const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
   const { data: faq, status: faqStatus } = useFAQ();
   const { data: configuration, status: configurationStatus } = useConfiguration();
+  const { data: streams, status: streamsStatus } = useStreams();
+
+  const upcomingText = "Wir streamen wieder für den guten Zweck";
+  const runningText = "Wir streamen wieder für den guten Zweck";
+  const endedText = "Danke fürs dabei Sein";
+
+
+  useEffect(() => {
+    console.log("uwu");
+      const time = new Date(Date.now());
+      if(configurationStatus === "success" && (streamsStatus === "error" || (streamsStatus === "success" && streams.length === 0))){
+        const woc_start_date = new Date(configuration.woc_start);
+        if(time<woc_start_date){
+          setWocStatus("wocUpcoming");
+        }else{
+          setWocStatus("wocEnded");
+        }
+      }else if(streamsStatus === "success" && streams.length > 0){
+        const woc_start_date = new Date(streams[0].start);
+        const woc_end_date = new Date(streams[streams.length-1].end);
+        if(time<woc_start_date){
+          setWocStatus("wocUpcoming");
+        }else if(time>woc_start_date && time<woc_end_date){
+          setWocStatus("wocRunning");
+        }else{
+          setWocStatus("wocEnded");
+        }
+      }
+  }, [configurationStatus, streamsStatus, configuration, streams]);
+
+
+
+
 
   useEffect(() => {
     if (!donations || !donationGoals) return;
@@ -47,6 +82,7 @@ export const Home = () => {
     setNextDonationGoal(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].reached_at : undefined);
   }, [donations, donationGoals]);
 
+
   useEffect(() => {
     const path = window.location.hash;
 
@@ -63,8 +99,10 @@ export const Home = () => {
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-accent-900 uppercase">Neues Jahr, neue Woche</div>
-
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">Wir streamen wieder für den guten Zweck</div>
+        
+        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">
+          {wocStatus === 'wocEnded' ? endedText : (wocStatus === 'wocRunning' ? runningText : (wocStatus === 'wocUpcoming' ? upcomingText : ""))}
+        </div>
 
         {/*
         <div className="absolute flex justify-center left-1/2 mt-8 rotate-3 transform-gpu -translate-x-1/2 w-full">
@@ -76,7 +114,7 @@ export const Home = () => {
         
       </header>
 
-      {configurationStatus === 'success' && configuration.twitch_embed && <TwitchEmbed />}
+      {configurationStatus === 'success' && configuration.twitch_embed && wocStatus === "wocRunning" && <TwitchEmbed />}
 
       {/*<Ticket />*/}
 

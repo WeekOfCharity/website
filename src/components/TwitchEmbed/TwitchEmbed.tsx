@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { TwitchPlayer } from 'react-twitch-embed';
 import { Stream, useStreams } from '../../hooks/useStreams';
 import { getState } from '../../utils/dateAndTime';
@@ -7,7 +7,7 @@ function getUserFromTwitchLink(link: string) {
     return link.split("twitch.tv/")[1].split("/")[0];
 }
 
-function TwitchEmbed(){
+const TwitchEmbed = memo(function TwitchEmbed(){
     const [running, setRunning] = useState<Stream | undefined>(undefined);
     const [showInactive, setShowInactive] = useState(false);
 
@@ -40,6 +40,6 @@ function TwitchEmbed(){
         )}
         </>
     );
-}
+});
 
 export default TwitchEmbed;

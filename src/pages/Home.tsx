@@ -10,6 +10,7 @@ import { DonationMeter } from '../components/DonationMeter/DonationMeter';
 import { Shimmer } from '../components/Shimmer/Shimmer';
 import { Ticket } from '../components/Ticket/Ticket';
 import TwitchEmbed from '../components/TwitchEmbed/TwitchEmbed';
+import { useConfiguration } from '../hooks/useConfiguration';
 import { useDonationGoals } from '../hooks/useDonationGoals';
 import { useDonations } from '../hooks/useDonations';
 import { useFAQ } from '../hooks/useFAQ';
@@ -27,6 +28,7 @@ export const Home = () => {
   const { data: donations, status: donationsStatus } = useDonations();
   const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
   const { data: faq, status: faqStatus } = useFAQ();
+  const { data: configuration, status: configurationStatus } = useConfiguration();
 
   useEffect(() => {
     if (!donations || !donationGoals) return;
@@ -74,7 +76,8 @@ export const Home = () => {
         
       </header>
 
-      <TwitchEmbed />
+      {configurationStatus === 'success' && configuration.twitch_embed && <TwitchEmbed />}
+
       {/*<Ticket />*/}
 
       <div className="max-w-screen-2xl my-20 mx-auto space-y-20 md:space-y-40">

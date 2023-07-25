@@ -14,7 +14,6 @@ function TwitchEmbed(){
     const { data: streams, status: streamsStatus } = useStreams();
 
     function checkRunningStream(){
-        console.log("CheckRunningStream");
         const stream = (streams ?? []).find((stream) => getState(stream.start, stream.end) === 'running');
         setRunning(stream);
         setShowInactive(streamsStatus === 'success' && stream === undefined);

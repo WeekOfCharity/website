@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Brush1 } from '../components/Brushes/Brush1';
 import { Brush4 } from '../components/Brushes/Brush4';
 import { Brush5 } from '../components/Brushes/Brush5';
+import Countdown from '../components/Countdown/Countdown';
 import { DonationGoal } from '../components/DonationGoal/DonationGoal';
 import { DonationMeter } from '../components/DonationMeter/DonationMeter';
 import { Shimmer } from '../components/Shimmer/Shimmer';
@@ -39,7 +40,6 @@ export const Home = () => {
 
 
   useEffect(() => {
-    console.log("uwu");
       const time = new Date(Date.now());
       if(configurationStatus === "success" && (streamsStatus === "error" || (streamsStatus === "success" && streams.length === 0))){
         const woc_start_date = new Date(configuration.woc_start);
@@ -51,8 +51,6 @@ export const Home = () => {
       }else if(streamsStatus === "success" && streams.length > 0){
         const woc_start_date = new Date(streams[0].start);
         const woc_end_date = new Date(streams[streams.length-1].end);
-        console.log(woc_start_date);
-        console.log(woc_end_date);
         if(time<woc_start_date){
           setWocStatus("wocUpcoming");
         }else if(time>woc_start_date && time<woc_end_date){
@@ -115,6 +113,9 @@ export const Home = () => {
         <Brush4 className="absolute h-96 left-1/2 text-neutral-100 bottom-0 transform-gpu -translate-x-1/2 translate-y-1/3 md:translate-y-1/4 w-auto -z-10" />
         
       </header>
+
+      {configurationStatus === 'success' && wocStatus === 'wocUpcoming' && <Countdown />}
+    
 
       {configurationStatus === 'success' && configuration.twitch_embed && wocStatus === "wocRunning" && <TwitchEmbed />}
 

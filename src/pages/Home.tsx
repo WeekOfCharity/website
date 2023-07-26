@@ -27,6 +27,7 @@ export const Home = () => {
   const [lastDonationGoal, setLastDonationGoal] = useState(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(undefined);
   const [wocStatus, setWocStatus] = useState("");
+  const [timerVisible, setTimerVisible] = useState(true);
 
   const { data: donations, status: donationsStatus } = useDonations();
   const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
@@ -37,6 +38,13 @@ export const Home = () => {
   const upcomingText = "Wir streamen wieder für den guten Zweck";
   const runningText = "Wir streamen wieder für den guten Zweck";
   const endedText = "Danke fürs dabei Sein";
+
+
+  const hideCountdown=()=>{
+    setTimeout(() => {
+      setTimerVisible(false);
+    }, 1000);
+  }
 
 
   useEffect(() => {
@@ -59,7 +67,7 @@ export const Home = () => {
           setWocStatus("wocEnded");
         }
       }
-  }, [configurationStatus, streamsStatus, configuration, streams]);
+  }, [configurationStatus, streamsStatus, configuration, streams, timerVisible]);
 
 
 
@@ -114,7 +122,7 @@ export const Home = () => {
         
       </header>
 
-      {configurationStatus === 'success' && wocStatus === 'wocUpcoming' && <Countdown />}
+      {configurationStatus === 'success' && wocStatus === 'wocUpcoming' && <Countdown timerZeroCallback={hideCountdown}/>}
     
 
       {configurationStatus === 'success' && configuration.twitch_embed && wocStatus === "wocRunning" && <TwitchEmbed />}

@@ -112,8 +112,7 @@ export const Home = () => {
           <img className="mt-4 ml-3 -scale-x-100" src={arrowDown.toString()} />
         </div>
         */}
-        <Brush4 className="absolute h-96 left-1/2 text-neutral-100 bottom-0 transform-gpu -translate-x-1/2 translate-y-1/3 md:translate-y-1/4 w-auto -z-10" />
-        
+        <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
       {configurationStatus === 'success' && configuration.twitch_embed && wocStatus === "wocRunning" && <TwitchEmbed />}

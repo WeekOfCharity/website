@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { App } from './app';
 import { Activities } from './pages/Activities';
+import { Gallery } from './pages/Gallery';
 import { Home } from './pages/Home';
 import { Imprint } from './pages/Imprint';
 import { Privacy } from './pages/Privacy';
@@ -21,6 +22,7 @@ root.render(
           <Route path="streams" element={<Program />} />
           <Route path="aktivitaeten" element={<Activities />} />
           <Route path="team" element={<Team />} />
+          <Route path="galerie" element={<Gallery />} />
           <Route path="datenschutz" element={<Privacy />} />
           <Route path="impressum" element={<Imprint />} />
         </Route>

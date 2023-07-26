@@ -51,6 +51,8 @@ export const Home = () => {
       }else if(streamsStatus === "success" && streams.length > 0){
         const woc_start_date = new Date(streams[0].start);
         const woc_end_date = new Date(streams[streams.length-1].end);
+        console.log(woc_start_date);
+        console.log(woc_end_date);
         if(time<woc_start_date){
           setWocStatus("wocUpcoming");
         }else if(time>woc_start_date && time<woc_end_date){

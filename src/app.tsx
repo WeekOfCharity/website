@@ -10,6 +10,7 @@ const accents = {
   '/streams': 'woc-accent-aqua',
   '/aktivitaeten': 'woc-accent-arctic',
   '/team': 'woc-accent-lavender',
+  '/galerie': 'woc-accent-arctic',
   '/datenschutz': 'woc-accent-neutral',
   '/impressum': 'woc-accent-neutral',
 };

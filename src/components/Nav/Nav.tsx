@@ -3,6 +3,7 @@ import Icon from '@mdi/react';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useConfiguration } from '../../hooks/useConfiguration';
 import { Brush1 } from '../Brushes/Brush1';
 import { Brush2 } from '../Brushes/Brush2';
 
@@ -10,6 +11,8 @@ const logo = new URL('../../assets/inverted-favicon-22.png', import.meta.url);
 
 export const Nav = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const { data: configuration, status: configurationStatus } = useConfiguration();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -48,6 +51,11 @@ export const Nav = () => {
         <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} to="/team">
           <span className="font-pally font-medium text-lg">Team</span>
         </NavLink>
+        {configurationStatus === 'success' && configuration.gallery_enabled && (
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/galerie">
+            <span className="font-pally font-medium text-lg">Galerie</span>
+          </NavLink>
+        )}
         <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiTwitter} size="1.25rem" />

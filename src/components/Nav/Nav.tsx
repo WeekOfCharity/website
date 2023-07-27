@@ -115,6 +115,9 @@ export const Nav = () => {
           <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} onClick={() => setMenuOpen(false)} to="/team">
             <span className="font-pally font-medium text-2xl">Team</span>
           </NavLink>
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} onClick={() => setMenuOpen(false)} to="/galerie">
+            <span className="font-pally font-medium text-2xl">Galerie</span>
+          </NavLink>
           <a href="https://www.shirtee.com/de/store/weekofcharity/" rel="nofollow noreferrer" target="_blank">
             <span className="font-pally font-medium hover:text-mustard-500 text-2xl">Merchandise</span>
           </a>

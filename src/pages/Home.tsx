@@ -143,13 +143,12 @@ export const Home = () => {
             <div className="leading-relaxed mx-5 text-center">
               Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder
               durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter anderem gezeichnet, Dungeons and Dragons
-              gespielt, gebacken und eine Quizshow abgehalten. Abgerundet wird das Ganze am Ende vom großen 24-Stunden-Schachstream.
+              gespielt und es werden Quizshows abgehalten.
               <br />
               <br />
-              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an Queere Vielfalt leben, ein LGBTQ+ Jugendwohnheim in Köln, das queere Jugendliche aufnimmt und
-              ihnen eine Unterkunft bietet, die sensibel und liebevoll ist. Unser Projekt wurde zuerst 2021 auf die Beine gestellt und geht nun nach großem Erfolg und 2526
-              erzielten Euro in die zweite Runde! Im Programm sind fast alle Streamer*Innen des letzten Jahres + einige Neuzugänge dabei. Wir hoffen, die Woche wird euch genau so
-              viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!
+              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Unser Projekt wurde zuerst 2021 auf die Beine gestellt und geht in
+              diesem Jahr schon in die dritte Runde! Im Programm sind fast alle Streamer*Innen des letzten Jahres + einige Neuzugänge dabei. Wir hoffen, die Woche wird euch genau
+              so viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!
             </div>
           </section>
 

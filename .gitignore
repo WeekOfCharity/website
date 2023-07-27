@@ -67,4 +67,4 @@ tsconfig.tsbuildinfo
 !**/.gitkeep
 
 # editor settings
-.vscode/settings.json
+/.vscode

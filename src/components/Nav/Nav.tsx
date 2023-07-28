@@ -28,13 +28,13 @@ export const Nav = () => {
     <nav className="flex items-center p-5 md:p-10 select-none sticky text-neutral-800 top-0 w-full z-[99999]">
       <div className="pr-6 relative">
         <Brush2 className="absolute h-8 -left-6 text-accent-100 top-3 w-auto" />
-
+        <a href="/">
         <div className="font-brush leading-none -rotate-3 -skew-x-6 text-2xl transform-gpu">
           <span>Week of</span>
           <br />
           <span className="ml-3">Charity</span>
         </div>
-
+        </a>
         <span className="absolute font-fat right-1 rotate-3 text-accent-500 top-3">'23</span>
       </div>
 

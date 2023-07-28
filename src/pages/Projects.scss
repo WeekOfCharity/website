@@ -1,0 +1,112 @@
+.chesster-1-wrapper {
+    width: 6rem;
+    height: 6rem;
+    flex-shrink: 0;
+    float: right;
+}
+
+.chesster-1 {
+    position: absolute;
+    max-width: none;
+    transform: translate(8px, -80px);
+    width: 8rem;
+}
+
+@media (min-width: 450px) {
+    .chesster-1-wrapper {
+        width: 9rem;
+        height: 12rem;
+    }
+
+    .chesster-1 {
+        width: 12rem;
+    }
+}
+
+//md
+@media (min-width: 768px) {
+    .chesster-1-wrapper {
+        width: 8rem;
+        height: 18rem;
+    }
+
+    .chesster-1 {
+        width: 17rem;
+    }
+}
+
+//lg
+@media (min-width: 1024px) {
+    .chesster-1-wrapper {
+        width: 8rem;
+        height: 22rem;
+    }
+
+    .chesster-1 {
+        width: 20rem;
+    }
+}
+
+.timeline-image-wrapper-right,
+.timeline-image-wrapper-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 250px;
+}
+
+.timeline-image-wrapper-right img {
+    object-fit: contain;
+    transform: scale(1.1) translate(16px);
+}
+
+.timeline-image-wrapper-left img {
+    object-fit: contain;
+    transform: scale(1.1) translate(-16px);
+}
+
+.timeline {
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    background-color: #f67abc;
+    width: 8px;
+    border-radius: 10px;
+}
+
+/* Outer Layer with the timeline border */
+.card-container {}
+
+/* Card container */
+.card {
+    position: relative;
+    max-width: 800px;
+    display: flex;
+}
+
+/* Information about the timeline */
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title of the card */
+.title {
+    font-size: 1.125rem;
+    position: relative;
+}
+
+/* Timeline dot  */
+.card::before {
+    content: "";
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background: white;
+    border-radius: 999px;
+    left: -69px;
+    top: 14px;
+    border: 8px solid #f67abc;
+}

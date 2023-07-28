@@ -110,7 +110,7 @@ export const Nav = () => {
           <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} onClick={() => setMenuOpen(false)} to="/">
             <span className="font-pally font-medium text-2xl">Startseite</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} onClick={() => setMenuOpen(false)} to="/">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} onClick={() => setMenuOpen(false)} to="/projekte">
             <span className="font-pally font-medium text-2xl">Projekte</span>
           </NavLink>
           <NavLink className={({ isActive }) => classNames(isActive ? 'text-aqua-500' : 'hover:text-aqua-500')} onClick={() => setMenuOpen(false)} to="/streams">

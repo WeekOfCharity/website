@@ -7,6 +7,7 @@ import { Nav } from './components/Nav/Nav';
 import Player from './components/Player/Player';
 
 const accents = {
+  '/projekte': 'woc-accent-persian',
   '/streams': 'woc-accent-aqua',
   '/aktivitaeten': 'woc-accent-arctic',
   '/team': 'woc-accent-lavender',

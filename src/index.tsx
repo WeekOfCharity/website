@@ -8,6 +8,7 @@ import { Home } from './pages/Home';
 import { Imprint } from './pages/Imprint';
 import { Privacy } from './pages/Privacy';
 import { Program } from './pages/Program';
+import { Projects } from './pages/Projects';
 import { Team } from './pages/Team';
 
 const app = document.getElementById('app');
@@ -19,6 +20,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
+          <Route path="projekte" element={<Projects />} />
           <Route path="streams" element={<Program />} />
           <Route path="aktivitaeten" element={<Activities />} />
           <Route path="team" element={<Team />} />

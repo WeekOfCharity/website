@@ -6,6 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useConfiguration } from '../../hooks/useConfiguration';
 import { Brush1 } from '../Brushes/Brush1';
 import { Brush2 } from '../Brushes/Brush2';
+import './Nav.scss';
 
 const logo = new URL('../../assets/inverted-favicon-22.png', import.meta.url);
 
@@ -39,7 +40,7 @@ export const Nav = () => {
       </div>
 
       <menu className="md:flex hidden items-center ml-auto space-x-5">
-        <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} to="/">
+        <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500 hideable' : 'hover:text-persian-500 hideable', 'hideable')} to="/">
           <span className="font-pally font-medium text-lg">Startseite</span>
         </NavLink>
         <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} to="/projekte">

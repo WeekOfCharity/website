@@ -1,0 +1,10 @@
+.hideable {
+    display: none;
+}
+
+
+@media (min-width: 1000px) {
+    .hideable {
+        display: inline;
+    }
+}

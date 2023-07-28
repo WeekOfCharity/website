@@ -148,7 +148,7 @@ export const Home = () => {
               <br />
               Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Unser Projekt wurde zuerst 2021 auf die Beine gestellt und geht in
               diesem Jahr schon in die dritte Runde! Im Programm sind fast alle Streamer*Innen des letzten Jahres + einige Neuzugänge dabei. Wir hoffen, die Woche wird euch genau
-              so viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!
+              so viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch! Mehr zu unserem Projekt findet ihr <a href="/projekte" className="cursor-pointer text-persian-500">hier</a>.
             </div>
           </section>
 

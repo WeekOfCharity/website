@@ -41,14 +41,15 @@ export const Projects = () => {
           </section>
 
           <div className="font-pally font-bold max-w-screen-md mx-auto mt-20 mb-10 text-accent-500 text-2xl md:text-5xl w-4/5 text-center">
-            Bisherige Projekte
+            Unsere Projekte
           </div>
 
           <div className="timeline">
             <div className="line"></div>
             <div className="card-container">
-              <div className="card bg-persian-100 bg-opacity-50 mx-12 mb-12">
+              <div className="card bg-persian-100 bg-opacity-50">
                 <div className="info leading-relaxed py-5 pl-8 text-left">
+                  <div className="year">2023</div>
                   <h3 className="title font-bold">Tierheim Berlin</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed id aliquet libero. Ut venenatis vehicula laoreet. Phasellus ut auctor purus. Mauris porttitor nunc odio, et consequat arcu dapibus ut. Nam tristique viverra mi feugiat vehicula. Donec condimentum orci eget quam ullamcorper dapibus. Ut vehicula diam nec fringilla finibus. Maecenas imperdiet, turpis et pellentesque vehicula, nibh lacus egestas dui, id volutpat leo felis in enim. Vivamus dignissim tortor sit amet condimentum maximus. Sed consectetur vehicula orci in tempor. Nulla eu velit ultrices, venenatis purus id, tristique orci. Nam nunc nisl, luctus sed blandit non, laoreet quis mauris. </p>
                 </div>
@@ -57,19 +58,21 @@ export const Projects = () => {
                 </div>
               </div>
 
-              <div className="card bg-persian-100 bg-opacity-50 mx-12 mb-12">
+              <div className="card bg-persian-100 bg-opacity-50">
                 <div className="timeline-image-wrapper-left">
                   <img className="chesster-3" src={chesster3.toString()} />
                 </div>
                 
                 <div className="info leading-relaxed py-5 pr-8 text-right">
+                  <div className="year">2022</div>
                   <h3 className="title font-bold">Queere Vielfalt leben</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed id aliquet libero. Ut venenatis vehicula laoreet. Phasellus ut auctor purus. Mauris porttitor nunc odio, et consequat arcu dapibus ut. Nam tristique viverra mi feugiat vehicula. Donec condimentum orci eget quam ullamcorper dapibus. Ut vehicula diam nec fringilla finibus. Maecenas imperdiet, turpis et pellentesque vehicula, nibh lacus egestas dui, id volutpat leo felis in enim. Vivamus dignissim tortor sit amet condimentum maximus. Sed consectetur vehicula orci in tempor. Nulla eu velit ultrices, venenatis purus id, tristique orci. Nam nunc nisl, luctus sed blandit non, laoreet quis mauris. </p>
                 </div>
               </div>
 
-              <div className="card bg-persian-100 bg-opacity-50 mx-12 mb-12">
+              <div className="card bg-persian-100 bg-opacity-50">
                 <div className="info leading-relaxed py-5 pl-8 text-left">
+                  <div className="year">2021</div>
                   <h3 className="title font-bold">Lesben- und Schwulenverband Deutschland</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed id aliquet libero. Ut venenatis vehicula laoreet. Phasellus ut auctor purus. Mauris porttitor nunc odio, et consequat arcu dapibus ut. Nam tristique viverra mi feugiat vehicula. Donec condimentum orci eget quam ullamcorper dapibus. Ut vehicula diam nec fringilla finibus. Maecenas imperdiet, turpis et pellentesque vehicula, nibh lacus egestas dui, id volutpat leo felis in enim. Vivamus dignissim tortor sit amet condimentum maximus. Sed consectetur vehicula orci in tempor. Nulla eu velit ultrices, venenatis purus id, tristique orci. Nam nunc nisl, luctus sed blandit non, laoreet quis mauris. </p>
                 </div>

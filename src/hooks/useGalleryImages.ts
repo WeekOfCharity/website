@@ -7,6 +7,8 @@ export type GalleryImage = {
     id: number;
     author: string | null;
     author_link: string | null;
+    year: number;
+    category: string;
 };
 
 export const useGalleryImages = () => {

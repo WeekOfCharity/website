@@ -6,14 +6,19 @@ type GalleryImageProps = {
   imageUrl: string,
   author: string | null,
   author_link: string | null,
+  year: number,
+  category: string,
 };
 
-export const GalleryImage = ({ description, imageUrl, author, author_link }: GalleryImageProps) => {
+export const GalleryImage = ({ description, imageUrl, author, author_link, year, category }: GalleryImageProps) => {
   return (
-    <div className="bg-arctic-200 rounded-md select-none h-32 sm:h-40 md:h-60 xl:h-96 woc-gallery-image-wrapper">
-      <img src={imageUrl} className="bg-arctic-200 rounded-md select-none woc-gallery-image" />
+    <div className="select-none h-48 sm:h-48 md:h-56 xl:h-80 w-48 sm:w-48 md:w-56 xl:w-80 woc-gallery-image-wrapper">
+      <img src={imageUrl} className="select-none woc-gallery-image" />
+      {/*
       <div className="rounded-md w-full leading-none p-2 sm:p-3 md:p-4 flex flex-col justify-between">   
         <p>{description}</p>
+        <p>{year}</p>
+        <p>{category}</p>
         
         {(author || author_link) && (
           <div>
@@ -22,7 +27,7 @@ export const GalleryImage = ({ description, imageUrl, author, author_link }: Gal
           </div>
         )}
         
-      </div>
+      </div> */}
     </div>
   );
 };

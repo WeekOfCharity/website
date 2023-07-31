@@ -5,6 +5,7 @@ import { GalleryImage } from '../components/GalleryImage/GalleryImage';
 import { useConfiguration } from '../hooks/useConfiguration';
 import { GalleryImage as GalleryImageData, useGalleryImages } from '../hooks/useGalleryImages';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
+import './Gallery.scss';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
 
@@ -32,7 +33,7 @@ export const Gallery = () => {
       {configurationStatus === 'success' && configuration.gallery_enabled && (
         <section className={classNames('max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5')}>
         {galleryImagesStatus === 'success' && (
-          <div className="gap-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
+          <div className="imageGrid">
             {galleryImages
               //.filter((activity) => ![30, 58].includes(activity.id))
               //.sort((a, b) => a.name.localeCompare(b.name))
@@ -43,6 +44,8 @@ export const Gallery = () => {
                   author={galleryImage.author}
                   author_link={galleryImage.author_link}
                   key={galleryImage.id}
+                  year={galleryImage.year}
+                  category={galleryImage.category}
                 />
               ))}
           </div>

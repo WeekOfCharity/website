@@ -1,9 +1,18 @@
 .woc-gallery-image-wrapper {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
+    transition-property: transform;
+    transition-duration: 0.1s;
+}
+
+.woc-gallery-image-wrapper:hover {
+    transform: scale(1.1);
 }
 
 .woc-gallery-image {
+    background-color: white;
     flex-grow: 1;
-    object-fit: contain;
+    object-fit: cover;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }

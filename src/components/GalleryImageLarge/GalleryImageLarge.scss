@@ -1,0 +1,44 @@
+.fullscreenPopUp {
+    position: fixed;
+    height: 100dvh;
+    width: 100dvw;
+    top: 0px;
+    left: 0px;
+    z-index: 999999;
+    background-color: rgba(0, 0, 0, 0.75) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.largeImageWrapper {
+    max-height: 700px;
+    max-width: 700px;
+    margin: auto;
+    // background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageButton {
+    color: white;
+    font-size: 40px;
+    align-self: flex-end;
+    position: relative;
+    top: 14px;
+    left: 24px;
+}
+
+.largeImage {
+    height: auto;
+    width: auto;
+    object-fit: scale-down;
+}
+
+.imageInformationWrapper {
+    height: max;
+    width: max;
+    background-color: white;
+    padding: 4px 16px 8px 16px;
+}

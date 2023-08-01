@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Brush4 } from '../components/Brushes/Brush4';
 import { GalleryImage } from '../components/GalleryImage/GalleryImage';
+import { GalleryImageLarge } from '../components/GalleryImageLarge/GalleryImageLarge';
 import { useConfiguration } from '../hooks/useConfiguration';
 import { GalleryImage as GalleryImageData, useGalleryImages } from '../hooks/useGalleryImages';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
@@ -13,15 +14,29 @@ export const Gallery = () => {
 
   document.title = getDocumentTitle('Bilder Galerie');
 
+  const [imageClicked, setImageClicked] = useState(false);
+  const [imageContent, setImageContent] = useState(null);
+
   const { data: configuration, status: configurationStatus } = useConfiguration();
   const { data: galleryImages, status: galleryImagesStatus } = useGalleryImages();
+
+  const handleImageClick=(imageID)=>{
+    setImageClicked(true);
+    const myImage = galleryImages.filter((image) => image.id==imageID)[0];
+    setImageContent(myImage);
+  }
+
+  const hideLargeImage=()=>{
+    console.log("Button");
+    setImageClicked(false);
+  }
 
   return (
     <main className="text-neutral-800 woc-accent-arctic">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-accent-900 uppercase">Von euch und uns</div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">
+        <div className="font-pally font-bold max-w-screen-md mx-auto mt-5 text-accent-500 text-4xl md:text-7xl w-4/5">
           Die Galerie der
           <br />
           Week of Charity
@@ -32,6 +47,7 @@ export const Gallery = () => {
 
       {configurationStatus === 'success' && configuration.gallery_enabled && (
         <section className={classNames('max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5')}>
+        {imageClicked && imageContent && <GalleryImageLarge imageData={imageContent} hidePopUp={hideLargeImage}/>}
         {galleryImagesStatus === 'success' && (
           <div className="imageGrid">
             {galleryImages
@@ -39,13 +55,12 @@ export const Gallery = () => {
               //.sort((a, b) => a.name.localeCompare(b.name))
               .map((galleryImage) => (
                 <GalleryImage
-                  description={galleryImage.description}
+                  imageID={galleryImage.id}
                   imageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${galleryImage.image}`}
-                  author={galleryImage.author}
-                  author_link={galleryImage.author_link}
                   key={galleryImage.id}
                   year={galleryImage.year}
                   category={galleryImage.category}
+                  onClickFunction={handleImageClick}
                 />
               ))}
           </div>

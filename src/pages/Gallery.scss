@@ -23,3 +23,11 @@
         grid-template-columns: repeat(3, auto);
     }
 }
+
+@media (min-width: 1024px) {
+    .imageGrid {
+        gap: 24px;
+        column-gap: 24px;
+        grid-template-columns: repeat(4, auto);
+    }
+}

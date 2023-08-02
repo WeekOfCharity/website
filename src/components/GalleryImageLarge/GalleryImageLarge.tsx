@@ -10,8 +10,15 @@ type GalleryImageLargeProps = {
 };
 
 export const GalleryImageLarge = ({ imageData, hidePopUp } : GalleryImageLargeProps) => {
+  
+  const handlePopUpClick = (e) => {
+    if (e.target.className == "fullscreenPopUp") {
+      hidePopUp();
+    }
+  }
+
   return (
-    <div className="fullscreenPopUp">
+    <div className="fullscreenPopUp" onClick={handlePopUpClick}>
         <div className="largeImageWrapper bg-neutral-800">
             <button className="imageButton" type="button" onClick={hidePopUp}><img src={closeIcon.toString()} /></button>
             <img src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${imageData.image}`} className="largeImage" />

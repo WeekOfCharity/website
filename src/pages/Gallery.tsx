@@ -27,7 +27,6 @@ export const Gallery = () => {
   }
 
   const hideLargeImage=()=>{
-    console.log("Button");
     setImageClicked(false);
   }
 

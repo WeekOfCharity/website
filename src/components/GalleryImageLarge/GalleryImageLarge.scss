@@ -1,7 +1,7 @@
 .fullscreenPopUp {
     position: fixed;
-    height: 100dvh;
-    width: 100dvw;
+    height: 100vh;
+    width: 100%;
     top: 0px;
     left: 0px;
     z-index: 999999;
@@ -18,7 +18,10 @@
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    overflow: hidden
+    overflow: hidden;
+    width: 80vw;
+    height: 80vh;
+    max-width: 1000px;
 }
 
 .imageButton {
@@ -48,14 +51,36 @@
 
 .largeImage {
     object-fit: contain;
-    max-width: 700px;
-    max-height: 700px;
-    height: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .imageInformationWrapper {
-    max-width: 700px;
-    min-width: 500px;
+    max-width: 80vw;
+    min-width: calc(min(80vw, 500px));
     background-color: white;
     padding: 4px 16px 8px 16px;
+}
+
+@media (max-width: 767px) {
+    .largeImageWrapper {
+        margin: 16px;
+        width: auto;
+        height: auto;
+    }
+
+    .imageInformationWrapper {
+        max-width: 100vw;
+    }
+
+    .imageButton img {
+        width: 32px;
+    }
+
+    .imageButton {
+        width: 80px;
+        height: 80px;
+        top: -4px;
+        right: -4px;
+    }
 }

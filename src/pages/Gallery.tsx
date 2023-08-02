@@ -24,11 +24,13 @@ export const Gallery = () => {
     setImageClicked(true);
     const myImage = galleryImages.filter((image) => image.id==imageID)[0];
     setImageContent(myImage);
+    document.body.style.overflow = 'hidden';
   }
 
   const hideLargeImage=()=>{
     console.log("Button");
     setImageClicked(false);
+    document.body.style.overflow = 'unset';
   }
 
   return (

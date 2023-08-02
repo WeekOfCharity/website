@@ -13,32 +13,34 @@
 }
 
 .largeImageWrapper {
-    max-height: 700px;
-    max-width: 700px;
     margin: auto;
     // background-color: black;
     display: flex;
     flex-direction: column;
+    max-width: 700px;
+    min-width: 200px;
+    max-height: 700px;
+    min-height: 200px;
+    position: relative;
 }
 
 .imageButton {
+    position: absolute;
     color: white;
     font-size: 40px;
-    align-self: flex-end;
-    position: relative;
-    top: 14px;
-    left: 24px;
+    float: right;
+    right: -24px;
+    top: -44px;
 }
 
 .largeImage {
     height: auto;
-    width: auto;
-    object-fit: scale-down;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .imageInformationWrapper {
-    height: max;
-    width: max;
+    max-height: 100px;
     background-color: white;
     padding: 4px 16px 8px 16px;
 }

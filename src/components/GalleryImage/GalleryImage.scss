@@ -3,11 +3,12 @@
     flex-direction: row;
     cursor: pointer;
     transition-property: transform;
-    transition-duration: 0.1s;
+    transition-duration: 0.15s;
+
 }
 
 .woc-gallery-image-wrapper:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .woc-gallery-image {
@@ -15,4 +16,5 @@
     flex-grow: 1;
     object-fit: cover;
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    border-radius: 7px;
 }

@@ -2,6 +2,7 @@ import { GalleryImage as GalleryImageData } from '../../hooks/useGalleryImages';
 import { Shimmer } from '../Shimmer/Shimmer';
 import './GalleryImageLarge.scss';
 
+const closeIcon = new URL('../../assets/close-line-icon.svg', import.meta.url);
 
 type GalleryImageLargeProps = {
   imageData: GalleryImageData,
@@ -11,11 +12,11 @@ type GalleryImageLargeProps = {
 export const GalleryImageLarge = ({ imageData, hidePopUp } : GalleryImageLargeProps) => {
   return (
     <div className="fullscreenPopUp">
-        <div className="largeImageWrapper">
-            <button className="imageButton" type="button" onClick={hidePopUp}>&times;</button> 
+        <div className="largeImageWrapper bg-neutral-800">
+            <button className="imageButton" type="button" onClick={hidePopUp}><img src={closeIcon.toString()} /></button>
             <img src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${imageData.image}`} className="largeImage" />
             <div className="imageInformationWrapper">
-                <div className='text-lg font-bold'>Bild von <a href="/projekte" className="cursor-pointer text-persian-500">{imageData.author}</a></div>
+                <div className='text-xl font-bold'>Bild von <a href={imageData.author_link} target="_blank" className="text-arctic-500">{imageData.author}</a></div>
                 <div>{imageData.description}</div>
             </div>
             {/*

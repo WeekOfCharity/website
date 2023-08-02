@@ -13,34 +13,49 @@
 }
 
 .largeImageWrapper {
+    position: relative;
     margin: auto;
-    // background-color: black;
     display: flex;
     flex-direction: column;
-    max-width: 700px;
-    min-width: 200px;
-    max-height: 700px;
-    min-height: 200px;
-    position: relative;
+    border-radius: 10px;
+    overflow: hidden
 }
 
 .imageButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    color: white;
-    font-size: 40px;
+    color: rgb(255, 255, 255);
+    transition: color 0.1s;
+    width: 40px;
+    height: 40px;
     float: right;
-    right: -24px;
-    top: -44px;
+    right: 3px;
+    top: 3px;
+}
+
+.imageButton img {
+    width: 20px;
+    filter: invert(100%) drop-shadow(2px 2px 2px rgb(0 0 0 / 0.4)) drop-shadow(-2px -2px 2px rgb(0 0 0 / 0.4)) drop-shadow(-2px 2px 2px rgb(0 0 0 / 0.4)) drop-shadow(2px -2px 2px rgb(0 0 0 / 0.4));
+    transition: transform 0.1s;
+}
+
+.imageButton:hover img {
+    transform: scale(1.08);
+    transition: transform 0.1s;
 }
 
 .largeImage {
-    height: auto;
-    max-width: 100%;
     object-fit: contain;
+    max-width: 700px;
+    max-height: 700px;
+    height: auto;
 }
 
 .imageInformationWrapper {
-    max-height: 100px;
+    max-width: 700px;
+    min-width: 500px;
     background-color: white;
     padding: 4px 16px 8px 16px;
 }

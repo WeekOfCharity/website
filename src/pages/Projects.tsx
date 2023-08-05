@@ -32,9 +32,14 @@ export const Projects = () => {
                 <div className="inline chesster-1-wrapper">
                   <img className="chesster-1" src={chesster1.toString()} />
                 </div>
-                <span className="text-lg font-semibold">Die Week of Charity </span>lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sem sem, accumsan euismod venenatis sit amet, ornare a sem. Quisque consectetur quam sed consectetur venenatis. Mauris tristique ipsum eu gravida varius. Etiam elementum enim ac dolor vulputate, sed sodales leo tristique. Etiam gravida, quam at efficitur dictum, ligula leo luctus tortor, eu auctor sem est ut purus. Vestibulum nec ante purus. Donec lorem orci, eleifend quis facilisis vel, suscipit at tellus. Nullam magna ante, hendrerit sit amet ante vel, tristique faucibus arcu. Nulla facilisi. Nunc quis eros semper odio euismod feugiat eget quis lacus. <br /><br />
+                <span className="text-lg font-semibold">Willkommen! </span>Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird
+                abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen
+                wird unter Anderem gezeichnet, Dungeons and Dragons gespielt und es werden Quizshows abgehalten. Dabei unterhalten euch fast alle Streamer*Innen des letzten Jahres
+                plus einige Neuzugänge. Was wann wo zu sehen ist, findet ihr in unserem <a href="/streams" className="cursor-pointer text-persian-500">Zeitplan</a>. <br /><br />
                 
-                <span className="text-lg font-semibold">In diesem Jahr </span>sed id aliquet libero. Ut venenatis vehicula laoreet. Phasellus ut auctor purus. Mauris porttitor nunc odio, et consequat arcu dapibus ut. Nam tristique viverra mi feugiat vehicula. Donec condimentum orci eget quam ullamcorper dapibus. Ut vehicula diam nec fringilla finibus. Maecenas imperdiet, turpis et pellentesque vehicula, nibh lacus egestas dui, id volutpat leo felis in enim. Vivamus dignissim tortor sit amet condimentum maximus. Sed consectetur vehicula orci in tempor. Nulla eu velit ultrices, venenatis purus id, tristique orci. Nam nunc nisl, luctus sed blandit non, laoreet quis mauris.
+                <span className="text-lg font-semibold">Unser Projekt </span>wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die dritte Runde! Alle Spenden,
+                die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Ihr könnt uns über direkte Spenden während des Streams unterstützen, oder in unserem
+                Shop vorbeischauen. Unser Anteil am verkauften Merchandise wird zu 100% gespendet und ihr könnt euch mit unserem Maskottchen Chesster schmücken.
                 
               </div>
             </div>

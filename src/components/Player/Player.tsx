@@ -57,12 +57,16 @@ function Player() {
               </div>
               <div className="font-round font-bold">
                 <Link className="duration-300 hover:text-accent-500 transition-all" to={`/aktivitaeten?id=${running.id}`}>
-                  {running.activity.name}
+                  {running.activity && running.activity.name}
                 </Link>{' '}
-                <span className="font-normal">mit</span>{' '}
-                <Link className="duration-300 hover:text-accent-500 transition-all" to={`/team?id=${running.streamer.id}`}>
-                  {running.streamer.name}
-                </Link>
+                {running.streamer && (
+                  <>
+                  <span className="font-normal">mit</span>{' '}
+                  <Link className="duration-300 hover:text-accent-500 transition-all" to={`/team?id=${running.streamer.id}`}>
+                    {running.streamer.name}
+                  </Link>
+                  </>
+                )}
               </div>
             </div>
 
@@ -92,17 +96,21 @@ function Player() {
                 <img className="rotate-12 w-[78px]" src={arrowRight.toString()} />
               </div>
 
-              <a
-                className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all woc-player-button"
-                href={running.streamer.stream_link}
-                rel="nofollow noreferrer"
-                target="_blank"
-              >
-                <Icon path={mdiPlay} size="1.25rem" />
-              </a>
-              <Link className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all" to={`/aktivitaeten?id=${running.activity.id}`}>
-                <Icon path={mdiInformation} size="1.25rem" />
-              </Link>
+              {running.streamer && (
+                <a
+                  className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all woc-player-button"
+                  href={running.streamer.stream_link}
+                  rel="nofollow noreferrer"
+                  target="_blank"
+                >
+                  <Icon path={mdiPlay} size="1.25rem" />
+                </a>
+              )}
+              {running.activity && (
+                <Link className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all" to={`/aktivitaeten?id=${running.activity.id}`}>
+                  <Icon path={mdiInformation} size="1.25rem" />
+                </Link>
+              )}
             </>
           )}
 

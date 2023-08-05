@@ -44,7 +44,7 @@ const TwitchEmbed = memo(function TwitchEmbed(){
   
     return (
         <>
-        {channelName && (
+        {channelName && !showInactive &&(
             <section className="flex justify-center select-none" style={{width : "100vw"}}>
                 <TwitchPlayer channel={channelName} autoplay muted onReady={handleReady} onOffline={handleOffline} />
             </section>

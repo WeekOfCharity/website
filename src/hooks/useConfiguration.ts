@@ -6,6 +6,7 @@ export type Configuration = {
     twitch_embed: boolean;
     woc_start: string;
     gallery_enabled: boolean;
+    schedule_complete: boolean;
 };
 
 export const useConfiguration = () => {

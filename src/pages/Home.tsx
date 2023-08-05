@@ -49,14 +49,14 @@ export const Home = () => {
 
   useEffect(() => {
       const time = new Date(Date.now());
-      if(configurationStatus === "success" && (streamsStatus === "error" || (streamsStatus === "success" && streams.length === 0))){
+      if(configurationStatus === "success" && (streamsStatus === "error" || !configuration.schedule_complete)){
         const woc_start_date = new Date(configuration.woc_start);
         if(time<woc_start_date){
           setWocStatus("wocUpcoming");
         }else{
           setWocStatus("wocEnded");
         }
-      }else if(streamsStatus === "success" && streams.length > 0){
+      }else if(configurationStatus === "success" &&  streamsStatus === "success" && streams.length > 0){
         const woc_start_date = new Date(streams[0].start);
         const woc_end_date = new Date(streams[streams.length-1].end);
         if(time<woc_start_date){

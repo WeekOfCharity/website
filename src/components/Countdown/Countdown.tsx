@@ -19,34 +19,37 @@ function Countdown({timerZeroCallback}:CountdownProps) {
   const { data: configuration, status: configurationStatus } = useConfiguration();
   const { data: streams, status: streamsStatus } = useStreams();
 
-  useEffect(() => {
-    const id = setInterval(() => {
-            const currentTime = new Date();
-            var woc_start_date;
-            if(streamsStatus === "success" && streams.length > 0){
-                woc_start_date = new Date(streams[0].start);
-            }else if(configurationStatus === "success" && configuration.woc_start!=null){
-                woc_start_date = new Date(configuration.woc_start);
-            }else{
-                setTimeLeft(null);
-                return;
-            }
-            const milliseconds = (woc_start_date.valueOf() - (currentTime.valueOf()));
-            if(milliseconds > 0){
-              var seconds = Math.floor(milliseconds/1000);
-              var minutes = Math.floor(seconds/60);
-              var hours = Math.floor(minutes/60);
-              var days = Math.floor(hours/24);
+  const updateTimer = () => {
+    const currentTime = new Date();
+    var woc_start_date;
+    if(streamsStatus === "success" && streams.length > 0 && configurationStatus === "success" && configuration.schedule_complete){
+        woc_start_date = new Date(streams[0].start);
+    }else if(configurationStatus === "success" && configuration.woc_start){
+        woc_start_date = new Date(configuration.woc_start);
+    }else{
+        setTimeLeft(null);
+        return;
+    }
+    const milliseconds = (woc_start_date.valueOf() - (currentTime.valueOf()));
+    if(milliseconds > 0){
+      var seconds = Math.floor(milliseconds/1000);
+      var minutes = Math.floor(seconds/60);
+      var hours = Math.floor(minutes/60);
+      var days = Math.floor(hours/24);
 
-              hours = hours-(days*24);
-              minutes = minutes-(days*24*60)-(hours*60);
-              seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
-              setTimeLeft([formatNumForCountdown(days),formatNumForCountdown(hours),formatNumForCountdown(minutes),formatNumForCountdown(seconds)]);
-            } else{
-              setTimeLeft(["00","00","00","00"]);
-              timerZeroCallback();
-            }     
-    }, 1000);
+      hours = hours-(days*24);
+      minutes = minutes-(days*24*60)-(hours*60);
+      seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+      setTimeLeft([formatNumForCountdown(days),formatNumForCountdown(hours),formatNumForCountdown(minutes),formatNumForCountdown(seconds)]);
+    } else{
+      setTimeLeft(["00","00","00","00"]);
+      timerZeroCallback();
+    }
+  }
+  
+  useEffect(() => {
+    updateTimer();
+    const id = setInterval(updateTimer, 1000);
     return () => clearInterval(id);
   }, [configuration,configurationStatus,streams,streamsStatus]);
 

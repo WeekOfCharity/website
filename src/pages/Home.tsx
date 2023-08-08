@@ -70,13 +70,10 @@ export const Home = () => {
   }, [configurationStatus, streamsStatus, configuration, streams, timerVisible]);
 
 
-
-
-
   useEffect(() => {
     if (!donations || !donationGoals) return;
 
-    const current = donations && donations.length > 0 ? donations[0].data.data.datas.series['Donations amount'].total : undefined;
+    const current = donations.donated_amount_in_cents / 100;
     setCurrentDonation(current);
 
     let lastIndex = -1;

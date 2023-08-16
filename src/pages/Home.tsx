@@ -143,8 +143,9 @@ export const Home = () => {
               gespielt und es werden Quizshows abgehalten.
               <br />
               <br />
-              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung
-              bringen wie uns. Wir freuen uns auf euch! Mehr zu unserem Projekt findet ihr <a href="/projekte" className="cursor-pointer text-persian-500">hier</a>. 
+              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Mehr zu unserem Projekt findet ihr
+              <a href="/projekte" className="cursor-pointer text-persian-500"> hier</a>. Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung
+              bringen wie uns. Wir freuen uns auf euch! 
             </div>
           </section>
 

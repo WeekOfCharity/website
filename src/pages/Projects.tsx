@@ -7,7 +7,6 @@ const chesster1 = new URL('../assets/chesster-1.png', import.meta.url);
 const chesster2 = new URL('../assets/chesster-2.png', import.meta.url);
 const chesster3 = new URL('../assets/chesster-3.png', import.meta.url);
 const chesster4 = new URL('../assets/chesster-4.png', import.meta.url);
-const tierheimBerlin = new URL('../assets/tierheimBerlin.mp4', import.meta.url);
 
 export const Projects = () => {
 

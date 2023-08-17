@@ -11,6 +11,7 @@ import { Privacy } from './pages/Privacy';
 import { Program } from './pages/Program';
 import { Projects } from './pages/Projects';
 import { Team } from './pages/Team';
+import { Widget } from './widget';
 
 const app = document.getElementById('app');
 const root = createRoot(app!);
@@ -29,7 +30,9 @@ root.render(
           <Route path="datenschutz" element={<Privacy />} />
           <Route path="impressum" element={<Imprint />} />
         </Route>
-        <Route path="goalWidget" element={<GoalWidget />} />
+        <Route path="widgets" element={<Widget />}>
+          <Route path="goal" element={<GoalWidget />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>

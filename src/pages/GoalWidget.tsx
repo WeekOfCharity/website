@@ -34,13 +34,14 @@ export const GoalWidget = () => {
   }, [donations, donationGoals]);
 
   return (
-    <div className="widgetWrapper">
+      <div className="widgetWrapper">
       {nextDonationGoal && (
           <>
             <div>{nextDonationGoal}</div>
           </>
         )}
       <div className="donationMeter">uwu</div>
-  </div>
+    </div>
+    
   );
 };

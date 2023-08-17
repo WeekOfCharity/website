@@ -1,17 +1,57 @@
 .widgetWrapper {
-    width: 500px;
-    height: 500px;
+    width: 1280px;
+    height: 240px;
     position: absolute;
-    top: 100px;
-    left: 100px;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // background-color: pink;
 }
 
-.donationMeter {
-    width: 300px;
-    height: 30px;
+.donationNameWrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: 0 0 20px 0;
+}
+
+.donationName {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 52px;
+}
+
+.donationBox {
+    width: 100%;
+    height: 100px;
     border-radius: 1px;
-    margin: 20px 10px;
-    border: 3px solid black;
+    margin-bottom: 10px;
+    border: 10px solid black;
     overflow: hidden;
     position: relative;
+}
+
+.donationBoxText {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 5;
+    text-align: center;
+    font-size: 52px;
+    font-weight: bold;
+}
+
+.successMessage {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 96px;
+    font-weight: bold;
 }

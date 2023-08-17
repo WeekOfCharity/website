@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { App } from './app';
 import { Activities } from './pages/Activities';
 import { Gallery } from './pages/Gallery';
+import { GoalWidget } from './pages/GoalWidget';
 import { Home } from './pages/Home';
 import { Imprint } from './pages/Imprint';
 import { Privacy } from './pages/Privacy';
@@ -28,6 +29,7 @@ root.render(
           <Route path="datenschutz" element={<Privacy />} />
           <Route path="impressum" element={<Imprint />} />
         </Route>
+        <Route path="goalWidget" element={<GoalWidget />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

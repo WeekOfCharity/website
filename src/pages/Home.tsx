@@ -211,7 +211,7 @@ export const Home = () => {
             <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
 
             <div className="font-fat text-center text-arctic-500 text-4xl md:text-5xl" style={{margin:"2em 1em 0 1em"}}>
-              <a target="_blank" href="/projekte" className="cursor-pointer">
+              <a target="_blank" href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023" className="cursor-pointer">
                 Jetzt ans Tierheim Berlin spenden
               </a>
             </div>

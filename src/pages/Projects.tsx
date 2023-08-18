@@ -38,7 +38,7 @@ export const Projects = () => {
                 abgehalten. Dabei unterhalten euch fast alle Streamer*Innen des letzten Jahres plus einige Neuzugänge. Was wann wo zu sehen ist, findet ihr in unserem <a href="/streams" className="cursor-pointer text-persian-500">Zeitplan</a>. <br /><br />
                 
                 <span className="text-lg font-semibold">Unser Projekt </span>wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die dritte Runde! Alle Spenden,
-                die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Ihr könnt uns über direkte <a target="_blank" href="/streams" className="cursor-pointer text-persian-500">Spenden </a>
+                die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Ihr könnt uns über direkte <a target="_blank" href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023" className="cursor-pointer text-persian-500">Spenden </a>
                 während des Streams unterstützen, oder in unserem <a target="_blank" href="https://www.shirtee.com/de/store/weekofcharity/" className="cursor-pointer text-persian-500">Shop</a> vorbeischauen.
                 Unser Anteil am verkauften Merchandise wird zu 100% gespendet und ihr könnt euch mit unserem Maskottchen Chesster schmücken.
               </div>

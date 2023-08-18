@@ -39,57 +39,61 @@ export const Nav = () => {
         <span className="absolute font-fat right-1 rotate-3 text-accent-500 top-3">'23</span>
       </div>
 
-      <menu className="md:flex hidden items-center ml-auto space-x-5">
-        <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500 hideable' : 'hover:text-persian-500 hideable', 'hideable')} to="/">
-          <span className="font-pally font-medium text-lg">Startseite</span>
-        </NavLink>
-        <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} to="/projekte">
-          <span className="font-pally font-medium text-lg">Projekte</span>
-        </NavLink>
-        <NavLink className={({ isActive }) => classNames(isActive ? 'text-aqua-500' : 'hover:text-aqua-500')} to="/streams">
-          <span className="font-pally font-medium text-lg">Programm</span>
-        </NavLink>
-        <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/aktivitaeten">
-          <span className="font-pally font-medium text-lg">Aktivitäten</span>
-        </NavLink>
-        <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} to="/team">
-          <span className="font-pally font-medium text-lg">Team</span>
-        </NavLink>
-        {configurationStatus === 'success' && configuration.gallery_enabled && (
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/galerie">
-            <span className="font-pally font-medium text-lg">Galerie</span>
+      <menu className="md:flex hidden ml-auto space-x-5 menuWrapper">
+        <div className="md:flex hidden items-center ml-auto space-x-5">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500', 'hideable')} to="/">
+            <span className="font-pally font-medium text-lg">Startseite</span>
           </NavLink>
-        )}
-        <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" title="Twitter" rel="nofollow noreferrer" target="_blank">
-          <span>
-            <Icon path={mdiTwitter} size="1.25rem" />
-          </span>
-        </a>
-        <a className="hover:text-neutral-500" href="https://www.instagram.com/weekofcharity/" title="Instagram" rel="nofollow noreferrer" target="_blank">
-          <span>
-            <Icon path={mdiInstagram} size="1.25rem" />
-          </span>
-        </a>
-        <a className="hover:text-neutral-500" href="https://tech.lgbt/weekofcharity" title="Mastodon" rel="nofollow noreferrer" target="_blank">
-          <span>
-            <Icon path={mdiAlphaMBox} size="1.25rem" />
-          </span>
-        </a>
-        <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" title="TikTok" rel="nofollow noreferrer" target="_blank">
-          <span>
-            <Icon path={mdiMusicNote} size="1.25rem" />
-          </span>
-        </a>
-        <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" title="YouTube" rel="nofollow noreferrer" target="_blank">
-          <span>
-            <Icon path={mdiYoutube} size="1.25rem" />
-          </span>
-        </a>
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} to="/projekte">
+            <span className="font-pally font-medium text-lg">Projekte</span>
+          </NavLink>
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-aqua-500' : 'hover:text-aqua-500')} to="/streams">
+            <span className="font-pally font-medium text-lg">Programm</span>
+          </NavLink>
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/aktivitaeten">
+            <span className="font-pally font-medium text-lg">Aktivitäten</span>
+          </NavLink>
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} to="/team">
+            <span className="font-pally font-medium text-lg">Team</span>
+          </NavLink>
+          {configurationStatus === 'success' && configuration.gallery_enabled && (
+            <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/galerie">
+              <span className="font-pally font-medium text-lg">Galerie</span>
+            </NavLink>
+          )}
+        </div>
+        <div className="md:flex hidden items-center ml-auto space-x-5">
+          <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" title="Twitter" rel="nofollow noreferrer" target="_blank">
+            <span>
+              <Icon path={mdiTwitter} size="1.25rem" />
+            </span>
+          </a>
+          <a className="hover:text-neutral-500" href="https://www.instagram.com/weekofcharity/" title="Instagram" rel="nofollow noreferrer" target="_blank">
+            <span>
+              <Icon path={mdiInstagram} size="1.25rem" />
+            </span>
+          </a>
+          <a className="hover:text-neutral-500" href="https://tech.lgbt/weekofcharity" title="Mastodon" rel="nofollow noreferrer" target="_blank">
+            <span>
+              <Icon path={mdiAlphaMBox} size="1.25rem" />
+            </span>
+          </a>
+          <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" title="TikTok" rel="nofollow noreferrer" target="_blank">
+            <span>
+              <Icon path={mdiMusicNote} size="1.25rem" />
+            </span>
+          </a>
+          <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" title="YouTube" rel="nofollow noreferrer" target="_blank">
+            <span>
+              <Icon path={mdiYoutube} size="1.25rem" />
+            </span>
+          </a>
+        </div>
       </menu>
 
       <a
         className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white"
-        href="https://www.tipeeestream.com/week-of-charity/donation"
+        href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
         rel="nofollow noreferrer"
         target="_blank"
       >

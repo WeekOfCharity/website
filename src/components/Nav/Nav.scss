@@ -8,3 +8,17 @@
         display: inline;
     }
 }
+
+.menuWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+    align-items: end;
+}
+
+@media (min-width: 1000px) {
+    .menuWrapper {
+        flex-direction: row;
+        align-items: center;
+    }
+}

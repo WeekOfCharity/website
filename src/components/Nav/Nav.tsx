@@ -1,4 +1,4 @@
-import { mdiClose, mdiMenu, mdiMusicNote, mdiTwitter, mdiYoutube } from '@mdi/js';
+import { mdiAlphaMBox, mdiClose, mdiInstagram, mdiMenu, mdiMusicNote, mdiTwitter, mdiYoutube } from '@mdi/js';
 import Icon from '@mdi/react';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
@@ -60,17 +60,27 @@ export const Nav = () => {
             <span className="font-pally font-medium text-lg">Galerie</span>
           </NavLink>
         )}
-        <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
+        <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" title="Twitter" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiTwitter} size="1.25rem" />
           </span>
         </a>
-        <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
+        <a className="hover:text-neutral-500" href="https://www.instagram.com/weekofcharity/" title="Instagram" rel="nofollow noreferrer" target="_blank">
+          <span>
+            <Icon path={mdiInstagram} size="1.25rem" />
+          </span>
+        </a>
+        <a className="hover:text-neutral-500" href="https://tech.lgbt/weekofcharity" title="Mastodon" rel="nofollow noreferrer" target="_blank">
+          <span>
+            <Icon path={mdiAlphaMBox} size="1.25rem" />
+          </span>
+        </a>
+        <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" title="TikTok" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiMusicNote} size="1.25rem" />
           </span>
         </a>
-        <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
+        <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" title="YouTube" rel="nofollow noreferrer" target="_blank">
           <span>
             <Icon path={mdiYoutube} size="1.25rem" />
           </span>
@@ -129,13 +139,19 @@ export const Nav = () => {
             <span className="font-pally font-medium hover:text-mustard-500 text-2xl">Merchandise</span>
           </a>
           <div className="flex items-center space-x-5">
-            <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" rel="nofollow noreferrer" target="_blank">
+            <a className="hover:text-neutral-500" href="https://twitter.com/WeekOfCharity/" title="Twitter" rel="nofollow noreferrer" target="_blank">
               <Icon path={mdiTwitter} size="1.5rem" />
             </a>
-            <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" rel="nofollow noreferrer" target="_blank">
+            <a className="hover:text-neutral-500" href="https://www.instagram.com/weekofcharity/" title="Instagram" rel="nofollow noreferrer" target="_blank">
+              <Icon path={mdiInstagram} size="1.5rem" />
+            </a>
+            <a className="hover:text-neutral-500" href="https://tech.lgbt/weekofcharity" title="Mastodon" rel="nofollow noreferrer" target="_blank">
+              <Icon path={mdiAlphaMBox} size="1.5rem" />
+            </a>
+            <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" title="TikTok" rel="nofollow noreferrer" target="_blank">
               <Icon path={mdiMusicNote} size="1.5rem" />
             </a>
-            <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" rel="nofollow noreferrer" target="_blank">
+            <a className="hover:text-neutral-500" href="https://www.youtube.com/channel/UCtDccnVlCVBNBo-icr13dfQ" title="YouTube" rel="nofollow noreferrer" target="_blank">
               <Icon path={mdiYoutube} size="1.5rem" />
             </a>
           </div>

@@ -45,7 +45,7 @@ export const Projects = () => {
             </div>
           </section>
           
-          <div className="font-pally font-bold max-w-screen-md mx-auto mt-20 mb-10 text-accent-500 text-2xl md:text-5xl w-4/5 text-center">
+          <div className="font-pally font-bold max-w-screen-md mx-auto mt-20 mb-10 text-accent-500 text-4xl md:text-5xl w-4/5 text-center">
             Unsere Projekte
           </div>
 

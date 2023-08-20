@@ -8,7 +8,7 @@ import { Brush1 } from '../Brushes/Brush1';
 import { Brush2 } from '../Brushes/Brush2';
 import './Nav.scss';
 
-const logo = new URL('../../assets/inverted-favicon-22.png', import.meta.url);
+const logo = new URL('../../assets/favicon.png', import.meta.url);
 
 export const Nav = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);

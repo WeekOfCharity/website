@@ -34,7 +34,7 @@
 
 .chesster-4 {
     object-fit: contain;
-    transform: scale(0.9) translate(-8px, -50px);
+    transform: scale(1) translate(16px, -42px);
 }
 
 .chesster-3 {
@@ -81,6 +81,10 @@
     .timeline-image-wrapper-left {
         width: 8rem;
         height: 18rem;
+    }
+
+    .wrapper-chesster-4 {
+        height: 20rem;
     }
 
     .wrapper-chesster-3 {

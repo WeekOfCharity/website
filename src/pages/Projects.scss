@@ -34,7 +34,7 @@
 
 .chesster-4 {
     object-fit: contain;
-    transform: scale(1) translate(16px, -42px);
+    transform: scale(1.0) translate(16px, -64px);
 }
 
 .chesster-3 {
@@ -57,7 +57,8 @@
     }
 
     .wrapper-chesster-4 {
-        height: 13rem;
+        height: 12rem;
+        width: 8rem;
     }
 
     .wrapper-chesster-3 {
@@ -85,6 +86,7 @@
 
     .wrapper-chesster-4 {
         height: 20rem;
+        width: 7rem;
     }
 
     .wrapper-chesster-3 {
@@ -110,6 +112,10 @@
         height: 23rem;
     }
 
+    .wrapper-chesster-4 {
+        width: 7rem;
+    }
+
     .wrapper-chesster-3 {
         width: 15rem;
         height: 18rem;
@@ -117,9 +123,12 @@
 
     .chesster-1,
     .chesster-2,
-    .chesster-3,
-    .chesster-4 {
+    .chesster-3 {
         width: 20rem;
+    }
+
+    .chesster-4 {
+        width: 18rem;
     }
 }
 

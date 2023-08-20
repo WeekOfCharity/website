@@ -1,101 +1,153 @@
 .chesster-1-wrapper {
-    width: 6rem;
-    height: 6rem;
-    flex-shrink: 0;
     float: right;
 }
 
-.chesster-1 {
+.chesster-1-wrapper,
+.timeline-image-wrapper-right,
+.timeline-image-wrapper-left {
+    width: 6rem;
+    height: 6rem;
+}
+
+.wrapper-chesster-3 {
+    width: 10rem;
+}
+
+.timeline-image-wrapper-right {
+    float: right;
+}
+
+.timeline-image-wrapper-left {
+    float: left;
+}
+
+.chesster-timeline-image {
     position: absolute;
     max-width: none;
+    width: 8rem;
+}
+
+.chesster-1 {
     transform: translate(8px, -80px);
     width: 8rem;
 }
 
+.chesster-4 {
+    object-fit: contain;
+    transform: scale(0.9) translate(-8px, -50px);
+}
+
+.chesster-3 {
+    object-fit: contain;
+    transform: scale(1.0) translate(-90px, -22px);
+}
+
+.chesster-2 {
+    object-fit: contain;
+    transform: scale(0.8) translate(-22px, -142px);
+}
+
 @media (min-width: 450px) {
-    .chesster-1-wrapper {
+
+    .chesster-1-wrapper,
+    .timeline-image-wrapper-right,
+    .timeline-image-wrapper-left {
         width: 9rem;
-        height: 12rem;
+        height: 11rem;
     }
 
-    .chesster-1 {
+    .wrapper-chesster-4 {
+        height: 13rem;
+    }
+
+    .wrapper-chesster-3 {
+        width: 10rem;
+        height: 11rem;
+    }
+
+    .chesster-1,
+    .chesster-2,
+    .chesster-3,
+    .chesster-4 {
         width: 12rem;
     }
 }
 
 //md
 @media (min-width: 768px) {
-    .chesster-1-wrapper {
+
+    .chesster-1-wrapper,
+    .timeline-image-wrapper-right,
+    .timeline-image-wrapper-left {
         width: 8rem;
         height: 18rem;
     }
 
-    .chesster-1 {
+    .wrapper-chesster-3 {
+        width: 12rem;
+        height: 16rem;
+    }
+
+    .chesster-1,
+    .chesster-2,
+    .chesster-3,
+    .chesster-4 {
         width: 17rem;
     }
 }
 
 //lg
 @media (min-width: 1024px) {
-    .chesster-1-wrapper {
+
+    .chesster-1-wrapper,
+    .timeline-image-wrapper-right,
+    .timeline-image-wrapper-left {
         width: 8rem;
-        height: 22rem;
+        height: 23rem;
     }
 
-    .chesster-1 {
+    .wrapper-chesster-3 {
+        width: 15rem;
+        height: 18rem;
+    }
+
+    .chesster-1,
+    .chesster-2,
+    .chesster-3,
+    .chesster-4 {
         width: 20rem;
     }
 }
 
-.timeline-image-wrapper-right,
-.timeline-image-wrapper-left {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    max-width: 250px;
-}
-
-.chesster-4 {
-    object-fit: contain;
-    transform: scale(1.1) translate(16px);
-}
-
-.chesster-3 {
-    object-fit: contain;
-    transform: scale(1.3) translate(-16px);
-}
-
-.chesster-2 {
-    object-fit: contain;
-    transform: scale(1) translate(16px);
-}
-
 .timeline {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    justify-content: stretch;
 }
 
 .line {
     background-color: #f67abc;
-    min-width: 8px;
+    width: 8px;
     border-radius: 10px;
+    display: grid;
+    grid-area: 1 / 1 / 2 / 2;
 }
 
 /* Outer Layer with the timeline border */
-.card-container {}
+.card-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+    padding: 48px 0;
+    grid-area: 1 / 1 / 2 / 2;
+}
 
 /* Card container */
 .card {
     position: relative;
-    max-width: 800px;
-    display: flex;
-    margin: 36px 84px;
-}
-
-/* Information about the timeline */
-.info {
-    display: flex;
-    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 112px;
+    /* Hacky fix: Overwrite opaque color design to make the line properly show only between the cards.*/
+    background-color: #fef1f3;
 }
 
 /* Title of the card */
@@ -112,18 +164,59 @@
     height: 36px;
     background: white;
     border-radius: 999px;
-    left: -105px;
+    left: -126px;
     top: 14px;
     border: 8px solid #f67abc;
+    visibility: hidden;
 }
 
 /* Year in front of the dot*/
 .year {
-    position: absolute;
-    top: 7px;
-    left: -190px;
+    position: relative;
+    top: 0;
+    left: 0;
     color: #f67abc;
     font-family: Pally, sans-serif;
     font-weight: bold;
     font-size: 32px;
+}
+
+@media (min-width: 768px) {
+    .card::before {
+        visibility: visible;
+    }
+
+    .year {
+        position: absolute;
+        top: 7px;
+        left: -211px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .card {
+        margin-right: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .card {
+        margin: 0 32px;
+    }
+
+    .chesster-3 {
+        transform: scale(1.0) translate(-36px, -24px);
+    }
+
+    .line {
+        z-index: -100;
+        position: relative;
+        left: calc(50% - 4px);
+    }
+}
+
+@media (max-width: 639px) {
+    .card {
+        margin: 0;
+    }
 }

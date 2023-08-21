@@ -38,10 +38,10 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
       {!condensed && (
         <div
           className={classNames('border-2 flex flex-shrink-0 items-center justify-center mr-2 md:mr-4 rounded-md w-12 md:w-16', {
-            'bg-aqua-900 border-aqua-900 text-aqua-100 woc-active-stream': state === 'running' && !highlight,
-            'bg-white border-aqua-900 text-aqua-900': state !== 'running' && !highlight,
-            'bg-[#EAB308] border-[#EAB308] text-aqua-100 woc-active-highlight-stream': state === 'running' && highlight,
-            'bg-white border-[#EAB308] text-[#EAB308]': state !== 'running' && highlight,
+            'bg-white border-green23-900 text-green23-900 woc-active-stream': state === 'running' && !highlight,
+            'bg-white border-green23-900 text-green23-900': state !== 'running' && !highlight,
+            'bg-green23-900 border-green23-900 text-white woc-active-highlight-stream': state === 'running' && highlight,
+            'bg-green23-900 border-green23-900 text-white': state !== 'running' && highlight,
           })}
         >
           <div className="font-round font-bold leading-none -rotate-6 -skew-x-6 text-sm text-center">

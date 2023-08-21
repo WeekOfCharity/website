@@ -14,7 +14,7 @@ export const GoalWidget = () => {
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(undefined);
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string | undefined>(undefined);
 
-  const { data: donations, status: donationsStatus } = useDonations();
+  const { data: donations, status: donationsStatus, refetch: refetchDonations } = useDonations();
   const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
 
   useEffect(() => {
@@ -33,6 +33,14 @@ export const GoalWidget = () => {
     setNextDonationGoal(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].reached_at : undefined);
     setNextDonationGoalText(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].name : undefined);
   }, [donations, donationGoals]);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      refetchDonations();
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, []);
 
   return (
         <div className="widgetWrapper">

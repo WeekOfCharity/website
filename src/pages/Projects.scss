@@ -34,101 +34,137 @@
 
 .chesster-4 {
     object-fit: contain;
-    transform: scale(1.0) translate(16px, -64px);
+    transform: translate(8px, -56px);
 }
 
 .chesster-3 {
     object-fit: contain;
-    transform: scale(1.0) translate(-90px, -22px);
+    transform: translate(-72px, -64px);
 }
 
 .chesster-2 {
     object-fit: contain;
-    transform: scale(0.8) translate(-22px, -142px);
+    transform: translate(8px, -64px);
 }
 
 @media (min-width: 450px) {
 
-    .chesster-1-wrapper,
-    .timeline-image-wrapper-right,
-    .timeline-image-wrapper-left {
+    .chesster-1-wrapper {
         width: 9rem;
         height: 11rem;
     }
 
     .wrapper-chesster-4 {
         height: 12rem;
-        width: 8rem;
+        width: 7rem;
     }
 
     .wrapper-chesster-3 {
-        width: 10rem;
+        width: 10.5rem;
         height: 11rem;
     }
 
+    .wrapper-chesster-2 {
+        width: 9rem;
+        height: 13rem;
+    }
+
     .chesster-1,
-    .chesster-2,
     .chesster-3,
     .chesster-4 {
         width: 12rem;
+    }
+
+    .chesster-2 {
+        width: 10rem;
     }
 }
 
 //md
 @media (min-width: 768px) {
 
-    .chesster-1-wrapper,
-    .timeline-image-wrapper-right,
-    .timeline-image-wrapper-left {
+    .chesster-1-wrapper {
         width: 8rem;
         height: 18rem;
     }
 
     .wrapper-chesster-4 {
-        height: 20rem;
+        height: 16rem;
         width: 7rem;
     }
 
     .wrapper-chesster-3 {
-        width: 12rem;
+        width: 13rem;
+        height: 14rem;
+    }
+
+    .wrapper-chesster-2 {
+        width: 9rem;
         height: 16rem;
     }
 
-    .chesster-1,
-    .chesster-2,
-    .chesster-3,
-    .chesster-4 {
+    .chesster-1 {
         width: 17rem;
+    }
+
+    .chesster-3 {
+        height: 20rem;
+        width: 17rem;
+    }
+
+    .chesster-2 {
+        width: 12rem;
+    }
+
+    .chesster-4 {
+        height: 19rem;
+        width: 14rem;
     }
 }
 
 //lg
 @media (min-width: 1024px) {
 
-    .chesster-1-wrapper,
-    .timeline-image-wrapper-right,
-    .timeline-image-wrapper-left {
+    .chesster-1-wrapper {
         width: 8rem;
         height: 23rem;
     }
 
     .wrapper-chesster-4 {
         width: 7rem;
+        height: 14rem;
     }
 
     .wrapper-chesster-3 {
-        width: 15rem;
-        height: 18rem;
+        width: 16rem;
+        height: 16.5rem;
     }
 
-    .chesster-1,
-    .chesster-2,
+    .wrapper-chesster-2 {
+        width: 8rem;
+        height: 19rem;
+    }
+
+    .chesster-1 {
+        width: 20rem;
+    }
+
+    .chesster-2 {
+        width: 14rem;
+    }
+
     .chesster-3 {
         width: 20rem;
     }
 
+    .chesster-2,
+    .chesster-3 {
+        height: 23rem;
+    }
+
     .chesster-4 {
-        width: 18rem;
+        height: 22rem;
+        width: 16rem;
     }
 }
 

@@ -86,7 +86,7 @@ export const Projects = () => {
 
               <div className="card bg-persian-100 bg-opacity-50">
                 <div className="leading-relaxed py-5 pl-5 md:pl-8 pr-5 text-left">
-                  <div className="timeline-image-wrapper-right">
+                  <div className="timeline-image-wrapper-right wrapper-chesster-2">
                     <img className="chesster-timeline-image chesster-2" src={chesster2.toString()} />
                   </div>
                   <div className="year">2021</div>

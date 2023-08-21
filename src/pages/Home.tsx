@@ -209,10 +209,11 @@ export const Home = () => {
         {donationsStatus === 'success' && donationGoalsStatus === 'success' && (
           <>
             <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
-
-            <div className="font-fat text-center text-arctic-500 text-4xl md:text-5xl" style={{margin:"2em 1em 0 1em"}}>
+            <div className="flex flex-col items-center">
               <a target="_blank" href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023" className="cursor-pointer">
-                Jetzt ans Tierheim Berlin spenden
+                <div className="font-fat text-center hover:scale-[1.1] rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-arctic-500 hover:bg-white bg-opacity-50 text-arctic-900 text-4xl md:text-5xl mx-5 -mt-12 md:-mt-16 -mb-12 hover:text-arctic-500 transition-all">
+                    Jetzt spenden
+                </div>
               </a>
             </div>
 

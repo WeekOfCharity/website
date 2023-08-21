@@ -73,7 +73,7 @@ export const Nav = () => {
               <Icon path={mdiInstagram} size="1.25rem" />
             </span>
           </a>
-          <a className="hover:text-neutral-500" href="https://tech.lgbt/@weekofcharity" title="Mastodon" rel="nofollow noreferrer" target="_blank">
+          <a className="hover:text-neutral-500" href="https://tech.lgbt/@weekofcharity" title="Mastodon" rel="me nofollow noreferrer" target="_blank">
             <span>
               <Icon path={mdiAlphaMBox} size="1.25rem" />
             </span>
@@ -149,7 +149,7 @@ export const Nav = () => {
             <a className="hover:text-neutral-500" href="https://www.instagram.com/weekofcharity/" title="Instagram" rel="nofollow noreferrer" target="_blank">
               <Icon path={mdiInstagram} size="1.5rem" />
             </a>
-            <a className="hover:text-neutral-500" href="https://tech.lgbt/@weekofcharity" title="Mastodon" rel="nofollow noreferrer" target="_blank">
+            <a className="hover:text-neutral-500" href="https://tech.lgbt/@weekofcharity" title="Mastodon" rel="me nofollow noreferrer" target="_blank">
               <Icon path={mdiAlphaMBox} size="1.5rem" />
             </a>
             <a className="hover:text-neutral-500" href="https://www.tiktok.com/@weekofcharity" title="TikTok" rel="nofollow noreferrer" target="_blank">

@@ -35,7 +35,7 @@ export const Projects = () => {
                 <span className="text-lg font-semibold">Die Week of Charity </span>ist ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird
                 abwechselnd auf den Twitch-Kanälen unserer <a href="/team" className="cursor-pointer text-persian-500">Mitglieder</a> durchgängig gestreamt, um Spenden zu
                 sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter Anderem gezeichnet, Dungeons and Dragons gespielt und es werden Quizshows
-                abgehalten. Dabei unterhalten euch fast alle Streamer*Innen des letzten Jahres plus einige Neuzugänge. Was wann wo zu sehen ist, findet ihr in unserem <a href="/streams" className="cursor-pointer text-persian-500">Zeitplan</a>. <br /><br />
+                abgehalten. Was wann wo zu sehen ist, findet ihr in unserem <a href="/streams" className="cursor-pointer text-persian-500">Zeitplan</a>. <br /><br />
                 
                 <span className="text-lg font-semibold">Unser Projekt </span>wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die dritte Runde! Alle Spenden,
                 die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Ihr könnt uns über direkte <a target="_blank" href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023" className="cursor-pointer text-persian-500">Spenden </a>

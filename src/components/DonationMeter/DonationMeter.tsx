@@ -44,25 +44,25 @@ export const DonationMeter = ({ currentValue, nextGoalValue, startValue }: Donat
     <section className="mx-5 md:mx-10 relative">
       <div className="bg-opacity-50 flex flex-col items-center p-5 md:p-10">
         <div className="pb-10">
-          <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-arctic-900 text-center transform-gpu uppercase">
+          <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-blue23-900 text-center transform-gpu uppercase">
             Aktueller
             <br />
             Spendenstand
           </div>
         </div>
-        <div className="font-fat text-arctic-500 text-7xl md:text-9xl">
+        <div className="font-fat text-blue23-500 text-7xl md:text-9xl">
           <span className={classNames('woc-donation-amount', { 'is-current': !isAnimatingAmount })}>
             {animatedAmount.toLocaleString('de', { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
           </span>
         </div>
-        <div className="font-semibold mt-4 text-arctic-600 text-lg">EURO</div>
+        <div className="font-semibold mt-4 text-blue23-600 text-lg">EURO</div>
 
         <div className="h-10 my-10 w-full">
-          <div className="bg-arctic-100 ring-2 ring-offset-2 ring-arctic-600 ring-offset-white rounded w-full">
+          <div className="bg-blue23-100 ring-2 ring-offset-2 ring-blue23-600 ring-offset-white rounded w-full">
             <div
               className=" bg-no-repeat h-10 rounded woc-donation-meter"
               style={{
-                backgroundImage: `repeating-linear-gradient(-45deg, ${tailwind.theme.colors.arctic[500]} 0 6px, transparent 6px 12px)`,
+                backgroundImage: `repeating-linear-gradient(-45deg, ${tailwind.theme.colors.blue23[500]} 0 6px, transparent 6px 12px)`,
                 backgroundSize: '200% 100%',
                 width: `${(100 / nextGoalValue ?? currentValue) * amount}%`,
               }}

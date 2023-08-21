@@ -7,11 +7,11 @@ import { Nav } from './components/Nav/Nav';
 import Player from './components/Player/Player';
 
 const accents = {
-  '/projekte': 'woc-accent-persian',
-  '/streams': 'woc-accent-aqua',
-  '/aktivitaeten': 'woc-accent-arctic',
-  '/team': 'woc-accent-lavender',
-  '/galerie': 'woc-accent-arctic',
+  '/projekte': 'woc-accent-blue23',
+  '/streams': 'woc-accent-green23',
+  '/aktivitaeten': 'woc-accent-pink23',
+  '/team': 'woc-accent-blue23',
+  '/galerie': 'woc-accent-green23',
   '/datenschutz': 'woc-accent-neutral',
   '/impressum': 'woc-accent-neutral',
 };

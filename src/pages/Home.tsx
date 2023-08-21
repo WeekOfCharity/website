@@ -103,9 +103,9 @@ export const Home = () => {
   return (
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-accent-900 uppercase">Neues Jahr, neue Woche</div>
+        <div className="font-round2 font-bold text-pink23-900 uppercase">Neues Jahr, neue Woche</div>
         
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">
+        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
           {wocStatus === 'wocEnded' ? endedText : (wocStatus === 'wocRunning' ? runningText : (wocStatus === 'wocUpcoming' ? upcomingText : ""))}
         </div>
 
@@ -127,15 +127,15 @@ export const Home = () => {
 
       <div className="max-w-screen-2xl my-20 mx-auto space-y-20 md:space-y-40">
         <div className="flex flex-col gap-5 xl:grid grid-cols-2 grid-rows-2 mx-5 md:mx-10">
-          <section className="bg-persian-100 bg-opacity-50 pb-5 pt-10 row-span-2">
-            <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-persian-900 text-center transform-gpu uppercase">Week of Was?</div>
+          <section className="bg-pink23-100 bg-opacity-50 pb-5 pt-10 row-span-2">
+            <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-pink23-900 text-center transform-gpu uppercase">Week of Was?</div>
             {/* <div className="flex font-semibold justify-center max-w-screen-md mx-auto py-10 relative text-3xl md:text-5xl w-4/5">
               <span className="z-10">Über das Projekt</span>
               <Brush5 className="absolute h-12 left-1/2 -rotate-2 text-persian-900 text-opacity-75 top-8 md:top-10 -translate-x-1/2 w-auto" />
             </div> */}
             <div className="font-semibold max-w-screen-md mx-auto pt-10 text-3xl md:text-4xl text-center w-4/5">Über das Projekt</div>
 
-            <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-persian-900 text-opacity-75 w-auto" />
+            <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-pink23-900 text-opacity-75 w-auto" />
 
             <div className="leading-relaxed mx-5 text-center">
               Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder
@@ -144,7 +144,7 @@ export const Home = () => {
               <br />
               <br />
               Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Mehr zu unserem Projekt findet ihr
-              <a href="/projekte" className="cursor-pointer text-persian-500"> hier</a>. Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung
+              <a href="/projekte" className="cursor-pointer text-pink23-500"> hier</a>. Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung
               bringen wie uns. Wir freuen uns auf euch! 
             </div>
           </section>
@@ -163,11 +163,11 @@ export const Home = () => {
 
           <Link className="contents" to="/streams">
             <div className="group relative">
-              <Brush1 className="absolute pointer-events-none -right-24 text-aqua-500 -top-8 w-[356px] z-[1]" />
+              <Brush1 className="absolute pointer-events-none -right-24 text-green23-500 -top-8 w-[356px] z-[1]" />
 
-              <section className="bg-aqua-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 relative hover:text-aqua-500 transition-all">
+              <section className="bg-green23-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 relative hover:text-green23-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">
-                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-aqua-900 transform-gpu uppercase">
+                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-green23-900 transform-gpu uppercase">
                     Entertainment
                     <br />
                     ohne Ende
@@ -186,9 +186,9 @@ export const Home = () => {
             <div className="relative">
               {/* <Brush1 className="absolute -bottom-52 h-96 -left-40 -scale-100 text-lavender-500 transform-gpu" /> */}
 
-              <section className="bg-lavender-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 hover:text-lavender-500 transition-all">
+              <section className="bg-blue23-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 hover:text-blue23-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">
-                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-lavender-900 transform-gpu uppercase">
+                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-blue23-900 transform-gpu uppercase">
                     Wir stecken
                     <br />
                     dahinter
@@ -211,7 +211,7 @@ export const Home = () => {
             <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
             <div className="flex flex-col items-center">
               <a target="_blank" href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023" className="cursor-pointer">
-                <div className="font-fat text-center hover:scale-[1.1] rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-arctic-500 hover:bg-white bg-opacity-50 text-arctic-900 text-4xl md:text-5xl mx-5 -mt-12 md:-mt-16 -mb-12 hover:text-arctic-500 transition-all">
+                <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-12 md:-mt-16 -mb-12 transition-all">
                     Jetzt spenden
                 </div>
               </a>
@@ -232,35 +232,37 @@ export const Home = () => {
             </div>
           </>
         )}
+
+        <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
+          <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left" id="faq">
+            Häufige Fragen und Antworten
+          </div>
+
+          {faqStatus === 'success' && (
+            <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
+              {faq.map((item) => (
+                <div key={item.id} className="bg-opacity-70 bg-green23-100 p-5">
+                  <div className="text-green23-900 font-semibold mb-2 text-lg">{item.question}</div>
+                  <div className="leading-relaxed woc-html" dangerouslySetInnerHTML={{ __html: item.answer }} />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {faqStatus !== 'success' && (
+            <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
+              {[...Array(8)].map((item) => (
+                <div key={item}>
+                  <Shimmer className="h-7 mb-2" />
+                  <Shimmer className="h-14" />
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
       </div>
 
-      <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
-        <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left" id="faq">
-          Häufige Fragen und Antworten
-        </div>
-
-        {faqStatus === 'success' && (
-          <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
-            {faq.map((item) => (
-              <div key={item.id} className="bg-mustard-100 p-5">
-                <div className="font-semibold mb-2 text-lg">{item.question}</div>
-                <div className="leading-relaxed woc-html" dangerouslySetInnerHTML={{ __html: item.answer }} />
-              </div>
-            ))}
-          </div>
-        )}
-
-        {faqStatus !== 'success' && (
-          <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
-            {[...Array(8)].map((item) => (
-              <div key={item}>
-                <Shimmer className="h-7 mb-2" />
-                <Shimmer className="h-14" />
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
+      
     </main>
   );
 };

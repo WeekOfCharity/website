@@ -174,7 +174,7 @@
 }
 
 .line {
-    background-color: #f67abc;
+    background-color: #7f91e6;
     width: 8px;
     border-radius: 10px;
     display: grid;
@@ -196,7 +196,7 @@
     max-width: 1000px;
     margin: 0 112px;
     /* Hacky fix: Overwrite opaque color design to make the line properly show only between the cards.*/
-    background-color: #fef1f3;
+    background-color: #f3f9fe;
 }
 
 /* Title of the card */
@@ -215,7 +215,7 @@
     border-radius: 999px;
     left: -126px;
     top: 14px;
-    border: 8px solid #f67abc;
+    border: 8px solid #7f91e6;
     visibility: hidden;
 }
 
@@ -224,7 +224,7 @@
     position: relative;
     top: 0;
     left: 0;
-    color: #f67abc;
+    color: #7f91e6;
     font-family: Pally, sans-serif;
     font-weight: bold;
     font-size: 32px;

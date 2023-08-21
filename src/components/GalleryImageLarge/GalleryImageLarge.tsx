@@ -23,7 +23,7 @@ export const GalleryImageLarge = ({ imageData, hidePopUp } : GalleryImageLargePr
             <button className="imageButton" type="button" onClick={hidePopUp}><img src={closeIcon.toString()} /></button>
             <img src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${imageData.image}`} className="largeImage" />
             <div className="imageInformationWrapper">
-                <div className='text-xl font-bold'>Bild von <a href={imageData.author_link} target="_blank" className="text-arctic-500">{imageData.author}</a></div>
+                <div className='text-xl font-bold'>Bild von <a href={imageData.author_link} target="_blank" className="text-green23-600">{imageData.author}</a></div>
                 <div>{imageData.description}</div>
             </div>
             {/*

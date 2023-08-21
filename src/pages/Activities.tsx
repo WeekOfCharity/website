@@ -85,11 +85,11 @@ export const Activities = () => {
   }, [activitiesStatus, searchParams]);
 
   return (
-    <main className="text-neutral-800 woc-accent-arctic">
+    <main className="text-neutral-800 woc-accent-pink23">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-accent-900 uppercase">Alle in der Übersicht</div>
+        <div className="font-round2 font-bold text-pink23-900 uppercase">Alle in der Übersicht</div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">
+        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
           Die Aktivitäten der
           <br />
           Week of Charity
@@ -179,10 +179,10 @@ export const Activities = () => {
 
           {activeActivity && (
             <main className="h-full max-h-screen overflow-y-scroll p-5 text-white" style={{ scrollbarWidth: 'thin' }}>
-              <Brush1 className="absolute -right-24 text-accent-500 -top-8 w-[400px] -z-10" />
+              <Brush1 className="absolute -right-24 text-pink23-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
-                <img className="bg-arctic-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}`} />
+                <img className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}`} />
               </div>
 
               <div className="flex items-start space-x-2">
@@ -190,7 +190,7 @@ export const Activities = () => {
 
                 {activeActivity.reference_link && (
                   <a
-                    className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    className="bg-pink23-500 hover:bg-pink23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeActivity.reference_link}
                     rel="nofollow noreferrer"
                     target="_blank"
@@ -206,7 +206,7 @@ export const Activities = () => {
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-arctic-500">Sei dabei in diesen Streams</div>
+                      <div className="font-round2 font-bold text-pink23-500">Sei dabei in diesen Streams</div>
                       {getStreamsWithActivity(activeActivity.id).map((stream) => (
                         <Stream
                           activityId={stream.activity.id}
@@ -227,7 +227,7 @@ export const Activities = () => {
 
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-arctic-500">{activeActivity.name} wird gehostet von</div>
+                      <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird gehostet von</div>
                       <div className="flex gap-2">
                         {getStreamersWithActivity(activeActivity.id).map((streamer) => (
                           <Link to={`/team?id=${streamer.id}`} key={streamer.id}>
@@ -240,7 +240,7 @@ export const Activities = () => {
 
                   {getFellowsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-arctic-500">{activeActivity.name} wird begleitet von</div>
+                      <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird begleitet von</div>
                       <div className="flex flex-wrap gap-2">
                         {getFellowsWithActivity(activeActivity.id).map((fellow) => (
                           <Link to={`/team?id=${fellow.people_id.id}`} key={fellow.people_id.id}>

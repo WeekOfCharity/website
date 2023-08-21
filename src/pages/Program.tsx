@@ -25,11 +25,11 @@ export const Program = () => {
   }, [streams]);
 
   return (
-    <main className="text-neutral-800 woc-accent-aqua">
+    <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-accent-900 uppercase">Keine Events verpassen</div>
+        <div className="font-round2 font-bold text-green23-900 uppercase">Keine Events verpassen</div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">Das Programm der Week of Charity</div>
+        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-green23-500 text-4xl md:text-7xl w-4/5">Das Programm der Week of Charity</div>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
@@ -74,8 +74,8 @@ export const Program = () => {
             Object.keys(streamsGrouped).map((day) => (
               <div className="space-y-4" key={day}>
                 <div>
-                  <div className="font-round2 font-bold text-aqua-900 uppercase">{day}</div>
-                  <div className="bg-aqua-900 h-0.5 w-full"></div>
+                  <div className="font-round2 font-bold text-green23-900 uppercase">{day}</div>
+                  <div className="bg-green23-900 h-0.5 w-full"></div>
                 </div>
 
                 {streamsGrouped[day].map((stream) => (

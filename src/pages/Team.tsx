@@ -66,9 +66,9 @@ export const Team = () => {
   return (
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-accent-900 uppercase">Helfende und Freunde</div>
+        <div className="font-round2 font-bold text-blue23-900 uppercase">Helfende und Freunde</div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-accent-500 text-4xl md:text-7xl w-4/5">
+        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-blue23-500 text-4xl md:text-7xl w-4/5">
           Das Team der
           <br />
           Week of Charity
@@ -177,11 +177,11 @@ export const Team = () => {
 
           {activeMember && (
             <main className="h-full max-h-screen overflow-y-scroll p-5 text-white" style={{ scrollbarWidth: 'thin' }}>
-              <Brush1 className="absolute -right-24 text-accent-500 -top-8 w-[400px] -z-10" />
+              <Brush1 className="absolute -right-24 text-blue23-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
                 <img
-                  className="bg-lavender-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
+                  className="bg-blue23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
                   src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.icon}?width=160&height=160&fit=cover`}
                 />
               </div>
@@ -194,7 +194,7 @@ export const Team = () => {
 
                 {activeMember.theme && (
                   <a
-                    className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`}
                     rel="nofollow noreferrer"
                     target="_blank"
@@ -205,7 +205,7 @@ export const Team = () => {
 
                 {activeMember.stream_link && (
                   <a
-                    className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeMember.stream_link}
                     rel="nofollow noreferrer"
                     target="_blank"
@@ -216,7 +216,7 @@ export const Team = () => {
 
                 {activeMember.social_link && (
                   <a
-                    className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeMember.social_link}
                     rel="nofollow noreferrer"
                     target="_blank"
@@ -229,7 +229,7 @@ export const Team = () => {
               {activeMember.roles && activeMember.roles.length > 0 && (
                 <div className="flex flex-wrap gap-2 items-center mt-5">
                   {activeMember.roles.map((role) => (
-                    <span className="bg-lavender-500 flex font-round font-bold px-1 py-0.5 rounded-sm shadow text-lavender-900 text-xs" key={role}>
+                    <span className="bg-blue23-500 flex font-round font-bold px-1 py-0.5 rounded-sm shadow text-blue23-900 text-xs" key={role}>
                       #{role}
                     </span>
                   ))}
@@ -242,7 +242,7 @@ export const Team = () => {
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithHost(activeMember.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-lavender-500">{activeMember.name} hostet</div>
+                      <div className="font-round2 font-bold text-blue23-500">{activeMember.name} hostet</div>
                       {getStreamsWithHost(activeMember.id).map((stream) => (
                         <Stream
                           activityId={stream.activity.id}
@@ -262,7 +262,7 @@ export const Team = () => {
 
                   {getStreamsWithFellow(activeMember.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-lavender-500">{activeMember.name} begleitet</div>
+                      <div className="font-round2 font-bold text-blue23-500">{activeMember.name} begleitet</div>
                       {getStreamsWithFellow(activeMember.id).map((stream) => (
                         <Stream
                           activityId={stream.activity.id}

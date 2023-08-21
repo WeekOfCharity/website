@@ -41,23 +41,23 @@ export const Nav = () => {
 
       <menu className="md:flex hidden ml-auto space-x-5 menuWrapper">
         <div className="md:flex hidden items-center ml-auto space-x-5">
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500', 'hideable')} to="/">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-pink23-500' : 'hover:text-pink23-500', 'hideable')} to="/">
             <span className="font-pally font-medium text-lg">Startseite</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} to="/projekte">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-blue23-500' : 'hover:text-blue23-500')} to="/projekte">
             <span className="font-pally font-medium text-lg">Projekte</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-aqua-500' : 'hover:text-aqua-500')} to="/streams">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-green23-500' : 'hover:text-green23-500')} to="/streams">
             <span className="font-pally font-medium text-lg">Programm</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/aktivitaeten">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-pink23-500' : 'hover:text-pink23-500')} to="/aktivitaeten">
             <span className="font-pally font-medium text-lg">Aktivitäten</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} to="/team">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-blue23-500' : 'hover:text-blue23-500')} to="/team">
             <span className="font-pally font-medium text-lg">Team</span>
           </NavLink>
           {configurationStatus === 'success' && configuration.gallery_enabled && (
-            <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} to="/galerie">
+            <NavLink className={({ isActive }) => classNames(isActive ? 'text-green23-500' : 'hover:text-green23-500')} to="/galerie">
               <span className="font-pally font-medium text-lg">Galerie</span>
             </NavLink>
           )}
@@ -121,22 +121,22 @@ export const Nav = () => {
         </div>
 
         <menu className="flex flex-col space-y-5 text-white">
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} onClick={() => setMenuOpen(false)} to="/">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-pink23-500' : 'hover:text-pink23-500')} onClick={() => setMenuOpen(false)} to="/">
             <span className="font-pally font-medium text-2xl">Startseite</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-persian-500' : 'hover:text-persian-500')} onClick={() => setMenuOpen(false)} to="/projekte">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-blue23-500' : 'hover:text-blue23-500')} onClick={() => setMenuOpen(false)} to="/projekte">
             <span className="font-pally font-medium text-2xl">Projekte</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-aqua-500' : 'hover:text-aqua-500')} onClick={() => setMenuOpen(false)} to="/streams">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-green23-500' : 'hover:text-green23-500')} onClick={() => setMenuOpen(false)} to="/streams">
             <span className="font-pally font-medium text-2xl">Programm</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} onClick={() => setMenuOpen(false)} to="/aktivitaeten">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-pink23-500' : 'hover:text-pink23-500')} onClick={() => setMenuOpen(false)} to="/aktivitaeten">
             <span className="font-pally font-medium text-2xl">Aktivitäten</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-lavender-500' : 'hover:text-lavender-500')} onClick={() => setMenuOpen(false)} to="/team">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-blue23-500' : 'hover:text-blue23-500')} onClick={() => setMenuOpen(false)} to="/team">
             <span className="font-pally font-medium text-2xl">Team</span>
           </NavLink>
-          <NavLink className={({ isActive }) => classNames(isActive ? 'text-arctic-500' : 'hover:text-arctic-500')} onClick={() => setMenuOpen(false)} to="/galerie">
+          <NavLink className={({ isActive }) => classNames(isActive ? 'text-green23-500' : 'hover:text-green23-500')} onClick={() => setMenuOpen(false)} to="/galerie">
             <span className="font-pally font-medium text-2xl">Galerie</span>
           </NavLink>
           <a href="https://www.shirtee.com/de/store/weekofcharity/" rel="nofollow noreferrer" target="_blank">

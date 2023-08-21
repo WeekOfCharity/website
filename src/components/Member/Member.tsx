@@ -13,8 +13,8 @@ export const Member = ({ avatarUrl, condensed = false, name, onClick, pronouns =
   return (
     <div
       className={classNames('aspect-square cursor-pointer flex flex-col overflow-hidden relative rounded-md select-none', {
-        'bg-lavender-500 group': !condensed,
-        'bg-arctic-500 h-20 w-20': condensed,
+        'bg-blue23-500 group': !condensed,
+        'bg-blue23-500 h-20 w-20': condensed,
       })}
       onClick={onClick}
     >
@@ -24,8 +24,8 @@ export const Member = ({ avatarUrl, condensed = false, name, onClick, pronouns =
       >
         <div
           className={classNames('bg-gradient-to-b duration-300 flex flex-col h-full rounded-md group-hover:rounded-b-none transition-all w-full', {
-            'from-transparent via-lavender-500/10 to-lavender-900/90': !condensed,
-            'from-transparent to-arctic-900/90': condensed,
+            'from-transparent via-blue23-500/10 to-blue23-900/90': !condensed,
+            'from-transparent to-blue23-900/90': condensed,
           })}
         >
           <div
@@ -46,7 +46,7 @@ export const Member = ({ avatarUrl, condensed = false, name, onClick, pronouns =
         </div>
       </div>
 
-      <div className="absolute bg-lavender-500 bottom-0 duration-300 font-round2 font-semibold h-8 p-1 rounded-b text-white text-center transition-all translate-y-full group-hover:translate-y-0 w-full">
+      <div className="absolute bg-blue23-500 bottom-0 duration-300 font-round2 font-semibold h-8 p-1 rounded-b text-white text-center transition-all translate-y-full group-hover:translate-y-0 w-full">
         Details ansehen
       </div>
     </div>

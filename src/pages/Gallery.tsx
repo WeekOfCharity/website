@@ -33,11 +33,11 @@ export const Gallery = () => {
   }
 
   return (
-    <main className="text-neutral-800 woc-accent-arctic">
+    <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-accent-900 uppercase">Von euch und uns</div>
+        <div className="font-round2 font-bold text-green23-900 uppercase">Von euch und uns</div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto mt-5 text-accent-500 text-4xl md:text-7xl w-4/5">
+        <div className="font-pally font-bold max-w-screen-md mx-auto mt-5 text-green23-500 text-4xl md:text-7xl w-4/5">
           Die Galerie der
           <br />
           Week of Charity

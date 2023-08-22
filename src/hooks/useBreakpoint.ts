@@ -29,7 +29,7 @@ const getBreakPoint = (windowWidth: number): Breakpoint => {
 };
 
 export const useBreakpoint = (): Breakpoint => {
-  const [breakpoint, setBreakpoint] = useState(Breakpoint.sm);
+  const [breakpoint, setBreakpoint] = useState(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

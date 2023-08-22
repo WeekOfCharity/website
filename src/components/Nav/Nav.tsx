@@ -11,7 +11,8 @@ import './Nav.scss';
 const logo = new URL('../../assets/favicon.png', import.meta.url);
 
 export const Nav = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
+  const [scrollbarGutterOriginalValue, setScrollbarGutterOriginalValue] = useState<string>("unset");
 
   const { data: configuration, status: configurationStatus } = useConfiguration();
 
@@ -19,9 +20,14 @@ export const Nav = () => {
     if (isMenuOpen) {
       document.body.style.height = '100vh';
       document.body.style.overflowY = 'hidden';
+      setScrollbarGutterOriginalValue(document.documentElement.style.scrollbarGutter);
+      document.documentElement.style.scrollbarGutter = 'unset';
+      document.body.style.scrollbarGutter = 'unset';
     } else {
       document.body.style.height = 'auto';
       document.body.style.overflowY = 'auto';
+      document.documentElement.style.scrollbarGutter = scrollbarGutterOriginalValue;
+      document.body.style.scrollbarGutter = scrollbarGutterOriginalValue;
     }
   }, [isMenuOpen]);
 

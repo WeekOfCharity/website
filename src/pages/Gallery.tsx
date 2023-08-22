@@ -32,12 +32,8 @@ export const Gallery = () => {
     document.body.style.overflow = 'unset';
   }
 
-  function hasOverflow() {
-    return document.documentElement.scrollHeight > document.documentElement.clientHeight;
-  }
-
   function toggleScrollbarGutter() {
-    if (hasOverflow()) {
+    if (document.documentElement.scrollHeight > document.documentElement.clientHeight) {
       document.documentElement.style.scrollbarGutter = 'stable';
       document.body.style.scrollbarGutter = 'stable';
     } else {

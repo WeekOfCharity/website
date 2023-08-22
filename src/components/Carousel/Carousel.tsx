@@ -12,7 +12,7 @@ export const Carousel = ({ children }: CarouselProps) => {
   const [currentItem, setCurrentItem] = useState(0);
 
   const itemCount = React.Children.count(children);
-  const itemsPerPage = breakpoint === Breakpoint.xxl || breakpoint === 0 ? 4 : breakpoint === Breakpoint.xl ? 2 : 1;
+  const itemsPerPage = breakpoint === Breakpoint.xxl || breakpoint === null ? 4 : breakpoint === Breakpoint.xl ? 2 : 1;
 
   const canSlideLeft = currentItem > 0;
   const canSlideRight = currentItem < itemCount - itemsPerPage;

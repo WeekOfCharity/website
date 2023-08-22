@@ -186,7 +186,7 @@ export const Activities = () => {
               <Brush1 className="absolute -right-24 text-pink23-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
-                <img className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}&format=webp`} />
+                <img className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}?width=512&height=256&quality=50&fit=cover&format=webp`} />
               </div>
 
               <div className="flex items-start space-x-2">
@@ -216,7 +216,7 @@ export const Activities = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}&format=webp`}
+                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}?width=512&height=256&quality=50&fit=cover&format=webp`}
                           highlight={stream.highlight}
                           noLink
                           startTime={stream.start}

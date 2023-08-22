@@ -36,6 +36,7 @@
     float: right;
     right: 3px;
     top: 3px;
+    z-index: 100;
 }
 
 .imageButton img {
@@ -65,8 +66,9 @@
 @media (max-width: 767px) {
     .largeImageWrapper {
         margin: 16px;
-        width: auto;
+        width: calc(100% - 32px);
         height: auto;
+        min-height: 60vh;
     }
 
     .imageInformationWrapper {

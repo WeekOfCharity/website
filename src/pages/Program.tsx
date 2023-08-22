@@ -66,8 +66,8 @@ export const Program = () => {
         {status !== 'success' && (
           <section className="mb-20 md:mb-40 mt-12 md:mt-20">
             <Carousel>
-              {[...Array(4)].map((stream) => (
-                <HighlightStream.Loading key={stream} />
+              {[...Array(4)].map((_, index) => (
+                <HighlightStream.Loading key={index} />
               ))}
             </Carousel>
           </section>
@@ -102,10 +102,10 @@ export const Program = () => {
             ))}
 
           {status !== 'success' &&
-            [...Array(8)].map((day) => (
-              <div className="space-y-4" key={day}>
-                {[...Array(5)].map((stream) => (
-                  <Stream.Loading key={stream} />
+            [...Array(8)].map((_, index) => (
+              <div className="space-y-4" key={index}>
+                {[...Array(5)].map((_, index) => (
+                  <Stream.Loading key={index} />
                 ))}
               </div>
             ))}

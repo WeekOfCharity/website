@@ -251,8 +251,8 @@ export const Home = () => {
 
           {faqStatus !== 'success' && (
             <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
-              {[...Array(8)].map((item) => (
-                <div key={item}>
+              {[...Array(8)].map((_, index) => (
+                <div key={index}>
                   <Shimmer className="h-7 mb-2" />
                   <Shimmer className="h-14" />
                 </div>

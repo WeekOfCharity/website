@@ -156,8 +156,8 @@ export const Activities = () => {
             <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">Aktivitäten</div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-              {[...Array(48)].map((activity) => (
-                <Activity.Loading key={activity} />
+              {[...Array(48)].map((_, index) => (
+                <Activity.Loading key={index} />
               ))}
             </div>
           </>

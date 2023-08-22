@@ -69,8 +69,8 @@ export const Gallery = () => {
 
         {galleryImagesStatus !== 'success' && (
           <div className="gap-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
-            {[...Array(14)].map((galleryImage) => (
-              <GalleryImage.Loading key={galleryImage} />
+            {[...Array(14)].map((_, index) => (
+              <GalleryImage.Loading key={index} />
             ))}
           </div>
         )}

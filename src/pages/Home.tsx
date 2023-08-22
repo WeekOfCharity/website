@@ -206,7 +206,7 @@ export const Home = () => {
 
         <div id="spenden" />
 
-        {donationsStatus === 'success' && donationGoalsStatus === 'success' && (
+        {donationsStatus === 'success' && donationGoalsStatus === 'success' && donationGoals.length > 0 && (
           <>
             <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
             <div className="flex flex-col items-center">

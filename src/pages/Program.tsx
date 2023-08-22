@@ -66,8 +66,8 @@ export const Program = () => {
         {status !== 'success' && (
           <section className="mb-20 md:mb-40 mt-12 md:mt-20">
             <Carousel>
-              {[...Array(4)].map((_, index) => (
-                <HighlightStream.Loading key={index} />
+              {[...Array(2)].map((_, index) => (
+                <HighlightStream.Loading key={"loading" + index} />
               ))}
             </Carousel>
           </section>

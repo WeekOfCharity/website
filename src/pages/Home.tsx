@@ -139,7 +139,7 @@ export const Home = () => {
 
             <div className="leading-relaxed mx-5 text-center">
               Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder
-              durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter Anderem gezeichnet, Dungeons and Dragons
+              durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter Anderem Dungeons and Dragons
               gespielt und es werden Quizshows abgehalten.
               <br />
               <br />

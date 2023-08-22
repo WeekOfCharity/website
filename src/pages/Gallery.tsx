@@ -20,17 +20,43 @@ export const Gallery = () => {
   const { data: configuration, status: configurationStatus } = useConfiguration();
   const { data: galleryImages, status: galleryImagesStatus } = useGalleryImages();
 
-  const handleImageClick=(imageID)=>{
+  const handleImageClick = (imageID) => {
     setImageClicked(true);
-    const myImage = galleryImages.filter((image) => image.id==imageID)[0];
+    const myImage = galleryImages.find((image) => image.id==imageID);
     setImageContent(myImage);
     document.body.style.overflow = 'hidden';
   }
 
-  const hideLargeImage=()=>{
+  const hideLargeImage = () => {
     setImageClicked(false);
     document.body.style.overflow = 'unset';
   }
+
+  function hasOverflow() {
+    return document.documentElement.scrollHeight > document.documentElement.clientHeight;
+  }
+
+  function toggleScrollbarGutter() {
+    if (hasOverflow()) {
+      document.documentElement.style.scrollbarGutter = 'stable';
+      document.body.style.scrollbarGutter = 'stable';
+    } else {
+      document.documentElement.style.scrollbarGutter = 'unset';
+      document.body.style.scrollbarGutter = 'unset';
+    }
+  }
+
+  useEffect(() => {
+    toggleScrollbarGutter();
+  }, [galleryImages]); 
+
+  useEffect(() => {
+    window.addEventListener('resize', toggleScrollbarGutter);
+
+    return () => {
+      window.removeEventListener('resize', toggleScrollbarGutter);
+    };
+  }, []); 
 
   return (
     <main className="text-neutral-800 woc-accent-green23">
@@ -53,7 +79,7 @@ export const Gallery = () => {
           <div className="imageGrid">
             {galleryImages
               //.filter((activity) => ![30, 58].includes(activity.id))
-              //.sort((a, b) => a.name.localeCompare(b.name))
+              .sort((a, b) => a.year - b.year)
               .map((galleryImage) => (
                 <GalleryImage
                   imageID={galleryImage.id}

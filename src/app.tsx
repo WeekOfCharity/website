@@ -26,6 +26,11 @@ export const App = () => {
     setAccent(Object.entries(accents).find(([path]) => pathname.startsWith(path))?.[1] ?? 'woc-accent-persian');
   }, [pathname]);
 
+  useEffect(() => {
+    document.documentElement.style.scrollbarGutter = 'unset';
+    document.body.style.scrollbarGutter = 'unset';
+  }, [pathname]);
+
   return (
     <QueryClientProvider client={client}>
       <div className={classNames('min-h-screen overflow-hidden', accent)}>

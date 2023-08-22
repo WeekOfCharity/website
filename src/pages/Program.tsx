@@ -87,7 +87,7 @@ export const Program = () => {
                   <Stream
                     activityId={stream.activity.id}
                     endTime={stream.end}
-                    gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
+                    gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}?width=1024&height=512&quality=75&fit=cover&format=webp`}
                     highlight={stream.highlight}
                     startTime={stream.start}
                     state={getState(stream.start, stream.end)}

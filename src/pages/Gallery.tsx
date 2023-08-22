@@ -57,7 +57,7 @@ export const Gallery = () => {
               .map((galleryImage) => (
                 <GalleryImage
                   imageID={galleryImage.id}
-                  imageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${galleryImage.image}`}
+                  imageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${galleryImage.image}?width=384&height=384&q=50&fit=cover&format=webp`}
                   key={galleryImage.id}
                   year={galleryImage.year}
                   category={galleryImage.category}
@@ -69,7 +69,7 @@ export const Gallery = () => {
 
         {galleryImagesStatus !== 'success' && (
           <div className="gap-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
-            {[...Array(10)].map((galleryImage) => (
+            {[...Array(14)].map((galleryImage) => (
               <GalleryImage.Loading key={galleryImage} />
             ))}
           </div>

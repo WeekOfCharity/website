@@ -34,8 +34,10 @@ export const Team = () => {
   const { data: streams, status: streamsStatus } = useStreams();
   const { data: members, status: membersStatus } = useTeam();
 
-  const charity = typeof members !== 'undefined' && members.length > 0 ? members.find((member) => member.id === 28) : undefined;
-  const chesster = typeof members !== 'undefined' && members.length > 0 ? members.find((member) => member.id === 27) : undefined;
+  const charityId = 999;
+  const chessterId = 1000;
+  const charity = typeof members !== 'undefined' && members.length > 0 ? members.find((member) => member.id === charityId) : undefined;
+  const chesster = typeof members !== 'undefined' && members.length > 0 ? members.find((member) => member.id === chessterId) : undefined;
 
   const getStreamsWithFellow = (memberId: number) => {
     return typeof streams !== 'undefined' && streams.length > 0 ? streams.filter((stream) => stream.fellows.some((fellow) => fellow.people_id.id === memberId)) : [];
@@ -90,7 +92,7 @@ export const Team = () => {
                 {charity && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${charity.icon}?width=512&height=512&fit=cover`}
+                      avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${charity.icon}?width=256&height=256&q=50&fit=cover&format=webp`}
                       name={charity.name}
                       onClick={() => openMember(charity)}
                       pronouns={charity.pronouns}
@@ -100,7 +102,7 @@ export const Team = () => {
                 {chesster && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${chesster.icon}?width=512&height=512&fit=cover`}
+                      avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${chesster.icon}?width=256&height=256&q=50&fit=cover&format=webp`}
                       name={chesster.name}
                       onClick={() => openMember(chesster)}
                       pronouns={chesster.pronouns}
@@ -114,11 +116,11 @@ export const Team = () => {
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter((member) => member.streamer && member.id !== 27)
+                .filter((member) => member.streamer && member.id !== charityId && member.id !== chessterId)
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${member.icon}?width=512&height=512&fit=cover`}
+                    avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${member.icon}?width=256&height=256&q=50&fit=cover&format=webp`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -130,11 +132,11 @@ export const Team = () => {
             <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">Wir unterstützen und begleiten</div>
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter((member) => !member.streamer && member.id !== 28)
+                .filter((member) => !member.streamer && member.id !== charityId && member.id !== chessterId)
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${member.icon}?width=512&height=512&fit=cover`}
+                    avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${member.icon}?width=256&height=256&q=50&fit=cover&format=webp`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -182,7 +184,7 @@ export const Team = () => {
               <div className="flex items-start mb-5">
                 <img
                   className="bg-blue23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.icon}?width=160&height=160&fit=cover`}
+                  src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.icon}?width=160&height=160&q=50&fit=cover&format=webp`}
                 />
               </div>
 

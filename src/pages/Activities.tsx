@@ -35,8 +35,10 @@ export const Activities = () => {
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();
 
-  const opening = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === 30) : undefined;
-  const finale = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === 58) : undefined;
+  const openingId = 999;
+  const finaleId = 1000;
+  const opening = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === openingId) : undefined;
+  const finale = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === finaleId) : undefined;
 
   const getFellowsWithActivity = (activityId: number) => {
     const fellows: StreamData['fellows'] = [];
@@ -101,39 +103,41 @@ export const Activities = () => {
       <section className={classNames('max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5', { 'pointer-events-none': activeActivity !== undefined })}>
         {activitiesStatus === 'success' && (
           <>
-            <div>
-              <div className="flex justify-center mt-8 -rotate-3 w-full">
-                <span className="font-handwriting font-semibold text-xl">Klick uns an für mehr Infos</span>
-                <img className="mt-4 ml-3 -scale-x-100" src={arrowDown.toString()} />
-              </div>
+            {activities.length > 0 && (
+              <div>
+                <div className="flex justify-center mt-8 -rotate-3 w-full">
+                  <span className="font-handwriting font-semibold text-xl">Klick uns an für mehr Infos</span>
+                  <img className="mt-4 ml-3 -scale-x-100" src={arrowDown.toString()} />
+                </div>
 
-              <div className="flex gap-3 justify-center">
-                {opening && (
-                  <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
-                    <Activity
-                      gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${opening.icon}?width=512&height=512&fit=cover`}
-                      name={opening.name}
-                      onClick={() => openActivity(opening)}
-                    />
-                  </div>
-                )}
-                {finale && (
-                  <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
-                    <Activity
-                      gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${finale.icon}?width=512&height=512&fit=cover`}
-                      name={finale.name}
-                      onClick={() => openActivity(finale)}
-                    />
-                  </div>
-                )}
+                <div className="flex gap-3 justify-center">
+                  {opening && (
+                    <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
+                      <Activity
+                        gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${opening.icon}?width=512&height=512&fit=cover`}
+                        name={opening.name}
+                        onClick={() => openActivity(opening)}
+                      />
+                    </div>
+                  )}
+                  {finale && (
+                    <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
+                      <Activity
+                        gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${finale.icon}?width=512&height=512&fit=cover`}
+                        name={finale.name}
+                        onClick={() => openActivity(finale)}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
-            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">Aktivitäten</div>
+            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">{activities.length > 0 ? "Aktivitäten" : "Bald seht ihr hier mehr!"}</div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {activities
-                .filter((activity) => ![30, 58].includes(activity.id))
+                .filter((activity) => ![openingId, finaleId].includes(activity.id))
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((activity) => (
                   <Activity

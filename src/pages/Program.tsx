@@ -24,6 +24,14 @@ export const Program = () => {
     }, {});
   }, [streams]);
 
+  const upcomingHighlights = useMemo(() => {
+    if (typeof streams === 'undefined') {
+      return undefined;
+    }
+
+    return streams.filter((stream) => stream.highlight && getState(stream.start, stream.end) !== 'ended');
+  }, [streams]);
+
   return (
     <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
@@ -34,16 +42,13 @@ export const Program = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      <section className="mb-20 md:mb-40 mt-12 md:mt-20">
-        <div className="max-w-screen-2xl mb-6 mx-auto">
-          <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">Die Highlights 👑 der Woche</div>
-        </div>
-
-        {status === 'success' && (
-          <Carousel>
-            {streams
-              .filter((stream) => stream.highlight && getState(stream.start, stream.end) !== 'ended')
-              .map((stream) => (
+        {status === 'success' && upcomingHighlights.length > 0 && ( 
+          <section className="mb-20 md:mb-40 mt-12 md:mt-20">
+            <div className="max-w-screen-2xl mb-6 mx-auto">
+              <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">Die Highlights 👑 der Woche</div>
+            </div>
+            <Carousel>
+              {upcomingHighlights.map((stream) => (
                 <HighlightStream
                   endTime={stream.end}
                   fellowCount={stream.fellows.length}
@@ -54,20 +59,22 @@ export const Program = () => {
                   key={stream.id}
                 />
               ))}
-          </Carousel>
+            </Carousel>
+          </section>
         )}
 
         {status !== 'success' && (
-          <Carousel>
-            {[...Array(4)].map((stream) => (
-              <HighlightStream.Loading key={stream} />
-            ))}
-          </Carousel>
+          <section className="mb-20 md:mb-40 mt-12 md:mt-20">
+            <Carousel>
+              {[...Array(4)].map((stream) => (
+                <HighlightStream.Loading key={stream} />
+              ))}
+            </Carousel>
+          </section>
         )}
-      </section>
 
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
-        <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">Alle Streams</div>
+        <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">{status === 'success' && streams.length > 0 ? "Alle Streams" : "Bald seht ihr hier mehr!"}</div>
 
         <div className="gap-x-5 gap-y-10 grid xl:grid-cols-2">
           {status === 'success' &&

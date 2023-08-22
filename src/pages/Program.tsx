@@ -32,6 +32,10 @@ export const Program = () => {
     return streams.filter((stream) => stream.highlight && getState(stream.start, stream.end) !== 'ended');
   }, [streams]);
 
+  const highlightPlaceholders = [...Array(4)].map((_, index) => (
+    <HighlightStream.Loading key={"loading" + index} />
+  ));
+
   return (
     <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
@@ -65,11 +69,7 @@ export const Program = () => {
 
         {status !== 'success' && (
           <section className="mb-20 md:mb-40 mt-12 md:mt-20">
-            <Carousel>
-              {[...Array(2)].map((_, index) => (
-                <HighlightStream.Loading key={"loading" + index} />
-              ))}
-            </Carousel>
+            <Carousel>{highlightPlaceholders}</Carousel>
           </section>
         )}
 

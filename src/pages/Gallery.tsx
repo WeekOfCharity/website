@@ -79,7 +79,7 @@ export const Gallery = () => {
               .map((galleryImage) => (
                 <GalleryImage
                   imageID={galleryImage.id}
-                  imageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${galleryImage.image}?width=384&height=384&quality=50&fit=cover&format=webp`}
+                  imageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${galleryImage.image}?width=512&height=512&quality=75&fit=cover&format=webp`}
                   key={galleryImage.id}
                   year={galleryImage.year}
                   category={galleryImage.category}

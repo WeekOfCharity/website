@@ -21,7 +21,7 @@
     overflow: hidden;
     width: 80vw;
     height: 80vh;
-    max-width: 1000px;
+    max-width: 100vh;
 }
 
 .imageButton {
@@ -30,24 +30,22 @@
     align-items: center;
     position: absolute;
     color: rgb(255, 255, 255);
-    transition: color 0.1s;
     width: 40px;
     height: 40px;
     float: right;
-    right: 3px;
-    top: 3px;
+    top: 12px;
+    right: 12px;
     z-index: 100;
 }
 
 .imageButton img {
-    width: 20px;
+    width: 27px;
     filter: invert(100%) drop-shadow(2px 2px 2px rgb(0 0 0 / 0.4)) drop-shadow(-2px -2px 2px rgb(0 0 0 / 0.4)) drop-shadow(-2px 2px 2px rgb(0 0 0 / 0.4)) drop-shadow(2px -2px 2px rgb(0 0 0 / 0.4));
-    transition: transform 0.1s;
+    transition: transform 200ms;
 }
 
 .imageButton:hover img {
-    transform: scale(1.08);
-    transition: transform 0.1s;
+    transform: scale(1.15);
 }
 
 .largeImage {
@@ -82,7 +80,7 @@
     .imageButton {
         width: 80px;
         height: 80px;
-        top: -4px;
-        right: -4px;
+        top: -6px;
+        right: -6px;
     }
 }

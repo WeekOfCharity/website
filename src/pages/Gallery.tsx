@@ -25,12 +25,26 @@ export const Gallery = () => {
     const myImage = galleryImages.find((image) => image.id==imageID);
     setImageContent(myImage);
     document.body.style.overflow = 'hidden';
-  }
+  };
 
   const hideLargeImage = () => {
     setImageClicked(false);
     document.body.style.overflow = 'unset';
-  }
+  };
+
+  const nextImage = () => {
+    const currentIndex = galleryImages.findIndex((image) => image.id == imageContent.id);
+    const myImage = galleryImages[currentIndex + 1];
+    if (myImage)
+      setImageContent(myImage);
+  };
+
+  const prevImage = () => {
+    const currentIndex = galleryImages.findIndex((image) => image.id == imageContent.id);
+    const myImage = galleryImages[currentIndex - 1];
+    if (myImage)
+      setImageContent(myImage);
+  };
 
   function toggleScrollbarGutter() {
     if (document.documentElement.scrollHeight > document.documentElement.clientHeight) {
@@ -70,7 +84,7 @@ export const Gallery = () => {
 
       {configurationStatus === 'success' && configuration.gallery_enabled && (
         <section className={classNames('max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5')}>
-        {imageClicked && imageContent && <GalleryImageLarge imageData={imageContent} hidePopUp={hideLargeImage}/>}
+        {imageClicked && imageContent && <GalleryImageLarge imageData={imageContent} hidePopUp={hideLargeImage} nextImage={nextImage} prevImage={prevImage}/>}
         {galleryImagesStatus === 'success' && (
           <div className="imageGrid">
             {galleryImages

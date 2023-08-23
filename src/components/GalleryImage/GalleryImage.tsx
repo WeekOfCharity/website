@@ -16,8 +16,8 @@ export const GalleryImage = ({ imageID, imageUrl, year, category, onClickFunctio
   }
 
   return (
-    <div className="select-none h-48 sm:h-48 md:h-56 xl:h-72 2xl:h-80 w-48 sm:w-48 md:w-56 xl:w-72 2xl:w-80 woc-gallery-image-wrapper">
-      <img src={imageUrl} onClick={handleClick} className="select-none woc-gallery-image" />
+    <div className="aspect-square cursor-pointer flex flex-col relative rounded-md select-none woc-gallery-image-wrapper">
+      <img src={imageUrl} onClick={handleClick} className="woc-gallery-image" />
       {/*
       <div className="rounded-md w-full leading-none p-2 sm:p-3 md:p-4 flex flex-col justify-between">   
         <p>{description}</p>

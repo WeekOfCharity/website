@@ -25,6 +25,8 @@
     position: absolute;
     max-width: none;
     width: 8rem;
+    transition: scale 200ms;
+    z-index: 10;
 }
 
 .chesster-1 {
@@ -45,6 +47,14 @@
 .chesster-2 {
     object-fit: contain;
     transform: translate(8px, -64px);
+}
+
+.card:hover .chesster-timeline-image {
+    scale: 1.04;
+}
+
+section:hover #projectIntroduction .chesster-timeline-image {
+    scale: 1.07;
 }
 
 @media (min-width: 450px) {

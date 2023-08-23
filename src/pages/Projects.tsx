@@ -27,7 +27,7 @@ export const Projects = () => {
       <div className="max-w-screen-2xl mt-5 mb-40 mx-auto flex place-content-center">
         <div className="max-w-screen-xl flex flex-col items-center mx-10 md:mx-28 lg:mx-32">
           <section className="max-w-screen-lg mx-0 sm:mx-8 lg:mx-16 flex bg-blue23-100 bg-opacity-50 py-10 row-span-2">
-            <div>
+            <div className="projectIntroduction">
               <div className="leading-relaxed mx-5 md:mx-10 text-left">
                 <div className="inline chesster-1-wrapper">
                   <img className="chesster-timeline-image chesster-1" src={chesster1.toString()} />

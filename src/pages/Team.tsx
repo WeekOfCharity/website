@@ -250,7 +250,7 @@ export const Team = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
+                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                           highlight={stream.highlight}
                           startTime={stream.start}
                           state={getState(stream.start, stream.end)}
@@ -270,7 +270,7 @@ export const Team = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}`}
+                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                           highlight={stream.highlight}
                           startTime={stream.start}
                           state={getState(stream.start, stream.end)}

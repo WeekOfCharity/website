@@ -34,7 +34,7 @@ export const DonationGoal = ({ achieved = false, amount, description, hidden = f
             activityId={timeslot.activity.id}
             condensed
             endTime={timeslot.end}
-            gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${timeslot.activity.icon}?width=512&height=256&quality=50&fit=cover&format=webp`}
+            gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
             highlight={timeslot.highlight}
             startTime={timeslot.start}
             streamer={timeslot.streamer.name}

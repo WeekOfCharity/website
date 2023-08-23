@@ -216,7 +216,7 @@ export const Activities = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}?width=512&height=256&quality=50&fit=cover&format=webp`}
+                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                           highlight={stream.highlight}
                           noLink
                           startTime={stream.start}

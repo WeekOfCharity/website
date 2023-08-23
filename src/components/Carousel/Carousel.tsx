@@ -22,10 +22,6 @@ export const Carousel = ({ children }: CarouselProps) => {
   const slideLeft = () => setCurrentItem(Math.max(currentItem - itemsPerPage, 0));
   const slideRight = () => setCurrentItem(Math.min(currentItem + itemsPerPage, itemCount - itemsPerPage));
 
-  useEffect(() => {
-    console.log("Highlight Itemcount: " + itemCount);
-  }, [itemCount]);
-
   return (
     <div className="mx-4 md:mx-40 relative">
       

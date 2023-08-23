@@ -57,6 +57,8 @@ section:hover #projectIntroduction .chesster-timeline-image {
     scale: 1.07;
 }
 
+
+
 @media (min-width: 450px) {
 
     .chesster-1-wrapper {
@@ -137,7 +139,7 @@ section:hover #projectIntroduction .chesster-timeline-image {
 
     .chesster-1-wrapper {
         width: 8rem;
-        height: 23rem;
+        height: 22rem;
     }
 
     .wrapper-chesster-4 {
@@ -175,6 +177,18 @@ section:hover #projectIntroduction .chesster-timeline-image {
     .chesster-4 {
         height: 22rem;
         width: 16rem;
+    }
+}
+
+@media (min-width: 1140px) {
+    .chesster-1-wrapper {
+        height: 20rem;
+    }
+}
+
+@media (min-width: 1240px) {
+    .chesster-1-wrapper {
+        height: 16rem;
     }
 }
 
@@ -264,7 +278,7 @@ section:hover #projectIntroduction .chesster-timeline-image {
     }
 
     .chesster-3 {
-        transform: scale(1.0) translate(-36px, -24px);
+        transform: translate(-36px, -24px);
     }
 
     .line {

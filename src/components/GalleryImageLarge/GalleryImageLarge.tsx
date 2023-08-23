@@ -94,11 +94,9 @@ export const GalleryImageLarge = ({ imageData, hidePopUp, nextImage, prevImage }
               className="largeImage"
             />
           ) : (
-            <img
-              src={currentImage}
-              className="largeImage"
-              style={{opacity: loading ? 0 : 1}}
-            />
+            <div className="imgContainer">
+              <img src={currentImage} className="largeImage" style={{opacity: loading ? 0 : 1}}/>
+            </div>
           )}
           <div className="imageInformationWrapper">
               <div className='text-xl font-bold'>Bild von <a href={imageData.author_link} target="_blank" className="text-green23-600">{imageData.author}</a></div>

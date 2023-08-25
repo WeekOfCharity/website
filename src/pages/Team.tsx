@@ -184,7 +184,7 @@ export const Team = () => {
               <div className="flex items-start mb-5">
                 <img
                   className="bg-blue23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.icon}?width=160&height=160&quality=50&fit=cover&format=webp`}
+                  src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                 />
               </div>
 

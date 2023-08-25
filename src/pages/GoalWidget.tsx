@@ -30,8 +30,8 @@ export const GoalWidget = () => {
       }
     });
 
-    setNextDonationGoal(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].reached_at : undefined);
-    setNextDonationGoalText(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].name : undefined);
+    setNextDonationGoal(donationGoals.length > lastIndex + 1 ? donationGoals[lastIndex + 1].reached_at : undefined);
+    setNextDonationGoalText(donationGoals.length > lastIndex + 1 ? donationGoals[lastIndex + 1].name : undefined);
   }, [donations, donationGoals]);
 
   useEffect(() => {
@@ -67,13 +67,13 @@ export const GoalWidget = () => {
               </ div>
             </>
           )}
-          {donations && donationGoals && !nextDonationGoal && (currentDonation>=donationGoals[donationGoals.length-1].reached_at) && (
+          {donationsStatus === "success" && donationGoalsStatus === "success" && !nextDonationGoal && (
             <>
               <div className="donationNameWrapper">
                 <div className='successMessage'>
-                  Alle Goals wurden erreicht!
+                  {donationGoals.length > 0 ? "Alle Goals wurden erreicht!" : "Es gibt aktuell keine Goals!"}
                 </div>
-              </ div>
+              </div>
             </>
           )}
         </ div>

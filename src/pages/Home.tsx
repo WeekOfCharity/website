@@ -84,7 +84,7 @@ export const Home = () => {
     });
 
     setLastDonationGoal(lastIndex > -1 ? donationGoals[lastIndex].reached_at : 0);
-    setNextDonationGoal(donationGoals.length >= lastIndex + 2 ? donationGoals[lastIndex + 1].reached_at : undefined);
+    setNextDonationGoal(donationGoals.length > lastIndex + 1 ? donationGoals[lastIndex + 1].reached_at : undefined);
   }, [donations, donationGoals]);
 
 

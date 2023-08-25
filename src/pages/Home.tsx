@@ -149,21 +149,9 @@ export const Home = () => {
             </div>
           </section>
 
-          {/* <div className="relative">
-            <Brush1 className="absolute h-96 pointer-events-none -right-24 text-aqua-500 -top-36 z-20" />
-
-            <section className="bg-aqua-100 hover:bg-aqua-900 bg-opacity-50 cursor-pointer duration-300 flex flex-col group h-full justify-end hover:-mx-2.5 p-5 relative hover:text-white transition-all">
-              <div className="duration-300 font-round2 font-bold -ml-1 pb-[70px] -rotate-[10deg] -skew-x-[10deg] text-aqua-900 group-hover:text-aqua-300 transform-gpu transition-all uppercase">Entertainment<br />ohne Ende</div>
-              <div className="flex font-semibold items-center text-3xl md:text-4xl w-full">
-                <span>Das ganze Programm</span>
-                <Icon className="ml-auto" path={mdiArrowRight} size="2rem" />
-              </div>
-            </section>
-          </div> */}
-
           <Link className="contents" to="/streams">
             <div className="group relative">
-              <Brush1 className="absolute pointer-events-none -right-24 text-green23-500 -top-8 w-[356px] z-[1]" />
+              <Brush1 className="absolute pointer-events-none -right-40 sm:-right-24 text-green23-500 -top-8 w-[356px] z-[1]" />
 
               <section className="bg-green23-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 relative hover:text-green23-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">

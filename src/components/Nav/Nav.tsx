@@ -118,7 +118,7 @@ export const Nav = () => {
           'translate-x-full': !isMenuOpen,
         })}
       >
-        <Brush1 className="absolute -right-24 text-accent-500 -top-8 w-[400px] -z-10" />
+        <Brush1 className="absolute -right-40 sm:-right-24 text-accent-500 -top-8 w-[400px] -z-10" />
 
         <div className="flex items-center mb-10">
           <img className="h-12" src={logo.toString()} />

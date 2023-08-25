@@ -52,7 +52,7 @@ export const Projects = () => {
           <div className="timeline">
             <div className="line"></div>
             <div className="card-container">
-              <div className="card bg-blue23-100 bg-opacity-50">
+              <div className="card">
                 <div className="timeline-image-wrapper-right wrapper-chesster-4">
                   <img className="chesster-timeline-image chesster-4" src={chesster4.toString()} />
                 </div>
@@ -68,7 +68,7 @@ export const Projects = () => {
                 
               </div>
 
-              <div className="card bg-blue23-100 bg-opacity-50">
+              <div className="card">
                 <div className="timeline-image-wrapper-left wrapper-chesster-3">
                   <img className="chesster-timeline-image chesster-3" src={chesster3.toString()} />
                 </div>
@@ -84,7 +84,7 @@ export const Projects = () => {
                 </div>
               </div>
 
-              <div className="card bg-blue23-100 bg-opacity-50">
+              <div className="card">
                 <div className="leading-relaxed py-5 pl-5 md:pl-8 pr-5 text-left">
                   <div className="timeline-image-wrapper-right wrapper-chesster-2">
                     <img className="chesster-timeline-image chesster-2" src={chesster2.toString()} />

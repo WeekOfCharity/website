@@ -100,7 +100,7 @@ export const GalleryImageLarge = ({ imageData, hidePopUp, nextImage, prevImage }
           )}
           <div className="imageInformationWrapper">
               <div className='text-xl font-bold'>Bild von <a href={imageData.author_link} target="_blank" className="text-green23-600">{imageData.author}</a></div>
-              <div>{imageData.description}</div>
+              <div className="imageDescription" dangerouslySetInnerHTML={{__html: imageData.description}}></div>
           </div>
         </div>
       </div>

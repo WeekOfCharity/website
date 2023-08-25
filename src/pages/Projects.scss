@@ -10,8 +10,17 @@
     position: relative;
 }
 
+.wrapper-chesster-4 {
+    height: 7rem;
+}
+
 .wrapper-chesster-3 {
-    width: 10rem;
+    height: 7.5rem;
+    width: 7rem;
+}
+
+.wrapper-chesster-2 {
+    height: 9rem;
 }
 
 .timeline-image-wrapper-right {
@@ -41,6 +50,7 @@
 }
 
 .chesster-3 {
+    width: 9rem;
     object-fit: contain;
     transform: translate(-72px, -64px);
 }

@@ -3,6 +3,7 @@ import Icon from '@mdi/react';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { AudioPlayer } from "../components/AudioPlayer/AudioPlayer";
 import { Brush1 } from '../components/Brushes/Brush1';
 import { Brush4 } from '../components/Brushes/Brush4';
 import { Member } from '../components/Member/Member';
@@ -12,12 +13,14 @@ import { useStreams } from '../hooks/useStreams';
 import { Member as MemberData, useTeam } from '../hooks/useTeam';
 import { getState } from '../utils/dateAndTime';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
+import './Team.scss';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
 
 export const Team = () => {
   const [activeMember, setActiveMember] = useState<MemberData | undefined>(undefined);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [themeStarted, setThemeStarted] = useState(false);
 
   useEffect(() => {
     if (typeof activeMember !== 'undefined') {
@@ -49,11 +52,20 @@ export const Team = () => {
 
   const closeMember = () => {
     setSearchParams({}, { replace: true });
+    setThemeStarted(false);
   };
 
   const openMember = (member: MemberData) => {
     setSearchParams({ id: member.id.toString() }, { replace: true });
   };
+
+  const playTheme = () => {
+    if(themeStarted){
+      setThemeStarted(false);
+    } else{
+      setThemeStarted(true);
+    }
+  }
 
   useEffect(() => {
     if (searchParams.has('id')) {
@@ -188,21 +200,16 @@ export const Team = () => {
                 />
               </div>
 
-              <div className="flex items-start space-x-2">
+              <div className="relative flex items-start space-x-2">
                 <div className="mr-auto">
                   <div className="font-pally font-bold text-4xl">{activeMember.name}</div>
                   {activeMember.pronouns && <div className="font-semibold">{activeMember.pronouns}</div>}
                 </div>
 
                 {activeMember.theme && (
-                  <a
-                    className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
-                    href={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`}
-                    rel="nofollow noreferrer"
-                    target="_blank"
-                  >
-                    <Icon path={mdiMusic} size="1.25rem" />
-                  </a>
+                    <div className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all cursor-pointer" onClick={playTheme}>
+                      <Icon path={mdiMusic} size="1.25rem" />
+                    </div> 
                 )}
 
                 {activeMember.stream_link && (
@@ -226,7 +233,13 @@ export const Team = () => {
                     <Icon path={mdiOpenInNew} size="1.25rem" />
                   </a>
                 )}
-              </div>
+                {themeStarted && (
+                  <div className='player relative'>
+                    {/* <AudioPlayer className="origin-bottom-right scale-75 sm:scale-90" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`} autoPlay controls /> */}
+                    <AudioPlayer url={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`} />
+                  </div>
+                )}
+              </div> 
 
               {activeMember.roles && activeMember.roles.length > 0 && (
                 <div className="flex flex-wrap gap-2 items-center mt-5">
@@ -239,6 +252,16 @@ export const Team = () => {
               )}
 
               {activeMember.introduction && <div className="mt-5 text-lg" dangerouslySetInnerHTML={{ __html: activeMember.introduction.replace(/\n/g, '<br />') }} />}
+
+              {/* Alternative Player: below Description */}
+              {/* {themeStarted && getStreamsWithHost(activeMember.id).length > 0 &&(
+                <div className="flex flex-col mt-5">
+                      <div className="font-round2 font-bold text-blue23-500">{activeMember.name}s Theme </div>
+                      <div className='player'>
+                        <ReactAudioPlayer src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`} autoPlay controls />
+                      </div>
+                </div> 
+              )} */}
 
               {streamsStatus === 'success' && (
                 <section className="flex flex-col gap-5 mt-5">

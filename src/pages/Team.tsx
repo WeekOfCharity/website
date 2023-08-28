@@ -239,7 +239,7 @@ export const Team = () => {
                   </a>
                 )}
                 {themeStarted && (
-                  <div className='player relative'>
+                  <div className='player'>
                     {/* <AudioPlayer className="origin-bottom-right scale-75 sm:scale-90" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`} autoPlay controls /> */}
                     <AudioPlayer url={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeMember.theme}.mp3`} />
                   </div>

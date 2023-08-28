@@ -1,8 +1,6 @@
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import tailwind from '../../tailwind.config.js';
 import { useDonationGoals } from '../hooks/useDonationGoals';
-import { useDonations } from '../hooks/useDonations';
+import { useExternalDonationTotal } from '../hooks/useExternalDonationTotal';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 import './GoalWidget.scss';
 
@@ -14,7 +12,7 @@ export const GoalWidget = () => {
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(undefined);
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string | undefined>(undefined);
 
-  const { data: donations, status: donationsStatus, refetch: refetchDonations } = useDonations();
+  const { data: donations, status: donationsStatus, refetch: refetchDonations } = useExternalDonationTotal();
   const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
 
   useEffect(() => {

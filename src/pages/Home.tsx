@@ -13,7 +13,7 @@ import { Ticket } from '../components/Ticket/Ticket';
 import TwitchEmbed from '../components/TwitchEmbed/TwitchEmbed';
 import { useConfiguration } from '../hooks/useConfiguration';
 import { useDonationGoals } from '../hooks/useDonationGoals';
-import { useDonations } from '../hooks/useDonations';
+import { useExternalDonationTotal } from '../hooks/useExternalDonationTotal';
 import { useFAQ } from '../hooks/useFAQ';
 import { useStreams } from '../hooks/useStreams';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
@@ -29,7 +29,7 @@ export const Home = () => {
   const [wocStatus, setWocStatus] = useState("");
   const [timerVisible, setTimerVisible] = useState(true);
 
-  const { data: donations, status: donationsStatus } = useDonations();
+  const { data: donations, status: donationsStatus } = useExternalDonationTotal();
   const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
   const { data: faq, status: faqStatus } = useFAQ();
   const { data: configuration, status: configurationStatus } = useConfiguration();

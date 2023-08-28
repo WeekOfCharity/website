@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { App } from './app';
 import { Activities } from './pages/Activities';
+import { BidwarWidget } from './pages/BidwarWidget';
 import { Gallery } from './pages/Gallery';
 import { GoalWidget } from './pages/GoalWidget';
 import { Home } from './pages/Home';
@@ -32,6 +33,7 @@ root.render(
         </Route>
         <Route path="widgets" element={<Widget />}>
           <Route path="goal" element={<GoalWidget />} />
+          <Route path="bidwar" element={<BidwarWidget />} />
         </Route>
       </Routes>
     </BrowserRouter>

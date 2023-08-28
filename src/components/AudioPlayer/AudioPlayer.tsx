@@ -8,7 +8,7 @@ type Props = {
 
 export const AudioPlayer = ({ url }: Props) => {
     const playerRef = useRef<ReactPlayer | null>(null);
-    const [playing, setPlaying] = useState<boolean>(false);
+    const [playing, setPlaying] = useState<boolean>(true);
     const [muted, setMuted] = useState<boolean>(false);
     const [volume, setVolume] = useState<number>(0.5);
     const [progress, setProgress] = useState<number>(0);
@@ -38,10 +38,6 @@ export const AudioPlayer = ({ url }: Props) => {
       const handleDuration = (duration: number) => {
         setDuration(duration);
       };
-    
-      const toggleLoop = () => {
-        setLoop((prevLoop) => !prevLoop);
-      };
 
   return (
     <div>
@@ -56,9 +52,10 @@ export const AudioPlayer = ({ url }: Props) => {
             onPause={handlePause}
             onProgress={handleProgress}
             onDuration={handleDuration}
+            width="320px"
         />
 
-        <div className="shadow w-80 h-9">
+        <div className="w-80 h-9">
             <AudioPlayerControls
                 playerRef={playerRef}
                 playing={playing}

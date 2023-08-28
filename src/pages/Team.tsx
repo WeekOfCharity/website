@@ -207,14 +207,19 @@ export const Team = () => {
                 </div>
 
                 {activeMember.theme && (
-                    <div className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all cursor-pointer" onClick={playTheme}>
+                    <div className="relative bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all cursor-pointer" onClick={playTheme}>
+                      {themeStarted && (
+                        <div className="triangleWrapper">
+                          <div className='triangle'></div>
+                        </div>
+                      )}
                       <Icon path={mdiMusic} size="1.25rem" />
                     </div> 
                 )}
 
                 {activeMember.stream_link && (
                   <a
-                    className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    className="relative bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeMember.stream_link}
                     rel="nofollow noreferrer"
                     target="_blank"

@@ -247,7 +247,7 @@ export const Team = () => {
               </div> 
 
               {activeMember.roles && activeMember.roles.length > 0 && (
-                <div className="flex flex-wrap gap-2 items-center mt-5">
+                <div className="flex flex-wrap gap-2 items-center mt-5 mb-0">
                   {activeMember.roles.map((role) => (
                     <span className="bg-blue23-500 flex font-round font-bold px-1 py-0.5 rounded-sm shadow text-blue23-900 text-xs" key={role}>
                       #{role}
@@ -256,7 +256,7 @@ export const Team = () => {
                 </div>
               )}
 
-              {activeMember.introduction && <div className="mt-5 text-lg" dangerouslySetInnerHTML={{ __html: activeMember.introduction.replace(/\n/g, '<br />') }} />}
+              {activeMember.introduction && <div className="mt-5 mb-12 text-lg" dangerouslySetInnerHTML={{ __html: activeMember.introduction.replace(/\n/g, '<br />') }} />}
 
               {/* Alternative Player: below Description */}
               {/* {themeStarted && getStreamsWithHost(activeMember.id).length > 0 &&(

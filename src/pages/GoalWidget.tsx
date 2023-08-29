@@ -16,7 +16,7 @@ export const GoalWidget = () => {
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string | undefined>(undefined);
 
   const { data: donations, status: donationsStatus, refetch: refetchDonations } = useExternalDonationTotal();
-  const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
+  const { data: donationGoals, status: donationGoalsStatus, refetch: refetchDonationGoals } = useDonationGoals();
 
   useEffect(() => {
     if (!donations || !donationGoals) return;
@@ -39,6 +39,14 @@ export const GoalWidget = () => {
     const id = setInterval(() => {
       refetchDonations();
     }, 5000);
+
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      refetchDonationGoals();
+    }, 60000);
 
     return () => clearInterval(id);
   }, []);

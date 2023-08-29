@@ -1,3 +1,6 @@
+import "@fontsource/ubuntu"; // Defaults to weight 400
+import "@fontsource/ubuntu/400-italic.css";
+import "@fontsource/ubuntu/400.css"; // Specify weight
 import { useEffect, useState } from 'react';
 import { useDonationGoals } from '../hooks/useDonationGoals';
 import { useExternalDonationTotal } from '../hooks/useExternalDonationTotal';
@@ -56,7 +59,7 @@ export const GoalWidget = () => {
                 <div
                   className="donationFill"
                   style={{
-                    backgroundColor: '#34b7eb',
+                    backgroundColor: '#7F91E6',
                     backgroundSize: '200% 100%',
                     width: `${(currentDonation / nextDonationGoal)*100}%`,
                     height: '100%',

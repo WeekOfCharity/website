@@ -25,6 +25,7 @@ export type Stream = {
     name: string;
     stream_link: string;
   };
+  vod_link: string;
 };
 
 export const useStreams = () => {

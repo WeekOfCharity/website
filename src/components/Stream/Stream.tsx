@@ -18,22 +18,27 @@ type StreamProps = {
   state?: 'upcoming' | 'running' | 'ended';
   streamer: string;
   title: string;
+  vodLink: string;
 };
 
-export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, highlight, noLink = false, startTime, state = 'upcoming', streamer, title }: StreamProps) => {
+export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, highlight, noLink = false, startTime, state = 'upcoming', streamer, title, vodLink }: StreamProps) => {
   const breakpoint = useBreakpoint();
 
-  const RootElement = condensed && !noLink ? Link : 'article';
-  const BannerElement = !condensed && !noLink ? Link : 'div';
+  const RootElement = noLink && vodLink ? 'a' : condensed && !noLink ? Link : 'article';
+  const BannerElement = noLink && vodLink ? 'div' : !condensed && !noLink ? Link : 'div';
 
   return (
     <RootElement
       className={classNames('flex select-none', {
         'cursor-pointer duration-300 hover:-mx-1.5 transition-all': condensed,
         'opacity-50': state === 'ended',
-        'pointer-events-none': noLink,
+        'pointer-events-none': noLink && !vodLink,
       })}
-      to={condensed ? `/aktivitaeten?id=${activityId}` : undefined}
+      to={condensed && !noLink ? `/aktivitaeten?id=${activityId}` : undefined}
+      href={noLink && vodLink ? vodLink : undefined}
+      title={noLink && vodLink ? "Zum VOD" : undefined}
+      rel={noLink && vodLink ? "nofollow noreferrer" : undefined}
+      target={noLink && vodLink ? "_blank" : undefined}
     >
       {!condensed && (
         <div
@@ -58,7 +63,7 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
         className={classNames('flex flex-col md:flex-row relative md:rounded-md w-full', {
           'cursor-pointer duration-300 hover:-mx-2 transition-all': !condensed,
         })}
-        to={!condensed ? `/aktivitaeten?id=${activityId}` : undefined}
+        to={!condensed && !noLink ? `/aktivitaeten?id=${activityId}` : undefined}
       >
         <div
           className="bg-center bg-cover flex-shrink-0 h-28 md:h-20 rounded-l-md rounded-r-md md:rounded-r-none w-full md:w-20"
@@ -87,8 +92,11 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
           }}
         >
           <div className="backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex flex-col md:h-full justify-center p-2 md:px-4 rounded-b-md md:rounded-bl-none md:rounded-r-md text-white w-full">
-            <div className="font-semibold md:mb-1.5 leading-none text-lg">{title}</div>
-
+          <div className="flex font-semibold leading-none md:mb-1.5 space-x-4 text-lg">
+            <span>{title}</span>
+            {state === "ended" && vodLink && <span className="md:block woc-vod-label">{noLink ? "Zum VOD" : "VOD verfügbar"}</span>}
+          </div>
+            
             {condensed ? (
               <div className="flex font-round font-semibold items-center leading-none mt-1.5 space-x-4 text-sm">
                 <Icon path={mdiCalendarBlankOutline} size="1rem" style={{ marginRight: '-0.5rem' }} />

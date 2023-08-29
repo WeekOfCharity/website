@@ -39,6 +39,7 @@ export const DonationGoal = ({ achieved = false, amount, description, hidden = f
             startTime={timeslot.start}
             streamer={timeslot.streamer.name}
             title={timeslot.activity.name}
+            vodLink={timeslot.vod_link}
           />
         )}
 

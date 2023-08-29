@@ -286,6 +286,7 @@ export const Team = () => {
                           state={getState(stream.start, stream.end)}
                           streamer={stream.streamer.name}
                           title={stream.activity.name}
+                          vodLink={stream.vod_link}
                           key={stream.id}
                         />
                       ))}
@@ -306,6 +307,7 @@ export const Team = () => {
                           state={getState(stream.start, stream.end)}
                           streamer={stream.streamer.name}
                           title={stream.activity.name}
+                          vodLink={stream.vod_link}
                           key={stream.id}
                         />
                       ))}

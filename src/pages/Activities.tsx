@@ -223,6 +223,7 @@ export const Activities = () => {
                           state={getState(stream.start, stream.end)}
                           streamer={stream.streamer.name}
                           title={stream.activity.name}
+                          vodLink={stream.vod_link}
                           key={stream.id}
                         />
                       ))}

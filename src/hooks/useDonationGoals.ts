@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Stream } from './useStreams';
 
 export type DonationGoal = {
-  activity: Stream | null;
+  stream: Stream | null;
   description: string | null;
   hidden: boolean | null;
   id: number;

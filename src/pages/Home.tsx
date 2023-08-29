@@ -213,7 +213,7 @@ export const Home = () => {
                   description={goal.description}
                   hidden={goal.hidden}
                   key={goal.id}
-                  timeslot={goal.activity}
+                  timeslot={goal.stream}
                   title={goal.name}
                 />
               ))}

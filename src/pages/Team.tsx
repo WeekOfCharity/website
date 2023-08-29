@@ -207,7 +207,7 @@ export const Team = () => {
                 </div>
 
                 {activeMember.theme && (
-                    <div className="relative bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all cursor-pointer" onClick={playTheme}>
+                    <div className="relative bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all cursor-pointer" onClick={playTheme} title="Musik abspielen">
                       {themeStarted && (
                         <div className="triangleWrapper">
                           <div className='triangle'></div>
@@ -222,6 +222,7 @@ export const Team = () => {
                     className="relative bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeMember.stream_link}
                     rel="nofollow noreferrer"
+                    title="Twitch"
                     target="_blank"
                   >
                     <Icon path={mdiTwitch} size="1.25rem" />
@@ -233,6 +234,7 @@ export const Team = () => {
                     className="bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeMember.social_link}
                     rel="nofollow noreferrer"
+                    title="Socials"
                     target="_blank"
                   >
                     <Icon path={mdiOpenInNew} size="1.25rem" />

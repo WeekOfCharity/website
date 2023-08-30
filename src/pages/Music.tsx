@@ -20,7 +20,7 @@ export const Music = () => {
             <div className="flex flex-col items-center mx-10 md:mx-28 lg:mx-32">
                 <section className="max-w-screen-lg mx-0 sm:mx-8 lg:mx-16 mb-6 flex bg-green23-100 bg-opacity-50 py-10 row-span-2">
                 <div className="leading-relaxed mx-5 md:mx-10 text-left">
-                    <span className="text-lg font-semibold">Unsere Musik</span> wird jedes Jahr von amy und mioh gemacht. Die Lieder könnt ihr auf Bandcamp kaufen. All unsere Einnahmen gehen dabei an die aktuelle Charity.
+                    <span className="text-lg font-semibold">Unsere Musik</span> wird jedes Jahr von <a target="_blank" href="https://battleofthebits.com/barracks/Profile/kleeder/" className="cursor-pointer text-green23-800"> Amy</a> und <a target="_blank" href="https://battleofthebits.com/barracks/Profile/mirageofher/" className="cursor-pointer text-green23-800"> Mioh</a> gemacht. Die Lieder könnt ihr auf Bandcamp kaufen. All unsere Einnahmen gehen dabei an die aktuelle Charity.
                     Unten findet ihr eine Auflistung aller Week of Charity Alben, die die beiden im Laufe der Jahre für uns erstellt haben.
                     Wenn ihr auf ein Album klickt, kommt ihr auf die jeweilige Bandcamp-Seite, auf der ihr das Album kaufen könnt.
                     Vielen Dank für eure Unterstützung!

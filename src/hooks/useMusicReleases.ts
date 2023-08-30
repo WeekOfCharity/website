@@ -4,7 +4,7 @@ import axios from 'axios';
 export type MusicRelease = {
     name: string;
     link: string;
-    image: string;
+    cover_art: string;
     year: number;
     id: number;
 };

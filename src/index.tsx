@@ -8,6 +8,7 @@ import { Gallery } from './pages/Gallery';
 import { GoalWidget } from './pages/GoalWidget';
 import { Home } from './pages/Home';
 import { Imprint } from './pages/Imprint';
+import { Music } from './pages/Music';
 import { Privacy } from './pages/Privacy';
 import { Program } from './pages/Program';
 import { Projects } from './pages/Projects';
@@ -30,6 +31,7 @@ root.render(
           <Route path="galerie" element={<Gallery />} />
           <Route path="datenschutz" element={<Privacy />} />
           <Route path="impressum" element={<Imprint />} />
+          <Route path="musik" element={<Music />} />
         </Route>
         <Route path="widgets" element={<Widget />}>
           <Route path="goal" element={<GoalWidget />} />

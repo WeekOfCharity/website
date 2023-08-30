@@ -14,6 +14,7 @@ const accents = {
   '/galerie': 'woc-accent-green23',
   '/datenschutz': 'woc-accent-neutral',
   '/impressum': 'woc-accent-neutral',
+  '/musik': 'woc-accent-mustard',
 };
 
 export const App = () => {

@@ -2,6 +2,7 @@ import { mdiArrowRight } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Bidwar } from '../components/Bidwar/Bidwar';
 import { Brush1 } from '../components/Brushes/Brush1';
 import { Brush4 } from '../components/Brushes/Brush4';
 import { Brush5 } from '../components/Brushes/Brush5';
@@ -9,13 +10,15 @@ import Countdown from '../components/Countdown/Countdown';
 import { DonationGoal } from '../components/DonationGoal/DonationGoal';
 import { DonationMeter } from '../components/DonationMeter/DonationMeter';
 import { Shimmer } from '../components/Shimmer/Shimmer';
-import { Ticket } from '../components/Ticket/Ticket';
 import TwitchEmbed from '../components/TwitchEmbed/TwitchEmbed';
+import { useBidwarResults } from '../hooks/useBidwarResults';
+import { useBidwars } from '../hooks/useBidwars';
 import { useConfiguration } from '../hooks/useConfiguration';
 import { useDonationGoals } from '../hooks/useDonationGoals';
 import { useExternalDonationTotal } from '../hooks/useExternalDonationTotal';
 import { useFAQ } from '../hooks/useFAQ';
 import { useStreams } from '../hooks/useStreams';
+
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
@@ -34,6 +37,8 @@ export const Home = () => {
   const { data: faq, status: faqStatus } = useFAQ();
   const { data: configuration, status: configurationStatus } = useConfiguration();
   const { data: streams, status: streamsStatus } = useStreams();
+  const { data: bidwarResults, status: bidwarResultsStatus } = useBidwarResults();
+  const { data: bidwars, status: bidwarsStatus } = useBidwars();
 
   const upcomingText = "Wir streamen wieder für den guten Zweck";
   const runningText = "Wir streamen wieder für den guten Zweck";
@@ -45,7 +50,6 @@ export const Home = () => {
       setTimerVisible(false);
     }, 1000);
   }
-
 
   useEffect(() => {
       const time = new Date(Date.now());
@@ -139,7 +143,7 @@ export const Home = () => {
 
             <div className="leading-relaxed mx-5 text-center">
               Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder
-              durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter Anderem Dungeons and Dragons
+              durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter anderem Dungeons and Dragons
               gespielt und es werden Quizshows abgehalten.
               <br />
               <br />
@@ -205,6 +209,22 @@ export const Home = () => {
               </a>
             </div>
 
+            
+            {bidwarResultsStatus === 'success' && bidwarsStatus === 'success' && bidwarResults.results.map((result) => {
+                if (result.active) {
+                  return (
+                    <div className="flex flex-col mx-5 md:mx-10 items-center"> 
+                      <Bidwar 
+                        name={result.bidwar_name}
+                        description={result.bidwar_description}
+                        options={result.options}
+                        timeslot={bidwars.find((bidwar) => bidwar.id === result.id).timeslot}
+                      />
+                    </div>
+                  );
+                }
+            })}
+            
             <div className="flex flex-col gap-5 xl:grid grid-cols-2 mx-5 md:mx-10">
               {donationGoals.map((goal) => (
                 <DonationGoal
@@ -213,7 +233,7 @@ export const Home = () => {
                   description={goal.description}
                   hidden={goal.hidden}
                   key={goal.id}
-                  timeslot={goal.stream}
+                  timeslot={goal.timeslot}
                   title={goal.name}
                 />
               ))}

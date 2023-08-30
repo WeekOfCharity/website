@@ -79,7 +79,7 @@ export const Projects = () => {
                   <p>
                     Für unsere zweite Runde haben wir 2022 das LGBTQ+ Jugendwohnheim "<a target="_blank" href="https://www.godesheim.de/angebote/queere-vielfalt-leben/" className="cursor-pointer text-blue23-600">Queere Vielfalt leben</a>" in Köln unterstützt.
                     Dort finden queere Jugendliche eine sensible und liebevolle Unterkunft, die sie außerdem bei ihrer Identitätsfindung und eigenverantwortlichen Lebensgestaltung unterstützt. Am Ende der zweiten WoC, bei der manchmal sogar die Jugendlichen und Mitarbeitenden des Wohnheims mitgespielt haben, konnten wir unseren ersten Streamingmarathon überbieten und unglaubliche 3550€ sammeln!
-                    Mit diesem Geld konnte unter Anderem endlich der Keller des Hauses ausgebaut werden.
+                    Mit diesem Geld konnte unter anderem endlich der Keller des Hauses ausgebaut werden.
                   </p>
                 </div>
               </div>
@@ -96,8 +96,8 @@ export const Projects = () => {
                   und Interessen von Lesben, Schwulen, Bisexuellen, trans- und intergeschlechtlichen sowie queeren Menschen einsetzt. Unsere Spenden gingen dabei konkret an das
                   Covidhilfe Afrika Projekt, bei dem der LSVD mit Partner*innen vor Ort queere Menschen in Afrika unterstützte, die als Minderheit oft besonders hart von
                   Krisensituationen betroffen sind. Sie werden zum Sündenbock für Virenausbrüche gemacht, wodurch der Hass gegen sie zunimmt und sie schneller als andere ihren Job
-                  oder familiäre Unterstützung verlieren. Außerdem fehlte es an kritisschen Gütern wie Masken, Desinfektions- und Hygienemitteln. Für die Unterstützung dieser
-                  Menschen haben wir insgesamt bei unserer ersten WoC jemals unglaubliche 2500€ danke eurer Hilfe sammeln können! </p>
+                  oder familiäre Unterstützung verlieren. Außerdem fehlte es an kritischen Gütern wie Masken, Desinfektions- und Hygienemitteln. Für die Unterstützung dieser
+                  Menschen haben wir insgesamt bei unserer ersten WoC jemals unglaubliche 2500€ dank eurer Hilfe sammeln können! </p>
                 </div>
               </div>
 

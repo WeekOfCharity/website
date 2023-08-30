@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { Stream as StreamData } from '../../hooks/useStreams';
+import { getState } from '../../utils/dateAndTime';
 import { Brush4 } from '../Brushes/Brush4';
 import { Stream } from '../Stream/Stream';
 
@@ -37,6 +38,7 @@ export const DonationGoal = ({ achieved = false, amount, description, hidden = f
             gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
             highlight={timeslot.highlight}
             startTime={timeslot.start}
+            state={getState(timeslot.start, timeslot.end)}
             streamer={timeslot.streamer.name}
             title={timeslot.activity.name}
             vodLink={timeslot.vod_link}

@@ -257,7 +257,6 @@ export const Activities = () => {
                       <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird begleitet von</div>
                       <div className="flex flex-wrap gap-2">
                         {getFellowsWithActivity(activeActivity.id).map((fellow) => {
-                          console.log(fellow);
                           return (
                             <ConditionalWrapper condition={!fellow.people_id.hide_from_team_page} key={"fellow-" + fellow.people_id.id}
                               wrapper={children => <Link to={`/team?id=${fellow.people_id.id}`}>{children}</Link>}

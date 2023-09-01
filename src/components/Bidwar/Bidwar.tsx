@@ -32,15 +32,15 @@ export const Bidwar = ({ name, description, options, timeslot = undefined }: Bid
             <div className="flex flex-col w-full gap-0 md:gap-2">
               {topThree && 
                 topThree.map((key) => {
-                    return (
-                      <div className="flex flex-col md:flex-row items-start md:items-center w-full gap-0 md:gap-4 my-2" title={key} key={"wrapper-" + key}>
-                        <span className="text-lg md:text-xl w-full md:w-52 text-blue23-700 text-left md:text-right shrink-0 text-ellipsis overflow-hidden whitespace-nowrap">#{capitalize(key)}</span>
-                        <div className="flex items-center gap-4 shrink-0 w-[calc(100%-6rem)] md:w-[calc(100%-20rem)]">
-                          {maxOptionAmount && <div className="self-stretch bg-blue23-500 rounded-md shrink-0" style={{width: `${(options[key] * 100)/maxOptionAmount}%`}}></div> }
-                          <span className="text-xl md:text-2xl font-fat text-blue23-600 w-24 shrink-0">{formatter.format(options[key]/100).slice(0, -2)}</span>
-                        </div>
+                  return (
+                    <div className="flex flex-col md:flex-row items-start md:items-center w-full gap-0 md:gap-4 my-2" title={key} key={"wrapper-" + key}>
+                      <span className="text-lg md:text-xl w-full md:w-52 text-blue23-700 text-left md:text-right shrink-0 text-ellipsis overflow-hidden whitespace-nowrap">#{capitalize(key)}</span>
+                      <div className="flex items-center gap-4 shrink-0 w-[calc(100%-6rem)] md:w-[calc(100%-20rem)]">
+                        {maxOptionAmount && <div className="self-stretch bg-blue23-500 rounded-md shrink-0" style={{width: `${(options[key] * 100)/maxOptionAmount}%`}}></div> }
+                        <span className="text-xl md:text-2xl font-fat text-blue23-600 w-24 shrink-0">{formatter.format(options[key]/100).slice(0, -2)}</span>
                       </div>
-                    );
+                    </div>
+                  );
                 })
               }
             </div>

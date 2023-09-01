@@ -16,6 +16,9 @@ import { getDocumentTitle } from '../utils/getDocumentTitle';
 
 const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
 
+const ConditionalWrapper = ({ condition, wrapper, children }) => 
+  condition ? wrapper(children) : children;
+
 export const Activities = () => {
   const [activeActivity, setActiveActivity] = useState<ActivityData | undefined>(undefined);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -235,9 +238,15 @@ export const Activities = () => {
                       <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird gehostet von</div>
                       <div className="flex gap-2">
                         {getStreamersWithActivity(activeActivity.id).map((streamer) => (
-                          <Link to={`/team?id=${streamer.id}`} key={streamer.id}>
-                            <Member avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`} condensed name={streamer.name} />
-                          </Link>
+                          <ConditionalWrapper condition={!streamer.hide_from_team_page} key={"streamer-" + streamer.id}
+                            wrapper={children => <Link to={`/team?id=${streamer.id}`}>{children}</Link>}
+                          >
+                            <Member
+                              avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
+                              condensed
+                              name={streamer.name}
+                            />
+                          </ConditionalWrapper>
                         ))}
                       </div>
                     </div>
@@ -247,15 +256,20 @@ export const Activities = () => {
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird begleitet von</div>
                       <div className="flex flex-wrap gap-2">
-                        {getFellowsWithActivity(activeActivity.id).map((fellow) => (
-                          <Link to={`/team?id=${fellow.people_id.id}`} key={fellow.people_id.id}>
-                            <Member
-                              avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
-                              condensed
-                              name={fellow.people_id.name}
-                            />
-                          </Link>
-                        ))}
+                        {getFellowsWithActivity(activeActivity.id).map((fellow) => {
+                          console.log(fellow);
+                          return (
+                            <ConditionalWrapper condition={!fellow.people_id.hide_from_team_page} key={"fellow-" + fellow.people_id.id}
+                              wrapper={children => <Link to={`/team?id=${fellow.people_id.id}`}>{children}</Link>}
+                            >
+                              <Member
+                                avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
+                                condensed
+                                name={fellow.people_id.name}
+                              />
+                            </ConditionalWrapper>
+                          );
+                        })}
                       </div>
                     </div>
                   )}

@@ -70,7 +70,7 @@ export const Team = () => {
   useEffect(() => {
     if (searchParams.has('id')) {
       if (membersStatus === 'success') {
-        setActiveMember(members.find((member) => member.id.toString() === searchParams.get('id')));
+        setActiveMember(members.find((member) => member.id.toString() === searchParams.get('id') && !member.hide_from_team_page));
       }
     } else {
       setActiveMember(undefined);
@@ -128,7 +128,7 @@ export const Team = () => {
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter((member) => member.streamer && member.id !== charityId && member.id !== chessterId)
+                .filter((member) => member.streamer && !member.hide_from_team_page && member.id !== charityId && member.id !== chessterId)
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
@@ -144,7 +144,7 @@ export const Team = () => {
             <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">Wir unterstützen und begleiten</div>
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter((member) => !member.streamer && member.id !== charityId && member.id !== chessterId)
+                .filter((member) => !member.streamer && !member.hide_from_team_page && member.id !== charityId && member.id !== chessterId)
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member

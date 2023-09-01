@@ -12,6 +12,7 @@ export type Member = {
   stream_link: string | null;
   streamer: boolean | null;
   theme: string | null;
+  hide_from_team_page: boolean | null;
 };
 
 export const useTeam = () => {

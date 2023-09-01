@@ -12,8 +12,8 @@ type MemberProps = {
 export const Member = ({ avatarUrl, condensed = false, name, onClick, pronouns = '' }: MemberProps) => {
   return (
     <div
-      className={classNames('aspect-square cursor-pointer flex flex-col overflow-hidden relative rounded-md select-none', {
-        'bg-blue23-500 group': !condensed,
+      className={classNames('aspect-square flex flex-col overflow-hidden relative rounded-md select-none', {
+        'bg-blue23-500 group cursor-pointer': !condensed,
         'bg-blue23-500 h-20 w-20': condensed,
       })}
       onClick={onClick}

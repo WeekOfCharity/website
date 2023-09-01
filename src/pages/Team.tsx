@@ -30,6 +30,10 @@ export const Team = () => {
       document.body.style.height = 'auto';
       document.body.style.overflowY = 'auto';
     }
+    return () => {
+      document.body.style.height = 'auto';
+      document.body.style.overflowY = 'auto';
+    };
   }, [activeMember]);
 
   document.title = getDocumentTitle('Team');

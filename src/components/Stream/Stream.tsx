@@ -13,6 +13,7 @@ type StreamProps = {
   endTime: string;
   gameImageUrl: string;
   highlight: boolean;
+  clickDisabled? : boolean;
   noLink?: boolean;
   startTime: string;
   state?: 'upcoming' | 'running' | 'ended';
@@ -21,7 +22,7 @@ type StreamProps = {
   vodLink: string;
 };
 
-export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, highlight, noLink = false, startTime, state = 'upcoming', streamer, title, vodLink }: StreamProps) => {
+export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, highlight, clickDisabled = false, noLink = false, startTime, state = 'upcoming', streamer, title, vodLink }: StreamProps) => {
   const breakpoint = useBreakpoint();
 
   const RootElement = noLink && vodLink ? 'a' : condensed && !noLink ? Link : 'article';
@@ -32,9 +33,9 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
       className={classNames('flex select-none', {
         'cursor-pointer duration-300 hover:-mx-1.5 transition-all': condensed,
         'opacity-50': state === 'ended',
-        'pointer-events-none': noLink && !vodLink,
+        'pointer-events-none': clickDisabled || (noLink && !vodLink),
       })}
-      to={condensed && !noLink ? `/aktivitaeten?id=${activityId}` : undefined}
+      to={condensed && !noLink ? `/streams?id=${activityId}` : undefined}
       href={noLink && vodLink ? vodLink : undefined}
       title={noLink && vodLink ? "Zum VOD" : undefined}
       rel={noLink && vodLink ? "nofollow noreferrer" : undefined}
@@ -63,7 +64,7 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
         className={classNames('flex flex-col md:flex-row relative md:rounded-md w-full', {
           'cursor-pointer duration-300 hover:-mx-2 transition-all': !condensed,
         })}
-        to={!condensed && !noLink ? `/aktivitaeten?id=${activityId}` : undefined}
+        to={!condensed && !noLink ? `/streams?id=${activityId}` : undefined}
       >
         <div
           className="bg-center bg-cover flex-shrink-0 h-28 md:h-20 rounded-l-md rounded-r-md md:rounded-r-none w-full md:w-20"

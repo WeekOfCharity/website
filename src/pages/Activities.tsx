@@ -31,6 +31,10 @@ export const Activities = () => {
       document.body.style.height = 'auto';
       document.body.style.overflowY = 'auto';
     }
+    return () => {
+      document.body.style.height = 'auto';
+      document.body.style.overflowY = 'auto';
+    };
   }, [activeActivity]);
 
   document.title = getDocumentTitle('Aktivitäten');

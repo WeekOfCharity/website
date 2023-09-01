@@ -213,7 +213,7 @@ export const Home = () => {
             {bidwarResultsStatus === 'success' && bidwarsStatus === 'success' && bidwarResults.results.map((result) => {
                 if (result.active) {
                   return (
-                    <div className="flex flex-col mx-5 md:mx-10 items-center"> 
+                    <div className="flex flex-col mx-5 md:mx-10 items-center" key={"bidwar-" + result.id}> 
                       <Bidwar 
                         name={result.bidwar_name}
                         description={result.bidwar_description}

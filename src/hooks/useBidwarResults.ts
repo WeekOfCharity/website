@@ -4,7 +4,7 @@ import axios from 'axios';
 export type BidwarResults = {
   results: {
     id: number;
-    active: boolean;
+    status: "active" | "inactive" | "results";
     bidwar_name: string;
     bidwar_description: string;
     options: object;

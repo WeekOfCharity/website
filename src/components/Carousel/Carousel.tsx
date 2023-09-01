@@ -9,6 +9,7 @@ type CarouselProps = {
 
 export const Carousel = ({ children }: CarouselProps) => {
   const breakpoint = useBreakpoint();
+  
   const [currentItem, setCurrentItem] = useState(0);
 
   const itemCount = React.Children.count(children);

@@ -210,15 +210,16 @@ export const Home = () => {
             </div>
 
             
-            {bidwarResultsStatus === 'success' && bidwarsStatus === 'success' && bidwarResults.results.map((result) => {
-                if (result.active) {
+            {bidwarResultsStatus === 'success' && bidwarsStatus === 'success' && bidwars.map((bidwar) => {
+                if (bidwar.status === "active" || bidwar.status === "results") {
                   return (
-                    <div className="flex flex-col mx-5 md:mx-10 items-center" key={"bidwar-" + result.id}> 
+                    <div className="flex flex-col mx-5 md:mx-10 items-center" key={"bidwar-" + bidwar.id}> 
                       <Bidwar 
-                        name={result.bidwar_name}
-                        description={result.bidwar_description}
-                        options={result.options}
-                        timeslot={bidwars.find((bidwar) => bidwar.id === result.id).timeslot}
+                        name={bidwar.bidwar_name}
+                        description={bidwar.bidwar_description}
+                        options={bidwarResults.results.find((result) => result.id === bidwar.id)?.options}
+                        status={bidwar.status}
+                        timeslot={bidwar.timeslot}
                       />
                     </div>
                   );

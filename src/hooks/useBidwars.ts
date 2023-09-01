@@ -3,10 +3,10 @@ import axios from 'axios';
 import { Stream } from './useStreams';
 
 export type Bidwars = {
-  active: boolean;
   bidwar_name: string;
   bidwar_description: string | null;
   id: number;
+  status: "active" | "inactive" | "results";
   timeslot: Stream | null;
 };
 

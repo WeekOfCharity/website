@@ -73,13 +73,13 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
         />
 
         {condensed && highlight && (
-          <div className="absolute backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex md:hidden items-center left-2 px-1 py-0.5 rounded-sm shadow-xl space-x-4 text-[#EAB308] text-xs top-2">
+          <div className="absolute backdrop-blur-sm bg-neutral-900 bg-opacity-75 flex md:hidden items-center left-2 px-1 py-0.5 rounded-sm shadow-xl space-x-4 text-[#EAB308] text-xs top-2">
             <span className="font-round2 font-bold uppercase">👑 Highlight</span>
           </div>
         )}
 
         {!condensed && (
-          <div className="absolute backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex md:hidden items-center px-1 py-0.5 right-2 rounded-sm shadow-xl space-x-4 text-accent-500 text-xs top-2">
+          <div className="absolute backdrop-blur-sm bg-neutral-900 bg-opacity-75 flex md:hidden items-center px-1 py-0.5 right-2 rounded-sm shadow-xl space-x-4 text-accent-500 text-xs top-2">
             <Icon className="-mr-2" path={mdiAccount} size="1rem" />
             <span className="font-round font-bold">{streamer}</span>
           </div>
@@ -91,7 +91,7 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
             backgroundImage: breakpoint >= Breakpoint.md ? `url("${gameImageUrl}")` : undefined,
           }}
         >
-          <div className="backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex flex-col md:h-full justify-center p-2 md:px-4 rounded-b-md md:rounded-bl-none md:rounded-r-md text-white w-full">
+          <div className="backdrop-blur-sm bg-neutral-900 bg-opacity-75 flex flex-col md:h-full justify-center p-2 md:px-4 rounded-b-md md:rounded-bl-none md:rounded-r-md text-white w-full">
           <div className="flex font-semibold leading-none md:mb-1.5 space-x-4 text-lg">
             <span>{title}</span>
             {state === "ended" && vodLink && <span className="md:block woc-vod-label">{noLink ? "Zum VOD" : "VOD verfügbar"}</span>}

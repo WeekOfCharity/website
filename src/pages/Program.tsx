@@ -207,10 +207,10 @@ export const Program = () => {
 
           {activeActivity && (
             <main className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24" style={{ scrollbarWidth: 'thin' }}>
-              <Brush1 className="absolute -right-24 text-pink23-500 -top-8 w-[400px] -z-10" />
+              <Brush1 className="absolute -right-24 text-green23-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
-                <img className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`} />
+                <img className="bg-green23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`} />
               </div>
 
               <div className="flex items-start space-x-2">
@@ -218,7 +218,7 @@ export const Program = () => {
 
                 {activeActivity.reference_link && (
                   <a
-                    className="bg-pink23-500 hover:bg-pink23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    className="bg-green23-500 hover:bg-green23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeActivity.reference_link}
                     rel="nofollow noreferrer"
                     target="_blank"
@@ -234,7 +234,7 @@ export const Program = () => {
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">Sei dabei in diesen Streams</div>
+                      <div className="font-round2 font-bold text-green23-500">Sei dabei in diesen Streams</div>
                       {getStreamsWithActivity(activeActivity.id).map((stream) => (
                         <Stream
                           activityId={stream.activity.id}
@@ -256,7 +256,7 @@ export const Program = () => {
 
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird gehostet von</div>
+                      <div className="font-round2 font-bold text-green23-500">{activeActivity.name} wird gehostet von</div>
                       <div className="flex gap-2">
                         {getStreamersWithActivity(activeActivity.id).map((streamer) => (
                           <ConditionalWrapper condition={!streamer.hide_from_team_page} key={"streamer-" + streamer.id}
@@ -275,7 +275,7 @@ export const Program = () => {
 
                   {getFellowsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird begleitet von</div>
+                      <div className="font-round2 font-bold text-green23-500">{activeActivity.name} wird begleitet von</div>
                       <div className="flex flex-wrap gap-2">
                         {getFellowsWithActivity(activeActivity.id).map((fellow) => {
                           return (

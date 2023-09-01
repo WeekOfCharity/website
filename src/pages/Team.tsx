@@ -190,7 +190,7 @@ export const Team = () => {
           </button>
 
           {activeMember && (
-            <main className="h-full max-h-screen overflow-y-scroll p-5 text-white" style={{ scrollbarWidth: 'thin' }}>
+            <main className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24" style={{ scrollbarWidth: 'thin' }}>
               <Brush1 className="absolute -right-24 text-blue23-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">

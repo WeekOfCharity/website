@@ -10,8 +10,13 @@ type MusicReleaseProps = {
 
 export const MusicRelease = ({ year, name, coverUrl, link}: MusicReleaseProps) => {
   return (
-    <div>
-        {name}
+    <div className='flex flex-col items-center justify-center mb-5'>
+        <a className='mb-4 cursor-pointer' target="_blank" href={link}>
+            {name}
+        </a>
+        <a className='cursor-pointer' target="_blank" href={link}>
+            <img className='w-max' src={coverUrl.toString()} />
+        </a>
     </div>
   );
 };

@@ -208,38 +208,40 @@ export const Home = () => {
                 </div>
               </a>
             </div>
-
-            
-            {bidwarResultsStatus === 'success' && bidwarsStatus === 'success' && bidwars.map((bidwar) => {
-                if (bidwar.status === "active" || bidwar.status === "results") {
-                  return (
-                    <div className="flex flex-col mx-5 md:mx-10 items-center" key={"bidwar-" + bidwar.id}> 
-                      <Bidwar 
-                        name={bidwar.bidwar_name}
-                        description={bidwar.bidwar_description}
-                        options={bidwarResults.results.find((result) => result.id === bidwar.id)?.options}
-                        status={bidwar.status}
-                        timeslot={bidwar.timeslot}
-                      />
-                    </div>
-                  );
-                }
-            })}
-            
-            <div className="flex flex-col gap-5 xl:grid grid-cols-2 mx-5 md:mx-10">
-              {donationGoals.map((goal) => (
-                <DonationGoal
-                  achieved={goal.reached_at <= currentDonation}
-                  amount={goal.reached_at}
-                  description={goal.description}
-                  hidden={goal.hidden}
-                  key={goal.id}
-                  timeslot={goal.timeslot}
-                  title={goal.name}
-                />
-              ))}
-            </div>
           </>
+        )}
+
+        <div id="bidwar" />
+        {bidwarResultsStatus === 'success' && bidwarsStatus === 'success' && bidwars.map((bidwar) => {
+            if (bidwar.status === "active" || bidwar.status === "results") {
+              return (
+                <div className="flex flex-col mx-5 md:mx-10 items-center" key={"bidwar-" + bidwar.id}> 
+                  <Bidwar 
+                    name={bidwar.bidwar_name}
+                    description={bidwar.bidwar_description}
+                    options={bidwarResults.results.find((result) => result.id === bidwar.id)?.options}
+                    status={bidwar.status}
+                    timeslot={bidwar.timeslot}
+                  />
+                </div>
+              );
+            }
+        })}
+        
+        {donationsStatus === 'success' && donationGoalsStatus === 'success' && donationGoals.length > 0 && (
+          <div className="flex flex-col gap-5 xl:grid grid-cols-2 mx-5 md:mx-10">
+            {donationGoals.map((goal) => (
+              <DonationGoal
+                achieved={goal.reached_at <= currentDonation}
+                amount={goal.reached_at}
+                description={goal.description}
+                hidden={goal.hidden}
+                key={goal.id}
+                timeslot={goal.timeslot}
+                title={goal.name}
+              />
+            ))}
+          </div>
         )}
 
         <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">

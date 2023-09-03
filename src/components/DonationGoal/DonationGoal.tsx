@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { Stream as StreamData } from '../../hooks/useStreams';
 import { getState } from '../../utils/dateAndTime';
 import { Brush4 } from '../Brushes/Brush4';
+import { GoalStamp } from '../Icons/GoalStamp';
 import { Stream } from '../Stream/Stream';
 
 type DonationGoalProps = {
@@ -15,7 +16,8 @@ type DonationGoalProps = {
 
 export const DonationGoal = ({ achieved = false, amount, description, hidden = false, timeslot = undefined, title }: DonationGoalProps) => {
   return (
-    <article className={classNames('flex flex-col', { 'bg-blue23-200': achieved, 'bg-neutral-100': !achieved })}>
+    <article className={classNames('flex flex-col relative', { 'bg-blue23-200': achieved, 'bg-neutral-100': !achieved })}>
+      {timeslot && getState(timeslot.start, timeslot.end) === "ended" && <GoalStamp className="absolute text-blue23-700 -top-1 -right-4 rotate-[20deg] w-48"/>}
       <div className="flex items-center my-auto p-5">
         <div className="flex items-center justify-center mr-7 relative">
           <Brush4 className={classNames('h-24 -ml-1 -my-2 rotate-45 w-auto', { 'text-blue23-500': achieved, 'text-neutral-300': !achieved })} />

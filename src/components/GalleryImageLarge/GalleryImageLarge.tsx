@@ -98,13 +98,13 @@ export const GalleryImageLarge = ({ imageData, hidePopUp, displayImageFunction, 
             </div>
           )}
           <div className="imageInformationWrapper">
-              <div className='text-xl font-bold'>Bild von <span className="text-green23-600">{imageData.author}</span></div>
+              <div className='text-xl font-bold'>Bild von {imageData.author}</div>
+              <div className="imageDescription" dangerouslySetInnerHTML={{__html: imageData.description}}></div>
               {imageData.author_link && (
-                <div className="mb-1">
+                <div className="mt-1">
                   Credit: <a className="text-green23-600" href={imageData.author_link} target="_blank" >{imageData.author_link}</a>
                 </div>
               )}
-              <div className="imageDescription" dangerouslySetInnerHTML={{__html: imageData.description}}></div>
           </div>
         </div>
       </div>

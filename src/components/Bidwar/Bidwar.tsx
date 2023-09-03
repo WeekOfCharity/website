@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Breakpoint, useBreakpoint } from '../../hooks/useBreakpoint';
 import { Stream as StreamData } from '../../hooks/useStreams';
 import { getState } from '../../utils/dateAndTime';

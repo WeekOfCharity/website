@@ -9,11 +9,12 @@ const galleryArrow = new URL('../../assets/gallery-arrow.svg', import.meta.url);
 type GalleryImageLargeProps = {
   imageData: GalleryImageData,
   hidePopUp: () => void,
-  nextImage: () => void,
-  prevImage: () => void,
+  displayImageFunction: (id: number) => void,
+  nextImage: number,
+  prevImage: number,
 };
 
-export const GalleryImageLarge = ({ imageData, hidePopUp, nextImage, prevImage } : GalleryImageLargeProps) => {
+export const GalleryImageLarge = ({ imageData, hidePopUp, displayImageFunction, nextImage, prevImage } : GalleryImageLargeProps) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [currentImageId, setCurrentImageId] = useState<number>(null);
   const [currentImage, setCurrentImage] = useState(null);
@@ -29,11 +30,11 @@ export const GalleryImageLarge = ({ imageData, hidePopUp, nextImage, prevImage }
   }
 
   const handleArrowRightClick = () => {
-    nextImage();
+    displayImageFunction(nextImage);
   }
 
   const handleArrowLeftClick = () => {
-    prevImage();
+    displayImageFunction(prevImage);
   }
 
   useEffect(() => {
@@ -79,8 +80,8 @@ export const GalleryImageLarge = ({ imageData, hidePopUp, nextImage, prevImage }
         
         <button className="imageButton closeButton" type="button" onClick={handleCloseButtonClick}><img src={closeIcon.toString()} /></button>
         <div className="absolute flex justify-center items-center w-full h-full pb-16 flex-shrink-0">
-          <button className="imageButton arrowRightButton" type="button" onClick={handleArrowRightClick}><img src={galleryArrow.toString()} /></button>
-          <button className="imageButton arrowLeftButton" type="button" onClick={handleArrowLeftClick}><img src={galleryArrow.toString()} /></button>
+          {nextImage !== undefined && <button className="imageButton arrowRightButton" type="button" onClick={handleArrowRightClick}><img src={galleryArrow.toString()} /></button>}
+          {prevImage !== undefined && <button className="imageButton arrowLeftButton" type="button" onClick={handleArrowLeftClick}><img src={galleryArrow.toString()} /></button>}
         </div>
         <div className="bg-neutral-800 largeImageWrapper rounded-xl overflow-hidden">
           {loading && (

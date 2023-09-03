@@ -15,6 +15,8 @@ export const Gallery = () => {
 
   document.title = getDocumentTitle('Bilder Galerie');
 
+  const [nextImageId, setNextImageId] = useState(undefined);
+  const [prevImageId, setPrevImageId] = useState(undefined);
   const [imageClicked, setImageClicked] = useState(false);
   const [sortMethod, setSortMethod] = useState("year");
   const [imageContent, setImageContent] = useState(null);
@@ -23,10 +25,12 @@ export const Gallery = () => {
   const { data: configuration, status: configurationStatus } = useConfiguration();
   const { data: galleryImages, status: galleryImagesStatus } = useGalleryImages();
 
-  const handleImageClick = (imageId) => {
+  const displayLargeImage = (imageId) => {
     setImageClicked(true);
-    const myImage = galleryImages.find(image => image.id == imageId);
-    setImageContent(myImage);
+    const newImageData = galleryImages.find(image => image.id == imageId);
+    if (newImageData) {
+      setImageContent(newImageData);
+    }
     document.body.style.overflow = 'hidden';
   };
 
@@ -35,23 +39,17 @@ export const Gallery = () => {
     document.body.style.overflow = 'unset';
   };
 
-  const nextImage = () => {
-    const currentIndex = galleryImageOrder.findIndex(id => id == imageContent.id);
-    const newImageId = galleryImageOrder[currentIndex + 1];
-    const newImageData = galleryImages.find(image => image.id == newImageId);
-    if (newImageData) {
-      setImageContent(newImageData);
+  useEffect(() => {
+    if (!imageContent || galleryImageOrder.length == 0) {
+      setNextImageId(undefined);
+      setPrevImageId(undefined);
+      return;
     }
-  };
+    const currentIndex = galleryImageOrder.findIndex(id => id == imageContent.id);
+    setNextImageId(galleryImageOrder[currentIndex + 1]);
+    setPrevImageId(galleryImageOrder[currentIndex - 1]);
 
-  const prevImage = () => {
-    const currentIndex = galleryImageOrder.findIndex(id => id == imageContent.id);
-    const newImageId = galleryImageOrder[currentIndex - 1];
-    const newImageData = galleryImages.find(image => image.id == newImageId);
-    if (newImageData) {
-      setImageContent(newImageData);
-    }
-  };
+  }, [imageContent, galleryImageOrder]);
 
   function toggleScrollbarGutter() {
     if (document.documentElement.scrollHeight > document.documentElement.clientHeight) {
@@ -133,7 +131,15 @@ export const Gallery = () => {
 
       {configurationStatus === 'success' && configuration.gallery_enabled && (
         <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
-        {imageClicked && imageContent && <GalleryImageLarge imageData={imageContent} hidePopUp={hideLargeImage} nextImage={nextImage} prevImage={prevImage}/>}
+        {imageClicked && imageContent && (
+          <GalleryImageLarge 
+            imageData={imageContent}
+            hidePopUp={hideLargeImage}
+            displayImageFunction={displayLargeImage}
+            nextImage={nextImageId}
+            prevImage={prevImageId}
+          />
+        )}
         {galleryImagesStatus === 'success' &&
           Object.keys(galleryImagesGrouped).map((categoryValue) => (
             <div className="space-y-4" key={categoryValue}>
@@ -147,7 +153,7 @@ export const Gallery = () => {
                     key={galleryImage.id}
                     year={galleryImage.year}
                     category={galleryImage.category}
-                    onClickFunction={handleImageClick}
+                    onClickFunction={displayLargeImage}
                   />
                 ))}
               </div>

@@ -21,8 +21,6 @@ import { useStreams } from '../hooks/useStreams';
 
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
-const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
-
 export const Home = () => {
   document.title = getDocumentTitle();
 
@@ -44,7 +42,6 @@ export const Home = () => {
   const runningText = "Wir streamen wieder für den guten Zweck";
   const endedText = "Danke fürs dabei Sein";
 
-
   const hideCountdown=()=>{
     setTimeout(() => {
       setTimerVisible(false);
@@ -53,21 +50,21 @@ export const Home = () => {
 
   useEffect(() => {
       const time = new Date(Date.now());
-      if(configurationStatus === "success" && (streamsStatus === "error" || !configuration.schedule_complete)){
+      if (configurationStatus === "success" && (streamsStatus === "error" || !configuration.schedule_complete)) {
         const woc_start_date = new Date(configuration.woc_start);
-        if(time<woc_start_date){
+        if (time < woc_start_date) {
           setWocStatus("wocUpcoming");
-        }else{
+        } else {
           setWocStatus("wocEnded");
         }
-      }else if(configurationStatus === "success" &&  streamsStatus === "success" && streams.length > 0){
+      } else if (configurationStatus === "success" &&  streamsStatus === "success" && streams.length > 0) {
         const woc_start_date = new Date(streams[0].start);
         const woc_end_date = new Date(streams[streams.length-1].end);
-        if(time<woc_start_date){
+        if (time < woc_start_date) {
           setWocStatus("wocUpcoming");
-        }else if(time>woc_start_date && time<woc_end_date){
+        } else if (time > woc_start_date && time < woc_end_date) {
           setWocStatus("wocRunning");
-        }else{
+        } else {
           setWocStatus("wocEnded");
         }
       }
@@ -99,7 +96,7 @@ export const Home = () => {
       const id = path.replace('#', '');
 
       if (id) {
-        document.querySelector('#' + id).scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('#' + id)?.scrollIntoView({ behavior: 'smooth' });
       }
     }
   });

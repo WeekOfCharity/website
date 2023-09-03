@@ -274,25 +274,25 @@ export const Privacy = () => {
             ausgenommen.
           </li>
           <li>
-            <span className="font-semibold">Hetzner: </span>Leistungen auf dem Gebiet der Bereitstellung von informationstechnischer Infrastruktur und verbundenen Dienstleistungen
-            (z.B. Speicherplatz und/oder Rechenkapazitäten); <span className="font-semibold">Dienstanbieter:</span> Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen,
+            <span className="font-semibold">Netcup: </span>Leistungen auf dem Gebiet der Bereitstellung von informationstechnischer Infrastruktur und verbundenen Dienstleistungen
+            (z.B. Speicherplatz und/oder Rechenkapazitäten); <span className="font-semibold">Dienstanbieter:</span> netcup GmbH, Daimlerstraße 25, 76185 Karlsruhe,
             Deutschland; <span className="font-semibold">Rechtsgrundlagen:</span> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{' '}
             <span className="font-semibold">Website:</span>{' '}
-            <a className="text-persian-500 underline" href="https://www.hetzner.com" rel="nofollow noreferrer" target="_blank">
-              https://www.hetzner.com
+            <a className="text-persian-500 underline" href="https://www.netcup.de" rel="nofollow noreferrer" target="_blank">
+            https://www.netcup.de
             </a>
             ; <span className="font-semibold">Datenschutzerklärung:</span>{' '}
-            <a className="text-persian-500 underline" href="https://www.hetzner.com/de/rechtliches/datenschutz" rel="nofollow noreferrer" target="_blank">
-              https://www.hetzner.com/de/rechtliches/datenschutz
+            <a className="text-persian-500 underline" href="https://www.netcup.de/kontakt/datenschutzerklaerung.php" rel="nofollow noreferrer" target="_blank">
+            https://www.netcup.de/kontakt/datenschutzerklaerung.php
             </a>
             ; <span className="font-semibold">Auftragsverarbeitungsvertrag:</span>{' '}
             <a
               className="text-persian-500 underline"
-              href="https://docs.hetzner.com/de/general/general-terms-and-conditions/data-privacy-faq/"
+              href="https://helpcenter.netcup.com/de/wiki/general/avv"
               rel="nofollow noreferrer"
               target="_blank"
             >
-              https://docs.hetzner.com/de/general/general-terms-and-conditions/data-privacy-faq/
+              https://helpcenter.netcup.com/de/wiki/general/avv
             </a>
             .
           </li>
@@ -383,6 +383,19 @@ export const Privacy = () => {
             ; <span className="font-semibold">Widerspruchsmöglichkeit (Opt-Out):</span>{' '}
             <a className="text-persian-500 underline" href="https://adssettings.google.com/authenticated" rel="nofollow noreferrer" target="_blank">
               https://adssettings.google.com/authenticated
+            </a>
+            .
+          </li>
+          <li>
+            <span className="font-semibold">Twitch: </span>Streaming- und Videoplattform; <span className="font-semibold">Dienstanbieter:</span> Twitch Interactive,
+            Inc. 350 Bush Street, 2nd Floor, San Francisco, CA 94104 Vereinigte Staaten von Amerika; <span className="font-semibold">Rechtsgrundlagen:</span> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{' '}
+            <span className="font-semibold">Datenschutzerklärung:</span>{' '}
+            <a className="text-persian-500 underline" href="https://www.twitch.tv/p/de-de/legal/privacy-notice" rel="nofollow noreferrer" target="_blank">
+            https://www.twitch.tv/p/de-de/legal/privacy-notice
+            </a>
+            ; <span className="font-semibold">Widerspruchsmöglichkeit (Opt-Out):</span>{' '}
+            <a className="text-persian-500 underline" href="https://www.twitch.tv/p/de-de/legal/eu-eea-uk-right-of-withdrawal" rel="nofollow noreferrer" target="_blank">
+            https://www.twitch.tv/p/de-de/legal/eu-eea-uk-right-of-withdrawal
             </a>
             .
           </li>

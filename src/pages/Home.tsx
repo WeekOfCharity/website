@@ -229,7 +229,7 @@ export const Home = () => {
         })}
         
         {donationsStatus === 'success' && donationGoalsStatus === 'success' && donationGoals.length > 0 && (
-          <div className="flex flex-col gap-5 xl:grid grid-cols-2 mx-5 md:mx-10">
+          <div className="flex flex-col gap-7 xl:grid grid-cols-2 mx-5 md:mx-10">
             {donationGoals.map((goal) => (
               <DonationGoal
                 achieved={goal.reached_at <= currentDonation}

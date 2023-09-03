@@ -4,6 +4,7 @@ import { Breakpoint, useBreakpoint } from '../../hooks/useBreakpoint';
 import { Stream as StreamData } from '../../hooks/useStreams';
 import { getState } from '../../utils/dateAndTime';
 import { Brush1 } from '../Brushes/Brush1';
+import { GoalStamp } from '../Icons/GoalStamp';
 import { RoundArrow } from '../Icons/RoundArrow';
 import { Stream } from '../Stream/Stream';
 
@@ -34,11 +35,12 @@ export const Bidwar = ({ name, description, options, status = "active", timeslot
   }
 
   return (
-    <div className="flex flex-col font-bold max-w-screen-lg w-full">
+    <div className="relative flex flex-col font-bold max-w-screen-lg w-full">
+      {timeslot && getState(timeslot.start, timeslot.end) === "ended" && <GoalStamp className="absolute text-blue23-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-56"/>}
       <div className="bg-blue23-200 overflow-hidden">
-        <div className="relative py-5 px-2 md:px-4">
+        <div className="relative py-7 px-2 md:px-4">
           <Brush1 className="absolute pointer-events-none text-blue23-400 opacity-20 md:w-[750px] top-1/2 left-0 right-0 m-auto -translate-y-1/3" />
-          <h2 className="relative text-blue23-800 text-2xl md:text-3xl text-center my-3 md:my-6 px-2 z-[1]">{description}</h2>
+          <h2 className="relative text-blue23-800 text-2xl md:text-3xl text-center my-3 md:my-6 mx-6 z-[1]">{description}</h2>
           <h3 className={classNames("relative text-blue23-800 text-center my-3 md:my-6 px-2 z-[1]", {
             "text-xl md:text-2xl" : status === "active",
             "text-2xl md:text-3xl" : status === "results"

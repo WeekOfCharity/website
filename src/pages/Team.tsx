@@ -42,7 +42,7 @@ export const Team = () => {
   const { data: members, status: membersStatus } = useTeam();
 
   const charityId = 999;
-  const chessterId = 1000;
+  const chessterId = 30;
   const charity = typeof members !== 'undefined' && members.length > 0 ? members.find((member) => member.id === charityId) : undefined;
   const chesster = typeof members !== 'undefined' && members.length > 0 ? members.find((member) => member.id === chessterId) : undefined;
 

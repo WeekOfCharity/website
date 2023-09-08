@@ -98,8 +98,9 @@ export const Bidwar = ({ name, description, options, status = "active", timeslot
         {sortedOptionKeys && sortedOptionKeys.length > 3 && (
           <div className="flex justify-center items-center h-10 p-6">
           <button className="group flex justify-center items-center text-blue23-700 w-32 h-12" type="button" onClick={toggleExpanded}>
-            <RoundArrow className={classNames("text-blue23-700 w-12 h-16 rotate-90 group-hover:scale-[1.15] transition duration-300", {
-              "-rotate-90" : expanded
+            <RoundArrow className={classNames("text-blue23-700 w-12 h-16 group-hover:scale-[1.15] transition duration-300", {
+              "-rotate-90" : expanded,
+              "rotate-90" : !expanded,
             })}/>
           </button>
         </div>

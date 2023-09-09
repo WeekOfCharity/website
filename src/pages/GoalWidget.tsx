@@ -7,6 +7,8 @@ import { useExternalDonationTotal } from '../hooks/useExternalDonationTotal';
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 import './GoalWidget.scss';
 
+const formatter = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
+
 export const GoalWidget = () => {
 
   document.title = getDocumentTitle('GoalWidget');
@@ -62,7 +64,7 @@ export const GoalWidget = () => {
               </ div>  
               <div className="donationBox">
                 <div className="donationBoxText">
-                  {currentDonation}€ von {nextDonationGoal}€
+                  {formatter.format(currentDonation)} von {nextDonationGoal} €
                 </ div>
                 <div
                   className="donationFill"

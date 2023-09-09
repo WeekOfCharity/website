@@ -56,9 +56,14 @@ function Player() {
                 <div className="font-bold text-accent-500 text-xs uppercase">Aktueller Stream</div>
               </div>
               <div className="font-round font-bold">
-                <Link className="duration-300 hover:text-accent-500 transition-all" to={`/streams?id=${running.id}`}>
-                  {running.activity && running.activity.name}
-                </Link>{' '}
+              {running.activity && (
+                <>
+                  <Link className="duration-300 hover:text-accent-500 transition-all" to={`/streams?id=${running.activity.id}`}>
+                    {running.activity.name}
+                  </Link>{' '}
+                </>
+              )}
+                
                 {running.streamer && (
                   <>
                   <span className="font-normal">mit</span>{' '}
@@ -107,7 +112,7 @@ function Player() {
                 </a>
               )}
               {running.activity && (
-                <Link className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all" to={`/streams?id=${running.id}`}>
+                <Link className="bg-accent-500 hover:bg-accent-200 duration-300 p-3 rounded-full text-neutral-800 transition-all" to={`/streams?id=${running.activity.id}`}>
                   <Icon path={mdiInformation} size="1.25rem" />
                 </Link>
               )}

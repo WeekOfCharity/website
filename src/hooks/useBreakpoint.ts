@@ -17,11 +17,11 @@ const getBreakPoint = (windowWidth: number): Breakpoint => {
     return Breakpoint.xl;
   }
 
-  if (windowWidth > Breakpoint.lg) {
+  if (windowWidth >= Breakpoint.lg) {
     return Breakpoint.lg;
   }
 
-  if (windowWidth > Breakpoint.md) {
+  if (windowWidth >= Breakpoint.md) {
     return Breakpoint.md;
   }
 

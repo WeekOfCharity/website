@@ -21,8 +21,6 @@ import { useStreams } from '../hooks/useStreams';
 
 import { getDocumentTitle } from '../utils/getDocumentTitle';
 
-const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
-
 export const Home = () => {
   document.title = getDocumentTitle();
 
@@ -44,7 +42,6 @@ export const Home = () => {
   const runningText = "Wir streamen wieder für den guten Zweck";
   const endedText = "Danke fürs dabei Sein";
 
-
   const hideCountdown=()=>{
     setTimeout(() => {
       setTimerVisible(false);
@@ -53,21 +50,21 @@ export const Home = () => {
 
   useEffect(() => {
       const time = new Date(Date.now());
-      if(configurationStatus === "success" && (streamsStatus === "error" || !configuration.schedule_complete)){
+      if (configurationStatus === "success" && (streamsStatus === "error" || !configuration.schedule_complete)) {
         const woc_start_date = new Date(configuration.woc_start);
-        if(time<woc_start_date){
+        if (time < woc_start_date) {
           setWocStatus("wocUpcoming");
-        }else{
+        } else {
           setWocStatus("wocEnded");
         }
-      }else if(configurationStatus === "success" &&  streamsStatus === "success" && streams.length > 0){
+      } else if (configurationStatus === "success" &&  streamsStatus === "success" && streams.length > 0) {
         const woc_start_date = new Date(streams[0].start);
         const woc_end_date = new Date(streams[streams.length-1].end);
-        if(time<woc_start_date){
+        if (time < woc_start_date) {
           setWocStatus("wocUpcoming");
-        }else if(time>woc_start_date && time<woc_end_date){
+        } else if (time > woc_start_date && time < woc_end_date) {
           setWocStatus("wocRunning");
-        }else{
+        } else {
           setWocStatus("wocEnded");
         }
       }
@@ -99,14 +96,14 @@ export const Home = () => {
       const id = path.replace('#', '');
 
       if (id) {
-        document.querySelector('#' + id).scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('#' + id)?.scrollIntoView({ behavior: 'smooth' });
       }
     }
   });
 
   return (
     <main className="text-neutral-800">
-      <header className="px-5 py-20 relative text-center">
+      <header className="px-5 pt-20 pb-10 relative text-center">
         <div className="font-round2 font-bold text-pink23-900 uppercase">Neues Jahr, neue Woche</div>
         
         <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
@@ -122,14 +119,11 @@ export const Home = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      {configurationStatus === 'success' && wocStatus === 'wocUpcoming' && <Countdown timerZeroCallback={hideCountdown}/>}
-    
-
-      {configurationStatus === 'success' && configuration.twitch_embed && wocStatus === "wocRunning" && <TwitchEmbed />}
-
       {/*<Ticket />*/}
 
-      <div className="max-w-screen-2xl my-20 mx-auto space-y-20 md:space-y-40">
+      <div className="max-w-screen-2xl my-5 md:my-20 mx-auto space-y-16 md:space-y-32">
+        {configurationStatus === 'success' && wocStatus === 'wocUpcoming' && <Countdown timerZeroCallback={hideCountdown}/>}
+        {configurationStatus === 'success' && configuration.twitch_embed && wocStatus === "wocRunning" && <TwitchEmbed />}
         <div className="flex flex-col gap-5 xl:grid grid-cols-2 grid-rows-2 mx-5 md:mx-10">
           <section className="bg-pink23-100 bg-opacity-50 pb-5 pt-10 row-span-2">
             <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-pink23-900 text-center transform-gpu uppercase">Week of Was?</div>
@@ -203,7 +197,7 @@ export const Home = () => {
             <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
             <div className="flex flex-col items-center">
               <a target="_blank" href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023" className="cursor-pointer">
-                <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-12 md:-mt-16 -mb-12 transition-all">
+                <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-6 md:-mt-16 md:-mb-6 transition-all">
                     Jetzt spenden
                 </div>
               </a>
@@ -229,7 +223,7 @@ export const Home = () => {
         })}
         
         {donationsStatus === 'success' && donationGoalsStatus === 'success' && donationGoals.length > 0 && (
-          <div className="flex flex-col gap-5 xl:grid grid-cols-2 mx-5 md:mx-10">
+          <div className="flex flex-col gap-7 xl:grid grid-cols-2 mx-5 md:mx-10">
             {donationGoals.map((goal) => (
               <DonationGoal
                 achieved={goal.reached_at <= currentDonation}

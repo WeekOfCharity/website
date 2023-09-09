@@ -1,5 +1,7 @@
-import { memo, useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { TwitchPlayer } from 'react-twitch-embed';
+import { Breakpoint, useBreakpoint } from '../../hooks/useBreakpoint';
 import { Stream, useStreams } from '../../hooks/useStreams';
 import { getState } from '../../utils/dateAndTime';
 
@@ -10,10 +12,17 @@ function getUserFromTwitchLink(link: string) {
     return "";
 }
 
+const playerDimensions = {
+    [Breakpoint.sm]: {width: 393, height: 221},
+    [Breakpoint.md]: {width: 640, height: 360},
+}
+
 const TwitchEmbed = memo(function TwitchEmbed(){
+    const breakpoint = useBreakpoint();
     const [running, setRunning] = useState<Stream | undefined>(undefined);
     const [showInactive, setShowInactive] = useState(false);
     const [channelName, setChannelName] = useState("");
+    const [privacyAccepted, setPrivacyAccepted] = useState(false);
     const { data: streams, status: streamsStatus } = useStreams();
 
     function checkRunningStream(){
@@ -41,12 +50,35 @@ const TwitchEmbed = memo(function TwitchEmbed(){
     const handleOffline = (e) => {
         checkRunningStream();
     };
+
+    const TwitchPlayerPreventRerender = useMemo(() => {
+        return <TwitchPlayer height="100%" width="100%" channel={channelName} autoplay muted onReady={handleReady} onOffline={handleOffline} />;
+    }, [channelName]);
   
     return (
         <>
-        {channelName && !showInactive &&(
-            <section className="flex justify-center select-none" style={{width : "100vw"}}>
-                <TwitchPlayer channel={channelName} autoplay muted onReady={handleReady} onOffline={handleOffline} />
+        {channelName && !showInactive && breakpoint !== undefined && (
+            <section className={classNames("flex justify-center select-none", {"mb-32 md:mb-0" : !privacyAccepted})}>
+                <div className="bg-neutral-800" style={{width : playerDimensions[breakpoint]?.width || 960, height: playerDimensions[breakpoint]?.height || 540}}>
+                    {privacyAccepted ? 
+                        TwitchPlayerPreventRerender
+                        : (
+                        <div className="flex flex-col items-center justify-between text-center w-full h-full p-4 md:p-8 lg:p-16">
+                            <div className="font-pally font-bold mx-auto p-4 text-white text-xl md:text-4xl lg:text-5xl">
+                                Week of Charity Twitch Player
+                            </div>
+                            <div className="mx-auto text-neutral-300 text-md md:text-xl lg:text-xl">
+                            Datenschutzhinweis: Wenn du den Twitch Player aktivierst, werden einige Daten wie deine IP-Adresse an Twitch gesendet. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.
+                            </div>
+                            <button className="mt-10 md:mt-0" onClick={() => setPrivacyAccepted(true)}>
+                                <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-3 md:py-5 px-7 duration-300 bg-neutral-600 hover:bg-neutral-200 text-neutral-200 hover:text-neutral-600 text-2xl md:text-3xl mx-5 transition-all">
+                                    Einverstanden
+                                </div>
+                            </button>
+                        </div>
+                    )}
+                </div>
+                
             </section>
         )}
         </>

@@ -91,17 +91,20 @@ export const GalleryImageLarge = ({ imageData, hidePopUp, displayImageFunction, 
           )}
           
           {loading ? (
-            <div
-              className="largeImage"
-            />
+            <div className="largeImage" />
           ) : (
             <div className="imgContainer">
               <img src={currentImage} className="largeImage" style={{opacity: loading ? 0 : 1}}/>
             </div>
           )}
           <div className="imageInformationWrapper">
-              <div className='text-xl font-bold'>Bild von <a href={imageData.author_link} target="_blank" className="text-green23-600">{imageData.author}</a></div>
+              <div className='text-xl font-bold'>Bild von {imageData.author}</div>
               <div className="imageDescription" dangerouslySetInnerHTML={{__html: imageData.description}}></div>
+              {imageData.author_link && (
+                <div className="mt-1">
+                  Credit: <a className="text-green23-600" href={imageData.author_link} target="_blank" >{imageData.author_link}</a>
+                </div>
+              )}
           </div>
         </div>
       </div>

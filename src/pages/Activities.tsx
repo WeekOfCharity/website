@@ -42,8 +42,8 @@ export const Activities = () => {
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();
 
-  const openingId = 999;
-  const finaleId = 1000;
+  const openingId = 15;
+  const finaleId = 42;
   const opening = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === openingId) : undefined;
   const finale = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === finaleId) : undefined;
 

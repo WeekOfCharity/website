@@ -20,10 +20,10 @@ import { useFAQ } from "../hooks/useFAQ";
 import { useStreams } from "../hooks/useStreams";
 
 import { getDocumentTitle } from "../utils/getDocumentTitle";
+import { useTranslation } from "react-i18next";
 
 export const Home = () => {
-  document.title = getDocumentTitle();
-
+  const { t } = useTranslation();
   const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
   const [lastDonationGoal, setLastDonationGoal] = useState(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(
@@ -44,9 +44,11 @@ export const Home = () => {
     useBidwarResults();
   const { data: bidwars, status: bidwarsStatus } = useBidwars();
 
+  document.title = getDocumentTitle();
+
   const upcomingText = "Wir streamen wieder für den guten Zweck";
   const runningText = "Wir streamen wieder für den guten Zweck";
-  const endedText = "Danke fürs Dabeisein";
+  const endedText = t("home.endedText");
 
   const hideCountdown = () => {
     setTimeout(() => {
@@ -137,10 +139,10 @@ export const Home = () => {
           {wocStatus === "wocEnded"
             ? endedText
             : wocStatus === "wocRunning"
-              ? runningText
-              : wocStatus === "wocUpcoming"
-                ? upcomingText
-                : ""}
+            ? runningText
+            : wocStatus === "wocUpcoming"
+            ? upcomingText
+            : ""}
         </div>
 
         {/*
@@ -237,26 +239,26 @@ export const Home = () => {
         {donationsStatus === "success" &&
           donationGoalsStatus === "success" &&
           donationGoals.length > 0 && (
-          <>
-            <DonationMeter
-              currentValue={currentDonation}
-              nextGoalValue={nextDonationGoal}
-              startValue={lastDonationGoal}
-            />
-            <div className="flex flex-col items-center">
-              <a
-                target="_blank"
-                href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
-                className="cursor-pointer"
-                rel="noreferrer"
-              >
-                <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-6 md:-mt-16 md:-mb-6 transition-all">
+            <>
+              <DonationMeter
+                currentValue={currentDonation}
+                nextGoalValue={nextDonationGoal}
+                startValue={lastDonationGoal}
+              />
+              <div className="flex flex-col items-center">
+                <a
+                  target="_blank"
+                  href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
+                  className="cursor-pointer"
+                  rel="noreferrer"
+                >
+                  <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-6 md:-mt-16 md:-mb-6 transition-all">
                     Jetzt spenden
-                </div>
-              </a>
-            </div>
-          </>
-        )}
+                  </div>
+                </a>
+              </div>
+            </>
+          )}
 
         <div id="bidwar" />
         {bidwarResultsStatus === "success" &&
@@ -287,20 +289,20 @@ export const Home = () => {
         {donationsStatus === "success" &&
           donationGoalsStatus === "success" &&
           donationGoals.length > 0 && (
-          <div className="flex flex-col gap-7 xl:grid grid-cols-2 mx-5 md:mx-10">
-            {donationGoals.map((goal) => (
-              <DonationGoal
-                achieved={goal.reached_at <= currentDonation}
-                amount={goal.reached_at}
-                description={goal.description}
-                hidden={goal.hidden}
-                key={goal.id}
-                timeslot={goal.timeslot}
-                title={goal.name}
-              />
-            ))}
-          </div>
-        )}
+            <div className="flex flex-col gap-7 xl:grid grid-cols-2 mx-5 md:mx-10">
+              {donationGoals.map((goal) => (
+                <DonationGoal
+                  achieved={goal.reached_at <= currentDonation}
+                  amount={goal.reached_at}
+                  description={goal.description}
+                  hidden={goal.hidden}
+                  key={goal.id}
+                  timeslot={goal.timeslot}
+                  title={goal.name}
+                />
+              ))}
+            </div>
+          )}
 
         <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
           <div

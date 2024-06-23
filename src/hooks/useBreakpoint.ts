@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export enum Breakpoint {
   sm = 0,
@@ -6,7 +6,7 @@ export enum Breakpoint {
   lg = 1024,
   xl = 1280,
   xxl = 1536,
-};
+}
 
 const getBreakPoint = (windowWidth: number): Breakpoint => {
   if (windowWidth >= Breakpoint.xxl) {
@@ -32,17 +32,17 @@ export const useBreakpoint = (): Breakpoint => {
   const [breakpoint, setBreakpoint] = useState(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const resizeListener = () => {
         setBreakpoint(() => getBreakPoint(window.innerWidth));
       };
 
       resizeListener();
 
-      window.addEventListener('resize', resizeListener, { passive: true });
+      window.addEventListener("resize", resizeListener, { passive: true });
 
       return () => {
-        window.removeEventListener('resize', resizeListener);
+        window.removeEventListener("resize", resizeListener);
       };
     }
   }, [breakpoint]);

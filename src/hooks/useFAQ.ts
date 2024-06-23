@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export type FAQItem = {
   answer: string;
@@ -8,8 +8,10 @@ export type FAQItem = {
 };
 
 export const useFAQ = () => {
-  return useQuery(['faq'], async () => {
-    const { data } = await axios.get<{ data: FAQItem[]; }>((process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/faq');
+  return useQuery(["faq"], async () => {
+    const { data } = await axios.get<{ data: FAQItem[] }>(
+      process.env.BASE_URL + "/items/faq"
+    );
     return data.data;
   });
 };

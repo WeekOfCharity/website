@@ -1,17 +1,17 @@
 .countdownFieldNumber {
-    width: 80px;
+  width: 80px;
 }
 
 .countdownFieldDots {
-    width: 10px;
+  width: 10px;
 }
 
 @media (min-width: 768px) {
-    .countdownFieldNumber {
-        width: 124px;
-    }
+  .countdownFieldNumber {
+    width: 124px;
+  }
 
-    .countdownFieldDots {
-        width: 10px;
-    }
+  .countdownFieldDots {
+    width: 10px;
+  }
 }

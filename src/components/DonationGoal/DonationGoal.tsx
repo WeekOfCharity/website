@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import { Stream as StreamData } from '../../hooks/useStreams';
-import { getState } from '../../utils/dateAndTime';
-import { Brush4 } from '../Brushes/Brush4';
-import { GoalStamp } from '../Icons/GoalStamp';
-import { Stream } from '../Stream/Stream';
+import classNames from "classnames";
+import { Stream as StreamData } from "../../hooks/useStreams";
+import { getState } from "../../utils/dateAndTime";
+import { Brush4 } from "../Brushes/Brush4";
+import { GoalStamp } from "../Icons/GoalStamp";
+import { Stream } from "../Stream/Stream";
 
 type DonationGoalProps = {
   achieved?: boolean;
@@ -14,30 +14,70 @@ type DonationGoalProps = {
   title: string;
 };
 
-export const DonationGoal = ({ achieved = false, amount, description, hidden = false, timeslot = undefined, title }: DonationGoalProps) => {
+export const DonationGoal = ({
+  achieved = false,
+  amount,
+  description,
+  hidden = false,
+  timeslot = undefined,
+  title,
+}: DonationGoalProps) => {
   return (
-    <article className={classNames('flex flex-col relative', { 'bg-blue23-200': achieved, 'bg-neutral-100': !achieved })}>
-      {achieved && timeslot && getState(timeslot.start, timeslot.end) === "ended" && <GoalStamp className="absolute text-blue23-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-48"/>}
+    <article
+      className={classNames("flex flex-col relative", {
+        "bg-blue23-200": achieved,
+        "bg-neutral-100": !achieved,
+      })}
+    >
+      {achieved &&
+        timeslot &&
+        getState(timeslot.start, timeslot.end) === "ended" && (
+        <GoalStamp className="absolute text-blue23-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-48" />
+      )}
       <div className="flex items-center my-auto p-5">
         <div className="flex items-center justify-center mr-7 relative">
-          <Brush4 className={classNames('h-24 -ml-1 -my-2 rotate-45 w-auto', { 'text-blue23-500': achieved, 'text-neutral-300': !achieved })} />
-          <div className={classNames('absolute font-fat ml-2 text-5xl z-10', { 'text-blue23-900': achieved, 'text-neutral-500': !achieved })}>{amount}</div>
+          <Brush4
+            className={classNames("h-24 -ml-1 -my-2 rotate-45 w-auto", {
+              "text-blue23-500": achieved,
+              "text-neutral-300": !achieved,
+            })}
+          />
+          <div
+            className={classNames("absolute font-fat ml-2 text-5xl z-10", {
+              "text-blue23-900": achieved,
+              "text-neutral-500": !achieved,
+            })}
+          >
+            {amount}
+          </div>
         </div>
         <div>
-          <div className="font-semibold text-lg">{!hidden ? title : 'Dieses Spendenziel ist noch geheim'}</div>
+          <div className="font-semibold text-lg">
+            {!hidden ? title : "Dieses Spendenziel ist noch geheim"}
+          </div>
           {description && !hidden && <div>{description}</div>}
         </div>
       </div>
 
       <div className="p-5 pt-0">
-        <div className={classNames('font-round2 font-bold mb-1', { 'text-blue23-900': achieved, 'text-neutral-500': !achieved })}>Sei bei der Umsetzung dabei</div>
+        <div
+          className={classNames("font-round2 font-bold mb-1", {
+            "text-blue23-900": achieved,
+            "text-neutral-500": !achieved,
+          })}
+        >
+          Sei bei der Umsetzung dabei
+        </div>
 
         {timeslot && (
           <Stream
             activityId={timeslot.activity.id}
             condensed
             endTime={timeslot.end}
-            gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
+            gameImageUrl={
+              process.env.BASE_URL +
+              `/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
+            }
             highlight={timeslot.highlight}
             startTime={timeslot.start}
             state={getState(timeslot.start, timeslot.end)}
@@ -49,7 +89,9 @@ export const DonationGoal = ({ achieved = false, amount, description, hidden = f
 
         {!timeslot && (
           <div className="bg-neutral-900 bg-opacity-10 flex h-28 md:h-20 items-center justify-center rounded-md w-full">
-            <div className="font-bold text-neutral-900 text-opacity-75">Termin steht noch aus</div>
+            <div className="font-bold text-neutral-900 text-opacity-75">
+              Termin steht noch aus
+            </div>
           </div>
         )}
       </div>

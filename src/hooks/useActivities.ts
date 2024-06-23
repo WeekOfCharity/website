@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export type Activity = {
   description: string | null;
@@ -11,10 +11,10 @@ export type Activity = {
 };
 
 export const useActivities = () => {
-  return useQuery(['activities'], async () => {
-    const { data } = await axios.get<{ data: Activity[]; }>(
-      (process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/activities');
+  return useQuery(["activities"], async () => {
+    const { data } = await axios.get<{ data: Activity[] }>(
+      process.env.BASE_URL + "/items/activities"
+    );
     return data.data;
   });
 };
-

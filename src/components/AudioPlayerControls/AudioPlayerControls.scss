@@ -1,93 +1,93 @@
 /*generated with Input range slider CSS style generator (version 20211225)
 https://toughengineer.github.io/demo/slider-styler*/
-input[type=range].styled-slider {
-    height: 1.5em;
-    -webkit-appearance: none;
-    background: transparent;
-    cursor: pointer;
+input[type="range"].styled-slider {
+  height: 1.5em;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
 }
 
-input[type=range].styled-slider:focus {
-    outline: none;
+input[type="range"].styled-slider:focus {
+  outline: none;
 }
 
 /*webkit*/
-input[type=range].styled-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 1.25em;
-    height: 1.25em;
-    border-radius: 1em;
-    background: #9FB5F0;
-    border: none;
-    box-shadow: none;
-    margin-top: calc(0.4em * 0.5 - 1.25em * 0.5);
+input[type="range"].styled-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 1em;
+  background: #9fb5f0;
+  border: none;
+  box-shadow: none;
+  margin-top: calc(0.4em * 0.5 - 1.25em * 0.5);
 }
 
-input[type=range].styled-slider::-webkit-slider-runnable-track {
-    height: 0.4em;
-    border: none;
-    border-radius: 2em;
-    background: #efefef;
-    box-shadow: none;
+input[type="range"].styled-slider::-webkit-slider-runnable-track {
+  height: 0.4em;
+  border: none;
+  border-radius: 2em;
+  background: #efefef;
+  box-shadow: none;
 }
 
-input[type=range].styled-slider::-webkit-slider-thumb:hover {
-    background: #7F91E6;
+input[type="range"].styled-slider::-webkit-slider-thumb:hover {
+  background: #7f91e6;
 }
 
 /*mozilla*/
-input[type=range].styled-slider::-moz-range-thumb {
-    width: 1.25em;
-    height: 1.25em;
-    border-radius: 1em;
-    background: #9FB5F0;
-    border: none;
-    box-shadow: none;
+input[type="range"].styled-slider::-moz-range-thumb {
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 1em;
+  background: #9fb5f0;
+  border: none;
+  box-shadow: none;
 }
 
-input[type=range].styled-slider::-moz-range-track {
-    height: 0.4em;
-    border: none;
-    border-radius: 2em;
-    background: #efefef;
-    box-shadow: none;
+input[type="range"].styled-slider::-moz-range-track {
+  height: 0.4em;
+  border: none;
+  border-radius: 2em;
+  background: #efefef;
+  box-shadow: none;
 }
 
-input[type=range].styled-slider::-moz-range-thumb:hover {
-    background: #7F91E6;
+input[type="range"].styled-slider::-moz-range-thumb:hover {
+  background: #7f91e6;
 }
 
 /*ms*/
-input[type=range].styled-slider::-ms-fill-upper {
-    background: transparent;
-    border-color: transparent;
+input[type="range"].styled-slider::-ms-fill-upper {
+  background: transparent;
+  border-color: transparent;
 }
 
-input[type=range].styled-slider::-ms-fill-lower {
-    background: transparent;
-    border-color: transparent;
+input[type="range"].styled-slider::-ms-fill-lower {
+  background: transparent;
+  border-color: transparent;
 }
 
-input[type=range].styled-slider::-ms-thumb {
-    width: 1.25em;
-    height: 1.25em;
-    border-radius: 1em;
-    background: #9FB5F0;
-    border: none;
-    box-shadow: none;
-    margin-top: 0;
-    box-sizing: border-box;
+input[type="range"].styled-slider::-ms-thumb {
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 1em;
+  background: #9fb5f0;
+  border: none;
+  box-shadow: none;
+  margin-top: 0;
+  box-sizing: border-box;
 }
 
-input[type=range].styled-slider::-ms-track {
-    height: 0.4em;
-    border-radius: 2em;
-    background: #efefef;
-    border: none;
-    box-shadow: none;
-    box-sizing: border-box;
+input[type="range"].styled-slider::-ms-track {
+  height: 0.4em;
+  border-radius: 2em;
+  background: #efefef;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
 }
 
-input[type=range].styled-slider::-ms-thumb:hover {
-    background: #7F91E6;
+input[type="range"].styled-slider::-ms-thumb:hover {
+  background: #7f91e6;
 }

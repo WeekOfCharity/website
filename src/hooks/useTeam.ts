@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export type Member = {
   icon: string;
@@ -16,8 +16,10 @@ export type Member = {
 };
 
 export const useTeam = () => {
-  return useQuery(['team'], async () => {
-    const { data } = await axios.get<{ data: Member[]; }>((process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/people');
+  return useQuery(["team"], async () => {
+    const { data } = await axios.get<{ data: Member[] }>(
+      process.env.BASE_URL + "/items/people"
+    );
     return data.data;
   });
 };

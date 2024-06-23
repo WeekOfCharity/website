@@ -1,54 +1,65 @@
-import { mdiClose, mdiOpenInNew } from '@mdi/js';
-import Icon from '@mdi/react';
-import classNames from 'classnames';
-import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { Activity } from '../components/Activity/Activity';
-import { Brush1 } from '../components/Brushes/Brush1';
-import { Brush4 } from '../components/Brushes/Brush4';
-import { Member } from '../components/Member/Member';
-import { OutsideAlerter } from '../components/OutsideAlerter/OutsideAlerter';
-import { Stream } from '../components/Stream/Stream';
-import { Activity as ActivityData, useActivities } from '../hooks/useActivities';
-import { Stream as StreamData, useStreams } from '../hooks/useStreams';
-import { getState } from '../utils/dateAndTime';
-import { getDocumentTitle } from '../utils/getDocumentTitle';
+import { mdiClose, mdiOpenInNew } from "@mdi/js";
+import Icon from "@mdi/react";
+import classNames from "classnames";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { Activity } from "../components/Activity/Activity";
+import { Brush1 } from "../components/Brushes/Brush1";
+import { Brush4 } from "../components/Brushes/Brush4";
+import { Member } from "../components/Member/Member";
+import { OutsideAlerter } from "../components/OutsideAlerter/OutsideAlerter";
+import { Stream } from "../components/Stream/Stream";
+import {
+  Activity as ActivityData,
+  useActivities,
+} from "../hooks/useActivities";
+import { Stream as StreamData, useStreams } from "../hooks/useStreams";
+import { getState } from "../utils/dateAndTime";
+import { getDocumentTitle } from "../utils/getDocumentTitle";
 
-const arrowDown = new URL('../assets/arrow-down.svg', import.meta.url);
+const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
-const ConditionalWrapper = ({ condition, wrapper, children }) => 
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
 export const Activities = () => {
-  const [activeActivity, setActiveActivity] = useState<ActivityData | undefined>(undefined);
+  const [activeActivity, setActiveActivity] = useState<
+    ActivityData | undefined
+  >(undefined);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    if (typeof activeActivity !== 'undefined') {
-      document.body.style.height = '100vh';
-      document.body.style.overflowY = 'hidden';
+    if (typeof activeActivity !== "undefined") {
+      document.body.style.height = "100vh";
+      document.body.style.overflowY = "hidden";
     } else {
-      document.body.style.height = 'auto';
-      document.body.style.overflowY = 'auto';
+      document.body.style.height = "auto";
+      document.body.style.overflowY = "auto";
     }
     return () => {
-      document.body.style.height = 'auto';
-      document.body.style.overflowY = 'auto';
+      document.body.style.height = "auto";
+      document.body.style.overflowY = "auto";
     };
   }, [activeActivity]);
 
-  document.title = getDocumentTitle('Aktivitäten');
+  document.title = getDocumentTitle("Aktivitäten");
 
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();
 
   const openingId = 15;
   const finaleId = 42;
-  const opening = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === openingId) : undefined;
-  const finale = typeof activities !== 'undefined' && activities.length > 0 ? activities.find((activity) => activity.id === finaleId) : undefined;
+  const opening =
+    typeof activities !== "undefined" && activities.length > 0
+      ? activities.find((activity) => activity.id === openingId)
+      : undefined;
+  const finale =
+    typeof activities !== "undefined" && activities.length > 0
+      ? activities.find((activity) => activity.id === finaleId)
+      : undefined;
 
   const getFellowsWithActivity = (activityId: number) => {
-    const fellows: StreamData['fellows'] = [];
+    const fellows: StreamData["fellows"] = [];
 
     getStreamsWithActivity(activityId).forEach((stream) => {
       stream.fellows.forEach((fellow) => {
@@ -58,21 +69,28 @@ export const Activities = () => {
       });
     });
 
-    return fellows.sort((a, b) => a.people_id.name.localeCompare(b.people_id.name));
+    return fellows.sort((a, b) =>
+      a.people_id.name.localeCompare(b.people_id.name)
+    );
   };
 
   const getStreamersWithActivity = (activityId: number) => {
-    return getStreamsWithActivity(activityId).reduce<StreamData['streamer'][]>((streamers, stream) => {
-      if (!streamers.some((streamer) => streamer.id === stream.streamer.id)) {
-        return [...streamers, stream.streamer];
-      }
+    return getStreamsWithActivity(activityId).reduce<StreamData["streamer"][]>(
+      (streamers, stream) => {
+        if (!streamers.some((streamer) => streamer.id === stream.streamer.id)) {
+          return [...streamers, stream.streamer];
+        }
 
-      return streamers;
-    }, []);
+        return streamers;
+      },
+      []
+    );
   };
 
   const getStreamsWithActivity = (activityId: number) => {
-    return typeof streams !== 'undefined' && streams.length > 0 ? streams.filter((stream) => stream.activity.id === activityId) : [];
+    return typeof streams !== "undefined" && streams.length > 0
+      ? streams.filter((stream) => stream.activity.id === activityId)
+      : [];
   };
 
   const closeActivity = () => {
@@ -84,9 +102,13 @@ export const Activities = () => {
   };
 
   useEffect(() => {
-    if (searchParams.has('id')) {
-      if (activitiesStatus === 'success') {
-        setActiveActivity(activities.find((activity) => activity.id.toString() === searchParams.get('id')));
+    if (searchParams.has("id")) {
+      if (activitiesStatus === "success") {
+        setActiveActivity(
+          activities.find(
+            (activity) => activity.id.toString() === searchParams.get("id")
+          )
+        );
       }
     } else {
       setActiveActivity(undefined);
@@ -96,7 +118,9 @@ export const Activities = () => {
   return (
     <main className="text-neutral-800 woc-accent-pink23">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-round2 font-bold text-pink23-900 uppercase">Alle in der Übersicht</div>
+        <div className="font-round2 font-bold text-pink23-900 uppercase">
+          Alle in der Übersicht
+        </div>
 
         <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
           Die Aktivitäten der
@@ -107,21 +131,36 @@ export const Activities = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      <section className={classNames('max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5', { 'pointer-events-none': activeActivity !== undefined })}>
-        {activitiesStatus === 'success' && (
+      <section
+        className={classNames(
+          "max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5",
+          {
+            "pointer-events-none": activeActivity !== undefined,
+          }
+        )}
+      >
+        {activitiesStatus === "success" && (
           <>
             {activities.length > 0 && (
               <div>
                 <div className="flex justify-center mt-8 -rotate-3 w-full">
-                  <span className="font-handwriting font-semibold text-xl">Klick uns an für mehr Infos</span>
-                  <img className="mt-4 ml-3 -scale-x-100" src={arrowDown.toString()} />
+                  <span className="font-handwriting font-semibold text-xl">
+                    Klick uns an für mehr Infos
+                  </span>
+                  <img
+                    className="mt-4 ml-3 -scale-x-100"
+                    src={arrowDown.toString()}
+                  />
                 </div>
 
                 <div className="flex gap-3 justify-center">
                   {opening && (
                     <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                       <Activity
-                        gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${opening.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
+                        gameImageUrl={
+                          process.env.BASE_URL +
+                          `/assets/${opening.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
+                        }
                         name={opening.name}
                         onClick={() => openActivity(opening)}
                       />
@@ -130,7 +169,10 @@ export const Activities = () => {
                   {finale && (
                     <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                       <Activity
-                        gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${finale.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
+                        gameImageUrl={
+                          process.env.BASE_URL +
+                          `/assets/${finale.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
+                        }
                         name={finale.name}
                         onClick={() => openActivity(finale)}
                       />
@@ -140,15 +182,24 @@ export const Activities = () => {
               </div>
             )}
 
-            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">{activities.length > 0 ? "Aktivitäten" : "Bald seht ihr hier mehr!"}</div>
+            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
+              {activities.length > 0
+                ? "Aktivitäten"
+                : "Bald seht ihr hier mehr!"}
+            </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {activities
-                .filter((activity) => ![openingId, finaleId].includes(activity.id))
+                .filter(
+                  (activity) => ![openingId, finaleId].includes(activity.id)
+                )
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((activity) => (
                   <Activity
-                    gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
+                    gameImageUrl={
+                      process.env.BASE_URL +
+                      `/assets/${activity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
+                    }
                     name={activity.name}
                     onClick={() => openActivity(activity)}
                     key={activity.id}
@@ -158,9 +209,11 @@ export const Activities = () => {
           </>
         )}
 
-        {activitiesStatus !== 'success' && (
+        {activitiesStatus !== "success" && (
           <>
-            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">Aktivitäten</div>
+            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
+              Aktivitäten
+            </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {[...Array(48)].map((_, index) => (
@@ -171,13 +224,16 @@ export const Activities = () => {
         )}
       </section>
 
-      <OutsideAlerter active={activeActivity !== undefined} onClick={closeActivity}>
+      <OutsideAlerter
+        active={activeActivity !== undefined}
+        onClick={closeActivity}
+      >
         <aside
           className={classNames(
-            'bg-neutral-800 duration-300 ease-in-out fixed h-screen overflow-hidden right-0 top-0 transform-gpu transition w-full sm:w-2/3 lg:w-1/2 2xl:w-1/3 z-[99999]',
+            "bg-neutral-800 duration-300 ease-in-out fixed h-screen overflow-hidden right-0 top-0 transform-gpu transition w-full sm:w-2/3 lg:w-1/2 2xl:w-1/3 z-[99999]",
             {
-              'translate-x-0': typeof activeActivity !== 'undefined',
-              'translate-x-full': typeof activeActivity === 'undefined',
+              "translate-x-0": typeof activeActivity !== "undefined",
+              "translate-x-full": typeof activeActivity === "undefined",
             }
           )}
         >
@@ -189,15 +245,26 @@ export const Activities = () => {
           </button>
 
           {activeActivity && (
-            <main className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24" style={{ scrollbarWidth: 'thin' }}>
+            <main
+              className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24"
+              style={{ scrollbarWidth: "thin" }}
+            >
               <Brush1 className="absolute -right-24 text-pink23-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
-                <img className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40" src={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`} />
+                <img
+                  className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
+                  src={
+                    process.env.BASE_URL +
+                    `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
+                  }
+                />
               </div>
 
               <div className="flex items-start space-x-2">
-                <div className="font-pally font-bold mr-auto text-4xl">{activeActivity.name}</div>
+                <div className="font-pally font-bold mr-auto text-4xl">
+                  {activeActivity.name}
+                </div>
 
                 {activeActivity.reference_link && (
                   <a
@@ -211,68 +278,110 @@ export const Activities = () => {
                 )}
               </div>
 
-              {activeActivity.description && <div className="mt-5 text-lg" dangerouslySetInnerHTML={{ __html: activeActivity.description.replace(/\n/g, '<br />') }} />}
+              {activeActivity.description && (
+                <div
+                  className="mt-5 text-lg"
+                  dangerouslySetInnerHTML={{
+                    __html: activeActivity.description.replace(/\n/g, "<br />"),
+                  }}
+                />
+              )}
 
-              {streamsStatus === 'success' && (
+              {streamsStatus === "success" && (
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">Sei dabei in diesen Streams</div>
-                      {getStreamsWithActivity(activeActivity.id).map((stream) => (
-                        <Stream
-                          activityId={stream.activity.id}
-                          condensed
-                          endTime={stream.end}
-                          gameImageUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
-                          highlight={stream.highlight}
-                          noLink
-                          startTime={stream.start}
-                          state={getState(stream.start, stream.end)}
-                          streamer={stream.streamer.name}
-                          title={stream.activity.name}
-                          vodLink={stream.vod_link}
-                          key={stream.id}
-                        />
-                      ))}
+                      <div className="font-round2 font-bold text-pink23-500">
+                        Sei dabei in diesen Streams
+                      </div>
+                      {getStreamsWithActivity(activeActivity.id).map(
+                        (stream) => (
+                          <Stream
+                            activityId={stream.activity.id}
+                            condensed
+                            endTime={stream.end}
+                            gameImageUrl={
+                              process.env.BASE_URL +
+                              `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
+                            }
+                            highlight={stream.highlight}
+                            noLink
+                            startTime={stream.start}
+                            state={getState(stream.start, stream.end)}
+                            streamer={stream.streamer.name}
+                            title={stream.activity.name}
+                            vodLink={stream.vod_link}
+                            key={stream.id}
+                          />
+                        )
+                      )}
                     </div>
                   )}
 
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird gehostet von</div>
+                      <div className="font-round2 font-bold text-pink23-500">
+                        {activeActivity.name} wird gehostet von
+                      </div>
                       <div className="flex gap-2">
-                        {getStreamersWithActivity(activeActivity.id).map((streamer) => (
-                          <ConditionalWrapper condition={!streamer.hide_from_team_page} key={"streamer-" + streamer.id}
-                            wrapper={children => <Link to={`/team?id=${streamer.id}`}>{children}</Link>}
-                          >
-                            <Member
-                              avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
-                              condensed
-                              name={streamer.name}
-                            />
-                          </ConditionalWrapper>
-                        ))}
+                        {getStreamersWithActivity(activeActivity.id).map(
+                          (streamer) => (
+                            <ConditionalWrapper
+                              condition={!streamer.hide_from_team_page}
+                              key={"streamer-" + streamer.id}
+                              wrapper={(children) => (
+                                <Link to={`/team?id=${streamer.id}`}>
+                                  {children}
+                                </Link>
+                              )}
+                            >
+                              <Member
+                                avatarUrl={
+                                  process.env.BASE_URL +
+                                  `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
+                                }
+                                condensed
+                                name={streamer.name}
+                              />
+                            </ConditionalWrapper>
+                          )
+                        )}
                       </div>
                     </div>
                   )}
 
                   {getFellowsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">{activeActivity.name} wird begleitet von</div>
+                      <div className="font-round2 font-bold text-pink23-500">
+                        {activeActivity.name} wird begleitet von
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        {getFellowsWithActivity(activeActivity.id).map((fellow) => {
-                          return (
-                            <ConditionalWrapper condition={!fellow.people_id.hide_from_team_page} key={"fellow-" + fellow.people_id.id}
-                              wrapper={children => <Link to={`/team?id=${fellow.people_id.id}`}>{children}</Link>}
-                            >
-                              <Member
-                                avatarUrl={(process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
-                                condensed
-                                name={fellow.people_id.name}
-                              />
-                            </ConditionalWrapper>
-                          );
-                        })}
+                        {getFellowsWithActivity(activeActivity.id).map(
+                          (fellow) => {
+                            return (
+                              <ConditionalWrapper
+                                condition={
+                                  !fellow.people_id.hide_from_team_page
+                                }
+                                key={"fellow-" + fellow.people_id.id}
+                                wrapper={(children) => (
+                                  <Link to={`/team?id=${fellow.people_id.id}`}>
+                                    {children}
+                                  </Link>
+                                )}
+                              >
+                                <Member
+                                  avatarUrl={
+                                    process.env.BASE_URL +
+                                    `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
+                                  }
+                                  condensed
+                                  name={fellow.people_id.name}
+                                />
+                              </ConditionalWrapper>
+                            );
+                          }
+                        )}
                       </div>
                     </div>
                   )}

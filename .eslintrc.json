@@ -3,7 +3,13 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:@typescript-eslint/recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,9 +22,8 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "indent": ["error", 2],
     "linebreak-style": "off",
-    "quotes": ["error", "double"],
+    "quotes": ["error", "double", { "avoidEscape": true }],
     "semi": ["error", "always"]
   },
   "settings": {

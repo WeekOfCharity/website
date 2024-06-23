@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export type Stream = {
   activity: {
@@ -31,8 +31,11 @@ export type Stream = {
 };
 
 export const useStreams = () => {
-  return useQuery(['streams'], async () => {
-    const { data } = await axios.get<{ data: Stream[]; }>((process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/timeslots?fields=*,activity.icon,activity.id,activity.name,fellows.people_id.icon,fellows.people_id.id,fellows.people_id.name,fellows.people_id.hide_from_team_page,streamer.icon,streamer.id,streamer.name,streamer.stream_link,streamer.hide_from_team_page&sort=start');
+  return useQuery(["streams"], async () => {
+    const { data } = await axios.get<{ data: Stream[] }>(
+      process.env.BASE_URL +
+        "/items/timeslots?fields=*,activity.icon,activity.id,activity.name,fellows.people_id.icon,fellows.people_id.id,fellows.people_id.name,fellows.people_id.hide_from_team_page,streamer.icon,streamer.id,streamer.name,streamer.stream_link,streamer.hide_from_team_page&sort=start"
+    );
     return data.data;
   });
 };

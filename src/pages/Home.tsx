@@ -26,16 +26,22 @@ export const Home = () => {
 
   const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
   const [lastDonationGoal, setLastDonationGoal] = useState(0);
-  const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(undefined);
+  const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(
+    undefined
+  );
   const [wocStatus, setWocStatus] = useState("");
   const [timerVisible, setTimerVisible] = useState(true);
 
-  const { data: donations, status: donationsStatus } = useExternalDonationTotal();
-  const { data: donationGoals, status: donationGoalsStatus } = useDonationGoals();
+  const { data: donations, status: donationsStatus } =
+    useExternalDonationTotal();
+  const { data: donationGoals, status: donationGoalsStatus } =
+    useDonationGoals();
   const { data: faq, status: faqStatus } = useFAQ();
-  const { data: configuration, status: configurationStatus } = useConfiguration();
+  const { data: configuration, status: configurationStatus } =
+    useConfiguration();
   const { data: streams, status: streamsStatus } = useStreams();
-  const { data: bidwarResults, status: bidwarResultsStatus } = useBidwarResults();
+  const { data: bidwarResults, status: bidwarResultsStatus } =
+    useBidwarResults();
   const { data: bidwars, status: bidwarsStatus } = useBidwars();
 
   const upcomingText = "Wir streamen wieder für den guten Zweck";
@@ -50,14 +56,21 @@ export const Home = () => {
 
   useEffect(() => {
     const time = new Date(Date.now());
-    if (configurationStatus === "success" && (streamsStatus === "error" || !configuration.schedule_complete)) {
+    if (
+      configurationStatus === "success" &&
+      (streamsStatus === "error" || !configuration.schedule_complete)
+    ) {
       const woc_start_date = new Date(configuration.woc_start);
       if (time < woc_start_date) {
         setWocStatus("wocUpcoming");
       } else {
         setWocStatus("wocEnded");
       }
-    } else if (configurationStatus === "success" && streamsStatus === "success" && streams.length > 0) {
+    } else if (
+      configurationStatus === "success" &&
+      streamsStatus === "success" &&
+      streams.length > 0
+    ) {
       const woc_start_date = new Date(streams[0].start);
       const woc_end_date = new Date(streams[streams.length - 1].end);
       if (time < woc_start_date) {
@@ -68,7 +81,13 @@ export const Home = () => {
         setWocStatus("wocEnded");
       }
     }
-  }, [configurationStatus, streamsStatus, configuration, streams, timerVisible]);
+  }, [
+    configurationStatus,
+    streamsStatus,
+    configuration,
+    streams,
+    timerVisible,
+  ]);
 
   useEffect(() => {
     if (!donations || !donationGoals) return;
@@ -83,8 +102,14 @@ export const Home = () => {
       }
     });
 
-    setLastDonationGoal(lastIndex > -1 ? donationGoals[lastIndex].reached_at : 0);
-    setNextDonationGoal(donationGoals.length > lastIndex + 1 ? donationGoals[lastIndex + 1].reached_at : undefined);
+    setLastDonationGoal(
+      lastIndex > -1 ? donationGoals[lastIndex].reached_at : 0
+    );
+    setNextDonationGoal(
+      donationGoals.length > lastIndex + 1
+        ? donationGoals[lastIndex + 1].reached_at
+        : undefined
+    );
   }, [donations, donationGoals]);
 
   useEffect(() => {
@@ -94,7 +119,9 @@ export const Home = () => {
       const id = path.replace("#", "");
 
       if (id) {
-        document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth" });
+        document
+          .querySelector("#" + id)
+          ?.scrollIntoView({ behavior: "smooth" });
       }
     }
   });
@@ -102,10 +129,18 @@ export const Home = () => {
   return (
     <main className="text-neutral-800">
       <header className="px-5 pt-20 pb-10 relative text-center">
-        <div className="font-round2 font-bold text-pink23-900 uppercase">Neues Jahr, neue Woche</div>
+        <div className="font-round2 font-bold text-pink23-900 uppercase">
+          Neues Jahr, neue Woche
+        </div>
 
         <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
-          {wocStatus === "wocEnded" ? endedText : wocStatus === "wocRunning" ? runningText : wocStatus === "wocUpcoming" ? upcomingText : ""}
+          {wocStatus === "wocEnded"
+            ? endedText
+            : wocStatus === "wocRunning"
+              ? runningText
+              : wocStatus === "wocUpcoming"
+                ? upcomingText
+                : ""}
         </div>
 
         {/*
@@ -120,26 +155,39 @@ export const Home = () => {
       {/*<Ticket />*/}
 
       <div className="max-w-screen-2xl my-5 md:my-20 mx-auto space-y-16 md:space-y-32">
-        {configurationStatus === "success" && wocStatus === "wocUpcoming" && <Countdown timerZeroCallback={hideCountdown} />}
-        {configurationStatus === "success" && configuration.twitch_embed && wocStatus === "wocRunning" && <TwitchEmbed />}
+        {configurationStatus === "success" && wocStatus === "wocUpcoming" && (
+          <Countdown timerZeroCallback={hideCountdown} />
+        )}
+        {configurationStatus === "success" &&
+          configuration.twitch_embed &&
+          wocStatus === "wocRunning" && <TwitchEmbed />}
         <div className="flex flex-col gap-5 xl:grid grid-cols-2 grid-rows-2 mx-5 md:mx-10">
           <section className="bg-pink23-100 bg-opacity-50 pb-5 pt-10 row-span-2">
-            <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-pink23-900 text-center transform-gpu uppercase">Week of Was?</div>
-            <div className="font-semibold max-w-screen-md mx-auto pt-10 text-3xl md:text-4xl text-center w-4/5">Über das Projekt</div>
+            <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-pink23-900 text-center transform-gpu uppercase">
+              Week of Was?
+            </div>
+            <div className="font-semibold max-w-screen-md mx-auto pt-10 text-3xl md:text-4xl text-center w-4/5">
+              Über das Projekt
+            </div>
 
             <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-pink23-900 text-opacity-75 w-auto" />
 
             <div className="leading-relaxed mx-5 text-center">
-              Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder
-              durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es
-              werden Quizshows abgehalten.
+              Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt
+              für einen guten Zweck! Eine Woche lang wird abwechselnd auf den
+              Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um
+              Spenden zu sammeln. Das Programm ist breit gefächert und neben
+              diversen Videospielen wird unter anderem Dungeons and Dragons
+              gespielt und es werden Quizshows abgehalten.
               <br />
               <br />
-              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Mehr zu unserem Projekt findet ihr{" "}
+              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses
+              Jahr an das Tierheim Berlin. Mehr zu unserem Projekt findet ihr{" "}
               <a href="/projekte" className="text-pink23-500">
                 hier
               </a>
-              . Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!
+              . Wir hoffen, die Woche wird euch genau so viel Freude und
+              Unterhaltung bringen wie uns. Wir freuen uns auf euch!
             </div>
           </section>
 
@@ -186,13 +234,24 @@ export const Home = () => {
 
         <div id="spenden" />
 
-        {donationsStatus === "success" && donationGoalsStatus === "success" && donationGoals.length > 0 && (
+        {donationsStatus === "success" &&
+          donationGoalsStatus === "success" &&
+          donationGoals.length > 0 && (
           <>
-            <DonationMeter currentValue={currentDonation} nextGoalValue={nextDonationGoal} startValue={lastDonationGoal} />
+            <DonationMeter
+              currentValue={currentDonation}
+              nextGoalValue={nextDonationGoal}
+              startValue={lastDonationGoal}
+            />
             <div className="flex flex-col items-center">
-              <a target="_blank" href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023" className="cursor-pointer" rel="noreferrer">
+              <a
+                target="_blank"
+                href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
+                className="cursor-pointer"
+                rel="noreferrer"
+              >
                 <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-6 md:-mt-16 md:-mb-6 transition-all">
-                  Jetzt spenden
+                    Jetzt spenden
                 </div>
               </a>
             </div>
@@ -205,11 +264,18 @@ export const Home = () => {
           bidwars.map((bidwar) => {
             if (bidwar.status === "active" || bidwar.status === "results") {
               return (
-                <div className="flex flex-col mx-5 md:mx-10 items-center" key={"bidwar-" + bidwar.id}>
+                <div
+                  className="flex flex-col mx-5 md:mx-10 items-center"
+                  key={"bidwar-" + bidwar.id}
+                >
                   <Bidwar
                     name={bidwar.bidwar_name}
                     description={bidwar.bidwar_description}
-                    options={bidwarResults.results.find((result) => result.id === bidwar.id)?.options}
+                    options={
+                      bidwarResults.results.find(
+                        (result) => result.id === bidwar.id
+                      )?.options
+                    }
                     status={bidwar.status}
                     timeslot={bidwar.timeslot}
                   />
@@ -218,7 +284,9 @@ export const Home = () => {
             }
           })}
 
-        {donationsStatus === "success" && donationGoalsStatus === "success" && donationGoals.length > 0 && (
+        {donationsStatus === "success" &&
+          donationGoalsStatus === "success" &&
+          donationGoals.length > 0 && (
           <div className="flex flex-col gap-7 xl:grid grid-cols-2 mx-5 md:mx-10">
             {donationGoals.map((goal) => (
               <DonationGoal
@@ -235,7 +303,10 @@ export const Home = () => {
         )}
 
         <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
-          <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left" id="faq">
+          <div
+            className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left"
+            id="faq"
+          >
             Häufige Fragen und Antworten
           </div>
 
@@ -243,8 +314,13 @@ export const Home = () => {
             <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
               {faq.map((item) => (
                 <div key={item.id} className="bg-opacity-70 bg-green23-100 p-5">
-                  <div className="text-green23-900 font-semibold mb-2 text-lg">{item.question}</div>
-                  <div className="leading-relaxed woc-html" dangerouslySetInnerHTML={{ __html: item.answer }} />
+                  <div className="text-green23-900 font-semibold mb-2 text-lg">
+                    {item.question}
+                  </div>
+                  <div
+                    className="leading-relaxed woc-html"
+                    dangerouslySetInnerHTML={{ __html: item.answer }}
+                  />
                 </div>
               ))}
             </div>

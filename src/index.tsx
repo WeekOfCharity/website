@@ -1,23 +1,24 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { App } from './app';
-import { Activities } from './pages/Activities';
-import { Gallery } from './pages/Gallery';
-import { GoalWidget } from './pages/GoalWidget';
-import { Home } from './pages/Home';
-import { Imprint } from './pages/Imprint';
-import { Music } from './pages/Music';
-import { Privacy } from './pages/Privacy';
-import { Program } from './pages/Program';
-import { Projects } from './pages/Projects';
-import { Team } from './pages/Team';
-import { Widget } from './widget';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { App } from "./app";
+import { Activities } from "./pages/Activities";
+import { Gallery } from "./pages/Gallery";
+import { GoalWidget } from "./pages/GoalWidget";
+import { Home } from "./pages/Home";
+import { Imprint } from "./pages/Imprint";
+import { Music } from "./pages/Music";
+import { Privacy } from "./pages/Privacy";
+import { Program } from "./pages/Program";
+import { Projects } from "./pages/Projects";
+import { Team } from "./pages/Team";
+import { Widget } from "./widget";
+import "./i18n/i18n";
 
-const app = document.getElementById('app');
-const root = createRoot(app!);
+const app = document.getElementById("app");
+const root = createRoot(app);
 
-function ExternalRedirect({ to } : { to: string }) {
+function ExternalRedirect({ to }: { to: string }) {
   window.location.replace(to);
   return null;
 }
@@ -40,7 +41,12 @@ root.render(
         <Route path="widgets" element={<Widget />}>
           <Route path="goal" element={<GoalWidget />} />
         </Route>
-        <Route path="spieleshuffle" element={<ExternalRedirect to="https://docs.google.com/document/d/1Z8eH0db7QbFR9eBO5S6xekgxIRLhXFtWE4lTihdzVRs/edit?usp=sharing"/>} />
+        <Route
+          path="spieleshuffle"
+          element={
+            <ExternalRedirect to="https://docs.google.com/document/d/1Z8eH0db7QbFR9eBO5S6xekgxIRLhXFtWE4lTihdzVRs/edit?usp=sharing" />
+          }
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

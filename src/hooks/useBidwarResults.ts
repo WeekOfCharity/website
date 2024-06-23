@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export type BidwarResults = {
   results: {
@@ -13,8 +13,10 @@ export type BidwarResults = {
 };
 
 export const useBidwarResults = () => {
-  return useQuery(['bidwar_results'], async () => {
-    const { data } = await axios.get<{ data: BidwarResults; }>((process.env.NODE_ENV === 'production' ? 'https://directus.weekofcharity.de' : 'http://localhost:8055') + '/items/bidwar_results');
+  return useQuery(["bidwar_results"], async () => {
+    const { data } = await axios.get<{ data: BidwarResults }>(
+      process.env.BASE_URL + "/items/bidwar_results"
+    );
     return data.data;
   });
 };

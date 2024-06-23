@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import './BrushLink.scss';
+import classNames from "classnames";
+import { ReactNode } from "react";
+import "./BrushLink.scss";
 
 export const BrushLink = ({
   children,
@@ -11,7 +11,7 @@ export const BrushLink = ({
 }) => {
   return (
     <div
-      className={classNames('inline-block relative woc-brush-link', className)}
+      className={classNames("inline-block relative woc-brush-link", className)}
     >
       {children}
     </div>

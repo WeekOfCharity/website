@@ -1,11 +1,11 @@
-import { mdiAccount, mdiCalendarBlankOutline, mdiClockOutline } from '@mdi/js';
-import Icon from '@mdi/react';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
-import { Breakpoint, useBreakpoint } from '../../hooks/useBreakpoint';
-import { formatDay, formatTime } from '../../utils/dateAndTime';
-import { Shimmer } from '../Shimmer/Shimmer';
-import './Stream.scss';
+import { mdiAccount, mdiCalendarBlankOutline, mdiClockOutline } from "@mdi/js";
+import Icon from "@mdi/react";
+import classNames from "classnames";
+import { Link } from "react-router-dom";
+import { Breakpoint, useBreakpoint } from "../../hooks/useBreakpoint";
+import { formatDay, formatTime } from "../../utils/dateAndTime";
+import { Shimmer } from "../Shimmer/Shimmer";
+import "./Stream.scss";
 
 type StreamProps = {
   activityId: number;
@@ -13,27 +13,42 @@ type StreamProps = {
   endTime: string;
   gameImageUrl: string;
   highlight: boolean;
-  clickDisabled? : boolean;
+  clickDisabled?: boolean;
   noLink?: boolean;
   startTime: string;
-  state?: 'upcoming' | 'running' | 'ended';
+  state?: "upcoming" | "running" | "ended";
   streamer: string;
   title: string;
   vodLink: string;
 };
 
-export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, highlight, clickDisabled = false, noLink = false, startTime, state = 'upcoming', streamer, title, vodLink }: StreamProps) => {
+export const Stream = ({
+  activityId,
+  condensed = false,
+  endTime,
+  gameImageUrl,
+  highlight,
+  clickDisabled = false,
+  noLink = false,
+  startTime,
+  state = "upcoming",
+  streamer,
+  title,
+  vodLink,
+}: StreamProps) => {
   const breakpoint = useBreakpoint();
 
-  const RootElement = noLink && vodLink ? 'a' : condensed && !noLink ? Link : 'article';
-  const BannerElement = noLink && vodLink ? 'div' : !condensed && !noLink ? Link : 'div';
+  const RootElement =
+    noLink && vodLink ? "a" : condensed && !noLink ? Link : "article";
+  const BannerElement =
+    noLink && vodLink ? "div" : !condensed && !noLink ? Link : "div";
 
   return (
     <RootElement
-      className={classNames('flex select-none', {
-        'cursor-pointer duration-300 hover:-mx-1.5 transition-all': condensed,
-        'opacity-50': state === 'ended',
-        'pointer-events-none': clickDisabled || (noLink && !vodLink),
+      className={classNames("flex select-none", {
+        "cursor-pointer duration-300 hover:-mx-1.5 transition-all": condensed,
+        "opacity-50": state === "ended",
+        "pointer-events-none": clickDisabled || (noLink && !vodLink),
       })}
       to={condensed && !noLink ? `/streams?id=${activityId}` : undefined}
       href={noLink && vodLink ? vodLink : undefined}
@@ -43,12 +58,19 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
     >
       {!condensed && (
         <div
-          className={classNames('border-2 flex flex-shrink-0 items-center justify-center mr-2 md:mr-4 rounded-md w-12 md:w-16', {
-            'bg-white border-green23-900 text-green23-900 woc-active-stream': state === 'running' && !highlight,
-            'bg-white border-green23-900 text-green23-900': state !== 'running' && !highlight,
-            'bg-green23-900 border-green23-900 text-white woc-active-highlight-stream': state === 'running' && highlight,
-            'bg-green23-900 border-green23-900 text-white': state !== 'running' && highlight,
-          })}
+          className={classNames(
+            "border-2 flex flex-shrink-0 items-center justify-center mr-2 md:mr-4 rounded-md w-12 md:w-16",
+            {
+              "bg-white border-green23-900 text-green23-900 woc-active-stream":
+                state === "running" && !highlight,
+              "bg-white border-green23-900 text-green23-900":
+                state !== "running" && !highlight,
+              "bg-green23-900 border-green23-900 text-white woc-active-highlight-stream":
+                state === "running" && highlight,
+              "bg-green23-900 border-green23-900 text-white":
+                state !== "running" && highlight,
+            }
+          )}
         >
           <div className="font-round font-bold leading-none -rotate-6 -skew-x-6 text-sm text-center">
             {formatTime(startTime)}
@@ -61,9 +83,13 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
       )}
 
       <BannerElement
-        className={classNames('flex flex-col md:flex-row relative md:rounded-md w-full', {
-          'cursor-pointer duration-300 hover:-mx-2 transition-all': !condensed,
-        })}
+        className={classNames(
+          "flex flex-col md:flex-row relative md:rounded-md w-full",
+          {
+            "cursor-pointer duration-300 hover:-mx-2 transition-all":
+              !condensed,
+          }
+        )}
         to={!condensed && !noLink ? `/streams?id=${activityId}` : undefined}
       >
         <div
@@ -75,7 +101,9 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
 
         {condensed && highlight && (
           <div className="absolute backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex md:hidden items-center left-2 px-1 py-0.5 rounded-sm shadow-xl space-x-4 text-[#EAB308] text-xs top-2">
-            <span className="font-round2 font-bold uppercase">👑 Highlight</span>
+            <span className="font-round2 font-bold uppercase">
+              👑 Highlight
+            </span>
           </div>
         )}
 
@@ -89,26 +117,45 @@ export const Stream = ({ activityId, condensed = false, endTime, gameImageUrl, h
         <div
           className="absolute bg-center bg-cover bottom-0 rounded-r-md md:static w-full"
           style={{
-            backgroundImage: breakpoint >= Breakpoint.md ? `url("${gameImageUrl}")` : undefined,
+            backgroundImage:
+              breakpoint >= Breakpoint.md
+                ? `url("${gameImageUrl}")`
+                : undefined,
           }}
         >
           <div className="backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex flex-col md:h-full justify-center p-2 md:px-4 rounded-b-md md:rounded-bl-none md:rounded-r-md text-white w-full">
-          <div className="flex font-semibold leading-none md:mb-1.5 space-x-4 text-lg">
-            <span>{title}</span>
-            {state === "ended" && vodLink && <span className="md:block woc-vod-label">{noLink ? "Zum VOD" : "VOD verfügbar"}</span>}
-          </div>
-            
+            <div className="flex font-semibold leading-none md:mb-1.5 space-x-4 text-lg">
+              <span>{title}</span>
+              {state === "ended" && vodLink && (
+                <span className="md:block woc-vod-label">
+                  {noLink ? "Zum VOD" : "VOD verfügbar"}
+                </span>
+              )}
+            </div>
+
             {condensed ? (
               <div className="flex font-round font-semibold items-center leading-none mt-1.5 space-x-4 text-sm">
-                <Icon path={mdiCalendarBlankOutline} size="1rem" style={{ marginRight: '-0.5rem' }} />
+                <Icon
+                  path={mdiCalendarBlankOutline}
+                  size="1rem"
+                  style={{ marginRight: "-0.5rem" }}
+                />
                 <span>{formatDay(startTime)}</span>
 
-                <Icon path={mdiClockOutline} size="1rem" style={{ marginRight: '-0.5rem' }} />
+                <Icon
+                  path={mdiClockOutline}
+                  size="1rem"
+                  style={{ marginRight: "-0.5rem" }}
+                />
                 <span>
                   {formatTime(startTime)} &mdash; {formatTime(endTime)}
                 </span>
 
-                {highlight && <span className="md:block font-round2 font-bold hidden text-[#EAB308] text-xs uppercase woc-highlight-label">👑 Highlight</span>}
+                {highlight && (
+                  <span className="md:block font-round2 font-bold hidden text-[#EAB308] text-xs uppercase woc-highlight-label">
+                    👑 Highlight
+                  </span>
+                )}
               </div>
             ) : (
               <div className="md:flex hidden items-center space-x-4 text-sm">

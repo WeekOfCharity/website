@@ -1,27 +1,27 @@
 .player {
-    position: absolute;
-    top: -430px;
-    right: 0px;
-    z-index: 56;
-    width: 320px;
+  position: absolute;
+  top: -430px;
+  right: 0px;
+  z-index: 56;
+  width: 320px;
 }
 
 .triangleWrapper {
-    position: absolute;
-    top: -41px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 55;
+  position: absolute;
+  top: -41px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 55;
 }
 
 .triangle {
-    width: 0;
-    height: 0;
-    border: 12px solid transparent;
-    border-bottom: 0;
-    border-top: 26px solid #4240A5;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent;
+  border-bottom: 0;
+  border-top: 26px solid #4240a5;
 }

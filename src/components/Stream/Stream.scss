@@ -14,12 +14,12 @@
 
 .woc-active-stream {
   animation: pulse 2s infinite;
-  box-shadow: 0 0 0 #186B6E;
+  box-shadow: 0 0 0 #186b6e;
 }
 
 @keyframes highlight-pulse {
   0% {
-    box-shadow: 0 0 0 0 #40A595;
+    box-shadow: 0 0 0 0 #40a595;
   }
 
   70% {

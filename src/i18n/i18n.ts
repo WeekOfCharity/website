@@ -37,28 +37,30 @@ const haveSameStructure = (obj1: object, obj2: object) => {
   return true;
 };
 
-if (!haveSameStructure(deTranslation, enTranslation))
-  console.error("Translation files don't have the same structure!");
+export enum Language {
+  EN = "en",
+  DE = "de",
+}
 
-i18n
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
-  .use(LanguageDetector)
-  // pass the i18n instance to react-i18next.
-  .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
-  .init({
-    debug: true,
-    fallbackLng: "de",
-    resources: {
-      en: {
-        translation: enTranslation,
-      },
-      de: {
-        translation: deTranslation,
-      },
-    },
-  });
+export const defaultLanguage = Language.DE;
 
-export default i18n;
+export const initi18n = () => {
+  if (!haveSameStructure(deTranslation, enTranslation))
+    console.error("Translation files don't have the same structure!");
+
+  i18n
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+      debug: true,
+      fallbackLng: defaultLanguage,
+      resources: {
+        en: {
+          translation: enTranslation,
+        },
+        de: {
+          translation: deTranslation,
+        },
+      },
+    });
+};

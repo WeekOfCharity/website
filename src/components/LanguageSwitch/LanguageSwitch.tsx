@@ -1,16 +1,38 @@
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
+import { defaultLanguage, Language } from "../../i18n/i18n";
+import { useEffect, useState } from "react";
 
 type LanguageSwitchProps = {
   className?: string;
 };
 
+const getValidLanguage = (lang?: string) => {
+  if (!lang) return defaultLanguage;
+  return Object.values(Language).find((validLang) =>
+    lang.startsWith(validLang)
+  );
+};
+
 export const LanguageSwitch = ({ className }: LanguageSwitchProps) => {
+  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
+    null
+  );
   const { i18n } = useTranslation();
 
+  useEffect(() => {
+    setSelectedLanguage(getValidLanguage(i18n.language));
+  }, []);
+
+  useEffect(() => {
+    if (!selectedLanguage) return;
+    i18n.changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
+
   const toggleLanguage = () => {
-    const newLang = i18n.language === "de" ? "en" : "de";
-    i18n.changeLanguage(newLang);
+    setSelectedLanguage((prev) =>
+      prev === Language.DE ? Language.EN : Language.DE
+    );
   };
 
   return (
@@ -27,26 +49,26 @@ export const LanguageSwitch = ({ className }: LanguageSwitchProps) => {
           className={cn(
             "bg-white shadow-md absolute w-[55%] inset-0 rounded-full transition-transform duration-200",
             {
-              "-translate-x-0.5": i18n.language === "de",
-              "translate-x-9": i18n.language === "en",
+              "-translate-x-0.5": selectedLanguage === Language.DE,
+              "translate-x-9": selectedLanguage === Language.EN,
             }
           )}
         />
         <span
           className={cn("font-semibold z-10 transition-colors", {
-            "text-uiAccent": i18n.language === "de",
-            "text-neutral-600": i18n.language !== "de",
+            "text-uiAccent": selectedLanguage === Language.DE,
+            "text-neutral-600": selectedLanguage !== Language.DE,
           })}
         >
-          DE
+          {Language.DE.toUpperCase()}
         </span>
         <span
           className={cn("font-semibold z-10 transition-colors", {
-            "text-uiAccent": i18n.language === "en",
-            "text-neutral-600": i18n.language !== "en",
+            "text-uiAccent": selectedLanguage === Language.EN,
+            "text-neutral-600": selectedLanguage !== Language.EN,
           })}
         >
-          EN
+          {Language.EN.toUpperCase()}
         </span>
       </button>
     </div>

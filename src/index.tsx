@@ -13,7 +13,9 @@ import { Program } from "./pages/Program";
 import { Projects } from "./pages/Projects";
 import { Team } from "./pages/Team";
 import { Widget } from "./widget";
-import "./i18n/i18n";
+import { initi18n } from "./i18n/i18n";
+
+initi18n();
 
 const app = document.getElementById("app");
 const root = createRoot(app);

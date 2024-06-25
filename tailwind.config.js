@@ -18,7 +18,7 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       neutral: colors.neutral,
-
+      uiAccent: "#4186bd",
       accent: {
         100: "var(--accent-100)",
         200: "var(--accent-200)",

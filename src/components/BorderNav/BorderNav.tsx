@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { LanguageSwitch } from "../LanguageSwitch/LanguageSwitch";
 
 export const BorderNav = () => {
   return (
@@ -7,7 +6,6 @@ export const BorderNav = () => {
       <div className="flex h-[52px] items-center mr-auto px-5">
         <span className="font-brush mb-1">Week of Charity</span>
       </div>
-      <LanguageSwitch className="flex h-[52px] items-center px-5 font-semibold" />
       <a
         className="flex h-[52px] items-center px-5 font-semibold"
         href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"

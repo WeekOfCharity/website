@@ -13,6 +13,7 @@ import { useConfiguration } from "../../hooks/useConfiguration";
 import { Brush1 } from "../Brushes/Brush1";
 import { Brush2 } from "../Brushes/Brush2";
 import "./Nav.scss";
+import { LanguageSwitch } from "../LanguageSwitch/LanguageSwitch";
 
 const logo = new URL("../../assets/favicon.png", import.meta.url);
 const tiktokPath =
@@ -180,7 +181,6 @@ export const Nav = () => {
           </a>
         </div>
       </menu>
-
       <a
         className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white"
         href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
@@ -189,14 +189,13 @@ export const Nav = () => {
       >
         <span className="font-semibold">Spenden</span>
       </a>
-
+      <LanguageSwitch className="h-[52px] px-5" />
       <button
         className="bg-neutral-800 md:hidden inline-flex items-center leading-none ml-2 p-3 rounded-full text-white"
         onClick={() => setMenuOpen(true)}
       >
         <Icon path={mdiMenu} size="1.25rem" />
       </button>
-
       <aside
         className={classNames(
           "absolute bg-neutral-800 duration-300 ease-in-out h-screen overflow-hidden p-5 right-0 top-0 transform-gpu transition w-full z-[99999]",

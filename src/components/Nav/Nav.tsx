@@ -7,6 +7,7 @@ import {
 } from "@mdi/js";
 import Icon from "@mdi/react";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useConfiguration } from "../../hooks/useConfiguration";
@@ -22,6 +23,7 @@ const mastodonPath =
   "M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61-1.433-.658-3.894-.935-6.451-.956h-.063c-2.557.021-5.016.298-6.45.956 0 0-2.843 1.272-2.843 5.61 0 .993-.019 2.181.012 3.441.103 4.243.778 8.425 4.701 9.463 1.809.479 3.362.579 4.612.51 2.268-.126 3.541-.809 3.541-.809l-.075-1.646s-1.621.511-3.441.449c-1.804-.062-3.707-.194-3.999-2.409a4.523 4.523 0 0 1-.04-.621s1.77.433 4.014.536c1.372.063 2.658-.08 3.965-.236 2.506-.299 4.688-1.843 4.962-3.254.434-2.223.398-5.424.398-5.424zm-3.353 5.59h-2.081V9.057c0-1.075-.452-1.62-1.357-1.62-1 0-1.501.647-1.501 1.927v2.791h-2.069V9.364c0-1.28-.501-1.927-1.502-1.927-.905 0-1.357.546-1.357 1.62v5.099H6.026V8.903c0-1.074.273-1.927.823-2.558.566-.631 1.307-.955 2.228-.955 1.065 0 1.872.409 2.405 1.228l.518.869.519-.869c.533-.819 1.34-1.228 2.405-1.228.92 0 1.662.324 2.228.955.549.631.822 1.484.822 2.558v5.253z";
 
 export const Nav = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
   const [scrollbarGutterOriginalValue, setScrollbarGutterOriginalValue] =
     useState<string>("unset");
@@ -74,7 +76,9 @@ export const Nav = () => {
             }
             to="/"
           >
-            <span className="font-pally font-medium text-lg">Startseite</span>
+            <span className="font-pally font-medium text-lg">
+              {t("mainNav.home")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -82,7 +86,9 @@ export const Nav = () => {
             }
             to="/projekte"
           >
-            <span className="font-pally font-medium text-lg">Projekte</span>
+            <span className="font-pally font-medium text-lg">
+              {t("mainNav.projects")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -92,7 +98,9 @@ export const Nav = () => {
             }
             to="/streams"
           >
-            <span className="font-pally font-medium text-lg">Programm</span>
+            <span className="font-pally font-medium text-lg">
+              {t("mainNav.program")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -100,7 +108,9 @@ export const Nav = () => {
             }
             to="/aktivitaeten"
           >
-            <span className="font-pally font-medium text-lg">Aktivitäten</span>
+            <span className="font-pally font-medium text-lg">
+              {t("mainNav.activities")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -108,7 +118,9 @@ export const Nav = () => {
             }
             to="/team"
           >
-            <span className="font-pally font-medium text-lg">Team</span>
+            <span className="font-pally font-medium text-lg">
+              {t("mainNav.team")}
+            </span>
           </NavLink>
           {configurationStatus === "success" && configuration.gallery_enabled && (
             <NavLink
@@ -119,7 +131,9 @@ export const Nav = () => {
               }
               to="/galerie"
             >
-              <span className="font-pally font-medium text-lg">Galerie</span>
+              <span className="font-pally font-medium text-lg">
+                {t("mainNav.gallery")}
+              </span>
             </NavLink>
           )}
         </div>
@@ -187,7 +201,7 @@ export const Nav = () => {
         rel="nofollow noreferrer"
         target="_blank"
       >
-        <span className="font-semibold">Spenden</span>
+        <span className="font-semibold">{t("subNav.donate")}</span>
       </a>
       <LanguageSwitch className="h-[52px] px-5" />
       <button
@@ -208,7 +222,7 @@ export const Nav = () => {
         <Brush1 className="absolute -right-40 sm:-right-24 text-accent-500 -top-8 w-[400px] -z-10" />
 
         <div className="flex items-center mb-10">
-          <img className="h-12" src={logo.toString()} />
+          <img className="h-12" src={logo.toString()} alt="" />
 
           <button
             className="bg-white inline-flex items-center leading-none ml-auto p-3 rounded-full"
@@ -226,7 +240,9 @@ export const Nav = () => {
             onClick={() => setMenuOpen(false)}
             to="/"
           >
-            <span className="font-pally font-medium text-2xl">Startseite</span>
+            <span className="font-pally font-medium text-2xl">
+              {t("mainNav.home")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -235,7 +251,9 @@ export const Nav = () => {
             onClick={() => setMenuOpen(false)}
             to="/projekte"
           >
-            <span className="font-pally font-medium text-2xl">Projekte</span>
+            <span className="font-pally font-medium text-2xl">
+              {t("mainNav.projects")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -246,7 +264,9 @@ export const Nav = () => {
             onClick={() => setMenuOpen(false)}
             to="/streams"
           >
-            <span className="font-pally font-medium text-2xl">Programm</span>
+            <span className="font-pally font-medium text-2xl">
+              {t("mainNav.program")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -255,7 +275,9 @@ export const Nav = () => {
             onClick={() => setMenuOpen(false)}
             to="/aktivitaeten"
           >
-            <span className="font-pally font-medium text-2xl">Aktivitäten</span>
+            <span className="font-pally font-medium text-2xl">
+              {t("mainNav.activities")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -264,7 +286,9 @@ export const Nav = () => {
             onClick={() => setMenuOpen(false)}
             to="/team"
           >
-            <span className="font-pally font-medium text-2xl">Team</span>
+            <span className="font-pally font-medium text-2xl">
+              {t("mainNav.team")}
+            </span>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -275,11 +299,13 @@ export const Nav = () => {
             onClick={() => setMenuOpen(false)}
             to="/galerie"
           >
-            <span className="font-pally font-medium text-2xl">Galerie</span>
+            <span className="font-pally font-medium text-2xl">
+              {t("mainNav.gallery")}
+            </span>
           </NavLink>
           <a href="/musik">
             <span className="font-pally font-medium hover:text-green23-500 text-2xl">
-              Musik
+              {t("subNav.music")}
             </span>
           </a>
           <a
@@ -288,7 +314,7 @@ export const Nav = () => {
             target="_blank"
           >
             <span className="font-pally font-medium hover:text-mustard-500 text-2xl">
-              Merchandise
+              {t("subNav.merch")}
             </span>
           </a>
           <div className="flex items-center space-x-5">
@@ -346,14 +372,14 @@ export const Nav = () => {
             onClick={() => setMenuOpen(false)}
             to="/datenschutz"
           >
-            <span className="font-semibold">Datenschutz</span>
+            <span className="font-semibold">{t("subNav.dataPrivacy")}</span>
           </Link>
           <Link
             className="hover:text-white"
             onClick={() => setMenuOpen(false)}
             to="/impressum"
           >
-            <span className="font-semibold">Impressum</span>
+            <span className="font-semibold">{t("subNav.imprint")}</span>
           </Link>
         </menu>
       </aside>

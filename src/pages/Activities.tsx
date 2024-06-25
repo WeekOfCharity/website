@@ -1,7 +1,8 @@
 import { mdiClose, mdiOpenInNew } from "@mdi/js";
 import Icon from "@mdi/react";
+import { useTranslation } from "react-i18next";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Activity } from "../components/Activity/Activity";
 import { Brush1 } from "../components/Brushes/Brush1";
@@ -19,14 +20,23 @@ import { getDocumentTitle } from "../utils/getDocumentTitle";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
-const ConditionalWrapper = ({ condition, wrapper, children }) =>
-  condition ? wrapper(children) : children;
+type ConditionalWrapperProps = {
+  condition: boolean;
+  wrapper: (children: ReactNode) => JSX.Element;
+  children: JSX.Element;
+};
+const ConditionalWrapper = ({
+  condition,
+  wrapper,
+  children,
+}: ConditionalWrapperProps) => (condition ? wrapper(children) : children);
 
 export const Activities = () => {
   const [activeActivity, setActiveActivity] = useState<
     ActivityData | undefined
   >(undefined);
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (typeof activeActivity !== "undefined") {
@@ -42,7 +52,7 @@ export const Activities = () => {
     };
   }, [activeActivity]);
 
-  document.title = getDocumentTitle("Aktivitäten");
+  document.title = getDocumentTitle(t("activities.activities"));
 
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();
@@ -119,11 +129,11 @@ export const Activities = () => {
     <main className="text-neutral-800 woc-accent-pink23">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-pink23-900 uppercase">
-          Alle in der Übersicht
+          {t("activities.subHeader")}
         </div>
 
         <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
-          Die Aktivitäten der
+          {t("activities.mainHeader")}
           <br />
           Week of Charity
         </div>
@@ -145,9 +155,10 @@ export const Activities = () => {
               <div>
                 <div className="flex justify-center mt-8 -rotate-3 w-full">
                   <span className="font-handwriting font-semibold text-xl">
-                    Klick uns an für mehr Infos
+                    {t("clickForMoreInfo")}
                   </span>
                   <img
+                    alt=""
                     className="mt-4 ml-3 -scale-x-100"
                     src={arrowDown.toString()}
                   />
@@ -182,10 +193,10 @@ export const Activities = () => {
               </div>
             )}
 
-            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
+            <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">
               {activities.length > 0
-                ? "Aktivitäten"
-                : "Bald seht ihr hier mehr!"}
+                ? t("activities.activities")
+                : t("seeMoreSoon")}
             </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
@@ -212,7 +223,7 @@ export const Activities = () => {
         {activitiesStatus !== "success" && (
           <>
             <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
-              Aktivitäten
+              {t("activities.activities")}
             </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
@@ -253,11 +264,9 @@ export const Activities = () => {
 
               <div className="flex items-start mb-5">
                 <img
+                  alt=""
                   className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={
-                    process.env.BASE_URL +
-                    `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                  }
+                  src={`${process.env.BASE_URL}/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                 />
               </div>
 
@@ -292,7 +301,7 @@ export const Activities = () => {
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-pink23-500">
-                        Sei dabei in diesen Streams
+                        {t("activities.joinTheseStreams")}
                       </div>
                       {getStreamsWithActivity(activeActivity.id).map(
                         (stream) => (
@@ -321,14 +330,14 @@ export const Activities = () => {
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-pink23-500">
-                        {activeActivity.name} wird gehostet von
+                        {activeActivity.name} {t("activities.isHostedBy")}
                       </div>
                       <div className="flex gap-2">
                         {getStreamersWithActivity(activeActivity.id).map(
                           (streamer) => (
                             <ConditionalWrapper
                               condition={!streamer.hide_from_team_page}
-                              key={"streamer-" + streamer.id}
+                              key={streamer.id}
                               wrapper={(children) => (
                                 <Link to={`/team?id=${streamer.id}`}>
                                   {children}
@@ -353,7 +362,7 @@ export const Activities = () => {
                   {getFellowsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-pink23-500">
-                        {activeActivity.name} wird begleitet von
+                        {activeActivity.name} {t("activities.isAccompaniedBy")}
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {getFellowsWithActivity(activeActivity.id).map(
@@ -363,7 +372,7 @@ export const Activities = () => {
                                 condition={
                                   !fellow.people_id.hide_from_team_page
                                 }
-                                key={"fellow-" + fellow.people_id.id}
+                                key={fellow.people_id.id}
                                 wrapper={(children) => (
                                   <Link to={`/team?id=${fellow.people_id.id}`}>
                                     {children}
@@ -371,10 +380,7 @@ export const Activities = () => {
                                 )}
                               >
                                 <Member
-                                  avatarUrl={
-                                    process.env.BASE_URL +
-                                    `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
-                                  }
+                                  avatarUrl={`${process.env.BASE_URL}/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
                                   condensed
                                   name={fellow.people_id.name}
                                 />

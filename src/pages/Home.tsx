@@ -46,10 +46,6 @@ export const Home = () => {
 
   document.title = getDocumentTitle();
 
-  const upcomingText = "Wir streamen wieder für den guten Zweck";
-  const runningText = "Wir streamen wieder für den guten Zweck";
-  const endedText = t("home.endedText");
-
   const hideCountdown = () => {
     setTimeout(() => {
       setTimerVisible(false);
@@ -132,29 +128,21 @@ export const Home = () => {
     <main className="text-neutral-800">
       <header className="px-5 pt-20 pb-10 relative text-center">
         <div className="font-round2 font-bold text-pink23-900 uppercase">
-          Neues Jahr, neue Woche
+          {t("home.subHeader")}
         </div>
 
         <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
           {wocStatus === "wocEnded"
-            ? endedText
+            ? t("home.endedText")
             : wocStatus === "wocRunning"
-            ? runningText
+            ? t("home.runningText")
             : wocStatus === "wocUpcoming"
-            ? upcomingText
+            ? t("home.upcomingText")
             : ""}
         </div>
 
-        {/*
-        <div className="absolute flex justify-center left-1/2 mt-8 rotate-3 transform-gpu -translate-x-1/2 w-full">
-          <span className="font-handwriting font-semibold text-xl">dein Ticket zu guter Unterhaltung</span>
-          <img className="mt-4 ml-3 -scale-x-100" src={arrowDown.toString()} />
-        </div>
-        */}
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
-
-      {/*<Ticket />*/}
 
       <div className="max-w-screen-2xl my-5 md:my-20 mx-auto space-y-16 md:space-y-32">
         {configurationStatus === "success" && wocStatus === "wocUpcoming" && (
@@ -166,30 +154,23 @@ export const Home = () => {
         <div className="flex flex-col gap-5 xl:grid grid-cols-2 grid-rows-2 mx-5 md:mx-10">
           <section className="bg-pink23-100 bg-opacity-50 pb-5 pt-10 row-span-2">
             <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-pink23-900 text-center transform-gpu uppercase">
-              Week of Was?
+              {t("home.weekOfWhat")}
             </div>
             <div className="font-semibold max-w-screen-md mx-auto pt-10 text-3xl md:text-4xl text-center w-4/5">
-              Über das Projekt
+              {t("home.aboutProject")}
             </div>
 
             <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-pink23-900 text-opacity-75 w-auto" />
 
             <div className="leading-relaxed mx-5 text-center">
-              Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt
-              für einen guten Zweck! Eine Woche lang wird abwechselnd auf den
-              Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um
-              Spenden zu sammeln. Das Programm ist breit gefächert und neben
-              diversen Videospielen wird unter anderem Dungeons and Dragons
-              gespielt und es werden Quizshows abgehalten.
+              {t("home.welcome1")}
               <br />
               <br />
-              Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses
-              Jahr an das Tierheim Berlin. Mehr zu unserem Projekt findet ihr{" "}
+              {`${t("home.welcome2")} `}
               <a href="/projekte" className="text-pink23-500">
-                hier
+                {t("home.here")}
               </a>
-              . Wir hoffen, die Woche wird euch genau so viel Freude und
-              Unterhaltung bringen wie uns. Wir freuen uns auf euch!
+              {`. ${t("home.welcome3")}`}
             </div>
           </section>
 
@@ -200,14 +181,14 @@ export const Home = () => {
               <section className="bg-green23-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 relative hover:text-green23-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">
                   <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-green23-900 transform-gpu uppercase">
-                    Entertainment
+                    {t("home.entertainment1")}
                     <br />
-                    ohne Ende
+                    {t("home.entertainment2")}
                   </div>
                 </div>
 
                 <div className="flex font-semibold items-center text-3xl md:text-4xl w-full">
-                  <span>Das ganze Programm</span>
+                  <span>{t("home.fullProgram")}</span>
                   <Icon className="ml-auto" path={mdiArrowRight} size="2rem" />
                 </div>
               </section>
@@ -219,14 +200,14 @@ export const Home = () => {
               <section className="bg-blue23-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 hover:text-blue23-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">
                   <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-blue23-900 transform-gpu uppercase">
-                    Wir stecken
+                    {t("home.weAreBehindIt1")}
                     <br />
-                    dahinter
+                    {t("home.weAreBehindIt2")}
                   </div>
                 </div>
 
                 <div className="flex font-semibold items-center text-3xl md:text-4xl w-full">
-                  <span>Teilnehmer und Helfer</span>
+                  <span>{t("home.participants")}</span>
                   <Icon className="ml-auto" path={mdiArrowRight} size="2rem" />
                 </div>
               </section>
@@ -253,7 +234,7 @@ export const Home = () => {
                   rel="noreferrer"
                 >
                   <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-6 md:-mt-16 md:-mb-6 transition-all">
-                    Jetzt spenden
+                    {t("home.donateNow")}
                   </div>
                 </a>
               </div>
@@ -268,7 +249,7 @@ export const Home = () => {
               return (
                 <div
                   className="flex flex-col mx-5 md:mx-10 items-center"
-                  key={"bidwar-" + bidwar.id}
+                  key={bidwar.id}
                 >
                   <Bidwar
                     name={bidwar.bidwar_name}
@@ -309,7 +290,7 @@ export const Home = () => {
             className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left"
             id="faq"
           >
-            Häufige Fragen und Antworten
+            {t("home.faq")}
           </div>
 
           {faqStatus === "success" && (

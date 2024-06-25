@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Brush4 } from "../components/Brushes/Brush4";
 import { ButtonGroup } from "../components/ButtonGroup/ButtonGroup";
 import { GalleryImage } from "../components/GalleryImage/GalleryImage";
@@ -12,10 +13,11 @@ import { getDocumentTitle } from "../utils/getDocumentTitle";
 import "./Gallery.scss";
 
 export const Gallery = () => {
-  document.title = getDocumentTitle("Bilder Galerie");
+  const { t } = useTranslation();
+  document.title = getDocumentTitle(t("gallery.gallery"));
 
-  const [nextImageId, setNextImageId] = useState(undefined);
-  const [prevImageId, setPrevImageId] = useState(undefined);
+  const [nextImageId, setNextImageId] = useState<number | undefined>(undefined);
+  const [prevImageId, setPrevImageId] = useState<number | undefined>(undefined);
   const [imageClicked, setImageClicked] = useState(false);
   const [sortMethod, setSortMethod] = useState("year");
   const [imageContent, setImageContent] = useState(null);
@@ -26,7 +28,7 @@ export const Gallery = () => {
   const { data: galleryImages, status: galleryImagesStatus } =
     useGalleryImages();
 
-  const displayLargeImage = (imageId) => {
+  const displayLargeImage = (imageId: number) => {
     setImageClicked(true);
     const newImageData = galleryImages.find((image) => image.id == imageId);
     if (newImageData) {
@@ -99,7 +101,7 @@ export const Gallery = () => {
     setGalleryImageOrder(order);
   }, [galleryImagesGrouped]);
 
-  const handleCategoryClick = (e, id) => {
+  const handleCategoryClick = (id) => {
     const sortMethods = ["year", "category"];
     setSortMethod(sortMethods[id]);
   };
@@ -120,11 +122,11 @@ export const Gallery = () => {
     <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-green23-900 uppercase">
-          Von euch und uns
+          {t("gallery.subHeader")}
         </div>
 
         <div className="font-pally font-bold max-w-screen-md mx-auto mt-5 text-green23-500 text-4xl md:text-7xl w-4/5">
-          Die Galerie der
+          {t("gallery.mainHeader")}
           <br />
           Week of Charity
         </div>
@@ -135,7 +137,7 @@ export const Gallery = () => {
       <section className="max-w-screen-2xl mb-6 md:mb-12 mt-10 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
         <div className="flex justify-center">
           <ButtonGroup
-            buttons={["Jahr", "Kategorie"]}
+            buttons={[t("gallery.year"), t("gallery.category")]}
             doSomethingAfterClick={handleCategoryClick}
           />
         </div>

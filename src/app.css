@@ -9,3 +9,7 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+*:focus-visible {
+  outline-offset: 2px;
+}

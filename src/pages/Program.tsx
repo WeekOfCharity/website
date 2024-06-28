@@ -16,7 +16,7 @@ import {
 } from "../hooks/useActivities";
 import { Stream as StreamData, useStreams } from "../hooks/useStreams";
 import { formatDay, getState } from "../utils/dateAndTime";
-import { getDocumentTitle } from "../utils/getDocumentTitle";
+import { useTitle } from "../hooks/useTitle";
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -41,7 +41,7 @@ export const Program = () => {
     };
   }, [activeActivity]);
 
-  document.title = getDocumentTitle("Programm");
+  useTitle("Programm");
 
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();
@@ -257,6 +257,7 @@ export const Program = () => {
                     process.env.BASE_URL +
                     `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                   }
+                  alt=""
                 />
               </div>
 

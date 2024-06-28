@@ -16,13 +16,12 @@ export const BorderNav = () => {
       >
         {t("subNav.donate")}
       </a>
-      <a
+      <Link
         className="flex h-[52px] items-center px-5 font-semibold"
-        href="/musik"
-        rel="nofollow noreferrer"
+        to="/musik"
       >
         {t("subNav.music")}
-      </a>
+      </Link>
       <a
         className="flex h-[52px] items-center px-5 font-semibold"
         href="https://www.shirtee.com/de/store/weekofcharity/"

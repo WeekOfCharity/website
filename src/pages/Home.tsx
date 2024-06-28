@@ -19,10 +19,11 @@ import { useExternalDonationTotal } from "../hooks/useExternalDonationTotal";
 import { useFAQ } from "../hooks/useFAQ";
 import { useStreams } from "../hooks/useStreams";
 
-import { getDocumentTitle } from "../utils/getDocumentTitle";
 import { useTranslation } from "react-i18next";
+import { useTitle } from "../hooks/useTitle";
 
 export const Home = () => {
+  useTitle();
   const { t } = useTranslation();
   const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
   const [lastDonationGoal, setLastDonationGoal] = useState(0);
@@ -43,8 +44,6 @@ export const Home = () => {
   const { data: bidwarResults, status: bidwarResultsStatus } =
     useBidwarResults();
   const { data: bidwars, status: bidwarsStatus } = useBidwars();
-
-  document.title = getDocumentTitle();
 
   const hideCountdown = () => {
     setTimeout(() => {
@@ -131,7 +130,7 @@ export const Home = () => {
           {t("home.subHeader")}
         </div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
           {wocStatus === "wocEnded"
             ? t("home.endedText")
             : wocStatus === "wocRunning"
@@ -139,7 +138,7 @@ export const Home = () => {
             : wocStatus === "wocUpcoming"
             ? t("home.upcomingText")
             : ""}
-        </div>
+        </h1>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>

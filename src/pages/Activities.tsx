@@ -16,7 +16,7 @@ import {
 } from "../hooks/useActivities";
 import { Stream as StreamData, useStreams } from "../hooks/useStreams";
 import { getState } from "../utils/dateAndTime";
-import { getDocumentTitle } from "../utils/getDocumentTitle";
+import { useTitle } from "../hooks/useTitle";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
@@ -52,7 +52,7 @@ export const Activities = () => {
     };
   }, [activeActivity]);
 
-  document.title = getDocumentTitle(t("activities.activities"));
+  useTitle(t("activities.activities"));
 
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();

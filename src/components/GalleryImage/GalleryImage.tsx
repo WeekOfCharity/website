@@ -18,6 +18,7 @@ export const GalleryImage = ({
         src={imageUrl}
         onClick={() => onClickFunction(imageID)}
         className="woc-gallery-image"
+        alt=""
       />
     </div>
   );

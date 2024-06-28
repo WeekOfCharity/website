@@ -9,29 +9,33 @@ type MusicReleaseProps = {
 
 export const MusicRelease = ({ name, coverUrl, link }: MusicReleaseProps) => {
   return (
-    <div className="flex flex-col items-center justify-center mb-5">
-      <a
-        className="mb-4 cursor-pointer"
-        target="_blank"
-        href={link}
-        rel="noreferrer"
-      >
-        {name}
-      </a>
-      <a
-        className="cursor-pointer"
-        target="_blank"
-        href={link}
-        rel="noreferrer"
-      >
-        <img className="w-max" src={coverUrl.toString()} />
-      </a>
-    </div>
+    <a
+      className="group flex flex-col items-center justify-center mb-5 gap-4"
+      rel="noreferrer nofollow"
+      href={link}
+      target="_blank"
+    >
+      <span>{name}</span>
+      <div className="overflow-hidden max-w-[512px] max-h-[512px]">
+        <img
+          className="w-max group-hover:scale-[1.03] group-hover:opacity-75 group-focus-visible:opacity-75 group-focus-visible:scale-[1.03] transition-[transform,opacity] duration-300"
+          height={512}
+          width={512}
+          src={coverUrl.toString()}
+          alt=""
+        />
+      </div>
+    </a>
   );
 };
 
 const Loading = () => {
-  return <Shimmer className="aspect-square rounded-md" />;
+  return (
+    <div className="flex flex-col items-center justify-center mb-5 gap-4">
+      <Shimmer className="w-52 h-8" />
+      <Shimmer className="aspect-square rounded-md max-w-[512px] max-h-[512px]" />
+    </div>
+  );
 };
 
 MusicRelease.Loading = Loading;

@@ -4,8 +4,8 @@ import "@fontsource/ubuntu/400.css"; // Specify weight
 import { useEffect, useState } from "react";
 import { useDonationGoals } from "../hooks/useDonationGoals";
 import { useExternalDonationTotal } from "../hooks/useExternalDonationTotal";
-import { getDocumentTitle } from "../utils/getDocumentTitle";
 import "./GoalWidget.scss";
+import { useTitle } from "../hooks/useTitle";
 
 const formatter = new Intl.NumberFormat("de-DE", {
   style: "currency",
@@ -13,7 +13,7 @@ const formatter = new Intl.NumberFormat("de-DE", {
 });
 
 export const GoalWidget = () => {
-  document.title = getDocumentTitle("GoalWidget");
+  useTitle("GoalWidget");
 
   const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(
@@ -102,16 +102,16 @@ export const GoalWidget = () => {
       {donationsStatus === "success" &&
         donationGoalsStatus === "success" &&
         !nextDonationGoal && (
-        <>
-          <div className="donationNameWrapper">
-            <div className="successMessage">
-              {donationGoals.length > 0
-                ? "Alle Goals wurden erreicht!"
-                : "Es gibt aktuell keine Goals!"}
+          <>
+            <div className="donationNameWrapper">
+              <div className="successMessage">
+                {donationGoals.length > 0
+                  ? "Alle Goals wurden erreicht!"
+                  : "Es gibt aktuell keine Goals!"}
+              </div>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
     </div>
   );
 };

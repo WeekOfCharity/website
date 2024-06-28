@@ -1,5 +1,5 @@
 import { Brush4 } from "../components/Brushes/Brush4";
-import { getDocumentTitle } from "../utils/getDocumentTitle";
+import { useTitle } from "../hooks/useTitle";
 import "./Projects.scss";
 
 const chesster1 = new URL("../assets/chesster-1.png", import.meta.url);
@@ -8,7 +8,7 @@ const chesster3 = new URL("../assets/chesster-3.png", import.meta.url);
 const chesster4 = new URL("../assets/chesster-4.png", import.meta.url);
 
 export const Projects = () => {
-  document.title = getDocumentTitle("Projekte");
+  useTitle("Projekte");
 
   return (
     <main className="text-neutral-800 woc-accent-blue23">
@@ -33,6 +33,7 @@ export const Projects = () => {
                   <img
                     className="chesster-timeline-image chesster-1"
                     src={chesster1.toString()}
+                    role="presentation"
                   />
                 </div>
                 <span className="text-lg font-semibold">
@@ -93,6 +94,7 @@ export const Projects = () => {
                   <img
                     className="chesster-timeline-image chesster-4"
                     src={chesster4.toString()}
+                    role="presentation"
                   />
                 </div>
                 <div className="leading-relaxed py-5 pl-5 md:pl-8 pr-5 text-left">
@@ -124,6 +126,7 @@ export const Projects = () => {
                   <img
                     className="chesster-timeline-image chesster-3"
                     src={chesster3.toString()}
+                    role="presentation"
                   />
                 </div>
 
@@ -160,6 +163,7 @@ export const Projects = () => {
                     <img
                       className="chesster-timeline-image chesster-2"
                       src={chesster2.toString()}
+                      role="presentation"
                     />
                   </div>
                   <div className="year">2021</div>

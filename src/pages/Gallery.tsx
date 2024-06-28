@@ -9,12 +9,12 @@ import {
   GalleryImage as GalleryImageData,
   useGalleryImages,
 } from "../hooks/useGalleryImages";
-import { getDocumentTitle } from "../utils/getDocumentTitle";
 import "./Gallery.scss";
+import { useTitle } from "../hooks/useTitle";
 
 export const Gallery = () => {
   const { t } = useTranslation();
-  document.title = getDocumentTitle(t("gallery.gallery"));
+  useTitle(t("gallery.gallery"));
 
   const [nextImageId, setNextImageId] = useState<number | undefined>(undefined);
   const [prevImageId, setPrevImageId] = useState<number | undefined>(undefined);

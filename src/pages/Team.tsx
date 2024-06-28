@@ -12,12 +12,14 @@ import { Stream } from "../components/Stream/Stream";
 import { useStreams } from "../hooks/useStreams";
 import { Member as MemberData, useTeam } from "../hooks/useTeam";
 import { getState } from "../utils/dateAndTime";
-import { getDocumentTitle } from "../utils/getDocumentTitle";
+import { useTitle } from "../hooks/useTitle";
 import "./Team.scss";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
 export const Team = () => {
+  useTitle("Team");
+
   const [activeMember, setActiveMember] = useState<MemberData | undefined>(
     undefined
   );
@@ -38,8 +40,6 @@ export const Team = () => {
     };
   }, [activeMember]);
 
-  document.title = getDocumentTitle("Team");
-
   const { data: streams, status: streamsStatus } = useStreams();
   const { data: members, status: membersStatus } = useTeam();
 
@@ -57,8 +57,8 @@ export const Team = () => {
   const getStreamsWithFellow = (memberId: number) => {
     return typeof streams !== "undefined" && streams.length > 0
       ? streams.filter((stream) =>
-        stream.fellows.some((fellow) => fellow.people_id.id === memberId)
-      )
+          stream.fellows.some((fellow) => fellow.people_id.id === memberId)
+        )
       : [];
   };
 
@@ -135,6 +135,7 @@ export const Team = () => {
                 <img
                   className="mt-4 ml-3 -scale-x-100"
                   src={arrowDown.toString()}
+                  role="presentation"
                 />
               </div>
 
@@ -271,6 +272,7 @@ export const Team = () => {
                     process.env.BASE_URL +
                     `/assets/${activeMember.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                   }
+                  role="presentation"
                 />
               </div>
 

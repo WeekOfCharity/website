@@ -1,10 +1,10 @@
 import { Brush4 } from "../components/Brushes/Brush4";
 import { MusicRelease } from "../components/MusicRelease/MusicRelease";
 import { useMusicReleases } from "../hooks/useMusicReleases";
-import { getDocumentTitle } from "../utils/getDocumentTitle";
+import { useTitle } from "../hooks/useTitle";
 
 export const Music = () => {
-  document.title = getDocumentTitle("Musik");
+  useTitle("Musik");
 
   const { data: musicReleases, status: musicReleasesStatus } =
     useMusicReleases();
@@ -12,9 +12,9 @@ export const Music = () => {
   return (
     <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
-        <div className="font-pally font-bold max-w-screen-md mx-auto text-accent-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto text-accent-500 text-4xl md:text-7xl w-4/5">
           Unsere Musik
-        </div>
+        </h1>
 
         <Brush4 className="absolute h-64 left-1/2 mt-4 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
@@ -53,9 +53,9 @@ export const Music = () => {
         </section>
 
         <section className="max-w-screen-xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto space-y-2 text-center text-green23-700 font-pally font-bold text-3xl">
-          {musicReleasesStatus === "success" && (
-            <div className="gap-14 grid grid-cols-1 lg:grid-cols-2 mx-5 md:mx-10">
-              {musicReleases.map((album) => (
+          <div className="gap-14 grid grid-cols-1 lg:grid-cols-2 mx-5 md:mx-10">
+            {musicReleasesStatus === "success" &&
+              musicReleases.map((album) => (
                 <MusicRelease
                   key={album.id}
                   coverUrl={
@@ -67,8 +67,11 @@ export const Music = () => {
                   year={album.year}
                 />
               ))}
-            </div>
-          )}
+            {musicReleasesStatus !== "success" &&
+              [...Array(4)].map((_, index) => (
+                <MusicRelease.Loading key={index} />
+              ))}
+          </div>
         </section>
       </div>
     </main>

@@ -122,20 +122,21 @@ export const Nav = () => {
               {t("mainNav.team")}
             </span>
           </NavLink>
-          {configurationStatus === "success" && configuration.gallery_enabled && (
-            <NavLink
-              className={({ isActive }) =>
-                classNames(
-                  isActive ? "text-green23-500" : "hover:text-green23-500"
-                )
-              }
-              to="/galerie"
-            >
-              <span className="font-pally font-medium text-lg">
-                {t("mainNav.gallery")}
-              </span>
-            </NavLink>
-          )}
+          {configurationStatus === "success" &&
+            configuration.gallery_enabled && (
+              <NavLink
+                className={({ isActive }) =>
+                  classNames(
+                    isActive ? "text-green23-500" : "hover:text-green23-500"
+                  )
+                }
+                to="/galerie"
+              >
+                <span className="font-pally font-medium text-lg">
+                  {t("mainNav.gallery")}
+                </span>
+              </NavLink>
+            )}
         </div>
         <div className="md:flex hidden items-center ml-auto space-x-5">
           <a
@@ -218,6 +219,8 @@ export const Nav = () => {
             "translate-x-full": !isMenuOpen,
           }
         )}
+        inert={!isMenuOpen ? "true" : undefined}
+        aria-hidden={!isMenuOpen}
       >
         <Brush1 className="absolute -right-40 sm:-right-24 text-accent-500 -top-8 w-[400px] -z-10" />
 

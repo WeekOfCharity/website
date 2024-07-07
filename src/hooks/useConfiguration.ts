@@ -5,7 +5,6 @@ export type Configuration = {
   id: number;
   twitch_embed: boolean;
   woc_start: string;
-  gallery_enabled: boolean;
   schedule_complete: boolean;
 };
 

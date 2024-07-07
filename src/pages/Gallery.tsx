@@ -4,7 +4,6 @@ import { Brush4 } from "../components/Brushes/Brush4";
 import { ButtonGroup } from "../components/ButtonGroup/ButtonGroup";
 import { GalleryImage } from "../components/GalleryImage/GalleryImage";
 import { GalleryImageLarge } from "../components/GalleryImageLarge/GalleryImageLarge";
-import { useConfiguration } from "../hooks/useConfiguration";
 import {
   GalleryImage as GalleryImageData,
   useGalleryImages,
@@ -23,8 +22,6 @@ export const Gallery = () => {
   const [imageContent, setImageContent] = useState(null);
   const [galleryImageOrder, setGalleryImageOrder] = useState([]);
 
-  const { data: configuration, status: configurationStatus } =
-    useConfiguration();
   const { data: galleryImages, status: galleryImagesStatus } =
     useGalleryImages();
 
@@ -143,49 +140,47 @@ export const Gallery = () => {
         </div>
       </section>
 
-      {configurationStatus === "success" && configuration.gallery_enabled && (
-        <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
-          {imageClicked && imageContent && (
-            <GalleryImageLarge
-              imageData={imageContent}
-              hidePopUp={hideLargeImage}
-              displayImageFunction={displayLargeImage}
-              nextImage={nextImageId}
-              prevImage={prevImageId}
-            />
-          )}
-          {galleryImagesStatus === "success" &&
-            Object.keys(galleryImagesGrouped).map((categoryValue) => (
-              <div className="space-y-4" key={categoryValue}>
-                <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">
-                  {categoryValue}
-                </div>
-
-                <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-                  {galleryImagesGrouped[categoryValue].map((galleryImage) => (
-                    <GalleryImage
-                      imageID={galleryImage.id}
-                      imageUrl={
-                        process.env.BASE_URL +
-                        `/assets/${galleryImage.image}?width=512&height=512&quality=75&fit=cover&format=webp`
-                      }
-                      key={galleryImage.id}
-                      onClickFunction={displayLargeImage}
-                    />
-                  ))}
-                </div>
+      <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
+        {imageClicked && imageContent && (
+          <GalleryImageLarge
+            imageData={imageContent}
+            hidePopUp={hideLargeImage}
+            displayImageFunction={displayLargeImage}
+            nextImage={nextImageId}
+            prevImage={prevImageId}
+          />
+        )}
+        {galleryImagesStatus === "success" &&
+          Object.keys(galleryImagesGrouped).map((categoryValue) => (
+            <div className="space-y-4" key={categoryValue}>
+              <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">
+                {categoryValue}
               </div>
-            ))}
 
-          {galleryImagesStatus !== "success" && (
-            <div className="gap-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
-              {[...Array(14)].map((_, index) => (
-                <GalleryImage.Loading key={index} />
-              ))}
+              <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                {galleryImagesGrouped[categoryValue].map((galleryImage) => (
+                  <GalleryImage
+                    imageID={galleryImage.id}
+                    imageUrl={
+                      process.env.BASE_URL +
+                      `/assets/${galleryImage.image}?width=512&height=512&quality=75&fit=cover&format=webp`
+                    }
+                    key={galleryImage.id}
+                    onClickFunction={displayLargeImage}
+                  />
+                ))}
+              </div>
             </div>
-          )}
-        </section>
-      )}
+          ))}
+
+        {galleryImagesStatus !== "success" && (
+          <div className="gap-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
+            {[...Array(14)].map((_, index) => (
+              <GalleryImage.Loading key={index} />
+            ))}
+          </div>
+        )}
+      </section>
     </main>
   );
 };

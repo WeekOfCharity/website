@@ -10,7 +10,6 @@ import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useConfiguration } from "../../hooks/useConfiguration";
 import { Brush1 } from "../Brushes/Brush1";
 import { Brush2 } from "../Brushes/Brush2";
 import "./Nav.scss";
@@ -27,9 +26,6 @@ export const Nav = () => {
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
   const [scrollbarGutterOriginalValue, setScrollbarGutterOriginalValue] =
     useState<string>("unset");
-
-  const { data: configuration, status: configurationStatus } =
-    useConfiguration();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -122,21 +118,18 @@ export const Nav = () => {
               {t("mainNav.team")}
             </span>
           </NavLink>
-          {configurationStatus === "success" &&
-            configuration.gallery_enabled && (
-              <NavLink
-                className={({ isActive }) =>
-                  classNames(
-                    isActive ? "text-green23-500" : "hover:text-green23-500"
-                  )
-                }
-                to="/galerie"
-              >
-                <span className="font-pally font-medium text-lg">
-                  {t("mainNav.gallery")}
-                </span>
-              </NavLink>
-            )}
+          <NavLink
+            className={({ isActive }) =>
+              classNames(
+                isActive ? "text-green23-500" : "hover:text-green23-500"
+              )
+            }
+            to="/galerie"
+          >
+            <span className="font-pally font-medium text-lg">
+              {t("mainNav.gallery")}
+            </span>
+          </NavLink>
         </div>
         <div className="md:flex hidden items-center ml-auto space-x-5">
           <a

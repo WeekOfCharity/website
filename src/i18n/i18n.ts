@@ -44,6 +44,13 @@ export enum Language {
 
 export const defaultLanguage = Language.DE;
 
+export const getValidLanguage = (lang?: string) => {
+  if (!lang) return defaultLanguage;
+  return Object.values(Language).find((validLang) =>
+    lang.startsWith(validLang)
+  );
+};
+
 export const initi18n = () => {
   if (!haveSameStructure(deTranslation, enTranslation))
     console.error("Translation files don't have the same structure!");

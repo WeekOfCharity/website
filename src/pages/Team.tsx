@@ -15,11 +15,13 @@ import { getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
 import "./Team.scss";
 import { useTranslation } from "react-i18next";
+import { getValidLanguage } from "../i18n/i18n";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
 export const Team = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLanguage = getValidLanguage(i18n.language);
   useTitle(t("mainNav.team"));
 
   const [activeMember, setActiveMember] = useState<MemberData | undefined>(
@@ -42,8 +44,8 @@ export const Team = () => {
     };
   }, [activeMember]);
 
-  const { data: streams, status: streamsStatus } = useStreams();
-  const { data: members, status: membersStatus } = useTeam();
+  const { data: streams, status: streamsStatus } = useStreams(validLanguage);
+  const { data: members, status: membersStatus } = useTeam(validLanguage);
 
   const charityId = 999; // TODO
   const chessterId = 1000; // TODO
@@ -345,7 +347,7 @@ export const Team = () => {
                       className="bg-blue23-500 flex font-round font-bold px-1 py-0.5 rounded-sm shadow text-blue23-900 text-xs"
                       key={role}
                     >
-                      #{role}
+                      #{t(`team.roles.${role}`)}
                     </span>
                   ))}
                 </div>

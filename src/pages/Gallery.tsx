@@ -9,9 +9,10 @@ import {
   useGalleryImages,
 } from "../hooks/useGalleryImages";
 import { useTitle } from "../hooks/useTitle";
+import { getValidLanguage } from "../i18n/i18n";
 
 export const Gallery = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   useTitle(t("mainNav.gallery"));
 
   const [nextImageId, setNextImageId] = useState<number | undefined>(undefined);
@@ -21,8 +22,9 @@ export const Gallery = () => {
   const [imageContent, setImageContent] = useState(null);
   const [galleryImageOrder, setGalleryImageOrder] = useState([]);
 
-  const { data: galleryImages, status: galleryImagesStatus } =
-    useGalleryImages();
+  const { data: galleryImages, status: galleryImagesStatus } = useGalleryImages(
+    getValidLanguage(i18n.language)
+  );
 
   const displayLargeImage = (imageId: number) => {
     setImageClicked(true);

@@ -18,12 +18,14 @@ import { Stream as StreamData, useStreams } from "../hooks/useStreams";
 import { formatDay, getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
 import { useTranslation } from "react-i18next";
+import { getValidLanguage } from "../i18n/i18n";
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
 export const Program = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLanguage = getValidLanguage(i18n.language);
   const [activeActivity, setActiveActivity] = useState<
     ActivityData | undefined
   >(undefined);
@@ -45,8 +47,9 @@ export const Program = () => {
 
   useTitle(t("mainNav.program"));
 
-  const { data: activities, status: activitiesStatus } = useActivities();
-  const { data: streams, status: streamsStatus } = useStreams();
+  const { data: activities, status: activitiesStatus } =
+    useActivities(validLanguage);
+  const { data: streams, status: streamsStatus } = useStreams(validLanguage);
 
   const streamsGrouped = useMemo(() => {
     if (typeof streams === "undefined" || streams.length === 0) {

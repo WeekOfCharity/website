@@ -6,6 +6,7 @@ import { useDonationGoals } from "../hooks/useDonationGoals";
 import { useExternalDonationTotal } from "../hooks/useExternalDonationTotal";
 import "./GoalWidget.scss";
 import { useTitle } from "../hooks/useTitle";
+import { Language } from "../i18n/i18n";
 
 const formatter = new Intl.NumberFormat("de-DE", {
   style: "currency",
@@ -32,7 +33,7 @@ export const GoalWidget = () => {
     data: donationGoals,
     status: donationGoalsStatus,
     refetch: refetchDonationGoals,
-  } = useDonationGoals();
+  } = useDonationGoals(Language.DE);
 
   useEffect(() => {
     if (!donations || !donationGoals) return;

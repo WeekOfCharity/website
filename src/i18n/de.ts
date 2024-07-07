@@ -27,7 +27,7 @@ export const deTranslation = {
     mainHeader: "Die Galerie der", // Week of Charity
     year: "Jahr",
     category: "Kategorie",
-    from: "Bild von", // Autorenname
+    from: "Bild von",
     credit: "Credit:",
   },
   home: {
@@ -147,6 +147,12 @@ export const deTranslation = {
     playMusic: "Musik abspielen",
     hosts: "hostet",
     supports: "begleitet",
+    roles: {
+      Design: "Design",
+      Musik: "Musik",
+      Website: "Website",
+      SocialMedia: "SocialMedia",
+    },
   },
   goals: {
     beThere: "Sei bei der Umsetzung dabei",

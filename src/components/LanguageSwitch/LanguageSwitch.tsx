@@ -1,17 +1,10 @@
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
-import { defaultLanguage, Language } from "../../i18n/i18n";
+import { getValidLanguage, Language } from "../../i18n/i18n";
 import { useEffect, useState } from "react";
 
 type LanguageSwitchProps = {
   className?: string;
-};
-
-const getValidLanguage = (lang?: string) => {
-  if (!lang) return defaultLanguage;
-  return Object.values(Language).find((validLang) =>
-    lang.startsWith(validLang)
-  );
 };
 
 export const LanguageSwitch = ({ className }: LanguageSwitchProps) => {

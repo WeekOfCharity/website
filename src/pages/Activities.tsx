@@ -17,6 +17,7 @@ import {
 import { Stream as StreamData, useStreams } from "../hooks/useStreams";
 import { getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
+import { getValidLanguage } from "../i18n/i18n";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
@@ -36,7 +37,8 @@ export const Activities = () => {
     ActivityData | undefined
   >(undefined);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLanguage = getValidLanguage(i18n.language);
 
   useEffect(() => {
     if (typeof activeActivity !== "undefined") {
@@ -54,8 +56,9 @@ export const Activities = () => {
 
   useTitle(t("mainNav.activities"));
 
-  const { data: activities, status: activitiesStatus } = useActivities();
-  const { data: streams, status: streamsStatus } = useStreams();
+  const { data: activities, status: activitiesStatus } =
+    useActivities(validLanguage);
+  const { data: streams, status: streamsStatus } = useStreams(validLanguage);
 
   const openingId = 999; // TODO
   const finaleId = 1000; // TODO

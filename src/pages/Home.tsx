@@ -21,10 +21,12 @@ import { useStreams } from "../hooks/useStreams";
 
 import { useTranslation } from "react-i18next";
 import { useTitle } from "../hooks/useTitle";
+import { getValidLanguage } from "../i18n/i18n";
 
 export const Home = () => {
   useTitle();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLang = getValidLanguage(i18n.language);
   const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
   const [lastDonationGoal, setLastDonationGoal] = useState(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(
@@ -36,14 +38,14 @@ export const Home = () => {
   const { data: donations, status: donationsStatus } =
     useExternalDonationTotal();
   const { data: donationGoals, status: donationGoalsStatus } =
-    useDonationGoals();
-  const { data: faq, status: faqStatus } = useFAQ();
+    useDonationGoals(validLang);
+  const { data: faq, status: faqStatus } = useFAQ(validLang);
   const { data: configuration, status: configurationStatus } =
     useConfiguration();
-  const { data: streams, status: streamsStatus } = useStreams();
+  const { data: streams, status: streamsStatus } = useStreams(validLang);
   const { data: bidwarResults, status: bidwarResultsStatus } =
     useBidwarResults();
-  const { data: bidwars, status: bidwarsStatus } = useBidwars();
+  const { data: bidwars, status: bidwarsStatus } = useBidwars(validLang);
 
   const hideCountdown = () => {
     setTimeout(() => {

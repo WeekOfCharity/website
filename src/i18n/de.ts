@@ -46,7 +46,7 @@ export const deTranslation = {
     welcome1:
       "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten.",
     welcome2:
-      "Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Mehr zu unserem Projekt findet ihr",
+      "Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an EXIT Deutschland, ein Projekt, das Menschen beim Ausstieg aus der rechtsextremistischen Szene unterstützt. Mehr Informationen findet ihr",
     here: "hier",
     welcome3:
       "Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!",

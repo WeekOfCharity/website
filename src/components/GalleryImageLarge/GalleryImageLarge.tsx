@@ -2,6 +2,7 @@ import { DotPulse } from "@uiball/loaders";
 import { useEffect, useState } from "react";
 import { GalleryImage as GalleryImageData } from "../../hooks/useGalleryImages";
 import "./GalleryImageLarge.scss";
+import { useTranslation } from "react-i18next";
 
 const closeIcon = new URL("../../assets/close-line-icon.svg", import.meta.url);
 const galleryArrow = new URL("../../assets/gallery-arrow.svg", import.meta.url);
@@ -21,6 +22,7 @@ export const GalleryImageLarge = ({
   nextImage,
   prevImage,
 }: GalleryImageLargeProps) => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
   const [currentImageId, setCurrentImageId] = useState<number>(null);
   const [currentImage, setCurrentImage] = useState(null);
@@ -69,7 +71,7 @@ export const GalleryImageLarge = ({
       })
       .catch(() => {
         if (abortController.signal.aborted) {
-          console.log("The user aborted the request");
+          console.warn("The user aborted the request");
         } else {
           console.error("The request failed");
         }
@@ -129,14 +131,16 @@ export const GalleryImageLarge = ({
             </div>
           )}
           <div className="imageInformationWrapper">
-            <div className="text-xl font-bold">Bild von {imageData.author}</div>
+            <div className="text-xl font-bold">
+              {t("gallery.from")} {imageData.author}
+            </div>
             <div
               className="imageDescription"
               dangerouslySetInnerHTML={{ __html: imageData.description }}
             ></div>
             {imageData.author_link && (
               <div className="mt-1">
-                Credit:{" "}
+                {`${t("gallery.credit")} `}
                 <a
                   className="text-green23-600"
                   href={imageData.author_link}
@@ -153,9 +157,3 @@ export const GalleryImageLarge = ({
     </div>
   );
 };
-
-// const Loading = () => {
-//   return <Shimmer className="aspect-square rounded-md" />;
-// };
-
-// GalleryImage.Loading = Loading;

@@ -4,6 +4,7 @@ import { TwitchPlayer } from "react-twitch-embed";
 import { Breakpoint, useBreakpoint } from "../../hooks/useBreakpoint";
 import { Stream, useStreams } from "../../hooks/useStreams";
 import { getState } from "../../utils/dateAndTime";
+import { useTranslation } from "react-i18next";
 
 function getUserFromTwitchLink(link: string) {
   if (link) {
@@ -18,6 +19,7 @@ const playerDimensions = {
 };
 
 const TwitchEmbed = memo(function TwitchEmbed() {
+  const { t } = useTranslation();
   const breakpoint = useBreakpoint();
   const [running, setRunning] = useState<Stream | undefined>(undefined);
   const [showInactive, setShowInactive] = useState(false);
@@ -86,21 +88,18 @@ const TwitchEmbed = memo(function TwitchEmbed() {
               TwitchPlayerPreventRerender
             ) : (
               <div className="flex flex-col items-center justify-between text-center w-full h-full p-4 md:p-8 lg:p-16">
-                <div className="font-pally font-bold mx-auto p-4 text-white text-xl md:text-4xl lg:text-5xl">
-                  Week of Charity Twitch Player
-                </div>
+                <h2 className="font-pally font-bold mx-auto p-4 text-white text-xl md:text-4xl lg:text-5xl">
+                  {t("twitchPlayer.heading")}
+                </h2>
                 <div className="mx-auto text-neutral-300 text-md md:text-xl lg:text-xl">
-                  Datenschutzhinweis: Wenn du den Twitch Player aktivierst,
-                  werden einige Daten wie deine IP-Adresse an Twitch gesendet.
-                  Dies dient der Verbesserung deines Streamingerlebnisses und
-                  wird auch für Analysen genutzt.
+                  {t("twitchPlayer.privacyNote")}
                 </div>
                 <button
                   className="mt-10 md:mt-0"
                   onClick={() => setPrivacyAccepted(true)}
                 >
                   <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-3 md:py-5 px-7 duration-300 bg-neutral-600 hover:bg-neutral-200 text-neutral-200 hover:text-neutral-600 text-2xl md:text-3xl mx-5 transition-all">
-                    Einverstanden
+                    {t("twitchPlayer.accept")}
                   </div>
                 </button>
               </div>

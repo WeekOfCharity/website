@@ -17,11 +17,13 @@ import {
 import { Stream as StreamData, useStreams } from "../hooks/useStreams";
 import { formatDay, getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
+import { useTranslation } from "react-i18next";
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
 export const Program = () => {
+  const { t } = useTranslation();
   const [activeActivity, setActiveActivity] = useState<
     ActivityData | undefined
   >(undefined);
@@ -41,7 +43,7 @@ export const Program = () => {
     };
   }, [activeActivity]);
 
-  useTitle("Programm");
+  useTitle(t("mainNav.program"));
 
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();
@@ -127,12 +129,14 @@ export const Program = () => {
     <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-green23-900 uppercase">
-          Keine Events verpassen
+          {t("program.subHeader")}
         </div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-green23-500 text-4xl md:text-7xl w-4/5">
-          Das Programm der Week of Charity
-        </div>
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-green23-500 text-4xl md:text-7xl w-4/5">
+          {t("program.mainHeader")}
+          <br />
+          Week of Charity
+        </h1>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
@@ -141,7 +145,7 @@ export const Program = () => {
         <section className="mb-20 md:mb-40 mt-12 md:mt-20">
           <div className="max-w-screen-2xl mb-6 mx-auto">
             <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">
-              Die Highlights 👑 der Woche
+              {t("program.highlights")}
             </div>
           </div>
           <Carousel>
@@ -176,8 +180,8 @@ export const Program = () => {
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
         <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">
           {streamsStatus === "success" && streams.length > 0
-            ? "Alle Streams"
-            : "Bald seht ihr hier mehr!"}
+            ? t("program.allStreams")
+            : t("seeMoreSoon")}
         </div>
 
         <div className="gap-x-5 gap-y-10 grid xl:grid-cols-2">
@@ -244,7 +248,7 @@ export const Program = () => {
           </button>
 
           {activeActivity && (
-            <main
+            <div
               className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24"
               style={{ scrollbarWidth: "thin" }}
             >
@@ -292,7 +296,7 @@ export const Program = () => {
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-green23-500">
-                        Sei dabei in diesen Streams
+                        {t("activities.joinTheseStreams")}
                       </div>
                       {getStreamsWithActivity(activeActivity.id).map(
                         (stream) => (
@@ -321,7 +325,7 @@ export const Program = () => {
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-green23-500">
-                        {activeActivity.name} wird gehostet von
+                        {activeActivity.name} {t("activities.isHostedBy")}
                       </div>
                       <div className="flex gap-2">
                         {getStreamersWithActivity(activeActivity.id).map(
@@ -353,7 +357,7 @@ export const Program = () => {
                   {getFellowsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-green23-500">
-                        {activeActivity.name} wird begleitet von
+                        {activeActivity.name} {t("activities.isAccompaniedBy")}
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {getFellowsWithActivity(activeActivity.id).map(
@@ -387,7 +391,7 @@ export const Program = () => {
                   )}
                 </section>
               )}
-            </main>
+            </div>
           )}
         </aside>
       </OutsideAlerter>

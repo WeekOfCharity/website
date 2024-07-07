@@ -4,6 +4,7 @@ import { getState } from "../../utils/dateAndTime";
 import { Brush4 } from "../Brushes/Brush4";
 import { GoalStamp } from "../Icons/GoalStamp";
 import { Stream } from "../Stream/Stream";
+import { useTranslation } from "react-i18next";
 
 type DonationGoalProps = {
   achieved?: boolean;
@@ -22,6 +23,7 @@ export const DonationGoal = ({
   timeslot = undefined,
   title,
 }: DonationGoalProps) => {
+  const { t } = useTranslation();
   return (
     <article
       className={classNames("flex flex-col relative", {
@@ -32,8 +34,8 @@ export const DonationGoal = ({
       {achieved &&
         timeslot &&
         getState(timeslot.start, timeslot.end) === "ended" && (
-        <GoalStamp className="absolute text-blue23-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-48" />
-      )}
+          <GoalStamp className="absolute text-blue23-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-48" />
+        )}
       <div className="flex items-center my-auto p-5">
         <div className="flex items-center justify-center mr-7 relative">
           <Brush4
@@ -53,7 +55,7 @@ export const DonationGoal = ({
         </div>
         <div>
           <div className="font-semibold text-lg">
-            {!hidden ? title : "Dieses Spendenziel ist noch geheim"}
+            {!hidden ? title : t("goals.secret")}
           </div>
           {description && !hidden && <div>{description}</div>}
         </div>
@@ -66,7 +68,7 @@ export const DonationGoal = ({
             "text-neutral-500": !achieved,
           })}
         >
-          Sei bei der Umsetzung dabei
+          {t("goals.beThere")}
         </div>
 
         {timeslot && (
@@ -90,7 +92,7 @@ export const DonationGoal = ({
         {!timeslot && (
           <div className="bg-neutral-900 bg-opacity-10 flex h-28 md:h-20 items-center justify-center rounded-md w-full">
             <div className="font-bold text-neutral-900 text-opacity-75">
-              Termin steht noch aus
+              {t("goals.tbd")}
             </div>
           </div>
         )}

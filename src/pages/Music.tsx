@@ -1,10 +1,12 @@
+import { useTranslation } from "react-i18next";
 import { Brush4 } from "../components/Brushes/Brush4";
 import { MusicRelease } from "../components/MusicRelease/MusicRelease";
 import { useMusicReleases } from "../hooks/useMusicReleases";
 import { useTitle } from "../hooks/useTitle";
 
 export const Music = () => {
-  useTitle("Musik");
+  const { t } = useTranslation();
+  useTitle(t("subNav.music"));
 
   const { data: musicReleases, status: musicReleasesStatus } =
     useMusicReleases();
@@ -13,7 +15,7 @@ export const Music = () => {
     <main className="text-neutral-800 woc-accent-green23">
       <header className="px-5 py-20 relative text-center">
         <h1 className="font-pally font-bold max-w-screen-md mx-auto text-accent-500 text-4xl md:text-7xl w-4/5">
-          Unsere Musik
+          {t("music.mainHeader")}
         </h1>
 
         <Brush4 className="absolute h-64 left-1/2 mt-4 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
@@ -22,33 +24,26 @@ export const Music = () => {
       <div className="flex flex-col items-center mx-10 md:mx-28 lg:mx-32">
         <section className="max-w-screen-lg mx-0 sm:mx-8 lg:mx-16 mb-6 flex bg-green23-100 bg-opacity-50 py-10 row-span-2">
           <div className="leading-relaxed mx-5 md:mx-10 text-left">
-            <span className="text-lg font-semibold">Unsere Musik</span> wird
-            jedes Jahr von{" "}
+            <span className="text-lg font-semibold">{t("music.text.t1")}</span>
+            {` ${t("music.text.t2")} `}
             <a
               target="_blank"
               href="https://battleofthebits.com/barracks/Profile/kleeder/"
-              className="cursor-pointer text-green23-800"
+              className="cursor-pointer text-green23-800 underline underline-offset-2"
               rel="noreferrer"
             >
-              {" "}
               Amy
-            </a>{" "}
-            und{" "}
+            </a>
+            {` ${t("and")} `}
             <a
               target="_blank"
               href="https://battleofthebits.com/barracks/Profile/mirageofher/"
-              className="cursor-pointer text-green23-800"
+              className="cursor-pointer text-green23-800 underline underline-offset-2"
               rel="noreferrer"
             >
-              {" "}
               Mioh
-            </a>{" "}
-            gemacht. Die Lieder könnt ihr auf Bandcamp kaufen. All unsere
-            Einnahmen gehen dabei an die aktuelle Charity. Unten findet ihr eine
-            Auflistung aller Week of Charity Alben, die die beiden im Laufe der
-            Jahre für uns erstellt haben. Wenn ihr auf ein Album klickt, kommt
-            ihr auf die jeweilige Bandcamp-Seite, auf der ihr das Album kaufen
-            könnt. Vielen Dank für eure Unterstützung!
+            </a>
+            {` ${t("music.text.t3")}`}
           </div>
         </section>
 

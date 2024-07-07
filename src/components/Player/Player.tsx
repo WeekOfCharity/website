@@ -13,10 +13,12 @@ import { Stream, useStreams } from "../../hooks/useStreams";
 import { formatTime, getState } from "../../utils/dateAndTime";
 import { Brush1 } from "../Brushes/Brush1";
 import "./Player.scss";
+import { useTranslation } from "react-i18next";
 
 const arrowRight = new URL("../../assets/arrow-right.svg", import.meta.url);
 
 function Player() {
+  const { t } = useTranslation();
   const [isPlayerOpen, setPlayerOpen] = useState(true);
   const [running, setRunning] = useState<Stream | undefined>(undefined);
   const [showInactive, setShowInactive] = useState(false);
@@ -42,13 +44,15 @@ function Player() {
   return (
     <>
       <button
-        className="bg-accent-500 bottom-0 fixed m-5 md:m-10 p-4 right-0 rounded-full text-white woc-player-button z-[99997]"
+        className={classNames(
+          "bg-accent-500 bottom-0 fixed m-5 md:m-10 p-4 right-0 rounded-full text-white woc-player-button z-[99997]",
+          { hidden: isPlayerOpen }
+        )}
         onClick={() => setPlayerOpen(true)}
       >
         <Icon path={mdiBroadcast} size="2rem" />
       </button>
-
-      <aside
+      <div
         className={classNames(
           "bg-neutral-800 bottom-0 duration-300 ease-in-out fixed md:max-w-screen-sm overflow-hidden md:right-10 md:rounded-lg text-white transform-gpu transition-all w-full z-[99998]",
           {
@@ -56,6 +60,7 @@ function Player() {
             "shadow-none translate-y-full": !isPlayerOpen,
           }
         )}
+        inert={!isPlayerOpen ? "true" : undefined}
       >
         <Brush1 className="absolute -bottom-24 duration-300 -left-40 -scale-100 text-accent-500 transform-gpu transition-all w-[400px] -z-10" />
 
@@ -69,7 +74,7 @@ function Player() {
                   size="1rem"
                 />
                 <div className="font-bold text-accent-500 text-xs uppercase">
-                  Aktueller Stream
+                  {t("player.currentStream")}
                 </div>
               </div>
               <div className="font-round font-bold">
@@ -106,16 +111,14 @@ function Player() {
 
         {showInactive && (
           <div className="font-round font-bold p-5">
-            Die Week of Charity ist aktuell nicht aktiv.
+            {t("player.notActive1")}
             <br />
-            Sieh dir unser Programm an, um keine Events zu verpassen.
+            {t("player.notActive2")}
           </div>
         )}
 
         {(streamsStatus !== "success" || (!running && !showInactive)) && (
-          <div className="font-round font-bold p-5">
-            Aktueller Stream wird geladen...
-          </div>
+          <div className="font-round font-bold p-5">{t("player.loading")}</div>
         )}
 
         <div className="flex justify-end p-5 space-x-2">
@@ -126,11 +129,12 @@ function Player() {
                   className="font-handwriting font-semibold mr-3 mt-3 text-xl whitespace-nowrap"
                   style={{ textShadow: "0 0 3px #26262680, 0 0 2px #262626" }}
                 >
-                  jetzt zusehen
+                  {t("player.watchNow")}
                 </span>
                 <img
                   className="rotate-12 w-[78px]"
                   src={arrowRight.toString()}
+                  alt=""
                 />
               </div>
 
@@ -157,11 +161,11 @@ function Player() {
 
           {showInactive && (
             <Link
-              className="bg-accent-500 hover:bg-accent-200 duration-300 flex items-center px-3 py-2 rounded-full text-neutral-800 transition-all"
+              className="bg-accent-500 hover:bg-accent-200 duration-300 flex items-center px-4 py-2 rounded-full text-neutral-800 transition-all"
               to="/streams"
             >
-              <Icon path={mdiCalendar} size="1.25rem" />
-              <span className="font-semibold ml-3">Programm</span>
+              <Icon path={mdiCalendar} size="1.25rem" aria-hidden />
+              <span className="font-semibold ml-2">{t("mainNav.program")}</span>
             </Link>
           )}
 
@@ -172,7 +176,7 @@ function Player() {
             <Icon path={mdiClose} size="1.25rem" />
           </button>
         </div>
-      </aside>
+      </div>
     </>
   );
 }

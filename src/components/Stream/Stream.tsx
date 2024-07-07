@@ -6,6 +6,7 @@ import { Breakpoint, useBreakpoint } from "../../hooks/useBreakpoint";
 import { formatDay, formatTime } from "../../utils/dateAndTime";
 import { Shimmer } from "../Shimmer/Shimmer";
 import "./Stream.scss";
+import { useTranslation } from "react-i18next";
 
 type StreamProps = {
   activityId: number;
@@ -36,6 +37,7 @@ export const Stream = ({
   title,
   vodLink,
 }: StreamProps) => {
+  const { t } = useTranslation();
   const breakpoint = useBreakpoint();
 
   const RootElement =
@@ -52,7 +54,7 @@ export const Stream = ({
       })}
       to={condensed && !noLink ? `/streams?id=${activityId}` : undefined}
       href={noLink && vodLink ? vodLink : undefined}
-      title={noLink && vodLink ? "Zum VOD" : undefined}
+      title={noLink && vodLink ? t("program.toVOD") : undefined}
       rel={noLink && vodLink ? "nofollow noreferrer" : undefined}
       target={noLink && vodLink ? "_blank" : undefined}
     >
@@ -102,7 +104,7 @@ export const Stream = ({
         {condensed && highlight && (
           <div className="absolute backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex md:hidden items-center left-2 px-1 py-0.5 rounded-sm shadow-xl space-x-4 text-[#EAB308] text-xs top-2">
             <span className="font-round2 font-bold uppercase">
-              👑 Highlight
+              {t("program.highlight")}
             </span>
           </div>
         )}
@@ -128,7 +130,7 @@ export const Stream = ({
               <span>{title}</span>
               {state === "ended" && vodLink && (
                 <span className="md:block woc-vod-label">
-                  {noLink ? "Zum VOD" : "VOD verfügbar"}
+                  {noLink ? t("program.toVOD") : t("program.VODavailable")}
                 </span>
               )}
             </div>
@@ -153,7 +155,7 @@ export const Stream = ({
 
                 {highlight && (
                   <span className="md:block font-round2 font-bold hidden text-[#EAB308] text-xs uppercase woc-highlight-label">
-                    👑 Highlight
+                    {t("program.highlight")}
                   </span>
                 )}
               </div>

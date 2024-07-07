@@ -54,7 +54,6 @@ export const AudioPlayer = ({ url }: Props) => {
         onDuration={handleDuration}
         width="320px"
       />
-
       <div className="w-80 h-9">
         <AudioPlayerControls
           playerRef={playerRef}
@@ -63,7 +62,6 @@ export const AudioPlayer = ({ url }: Props) => {
           muted={muted}
           progress={progress}
           duration={duration}
-          // event handler props
           toggleMute={toggleMute}
           handlePlay={handlePlay}
           handlePause={handlePause}

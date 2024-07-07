@@ -14,11 +14,13 @@ import { Member as MemberData, useTeam } from "../hooks/useTeam";
 import { getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
 import "./Team.scss";
+import { useTranslation } from "react-i18next";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
 export const Team = () => {
-  useTitle("Team");
+  const { t } = useTranslation();
+  useTitle(t("mainNav.team"));
 
   const [activeMember, setActiveMember] = useState<MemberData | undefined>(
     undefined
@@ -43,8 +45,8 @@ export const Team = () => {
   const { data: streams, status: streamsStatus } = useStreams();
   const { data: members, status: membersStatus } = useTeam();
 
-  const charityId = 999;
-  const chessterId = 30;
+  const charityId = 999; // TODO
+  const chessterId = 1000; // TODO
   const charity =
     typeof members !== "undefined" && members.length > 0
       ? members.find((member) => member.id === charityId)
@@ -105,14 +107,14 @@ export const Team = () => {
     <main className="text-neutral-800">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-blue23-900 uppercase">
-          Helfende und Freunde
+          {t("team.subHeader")}
         </div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-blue23-500 text-4xl md:text-7xl w-4/5">
-          Das Team der
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-blue23-500 text-4xl md:text-7xl w-4/5">
+          {t("team.mainHeader")}
           <br />
           Week of Charity
-        </div>
+        </h1>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
@@ -130,7 +132,7 @@ export const Team = () => {
             <div>
               <div className="flex justify-center mt-8 -rotate-3 w-full">
                 <span className="font-handwriting font-semibold text-xl">
-                  Klick uns an für mehr Infos
+                  {t("clickForMoreInfo")}
                 </span>
                 <img
                   className="mt-4 ml-3 -scale-x-100"
@@ -169,9 +171,9 @@ export const Team = () => {
               </div>
             </div>
 
-            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
-              Wir streamen für euch
-            </div>
+            <h1 className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
+              {t("team.weStream")}
+            </h1>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
@@ -197,9 +199,9 @@ export const Team = () => {
                 ))}
             </div>
 
-            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
-              Wir unterstützen und begleiten
-            </div>
+            <h2 className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
+              {t("team.weSupport")}
+            </h2>
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
                 .filter(
@@ -228,9 +230,9 @@ export const Team = () => {
 
         {membersStatus !== "success" && (
           <>
-            <div className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
-              Wir streamen für euch
-            </div>
+            <h2 className="font-semibold mb-6 mt-12 md:mt-20  text-3xl md:text-4xl text-center md:text-left">
+              {t("team.weStream")}
+            </h2>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {[...Array(24)].map((_, index) => (
@@ -259,7 +261,7 @@ export const Team = () => {
           </button>
 
           {activeMember && (
-            <main
+            <div
               className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24"
               style={{ scrollbarWidth: "thin" }}
             >
@@ -290,7 +292,7 @@ export const Team = () => {
                   <div
                     className="relative bg-blue23-500 hover:bg-blue23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all cursor-pointer"
                     onClick={playTheme}
-                    title="Musik abspielen"
+                    title={t("team.playMusic")}
                   >
                     {themeStarted && (
                       <div className="triangleWrapper">
@@ -326,7 +328,6 @@ export const Team = () => {
                 )}
                 {themeStarted && (
                   <div className="player">
-                    {/* <AudioPlayer className="origin-bottom-right scale-75 sm:scale-90" src={process.env.BASE_URL + `/assets/${activeMember.theme}.mp3`} autoPlay controls /> */}
                     <AudioPlayer
                       url={
                         process.env.BASE_URL +
@@ -359,22 +360,12 @@ export const Team = () => {
                 />
               )}
 
-              {/* Alternative Player: below Description */}
-              {/* {themeStarted && getStreamsWithHost(activeMember.id).length > 0 &&(
-                <div className="flex flex-col mt-5">
-                      <div className="font-round2 font-bold text-blue23-500">{activeMember.name}s Theme </div>
-                      <div className='player'>
-                        <ReactAudioPlayer src={process.env.BASE_URL + `/assets/${activeMember.theme}.mp3`} autoPlay controls />
-                      </div>
-                </div> 
-              )} */}
-
               {streamsStatus === "success" && (
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithHost(activeMember.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-blue23-500">
-                        {activeMember.name} hostet
+                        {activeMember.name} {t("team.hosts")}
                       </div>
                       {getStreamsWithHost(activeMember.id).map((stream) => (
                         <Stream
@@ -400,7 +391,7 @@ export const Team = () => {
                   {getStreamsWithFellow(activeMember.id).length > 0 && (
                     <div className="flex flex-col gap-2">
                       <div className="font-round2 font-bold text-blue23-500">
-                        {activeMember.name} begleitet
+                        {activeMember.name} {t("team.supports")}
                       </div>
                       {getStreamsWithFellow(activeMember.id).map((stream) => (
                         <Stream
@@ -424,7 +415,7 @@ export const Team = () => {
                   )}
                 </section>
               )}
-            </main>
+            </div>
           )}
         </aside>
       </OutsideAlerter>

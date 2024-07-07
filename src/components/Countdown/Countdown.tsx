@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useConfiguration } from "../../hooks/useConfiguration";
 import { useStreams } from "../../hooks/useStreams";
 import "./Countdown.scss";
+import { useTranslation } from "react-i18next";
 
 type CountdownProps = {
   timerZeroCallback: () => void;
@@ -14,6 +15,7 @@ function formatNumForCountdown(num) {
 }
 
 function Countdown({ timerZeroCallback }: CountdownProps) {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState(null);
 
   const { data: configuration, status: configurationStatus } =
@@ -22,7 +24,7 @@ function Countdown({ timerZeroCallback }: CountdownProps) {
 
   const updateTimer = () => {
     const currentTime = new Date();
-    let woc_start_date;
+    let woc_start_date: Date;
     if (
       streamsStatus === "success" &&
       streams.length > 0 &&
@@ -79,13 +81,13 @@ function Countdown({ timerZeroCallback }: CountdownProps) {
               <th className="countdownFieldNumber">{timeLeft[3]}</th>
             </tr>
             <tr className="text-pink23-900" style={{ fontSize: "1rem" }}>
-              <td> DAYS </td>
+              <td>{t("home.countdown.days").toUpperCase()}</td>
               <td> </td>
-              <td> HOURS </td>
+              <td>{t("home.countdown.hours").toUpperCase()}</td>
               <td> </td>
-              <td> MINUTES </td>
+              <td>{t("home.countdown.minutes").toUpperCase()}</td>
               <td> </td>
-              <td> SECONDS </td>
+              <td>{t("home.countdown.seconds").toUpperCase()}</td>
             </tr>
           </table>
         </div>

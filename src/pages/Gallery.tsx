@@ -8,12 +8,11 @@ import {
   GalleryImage as GalleryImageData,
   useGalleryImages,
 } from "../hooks/useGalleryImages";
-import "./Gallery.scss";
 import { useTitle } from "../hooks/useTitle";
 
 export const Gallery = () => {
   const { t } = useTranslation();
-  useTitle(t("gallery.gallery"));
+  useTitle(t("mainNav.gallery"));
 
   const [nextImageId, setNextImageId] = useState<number | undefined>(undefined);
   const [prevImageId, setPrevImageId] = useState<number | undefined>(undefined);
@@ -122,11 +121,11 @@ export const Gallery = () => {
           {t("gallery.subHeader")}
         </div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto mt-5 text-green23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto mt-5 text-green23-500 text-4xl md:text-7xl w-4/5">
           {t("gallery.mainHeader")}
           <br />
           Week of Charity
-        </div>
+        </h1>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>

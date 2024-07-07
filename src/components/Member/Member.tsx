@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { Shimmer } from "../Shimmer/Shimmer";
+import { useTranslation } from "react-i18next";
 
 type MemberProps = {
   avatarUrl: string;
@@ -16,6 +17,7 @@ export const Member = ({
   onClick,
   pronouns = "",
 }: MemberProps) => {
+  const { t } = useTranslation();
   return (
     <div
       className={classNames(
@@ -65,7 +67,7 @@ export const Member = ({
       </div>
 
       <div className="absolute bg-blue23-500 bottom-0 duration-300 font-round2 font-semibold h-8 p-1 rounded-b text-white text-center transition-all translate-y-full group-hover:translate-y-0 w-full">
-        Details ansehen
+        {t("viewDetails")}
       </div>
     </div>
   );

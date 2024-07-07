@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Shimmer } from "../Shimmer/Shimmer";
 
 type ActivityProps = {
@@ -7,6 +8,7 @@ type ActivityProps = {
 };
 
 export const Activity = ({ gameImageUrl, name, onClick }: ActivityProps) => {
+  const { t } = useTranslation();
   return (
     <div
       className="aspect-square bg-pink23-500 cursor-pointer flex flex-col group overflow-hidden relative rounded-md select-none"
@@ -30,7 +32,7 @@ export const Activity = ({ gameImageUrl, name, onClick }: ActivityProps) => {
       </div>
 
       <div className="absolute bg-pink23-500 bottom-0 duration-300 font-round2 font-semibold h-8 p-1 rounded-b text-white text-center transition-all translate-y-full group-hover:translate-y-0 w-full">
-        Details ansehen
+        {t("viewDetails")}
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import { Brush1 } from "../Brushes/Brush1";
 import { GoalStamp } from "../Icons/GoalStamp";
 import { RoundArrow } from "../Icons/RoundArrow";
 import { Stream } from "../Stream/Stream";
+import { useTranslation } from "react-i18next";
 
 type BidwarProps = {
   name: string;
@@ -34,6 +35,7 @@ export const Bidwar = ({
   status = "active",
   timeslot = undefined,
 }: BidwarProps) => {
+  const { t } = useTranslation();
   const breakpoint = useBreakpoint();
   const maxHeightPerItem = breakpoint >= Breakpoint.md ? 56 : 72;
   const [expanded, setExpanded] = useState(false);
@@ -68,9 +70,7 @@ export const Bidwar = ({
                 "text-2xl md:text-3xl": status === "results",
               })}
             >
-              {status === "active"
-                ? "Stimmt ab mit Euren Spenden"
-                : "Endergebnis"}
+              {status === "active" ? t("bidwar.vote") : t("bidwar.result")}
             </h3>
             {status === "active" && description && (
               <div className="relative font-normal text-md md:text-lg flex justify-center items-center z-[3]">
@@ -172,7 +172,7 @@ export const Bidwar = ({
         )}
         <div className="p-5 pt-0 isolate">
           <div className="font-round2 font-bold mb-1 text-blue23-900 isolate">
-            Sei bei der Umsetzung dabei
+            {t("goals.beThere")}
           </div>
           {timeslot && (
             <Stream
@@ -195,7 +195,7 @@ export const Bidwar = ({
           {!timeslot && (
             <div className="bg-neutral-900 bg-opacity-10 flex h-28 md:h-20 items-center justify-center rounded-md w-full">
               <div className="font-bold text-neutral-900 text-opacity-75">
-                Termin steht noch aus
+                {t("goals.tbd")}
               </div>
             </div>
           )}

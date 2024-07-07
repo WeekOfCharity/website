@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import tailwind from "../../../tailwind.config.js";
 import "./DonationMeter.scss";
+import { useTranslation } from "react-i18next";
 
 const easeInOutCirc = (t: number) =>
   t < 0.5
@@ -20,6 +21,7 @@ export const DonationMeter = ({
   nextGoalValue,
   startValue,
 }: DonationMeterProps) => {
+  const { t } = useTranslation();
   const [amount, setAmount] = useState(startValue);
   const [animatedAmount, setAnimatedAmount] = useState(startValue);
   const [isAnimatingAmount, setIsAnimatingAmount] = useState(false);
@@ -52,9 +54,9 @@ export const DonationMeter = ({
       <div className="bg-opacity-50 flex flex-col items-center p-5 md:p-10">
         <div className="pb-10">
           <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-blue23-900 text-center transform-gpu uppercase">
-            Aktueller
+            {t("donationMeter.current")}
             <br />
-            Spendenstand
+            {t("donationMeter.amount")}
           </div>
         </div>
         <div className="font-fat text-blue23-500 text-7xl md:text-9xl">
@@ -87,15 +89,15 @@ export const DonationMeter = ({
         <div className="font-fat text-neutral-500 text-4xl md:text-7xl">
           {nextGoalValue !== undefined
             ? nextGoalValue.toLocaleString("de", {
-              maximumFractionDigits: 2,
-              minimumFractionDigits: 2,
-            })
+                maximumFractionDigits: 2,
+                minimumFractionDigits: 2,
+              })
             : "❤️"}
         </div>
         <div className="font-semibold mt-4 text-neutral-900">
           {nextGoalValue !== undefined
-            ? "aktuelles Spendenziel"
-            : "Alle Ziele wurden erreicht!"}
+            ? t("donationMeter.donationTarget")
+            : t("donationMeter.allTargetsReached")}
         </div>
       </div>
 

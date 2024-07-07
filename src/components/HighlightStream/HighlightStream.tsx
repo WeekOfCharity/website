@@ -2,6 +2,7 @@ import { mdiAccount } from "@mdi/js";
 import Icon from "@mdi/react";
 import { formatDay, formatTime } from "../../utils/dateAndTime";
 import { Shimmer } from "../Shimmer/Shimmer";
+import { useTranslation } from "react-i18next";
 
 type HighlightStreamProps = {
   endTime: string;
@@ -20,6 +21,7 @@ export const HighlightStream = ({
   streamer,
   title,
 }: HighlightStreamProps) => {
+  const { t } = useTranslation();
   return (
     <article className="flex flex-col h-[400px] max-h-[400px] rounded-md select-none">
       <div
@@ -41,7 +43,7 @@ export const HighlightStream = ({
           <span className="font-round font-bold">{streamer}</span>
           {fellowCount > 0 && (
             <span className="bg-white font-semibold px-2 py-0.5 rounded text-green23-700 text-xs">
-              +{fellowCount} Mitspieler
+              +{fellowCount} {t("program.fellows")}
             </span>
           )}
         </div>

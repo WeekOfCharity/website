@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Brush4 } from "../components/Brushes/Brush4";
 import { useTitle } from "../hooks/useTitle";
 import "./Projects.scss";
@@ -8,19 +9,18 @@ const chesster3 = new URL("../assets/chesster-3.png", import.meta.url);
 const chesster4 = new URL("../assets/chesster-4.png", import.meta.url);
 
 export const Projects = () => {
-  useTitle("Projekte");
+  const { t } = useTranslation();
+  useTitle(t("mainNav.projects"));
 
   return (
     <main className="text-neutral-800 woc-accent-blue23">
       <header className="px-5 py-20 relative text-center">
         <div className="font-round2 font-bold text-blue23-900 uppercase">
-          Über uns
+          {t("projects.subHeader")}
         </div>
-
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-blue23-500 text-4xl md:text-7xl w-4/5">
-          Die Week of Charity
-        </div>
-
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-blue23-500 text-4xl md:text-7xl w-4/5">
+          {t("projects.mainHeader")}
+        </h1>
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
@@ -36,55 +36,57 @@ export const Projects = () => {
                     role="presentation"
                   />
                 </div>
-                <span className="text-lg font-semibold">
-                  Die Week of Charity{" "}
-                </span>
-                ist ein Dauerstreamprojekt für einen guten Zweck! Eine Woche
-                lang wird abwechselnd auf den Twitch-Kanälen unserer{" "}
-                <a href="/team" className="cursor-pointer text-blue23-600">
-                  Mitglieder
-                </a>{" "}
-                durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist
-                breit gefächert und neben diversen Videospielen wird unter
-                Anderem Dungeons and Dragons gespielt und es werden Quizshows
-                abgehalten. Was wann wo zu sehen ist, findet ihr in unserem{" "}
-                <a href="/streams" className="cursor-pointer text-blue23-600">
-                  Zeitplan
-                </a>
-                . <br />
-                <br />
-                <span className="text-lg font-semibold">Unser Projekt </span>
-                wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr
-                schon in die dritte Runde! Alle Spenden, die in dieser Woche
-                gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Ihr
-                könnt uns über direkte{" "}
-                <a
-                  target="_blank"
-                  href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
-                  className="cursor-pointer text-blue23-600"
-                  rel="noreferrer"
-                >
-                  Spenden{" "}
-                </a>
-                während des Streams unterstützen, oder in unserem{" "}
-                <a
-                  target="_blank"
-                  href="https://www.shirtee.com/de/store/weekofcharity/"
-                  className="cursor-pointer text-blue23-600"
-                  rel="noreferrer"
-                >
-                  Shop
-                </a>{" "}
-                vorbeischauen. Unser Anteil am verkauften Merchandise wird zu
-                100% gespendet und ihr könnt euch mit unserem Maskottchen
-                Chesster schmücken.
+                <p className="mb-4">
+                  <span className="text-lg font-semibold">
+                    {`${t("projects.text.t1")} `}
+                  </span>
+                  {`${t("projects.text.t2")} `}
+                  <a
+                    href="/team"
+                    className="underline underline-offset-2 text-blue23-600"
+                  >
+                    {t("projects.text.t3")}
+                  </a>
+                  {` ${t("projects.text.t4")} `}
+                  <a
+                    href="/streams"
+                    className="underline underline-offset-2 text-blue23-600"
+                  >
+                    {t("projects.text.t5")}
+                  </a>
+                  {` ${t("projects.text.t6")}`}
+                </p>
+                <p className="mb-4">
+                  <span className="text-lg font-semibold">{`${t(
+                    "projects.text.t7"
+                  )} `}</span>
+                  {`${t("projects.text.t8")} `}
+                  <a
+                    target="_blank"
+                    href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
+                    className="underline underline-offset-2 text-blue23-600"
+                    rel="noreferrer"
+                  >
+                    {t("projects.text.t9")}
+                  </a>
+                  {` ${t("projects.text.t10")} `}
+                  <a
+                    target="_blank"
+                    href="https://www.shirtee.com/de/store/weekofcharity/"
+                    className="underline underline-offset-2 text-blue23-600"
+                    rel="noreferrer"
+                  >
+                    {t("projects.text.t11")}
+                  </a>
+                  {` ${t("projects.text.t12")}`}
+                </p>
               </div>
             </div>
           </section>
 
-          <div className="font-pally font-bold max-w-screen-md mx-auto mt-20 mb-10 text-blue23-500 text-4xl md:text-5xl w-4/5 text-center">
-            Unsere Projekte
-          </div>
+          <h2 className="font-pally font-bold max-w-screen-md mx-auto mt-20 mb-10 text-blue23-500 text-4xl md:text-5xl w-4/5 text-center">
+            {t("projects.ourProjects")}
+          </h2>
 
           <div className="timeline">
             <div className="line"></div>
@@ -99,24 +101,20 @@ export const Projects = () => {
                 </div>
                 <div className="leading-relaxed py-5 pl-5 md:pl-8 pr-5 text-left">
                   <div className="year">2023</div>
-                  <h3 className="title font-bold">Tierheim Berlin</h3>
+                  <h3 className="title font-bold">
+                    {t("projects.2023.header")}
+                  </h3>
                   <p>
-                    Für den dritten Durchlauf gehen alle unsere Spenden dieses
-                    Jahr an das{" "}
+                    {`${t("projects.2023.text.t1")} `}
                     <a
                       target="_blank"
                       href="https://tierschutz-berlin.de/"
-                      className="cursor-pointer text-blue23-600"
+                      className="underline underline-offset-2 text-blue23-600"
                       rel="noreferrer"
                     >
-                      Tierheim Berlin
+                      {t("projects.2023.text.t2")}
                     </a>
-                    . Dort werden von Nagetieren, über Hunde und Katzen bis hin
-                    zu Hoftieren und Exoten insgesamt 1300 Tiere behaust,
-                    versorgt und gesund gepflegt. Da das nicht nur emotional
-                    sehr fordernd ist, sondern auch erhebliche finanzielle
-                    Mittel erfordert, würden wir uns sehr über eure Spenden
-                    freuen!
+                    {t("projects.2023.text.t3")}
                   </p>
                 </div>
               </div>
@@ -132,27 +130,20 @@ export const Projects = () => {
 
                 <div className="leading-relaxed py-5 pr-5 md:pr-8 pl-5 text-right">
                   <div className="year">2022</div>
-                  <h3 className="title font-bold">Queere Vielfalt leben</h3>
+                  <h3 className="title font-bold">
+                    {t("projects.2022.header")}
+                  </h3>
                   <p>
-                    Für unsere zweite Runde haben wir 2022 das LGBTQ+
-                    Jugendwohnheim "
+                    {`${t("projects.2022.text.t1")} `}
                     <a
                       target="_blank"
                       href="https://www.godesheim.de/angebote/queere-vielfalt-leben/"
-                      className="cursor-pointer text-blue23-600"
+                      className="underline underline-offset-2 text-blue23-600"
                       rel="noreferrer"
                     >
-                      Queere Vielfalt leben
+                      {t("projects.2022.text.t2")}
                     </a>
-                    " in Köln unterstützt. Dort finden queere Jugendliche eine
-                    sensible und liebevolle Unterkunft, die sie außerdem bei
-                    ihrer Identitätsfindung und eigenverantwortlichen
-                    Lebensgestaltung unterstützt. Am Ende der zweiten WoC, bei
-                    der manchmal sogar die Jugendlichen und Mitarbeitenden des
-                    Wohnheims mitgespielt haben, konnten wir unseren ersten
-                    Streamingmarathon überbieten und unglaubliche 3550€ sammeln!
-                    Mit diesem Geld konnte unter anderem endlich der Keller des
-                    Hauses ausgebaut werden.
+                    {` ${t("projects.2022.text.t3")}`}
                   </p>
                 </div>
               </div>
@@ -168,35 +159,19 @@ export const Projects = () => {
                   </div>
                   <div className="year">2021</div>
                   <h3 className="title font-bold">
-                    Lesben- und Schwulenverband in Deutschland
+                    {t("projects.2021.header")}
                   </h3>
                   <p>
-                    Der{" "}
+                    {`${t("projects.2021.text.t1")} `}
                     <a
                       target="_blank"
                       href="https://www.lsvd.de/de/home"
-                      className="cursor-pointer text-blue23-600"
+                      className="underline underline-offset-2 text-blue23-600"
                       rel="noreferrer"
                     >
-                      Lesben- und Schwulenverband in Deutschland
-                    </a>{" "}
-                    (oder kurz: LSVD) war die erste Organisation, die wir durch
-                    unsere Week of Charity 2021 unterstützten. Bei dem LSVD
-                    handelt es sich um einen Bürgerrechtsverband, der sich für
-                    die Rechte und Interessen von Lesben, Schwulen, Bisexuellen,
-                    trans- und intergeschlechtlichen sowie queeren Menschen
-                    einsetzt. Unsere Spenden gingen dabei konkret an das
-                    Covidhilfe Afrika Projekt, bei dem der LSVD mit
-                    Partner*innen vor Ort queere Menschen in Afrika
-                    unterstützte, die als Minderheit oft besonders hart von
-                    Krisensituationen betroffen sind. Sie werden zum Sündenbock
-                    für Virenausbrüche gemacht, wodurch der Hass gegen sie
-                    zunimmt und sie schneller als andere ihren Job oder
-                    familiäre Unterstützung verlieren. Außerdem fehlte es an
-                    kritischen Gütern wie Masken, Desinfektions- und
-                    Hygienemitteln. Für die Unterstützung dieser Menschen haben
-                    wir insgesamt bei unserer ersten WoC jemals unglaubliche
-                    2500€ dank eurer Hilfe sammeln können!{" "}
+                      {t("projects.2021.text.t2")}
+                    </a>
+                    {` ${t("projects.2021.text.t3")}`}
                   </p>
                 </div>
               </div>

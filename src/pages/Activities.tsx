@@ -52,13 +52,13 @@ export const Activities = () => {
     };
   }, [activeActivity]);
 
-  useTitle(t("activities.activities"));
+  useTitle(t("mainNav.activities"));
 
   const { data: activities, status: activitiesStatus } = useActivities();
   const { data: streams, status: streamsStatus } = useStreams();
 
-  const openingId = 15;
-  const finaleId = 42;
+  const openingId = 999; // TODO
+  const finaleId = 1000; // TODO
   const opening =
     typeof activities !== "undefined" && activities.length > 0
       ? activities.find((activity) => activity.id === openingId)
@@ -132,11 +132,11 @@ export const Activities = () => {
           {t("activities.subHeader")}
         </div>
 
-        <div className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
           {t("activities.mainHeader")}
           <br />
           Week of Charity
-        </div>
+        </h1>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
@@ -256,7 +256,7 @@ export const Activities = () => {
           </button>
 
           {activeActivity && (
-            <main
+            <div
               className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24"
               style={{ scrollbarWidth: "thin" }}
             >
@@ -393,7 +393,7 @@ export const Activities = () => {
                   )}
                 </section>
               )}
-            </main>
+            </div>
           )}
         </aside>
       </OutsideAlerter>

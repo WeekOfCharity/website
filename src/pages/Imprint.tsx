@@ -1,8 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { Brush4 } from "../components/Brushes/Brush4";
+import { useTitle } from "../hooks/useTitle";
 
 export const Imprint = () => {
   const { t } = useTranslation();
+  useTitle(t("subNav.imprint"));
+
   return (
     <main className="text-neutral-800 woc-accent-neutral">
       <header className="px-5 py-20 relative text-center">
@@ -13,7 +16,7 @@ export const Imprint = () => {
       </header>
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5 space-y-2 text-justify">
         <div className="font-round2 font-bold uppercase">
-          Angaben gemäß § 5 TMG
+          {t("imprint.paragraph")}
         </div>
         <p>
           Sven Gohlke

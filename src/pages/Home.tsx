@@ -168,7 +168,10 @@ export const Home = () => {
               <br />
               <br />
               {`${t("home.welcome2")} `}
-              <a href="/projekte" className="text-pink23-500">
+              <a
+                href="/projekte"
+                className="underline underline-offset-2 text-pink23-700"
+              >
                 {t("home.here")}
               </a>
               {`. ${t("home.welcome3")}`}

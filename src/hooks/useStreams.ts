@@ -20,6 +20,7 @@ export type Stream = {
   highlight: boolean;
   id: number;
   start: string;
+  language: StreamLanguage;
   status: boolean;
   streamer: {
     icon: string;
@@ -36,6 +37,12 @@ export type StreamWithAlternatives = Omit<Stream, "activity"> & {
     name_en: string | null;
   };
 };
+
+export enum StreamLanguage {
+  DE = "de",
+  EN = "en",
+  DEEN = "deen",
+}
 
 export const useStreams = (lang: Language) => {
   const rawQueryResult = useQuery(["streams"], async () => {

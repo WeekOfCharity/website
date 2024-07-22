@@ -86,6 +86,7 @@ export const DonationGoal = ({
             streamer={timeslot.streamer.name}
             title={timeslot.activity.name}
             vodLink={timeslot.vod_link}
+            streamLanguage={timeslot.language}
           />
         )}
 

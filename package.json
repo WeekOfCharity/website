@@ -7,8 +7,10 @@
     "start": "npx http-server ./dist",
     "dev": "parcel",
     "build": "parcel build",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix",
+    "lint": "npm run typecheck && npm run eslint",
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "eslint": "eslint ./src",
+    "eslint:fix": "eslint ./src --fix",
     "format": "prettier --write",
     "format:all": "prettier ./src --write"
   },

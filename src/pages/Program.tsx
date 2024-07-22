@@ -214,6 +214,7 @@ export const Program = () => {
                     title={stream.activity.name}
                     vodLink={stream.vod_link}
                     key={stream.id}
+                    streamLanguage={stream.language}
                   />
                 ))}
               </div>
@@ -319,6 +320,7 @@ export const Program = () => {
                             title={stream.activity.name}
                             vodLink={stream.vod_link}
                             key={stream.id}
+                            streamLanguage={stream.language}
                           />
                         )
                       )}

@@ -3,6 +3,7 @@ import { useConfiguration } from "../../hooks/useConfiguration";
 import { useStreams } from "../../hooks/useStreams";
 import "./Countdown.scss";
 import { useTranslation } from "react-i18next";
+import { getValidLanguage } from "../../i18n/i18n";
 
 type CountdownProps = {
   timerZeroCallback: () => void;
@@ -15,12 +16,13 @@ function formatNumForCountdown(num) {
 }
 
 function Countdown({ timerZeroCallback }: CountdownProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLang = getValidLanguage(i18n.language);
   const [timeLeft, setTimeLeft] = useState(null);
 
   const { data: configuration, status: configurationStatus } =
     useConfiguration();
-  const { data: streams, status: streamsStatus } = useStreams();
+  const { data: streams, status: streamsStatus } = useStreams(validLang);
 
   const updateTimer = () => {
     const currentTime = new Date();

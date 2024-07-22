@@ -14,17 +14,20 @@ import { formatTime, getState } from "../../utils/dateAndTime";
 import { Brush1 } from "../Brushes/Brush1";
 import "./Player.scss";
 import { useTranslation } from "react-i18next";
+import { getValidLanguage } from "../../i18n/i18n";
+import { StreamLanguageBadge } from "../StreamLanguageBadge/StreamLanguageBadge";
 
 const arrowRight = new URL("../../assets/arrow-right.svg", import.meta.url);
 
 function Player() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLang = getValidLanguage(i18n.language);
   const [isPlayerOpen, setPlayerOpen] = useState(true);
   const [running, setRunning] = useState<Stream | undefined>(undefined);
   const [showInactive, setShowInactive] = useState(false);
   const [time, setTime] = useState(new Date(Date.now()));
 
-  const { data: streams, status: streamsStatus } = useStreams();
+  const { data: streams, status: streamsStatus } = useStreams(validLang);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -103,8 +106,14 @@ function Player() {
               </div>
             </div>
 
-            <div className="font-round font-bold ml-5 text-neutral-400 whitespace-nowrap">
-              {formatTime(running.start)} &mdash; {formatTime(running.end)}
+            <div className="flex flex-col font-round font-bold ml-5 text-neutral-400 whitespace-nowrap">
+              <span>
+                {formatTime(running.start)} &mdash; {formatTime(running.end)}
+              </span>
+              <StreamLanguageBadge
+                className="font-bold text-right"
+                language={running.language}
+              />
             </div>
           </div>
         )}

@@ -5,6 +5,7 @@ import { Breakpoint, useBreakpoint } from "../../hooks/useBreakpoint";
 import { Stream, useStreams } from "../../hooks/useStreams";
 import { getState } from "../../utils/dateAndTime";
 import { useTranslation } from "react-i18next";
+import { getValidLanguage } from "../../i18n/i18n";
 
 function getUserFromTwitchLink(link: string) {
   if (link) {
@@ -19,13 +20,14 @@ const playerDimensions = {
 };
 
 const TwitchEmbed = memo(function TwitchEmbed() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLang = getValidLanguage(i18n.language);
   const breakpoint = useBreakpoint();
   const [running, setRunning] = useState<Stream | undefined>(undefined);
   const [showInactive, setShowInactive] = useState(false);
   const [channelName, setChannelName] = useState("");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  const { data: streams, status: streamsStatus } = useStreams();
+  const { data: streams, status: streamsStatus } = useStreams(validLang);
 
   function checkRunningStream() {
     const stream = (streams ?? []).find(

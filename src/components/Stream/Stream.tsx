@@ -7,6 +7,8 @@ import { formatDay, formatTime } from "../../utils/dateAndTime";
 import { Shimmer } from "../Shimmer/Shimmer";
 import "./Stream.scss";
 import { useTranslation } from "react-i18next";
+import { StreamLanguageBadge } from "../StreamLanguageBadge/StreamLanguageBadge";
+import { StreamLanguage } from "../../hooks/useStreams";
 
 type StreamProps = {
   activityId: number;
@@ -21,6 +23,7 @@ type StreamProps = {
   streamer: string;
   title: string;
   vodLink: string;
+  streamLanguage?: StreamLanguage;
 };
 
 export const Stream = ({
@@ -36,6 +39,7 @@ export const Stream = ({
   streamer,
   title,
   vodLink,
+  streamLanguage,
 }: StreamProps) => {
   const { t } = useTranslation();
   const breakpoint = useBreakpoint();
@@ -127,7 +131,18 @@ export const Stream = ({
         >
           <div className="backdrop-blur-lg bg-neutral-900 bg-opacity-75 flex flex-col md:h-full justify-center p-2 md:px-4 rounded-b-md md:rounded-bl-none md:rounded-r-md text-white w-full">
             <div className="flex font-semibold leading-none md:mb-1.5 space-x-4 text-lg">
-              <span>{title}</span>
+              <span
+                className={classNames({
+                  "pr-32": vodLink && !noLink,
+                  "pr-[5.75rem]": vodLink && noLink,
+                })}
+              >
+                {title}
+                <StreamLanguageBadge
+                  className="font-normal ml-2"
+                  language={streamLanguage}
+                />
+              </span>
               {state === "ended" && vodLink && (
                 <span className="md:block woc-vod-label">
                   {noLink ? t("program.toVOD") : t("program.VODavailable")}

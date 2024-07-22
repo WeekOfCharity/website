@@ -324,6 +324,7 @@ export const Activities = () => {
                             title={stream.activity.name}
                             vodLink={stream.vod_link}
                             key={stream.id}
+                            streamLanguage={stream.language}
                           />
                         )
                       )}

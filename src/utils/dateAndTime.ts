@@ -1,24 +1,20 @@
-export const formatDay = (value: string) => {
+import { Language } from "../i18n/i18n";
+
+export const formatDay = (value: string, language: Language) => {
   const date = new Date(value + "+02:00");
 
-  return `${date.toLocaleDateString(undefined, {
+  return `${date.toLocaleDateString(language, {
     weekday: "long",
-  })}, ${date.toLocaleDateString(undefined, {
+  })}, ${date.toLocaleDateString(language, {
     day: "2-digit",
-    month: "numeric",
+    month: "2-digit",
   })}`;
 };
 
-export const formatTime = (value: string) => {
-  return new Date(value + "+02:00").toLocaleTimeString(undefined, {
+export const formatTime = (value: string, language: Language) => {
+  return new Date(value + "+02:00").toLocaleTimeString(language, {
     hour: "2-digit",
     minute: "2-digit",
-  });
-};
-
-export const getWeekday = (value: string) => {
-  return new Date(value + "+02:00").toLocaleDateString(undefined, {
-    weekday: "long",
   });
 };
 

@@ -108,7 +108,8 @@ function Player() {
 
             <div className="flex flex-col font-round font-bold ml-5 text-neutral-400 whitespace-nowrap">
               <span>
-                {formatTime(running.start)} &mdash; {formatTime(running.end)}
+                {formatTime(running.start, validLang)} &mdash;{" "}
+                {formatTime(running.end, validLang)}
               </span>
               <StreamLanguageBadge
                 className="font-bold text-right"

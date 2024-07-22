@@ -9,6 +9,7 @@ import "./Stream.scss";
 import { useTranslation } from "react-i18next";
 import { StreamLanguageBadge } from "../StreamLanguageBadge/StreamLanguageBadge";
 import { StreamLanguage } from "../../hooks/useStreams";
+import { getValidLanguage } from "../../i18n/i18n";
 
 type StreamProps = {
   activityId: number;
@@ -41,7 +42,8 @@ export const Stream = ({
   vodLink,
   streamLanguage,
 }: StreamProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLang = getValidLanguage(i18n.language);
   const breakpoint = useBreakpoint();
 
   const RootElement =
@@ -79,11 +81,11 @@ export const Stream = ({
           )}
         >
           <div className="font-round font-bold leading-none -rotate-6 -skew-x-6 text-sm text-center">
-            {formatTime(startTime)}
+            {formatTime(startTime, validLang)}
             <br />
             &mdash;
             <br />
-            {formatTime(endTime)}
+            {formatTime(endTime, validLang)}
           </div>
         </div>
       )}
@@ -157,7 +159,7 @@ export const Stream = ({
                   size="1rem"
                   style={{ marginRight: "-0.5rem" }}
                 />
-                <span>{formatDay(startTime)}</span>
+                <span>{formatDay(startTime, validLang)}</span>
 
                 <Icon
                   path={mdiClockOutline}
@@ -165,7 +167,8 @@ export const Stream = ({
                   style={{ marginRight: "-0.5rem" }}
                 />
                 <span>
-                  {formatTime(startTime)} &mdash; {formatTime(endTime)}
+                  {formatTime(startTime, validLang)} &mdash;{" "}
+                  {formatTime(endTime, validLang)}
                 </span>
 
                 {highlight && (

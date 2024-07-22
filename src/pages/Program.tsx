@@ -57,7 +57,7 @@ export const Program = () => {
     }
 
     return streams.reduce<Record<string, StreamData[]>>((groups, stream) => {
-      const day = formatDay(stream.start);
+      const day = formatDay(stream.start, validLanguage);
       const group = groups[day] ?? [];
 
       return { ...groups, [day]: [...group, stream] };

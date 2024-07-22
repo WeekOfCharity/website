@@ -3,6 +3,7 @@ import Icon from "@mdi/react";
 import { formatDay, formatTime } from "../../utils/dateAndTime";
 import { Shimmer } from "../Shimmer/Shimmer";
 import { useTranslation } from "react-i18next";
+import { getValidLanguage } from "../../i18n/i18n";
 
 type HighlightStreamProps = {
   endTime: string;
@@ -21,7 +22,9 @@ export const HighlightStream = ({
   streamer,
   title,
 }: HighlightStreamProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const validLang = getValidLanguage(i18n.language);
+
   return (
     <article className="flex flex-col h-[400px] max-h-[400px] rounded-md select-none">
       <div
@@ -49,9 +52,10 @@ export const HighlightStream = ({
         </div>
 
         <div className="flex font-round font-bold items-center mt-2 space-x-4 text-white">
-          <span>{formatDay(startTime)}</span>
+          <span>{formatDay(startTime, validLang)}</span>
           <span>
-            {formatTime(startTime)} &mdash; {formatTime(endTime)}
+            {formatTime(startTime, validLang)} &mdash;{" "}
+            {formatTime(endTime, validLang)}
           </span>
         </div>
       </div>

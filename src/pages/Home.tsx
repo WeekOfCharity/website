@@ -233,7 +233,7 @@ export const Home = () => {
               <div className="flex flex-col items-center">
                 <a
                   target="_blank"
-                  href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
+                  href={process.env.DONATION_URL}
                   className="cursor-pointer"
                   rel="noreferrer"
                 >
@@ -280,7 +280,6 @@ export const Home = () => {
                   achieved={goal.reached_at <= currentDonation}
                   amount={goal.reached_at}
                   description={goal.description}
-                  hidden={goal.hidden}
                   key={goal.id}
                   timeslot={goal.timeslot}
                   title={goal.name}

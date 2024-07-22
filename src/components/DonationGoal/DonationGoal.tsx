@@ -10,7 +10,7 @@ type DonationGoalProps = {
   achieved?: boolean;
   amount: number;
   description: string;
-  hidden?: boolean;
+  secret?: boolean;
   timeslot?: StreamData | null;
   title: string;
 };
@@ -19,7 +19,7 @@ export const DonationGoal = ({
   achieved = false,
   amount,
   description,
-  hidden = false,
+  secret = false,
   timeslot = undefined,
   title,
 }: DonationGoalProps) => {
@@ -55,9 +55,9 @@ export const DonationGoal = ({
         </div>
         <div>
           <div className="font-semibold text-lg">
-            {!hidden ? title : t("goals.secret")}
+            {!secret ? title : t("goals.secret")}
           </div>
-          {description && !hidden && <div>{description}</div>}
+          {description && !secret && <div>{description}</div>}
         </div>
       </div>
 

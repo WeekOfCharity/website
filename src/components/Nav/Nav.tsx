@@ -191,7 +191,7 @@ export const Nav = () => {
       </menu>
       <a
         className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white"
-        href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
+        href={process.env.DONATION_URL}
         rel="nofollow noreferrer"
         target="_blank"
       >

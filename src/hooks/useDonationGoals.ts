@@ -21,7 +21,7 @@ export const useDonationGoals = (lang: Language) => {
   const rawQueryResult = useQuery(["donation_goals"], async () => {
     const { data } = await axios.get<{ data: DonationGoalWithAlternatives[] }>(
       process.env.BASE_URL +
-        "/items/donation_goals?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name&sort=reached_at"
+        "/items/donation_goals?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name&filter[hidden][_eq]=false&sort=reached_at"
     );
     return data.data;
   });

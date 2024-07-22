@@ -63,7 +63,7 @@ export const Projects = () => {
                   {`${t("projects.text.t8")} `}
                   <a
                     target="_blank"
-                    href="https://www.betterplace.org/de/fundraising-events/45057-week-of-charity-2023"
+                    href={process.env.DONATION_URL}
                     className="underline underline-offset-2 text-blue23-600"
                     rel="noreferrer"
                   >

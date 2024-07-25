@@ -16,6 +16,7 @@ import "./Player.scss";
 import { useTranslation } from "react-i18next";
 import { getValidLanguage } from "../../i18n/i18n";
 import { StreamLanguageBadge } from "../StreamLanguageBadge/StreamLanguageBadge";
+import { ChibiChesster } from "../Game/ChibiChesster/ChibiChesster";
 
 const arrowRight = new URL("../../assets/arrow-right.svg", import.meta.url);
 
@@ -45,19 +46,23 @@ function Player() {
   }, [streams, streamsStatus, time]);
 
   return (
-    <>
+    <div className="bottom-0 right-0 fixed z-[99997] pointer-events-none">
+      <ChibiChesster
+        className="bottom-7 right-3 md:bottom-12 md:right-8 w-12 hover:-translate-y-5 duration-300"
+        inert={isPlayerOpen ? "true" : undefined}
+      />
       <button
         className={classNames(
-          "bg-accent-500 bottom-0 fixed m-5 md:m-10 p-4 right-0 rounded-full text-white woc-player-button z-[99997]",
-          { hidden: isPlayerOpen }
+          "bg-accent-500 m-5 md:m-10 p-4 absolute bottom-0 right-0 rounded-full text-white woc-player-button pointer-events-auto"
         )}
         onClick={() => setPlayerOpen(true)}
+        inert={isPlayerOpen ? "true" : undefined}
       >
         <Icon path={mdiBroadcast} size="2rem" />
       </button>
       <div
         className={classNames(
-          "bg-neutral-800 bottom-0 duration-300 ease-in-out fixed md:max-w-screen-sm overflow-hidden md:right-10 md:rounded-lg text-white transform-gpu transition-all w-full z-[99998]",
+          "pointer-events-auto absolute bg-neutral-800 duration-300 ease-in-out bottom-0 right-0 md:max-w-screen-sm overflow-hidden md:right-10 md:rounded-lg text-white transform-gpu transition-all w-screen",
           {
             "md:bottom-10 md:shadow-lg translate-y-0": isPlayerOpen,
             "shadow-none translate-y-full": !isPlayerOpen,
@@ -187,7 +192,7 @@ function Player() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

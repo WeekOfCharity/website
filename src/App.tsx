@@ -5,6 +5,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { BorderNav } from "./components/BorderNav/BorderNav";
 import { Nav } from "./components/Nav/Nav";
 import Player from "./components/Player/Player";
+import { GameStateProvider } from "./components/Game/GameStateProvider/GameStateProvider";
+import { GamePopup } from "./components/Game/GamePopup/GamePopup";
 
 import "./App.css";
 
@@ -40,12 +42,15 @@ export const App = () => {
 
   return (
     <QueryClientProvider client={client}>
-      <div className={classNames("min-h-screen overflow-hidden", accent)}>
-        <BorderNav />
-        <Nav />
-        <Outlet />
-        <Player />
-      </div>
+      <GameStateProvider>
+        <div className={classNames("min-h-screen overflow-hidden", accent)}>
+          <BorderNav />
+          <Nav />
+          <Outlet />
+          <Player />
+          <GamePopup />
+        </div>
+      </GameStateProvider>
     </QueryClientProvider>
   );
 };

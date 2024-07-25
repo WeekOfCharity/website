@@ -10,7 +10,7 @@ const hexToRgb = (hex) =>
 
 module.exports = {
   darkMode: "class",
-  content: ["./src/**/*.{html,tsx}"],
+  content: ["./src/**/*.{html,tsx,ts}"],
   theme: {
     colors: {
       transparent: "transparent",
@@ -120,6 +120,36 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        glitch: {
+          "0%, 10%, 20%, 40%, 53%, 62%, 100%": {
+            filter: "invert(0%)",
+          },
+          "12%, 50%, 78%, 90%": {
+            filter: "invert(50%)",
+          },
+          "59%, 66%, 80%": {
+            filter: "invert(100%)",
+          },
+        },
+        shake: {
+          "0%, 25%, 100%": { transform: "translate(0, 0)" },
+          "32%": { transform: "translate(9px, 9px)" },
+          "38%": { transform: "translate(5px, -5px)" },
+          "46%": { transform: "translate(-7px, 7px)" },
+          "53%": { transform: "translate(9px, -9px)" },
+          "60%": { transform: "translate(-4px, 4px)" },
+          "68%": { transform: "translate(6px, -6px)" },
+          "75%": { transform: "translate(-8px, -8px)" },
+          "83%": { transform: "translate(4px, -4px)" },
+          "90%": { transform: "translate(6px, 6px)" },
+          "97%": { transform: "translate(-5px, -5px)" },
+        },
+      },
+      animation: {
+        glitch: "glitch 1s ease-in-out, shake 1s step-end",
+        shake: "shake 1s step-end",
+      },
       fontFamily: {
         sans: [
           '"Source Sans 3"',

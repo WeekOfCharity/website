@@ -22,6 +22,7 @@ import { useStreams } from "../hooks/useStreams";
 import { useTranslation } from "react-i18next";
 import { useTitle } from "../hooks/useTitle";
 import { getValidLanguage } from "../i18n/i18n";
+import { glitchEffect } from "../utils/effects";
 
 export const Home = () => {
   useTitle();
@@ -129,6 +130,7 @@ export const Home = () => {
   return (
     <main className="text-neutral-800">
       <header className="px-5 pt-20 pb-10 relative text-center">
+        <button onClick={glitchEffect}>Glitch</button>
         <div className="font-round2 font-bold text-pink23-900 uppercase">
           {t("home.subHeader")}
         </div>

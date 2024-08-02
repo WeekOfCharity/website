@@ -11,7 +11,7 @@ export type Configuration = {
 export const useConfiguration = () => {
   return useQuery(["configuration"], async () => {
     const { data } = await axios.get<{ data: Configuration }>(
-      process.env.BASE_URL + "/items/configuration"
+      import.meta.env.VITE_BASE_URL + "/items/configuration"
     );
     return data.data;
   });

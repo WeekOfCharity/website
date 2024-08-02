@@ -19,7 +19,7 @@ type ActivityWithAlternatives = Activity & {
 export const useActivities = (lang: Language) => {
   const rawQueryResult = useQuery(["activities"], async () => {
     const { data } = await axios.get<{ data: ActivityWithAlternatives[] }>(
-      process.env.BASE_URL + "/items/activities"
+      import.meta.env.VITE_BASE_URL + "/items/activities"
     );
     return data.data;
   });

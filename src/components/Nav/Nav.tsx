@@ -203,7 +203,7 @@ export const Nav = () => {
       </menu>
       <a
         className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white"
-        href={process.env.DONATION_URL}
+        href={import.meta.env.VITE_DONATION_URL}
         rel="nofollow noreferrer"
         target="_blank"
       >

@@ -6,6 +6,8 @@ import { BorderNav } from "./components/BorderNav/BorderNav";
 import { Nav } from "./components/Nav/Nav";
 import Player from "./components/Player/Player";
 
+import "./App.css";
+
 const accents = {
   "/projekte": "woc-accent-blue23",
   "/streams": "woc-accent-green23",

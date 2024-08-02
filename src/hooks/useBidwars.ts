@@ -20,7 +20,7 @@ type BidwarsWithAlternatives = Omit<Bidwars, "timeslot"> & {
 export const useBidwars = (lang: Language) => {
   const rawQueryResult = useQuery(["bidwars"], async () => {
     const { data } = await axios.get<{ data: BidwarsWithAlternatives[] }>(
-      process.env.BASE_URL +
+      import.meta.env.VITE_BASE_URL +
         "/items/bidwars?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.activity.name_en,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name"
     );
     return data.data;

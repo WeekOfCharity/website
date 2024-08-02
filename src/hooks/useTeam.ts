@@ -23,7 +23,7 @@ type MemberWithAlternatives = Member & {
 export const useTeam = (lang: Language) => {
   const rawQueryResult = useQuery(["team"], async () => {
     const { data } = await axios.get<{ data: MemberWithAlternatives[] }>(
-      process.env.BASE_URL + "/items/people"
+      import.meta.env.VITE_BASE_URL + "/items/people"
     );
     return data.data;
   });

@@ -77,7 +77,7 @@ export const DonationGoal = ({
             condensed
             endTime={timeslot.end}
             gameImageUrl={
-              process.env.BASE_URL +
+              import.meta.env.VITE_BASE_URL +
               `/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
             }
             highlight={timeslot.highlight}

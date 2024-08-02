@@ -163,7 +163,7 @@ export const Gallery = () => {
                   <GalleryImage
                     imageID={galleryImage.id}
                     imageUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${galleryImage.image}?width=512&height=512&quality=75&fit=cover&format=webp`
                     }
                     key={galleryImage.id}

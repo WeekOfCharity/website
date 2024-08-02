@@ -63,7 +63,7 @@ export const Projects = () => {
                   {`${t("projects.text.t8")} `}
                   <a
                     target="_blank"
-                    href={process.env.DONATION_URL}
+                    href={import.meta.env.VITE_DONATION_URL}
                     className="underline underline-offset-2 text-blue23-600"
                     rel="noreferrer"
                   >

@@ -16,7 +16,7 @@ type FAQItemWithAlternatives = FAQItem & {
 export const useFAQ = (lang: Language) => {
   const rawQueryResult = useQuery(["faq"], async () => {
     const { data } = await axios.get<{ data: FAQItemWithAlternatives[] }>(
-      process.env.BASE_URL + "/items/faq"
+      import.meta.env.VITE_BASE_URL + "/items/faq"
     );
     return data.data;
   });

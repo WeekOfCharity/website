@@ -15,7 +15,7 @@ export type BidwarResults = {
 export const useBidwarResults = () => {
   return useQuery(["bidwar_results"], async () => {
     const { data } = await axios.get<{ data: BidwarResults }>(
-      process.env.BASE_URL + "/items/bidwar_results"
+      import.meta.env.VITE_BASE_URL + "/items/bidwar_results"
     );
     return data.data;
   });

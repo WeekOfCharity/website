@@ -54,7 +54,7 @@ export const Music = () => {
                 <MusicRelease
                   key={album.id}
                   coverUrl={
-                    process.env.BASE_URL +
+                    import.meta.env.VITE_BASE_URL +
                     `/assets/${album.cover_art}?width=512&height=512&quality=75&fit=cover&format=webp`
                   }
                   link={album.link}

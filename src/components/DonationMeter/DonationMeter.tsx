@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import tailwind from "../../../tailwind.config.js";
 import "./DonationMeter.scss";
 import { useTranslation } from "react-i18next";
 
@@ -76,11 +75,10 @@ export const DonationMeter = ({
         <div className="h-10 my-10 w-full">
           <div className="bg-blue23-100 ring-2 ring-offset-2 ring-blue23-600 ring-offset-white rounded w-full">
             <div
-              className=" bg-no-repeat h-10 rounded woc-donation-meter"
+              className=" bg-no-repeat h-10 rounded woc-donation-meter bg-repeating-linear-gradient"
               style={{
-                backgroundImage: `repeating-linear-gradient(-45deg, ${tailwind.theme.colors.blue23[500]} 0 6px, transparent 6px 12px)`,
                 backgroundSize: "200% 100%",
-                width: `${(100 / nextGoalValue ?? currentValue) * amount}%`,
+                width: `${(100 / (nextGoalValue ?? currentValue)) * amount}%`,
               }}
             ></div>
           </div>

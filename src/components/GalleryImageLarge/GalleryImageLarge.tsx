@@ -53,7 +53,7 @@ export const GalleryImageLarge = ({
     setCurrentImageId(imageData.id);
 
     const imageUrl =
-      process.env.BASE_URL +
+      import.meta.env.VITE_BASE_URL +
       `/assets/${imageData.image}?&quality=75&format=webp`;
 
     const abortController = new AbortController();

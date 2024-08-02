@@ -136,10 +136,10 @@ export const Home = () => {
           {wocStatus === "wocEnded"
             ? t("home.endedText")
             : wocStatus === "wocRunning"
-            ? t("home.runningText")
-            : wocStatus === "wocUpcoming"
-            ? t("home.upcomingText")
-            : ""}
+              ? t("home.runningText")
+              : wocStatus === "wocUpcoming"
+                ? t("home.upcomingText")
+                : ""}
         </h1>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
@@ -233,7 +233,7 @@ export const Home = () => {
               <div className="flex flex-col items-center">
                 <a
                   target="_blank"
-                  href={process.env.DONATION_URL}
+                  href={import.meta.env.VITE_DONATION_URL}
                   className="cursor-pointer"
                   rel="noreferrer"
                 >

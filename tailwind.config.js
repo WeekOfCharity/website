@@ -205,6 +205,15 @@ module.exports = {
 
       addUtilities(accentUtilities);
     }),
+    plugin(function({ addUtilities, theme }) {
+      const newUtilities = {
+        '.bg-repeating-linear-gradient': {
+          backgroundImage: `repeating-linear-gradient(-45deg, ${theme('colors.blue23.500')} 0 6px, transparent 6px 12px)`,
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }),
   ],
   mode: "jit",
 };

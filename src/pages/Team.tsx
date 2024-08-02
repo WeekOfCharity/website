@@ -148,7 +148,7 @@ export const Team = () => {
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
                       avatarUrl={
-                        process.env.BASE_URL +
+                        import.meta.env.VITE_BASE_URL +
                         `/assets/${charity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                       }
                       name={charity.name}
@@ -161,7 +161,7 @@ export const Team = () => {
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
                       avatarUrl={
-                        process.env.BASE_URL +
+                        import.meta.env.VITE_BASE_URL +
                         `/assets/${chesster.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                       }
                       name={chesster.name}
@@ -190,7 +190,7 @@ export const Team = () => {
                 .map((member) => (
                   <Member
                     avatarUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                     }
                     name={member.name}
@@ -217,7 +217,7 @@ export const Team = () => {
                 .map((member) => (
                   <Member
                     avatarUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                     }
                     name={member.name}
@@ -273,7 +273,7 @@ export const Team = () => {
                 <img
                   className="bg-blue23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
                   src={
-                    process.env.BASE_URL +
+                    import.meta.env.VITE_BASE_URL +
                     `/assets/${activeMember.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                   }
                   role="presentation"
@@ -332,7 +332,7 @@ export const Team = () => {
                   <div className="player">
                     <AudioPlayer
                       url={
-                        process.env.BASE_URL +
+                        import.meta.env.VITE_BASE_URL +
                         `/assets/${activeMember.theme}.mp3`
                       }
                     />
@@ -375,7 +375,7 @@ export const Team = () => {
                           condensed
                           endTime={stream.end}
                           gameImageUrl={
-                            process.env.BASE_URL +
+                            import.meta.env.VITE_BASE_URL +
                             `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                           }
                           highlight={stream.highlight}
@@ -402,7 +402,7 @@ export const Team = () => {
                           condensed
                           endTime={stream.end}
                           gameImageUrl={
-                            process.env.BASE_URL +
+                            import.meta.env.VITE_BASE_URL +
                             `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                           }
                           highlight={stream.highlight}

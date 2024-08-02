@@ -157,7 +157,7 @@ export const Program = () => {
                 endTime={stream.end}
                 fellowCount={stream.fellows.length}
                 gameImageUrl={
-                  process.env.BASE_URL +
+                  import.meta.env.VITE_BASE_URL +
                   `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                 }
                 startTime={stream.start}
@@ -203,7 +203,7 @@ export const Program = () => {
                     activityId={stream.activity.id}
                     endTime={stream.end}
                     gameImageUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                     }
                     highlight={stream.highlight}
@@ -262,7 +262,7 @@ export const Program = () => {
                 <img
                   className="bg-green23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
                   src={
-                    process.env.BASE_URL +
+                    import.meta.env.VITE_BASE_URL +
                     `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                   }
                   alt=""
@@ -309,7 +309,7 @@ export const Program = () => {
                             condensed
                             endTime={stream.end}
                             gameImageUrl={
-                              process.env.BASE_URL +
+                              import.meta.env.VITE_BASE_URL +
                               `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                             }
                             highlight={stream.highlight}
@@ -346,7 +346,7 @@ export const Program = () => {
                             >
                               <Member
                                 avatarUrl={
-                                  process.env.BASE_URL +
+                                  import.meta.env.VITE_BASE_URL +
                                   `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
                                 }
                                 condensed
@@ -381,7 +381,7 @@ export const Program = () => {
                               >
                                 <Member
                                   avatarUrl={
-                                    process.env.BASE_URL +
+                                    import.meta.env.VITE_BASE_URL +
                                     `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
                                   }
                                   condensed

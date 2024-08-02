@@ -19,7 +19,7 @@ type GalleryImageWithAlternatives = GalleryImage & {
 export const useGalleryImages = (lang: Language) => {
   const rawQueryResult = useQuery(["gallery_images"], async () => {
     const { data } = await axios.get<{ data: GalleryImageWithAlternatives[] }>(
-      process.env.BASE_URL + "/items/gallery_images"
+      import.meta.env.VITE_BASE_URL + "/items/gallery_images"
     );
     return data.data;
   });

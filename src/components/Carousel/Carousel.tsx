@@ -17,8 +17,8 @@ export const Carousel = ({ children }: CarouselProps) => {
     breakpoint === Breakpoint.xxl || breakpoint === null
       ? 4
       : breakpoint === Breakpoint.xl
-      ? 2
-      : 1;
+        ? 2
+        : 1;
 
   const canSlideLeft = currentItem > 0;
   const canSlideRight = currentItem < itemCount - itemsPerPage;

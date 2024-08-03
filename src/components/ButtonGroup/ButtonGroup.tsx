@@ -5,10 +5,7 @@ import cn from "classnames";
 type ButtonGroupProps = {
   buttons?: string[];
   defaultIndex?: number;
-  doSomethingAfterClick?: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    id: number
-  ) => void;
+  doSomethingAfterClick?: (id: number) => void;
 };
 
 export const ButtonGroup = ({
@@ -18,12 +15,9 @@ export const ButtonGroup = ({
 }: ButtonGroupProps) => {
   const [clickedId, setClickedId] = useState(defaultIndex);
 
-  const handleClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    id: number
-  ) => {
+  const handleClick = (id: number) => {
     setClickedId(id);
-    doSomethingAfterClick?.(event, id);
+    doSomethingAfterClick?.(id);
   };
 
   return (
@@ -32,7 +26,7 @@ export const ButtonGroup = ({
         <button
           key={i}
           name={buttonLabel}
-          onClick={(event) => handleClick(event, i)}
+          onClick={() => handleClick(i)}
           className={cn(
             "font-medium text-lg py-3 px-5 transition-colors duration-300",
             {

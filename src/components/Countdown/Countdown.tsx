@@ -25,6 +25,7 @@ function Countdown({ timerZeroCallback }: CountdownProps) {
     let woc_start_date: Date;
     if (
       streamsStatus === "success" &&
+      streams &&
       streams.length > 0 &&
       configurationStatus === "success" &&
       configuration.schedule_complete

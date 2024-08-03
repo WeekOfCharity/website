@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
+import { useMemo } from "react";
 
 export type Stream = {
   activity: {
@@ -53,19 +54,20 @@ export const useStreams = (lang: Language) => {
     return data.data;
   });
 
-  if (!rawQueryResult.data) return rawQueryResult;
-
-  const translatedData: Stream[] = [];
-  for (const dataEntry of rawQueryResult.data) {
-    const { activity, ...rest } = dataEntry;
-    const { name, name_en, ...restActivity } = activity;
-    translatedData.push({
-      ...rest,
-      activity: {
-        ...restActivity,
-        name: lang === Language.DE || !name_en ? name : name_en,
-      },
+  const translatedData = useMemo(() => {
+    if (!rawQueryResult.data) return undefined;
+    return rawQueryResult.data.map((dataEntry) => {
+      const { activity, ...rest } = dataEntry;
+      const { name, name_en, ...restActivity } = activity;
+      return {
+        ...rest,
+        activity: {
+          ...restActivity,
+          name: lang === Language.DE || !name_en ? name : name_en,
+        },
+      } as Stream;
     });
-  }
+  }, [lang, rawQueryResult.data]);
+
   return { ...rawQueryResult, data: translatedData };
 };

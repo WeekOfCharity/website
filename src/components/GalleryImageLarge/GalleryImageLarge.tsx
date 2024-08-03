@@ -24,7 +24,6 @@ export const GalleryImageLarge = ({
 }: GalleryImageLargeProps) => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
-  const [currentImageId, setCurrentImageId] = useState<number>();
   const [currentImage, setCurrentImage] = useState<string>();
 
   const handlePopUpClick: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -52,9 +51,7 @@ export const GalleryImageLarge = ({
   };
 
   useEffect(() => {
-    if (imageData.id === currentImageId) return;
     setLoading(true);
-    setCurrentImageId(imageData.id);
 
     const imageUrl =
       import.meta.env.VITE_BASE_URL +
@@ -74,9 +71,7 @@ export const GalleryImageLarge = ({
         setLoading(false);
       })
       .catch(() => {
-        if (abortController.signal.aborted) {
-          console.warn("The user aborted the request");
-        } else {
+        if (!abortController.signal.aborted) {
           console.error("The request failed");
         }
       });
@@ -84,7 +79,7 @@ export const GalleryImageLarge = ({
     return () => {
       abortController.abort();
     };
-  }, [currentImageId, imageData]);
+  }, [imageData]);
 
   return (
     <div className="fullscreenPopUp" onClick={handlePopUpClick}>

@@ -23,7 +23,6 @@ export const Gallery = () => {
   const [sortMethod, setSortMethod] =
     useState<(typeof sortMethods)[number]>("year");
   const [imageContent, setImageContent] = useState<GalleryImageData>();
-  const [galleryImageOrder, setGalleryImageOrder] = useState<number[]>([]);
 
   const { data: galleryImages, status: galleryImagesStatus } = useGalleryImages(
     getValidLanguage(i18n.language)
@@ -44,19 +43,6 @@ export const Gallery = () => {
     setImageClicked(false);
     document.body.style.overflow = "unset";
   };
-
-  useEffect(() => {
-    if (!imageContent || galleryImageOrder.length == 0) {
-      setNextImageId(undefined);
-      setPrevImageId(undefined);
-      return;
-    }
-    const currentIndex = galleryImageOrder.findIndex(
-      (id) => id == imageContent.id
-    );
-    setNextImageId(galleryImageOrder[currentIndex + 1]);
-    setPrevImageId(galleryImageOrder[currentIndex - 1]);
-  }, [imageContent, galleryImageOrder]);
 
   function toggleScrollbarGutter() {
     if (
@@ -85,20 +71,31 @@ export const Gallery = () => {
     );
   }, [galleryImages, sortMethod]);
 
-  useEffect(() => {
+  const galleryImageOrder = useMemo(() => {
+    if (!galleryImagesGrouped) return [];
     const order: number[] = [];
-    Object.keys(galleryImagesGrouped).map((categoryValue) => {
-      galleryImagesGrouped[categoryValue].map((galleryImage) => {
+    Object.keys(galleryImagesGrouped).forEach((categoryValue) => {
+      galleryImagesGrouped[categoryValue].forEach((galleryImage) => {
         order.push(galleryImage.id);
       });
     });
-    setGalleryImageOrder(order);
+    return order;
   }, [galleryImagesGrouped]);
 
-  const handleCategoryClick = (
-    _: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    id: number
-  ) => {
+  useEffect(() => {
+    if (!imageContent || galleryImageOrder.length == 0) {
+      setNextImageId(undefined);
+      setPrevImageId(undefined);
+      return;
+    }
+    const currentIndex = galleryImageOrder.findIndex(
+      (id) => id == imageContent.id
+    );
+    setNextImageId(galleryImageOrder[currentIndex + 1]);
+    setPrevImageId(galleryImageOrder[currentIndex - 1]);
+  }, [imageContent, galleryImageOrder]);
+
+  const handleCategoryClick = (id: number) => {
     setSortMethod(sortMethods[id]);
   };
 
@@ -150,6 +147,7 @@ export const Gallery = () => {
           />
         )}
         {galleryImagesStatus === "success" &&
+          galleryImagesGrouped &&
           Object.keys(galleryImagesGrouped).map((categoryValue) => (
             <div className="space-y-4" key={categoryValue}>
               <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">

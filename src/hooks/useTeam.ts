@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
+import { useMemo } from "react";
 
 export type Member = {
   icon: string;
@@ -28,19 +29,19 @@ export const useTeam = (lang: Language) => {
     return data.data;
   });
 
-  if (!rawQueryResult.data) return rawQueryResult;
+  const translatedData = useMemo(() => {
+    if (!rawQueryResult.data) return undefined;
+    return rawQueryResult.data.map((dataEntry) => {
+      const { introduction_en, introduction, ...rest } = dataEntry;
+      return {
+        ...rest,
+        introduction:
+          lang === Language.DE || !introduction_en
+            ? introduction
+            : introduction_en,
+      } as Member;
+    });
+  }, [lang, rawQueryResult.data]);
 
-  const translatedData: Member[] = [];
-  for (const member of rawQueryResult.data) {
-    const { introduction_en, introduction, ...rest } = member;
-    const formattedMember = {
-      ...rest,
-      introduction:
-        lang === Language.DE || !introduction_en
-          ? introduction
-          : introduction_en,
-    };
-    translatedData.push(formattedMember);
-  }
   return { ...rawQueryResult, data: translatedData };
 };

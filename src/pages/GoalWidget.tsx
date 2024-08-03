@@ -97,7 +97,7 @@ export const GoalWidget = () => {
           <>
             <div className="donationNameWrapper">
               <div className="successMessage">
-                {donationGoals.length > 0
+                {donationGoals && donationGoals.length > 0
                   ? "Alle Goals wurden erreicht!"
                   : "Es gibt aktuell keine Goals!"}
               </div>

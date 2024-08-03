@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./DonationMeter.scss";
 import { useTranslation } from "react-i18next";
 
@@ -7,7 +7,7 @@ const easeInOutCirc = (t: number) =>
   t < 0.5
     ? (1 - Math.sqrt(1 - Math.pow(2 * t, 2))) / 2
     : (Math.sqrt(1 - Math.pow(-2 * t + 2, 2)) + 1) / 2;
-const frameDuration = 1000 / 60;
+const FRAME_DURATION = 1000 / 60;
 
 type DonationMeterProps = {
   currentValue: number;
@@ -24,27 +24,37 @@ export const DonationMeter = ({
   const [amount, setAmount] = useState(startValue);
   const [animatedAmount, setAnimatedAmount] = useState(startValue);
   const [isAnimatingAmount, setIsAnimatingAmount] = useState(false);
+  const previousAmount = useRef(startValue);
 
-  // TODO: Refactor into something that makes more sense and doesn't give warnings
   useEffect(() => {
-    if (animatedAmount >= amount) return;
+    if (previousAmount.current >= amount) return;
 
     let frame = 0;
-    const initialAmount = animatedAmount;
-    const totalFrames = Math.round(2000 / frameDuration);
+    const initialAmount = previousAmount.current;
+    const totalFrames = Math.round(2000 / FRAME_DURATION);
+
+    const getNewAmount = (frame: number) => {
+      const progress = easeInOutCirc(frame / totalFrames);
+      return initialAmount + (amount - initialAmount) * progress;
+    };
 
     setIsAnimatingAmount(true);
     const counter = setInterval(() => {
       frame++;
-
-      const progress = easeInOutCirc(frame / totalFrames);
-      setAnimatedAmount(initialAmount + (amount - initialAmount) * progress);
+      const newAnimatedAmount = getNewAmount(frame);
+      setAnimatedAmount(newAnimatedAmount);
+      previousAmount.current = newAnimatedAmount;
 
       if (frame >= totalFrames) {
         clearInterval(counter);
         setIsAnimatingAmount(false);
       }
-    }, frameDuration);
+    }, FRAME_DURATION);
+
+    return () => {
+      clearInterval(counter);
+      setIsAnimatingAmount(false);
+    };
   }, [amount]);
 
   setTimeout(() => setAmount(currentValue));
@@ -76,10 +86,10 @@ export const DonationMeter = ({
         <div className="h-10 my-10 w-full">
           <div className="bg-blue23-100 ring-2 ring-offset-2 ring-blue23-600 ring-offset-white rounded w-full">
             <div
-              className=" bg-no-repeat h-10 rounded woc-donation-meter bg-repeating-linear-gradient"
+              className="bg-no-repeat h-10 rounded woc-donation-meter bg-repeating-linear-gradient"
               style={{
                 backgroundSize: "200% 100%",
-                width: `${(100 / (nextGoalValue ?? currentValue)) * amount}%`,
+                width: `${(100 / (nextGoalValue ?? currentValue)) * animatedAmount}%`,
               }}
             ></div>
           </div>

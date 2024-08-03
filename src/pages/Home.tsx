@@ -68,6 +68,7 @@ export const Home = () => {
     } else if (
       configurationStatus === "success" &&
       streamsStatus === "success" &&
+      streams &&
       streams.length > 0
     ) {
       const woc_start_date = new Date(streams[0].start);
@@ -223,6 +224,7 @@ export const Home = () => {
 
         {donationsStatus === "success" &&
           donationGoalsStatus === "success" &&
+          donationGoals &&
           donationGoals.length > 0 && (
             <>
               <DonationMeter
@@ -248,7 +250,7 @@ export const Home = () => {
         <div id="bidwar" />
         {bidwarResultsStatus === "success" &&
           bidwarsStatus === "success" &&
-          bidwars.map((bidwar) => {
+          bidwars?.map((bidwar) => {
             if (bidwar.status === "inactive") return;
             const options = bidwarResults.results.find(
               (result) => result.id === bidwar.id
@@ -273,6 +275,7 @@ export const Home = () => {
 
         {donationsStatus === "success" &&
           donationGoalsStatus === "success" &&
+          donationGoals &&
           donationGoals.length > 0 && (
             <div className="flex flex-col gap-7 xl:grid grid-cols-2 mx-5 md:mx-10">
               {donationGoals.map((goal) => (
@@ -298,7 +301,7 @@ export const Home = () => {
 
           {faqStatus === "success" && (
             <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
-              {faq.map((item) => (
+              {faq?.map((item) => (
                 <div key={item.id} className="bg-opacity-70 bg-green23-100 p-5">
                   <div className="text-green23-900 font-semibold mb-2 text-lg">
                     {item.question}

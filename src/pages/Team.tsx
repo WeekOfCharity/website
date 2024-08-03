@@ -90,19 +90,18 @@ export const Team = () => {
   };
 
   useEffect(() => {
-    if (searchParams.has("id")) {
-      if (membersStatus === "success") {
-        setActiveMember(
-          members.find(
-            (member) =>
-              member.id.toString() === searchParams.get("id") &&
-              !member.hide_from_team_page
-          )
-        );
-      }
-    } else {
+    if (!searchParams.has("id")) {
       setActiveMember(undefined);
+      return;
     }
+    if (membersStatus !== "success") return;
+    setActiveMember(
+      members?.find(
+        (member) =>
+          member.id.toString() === searchParams.get("id") &&
+          !member.hide_from_team_page
+      )
+    );
   }, [members, membersStatus, searchParams]);
 
   return (
@@ -179,7 +178,7 @@ export const Team = () => {
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter(
+                ?.filter(
                   (member) =>
                     member.streamer &&
                     !member.hide_from_team_page &&
@@ -206,7 +205,7 @@ export const Team = () => {
             </h2>
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter(
+                ?.filter(
                   (member) =>
                     !member.streamer &&
                     !member.hide_from_team_page &&

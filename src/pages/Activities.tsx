@@ -118,7 +118,7 @@ export const Activities = () => {
     if (searchParams.has("id")) {
       if (activitiesStatus === "success") {
         setActiveActivity(
-          activities.find(
+          activities?.find(
             (activity) => activity.id.toString() === searchParams.get("id")
           )
         );
@@ -154,7 +154,7 @@ export const Activities = () => {
       >
         {activitiesStatus === "success" && (
           <>
-            {activities.length > 0 && (
+            {activities && activities.length > 0 && (
               <div>
                 <div className="flex justify-center mt-8 -rotate-3 w-full">
                   <span className="font-handwriting font-semibold text-xl">
@@ -197,14 +197,14 @@ export const Activities = () => {
             )}
 
             <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">
-              {activities.length > 0
+              {activities && activities.length > 0
                 ? t("activities.activities")
                 : t("seeMoreSoon")}
             </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {activities
-                .filter(
+                ?.filter(
                   (activity) => ![openingId, finaleId].includes(activity.id)
                 )
                 .sort((a, b) => a.name.localeCompare(b.name))

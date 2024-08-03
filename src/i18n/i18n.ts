@@ -70,7 +70,7 @@ export const initi18n = async () => {
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-      debug: true,
+      debug: false,
       fallbackLng: defaultLanguage,
       resources: {
         en: {

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
+import { useMemo } from "react";
 
 export type GalleryImage = {
   description: string | null;
@@ -24,16 +25,19 @@ export const useGalleryImages = (lang: Language) => {
     return data.data;
   });
 
-  if (!rawQueryResult.data) return rawQueryResult;
-
-  const translatedData: GalleryImage[] = [];
-  for (const dataEntry of rawQueryResult.data) {
-    const { description_en, description, ...rest } = dataEntry;
-    translatedData.push({
-      ...rest,
-      description:
-        lang === Language.DE || !description_en ? description : description_en,
+  const translatedData = useMemo(() => {
+    if (!rawQueryResult.data) return undefined;
+    return rawQueryResult.data.map((dataEntry) => {
+      const { description_en, description, ...rest } = dataEntry;
+      return {
+        ...rest,
+        description:
+          lang === Language.DE || !description_en
+            ? description
+            : description_en,
+      } as GalleryImage;
     });
-  }
+  }, [lang, rawQueryResult.data]);
+
   return { ...rawQueryResult, data: translatedData };
 };

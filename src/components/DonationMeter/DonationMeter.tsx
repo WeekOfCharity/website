@@ -25,6 +25,7 @@ export const DonationMeter = ({
   const [animatedAmount, setAnimatedAmount] = useState(startValue);
   const [isAnimatingAmount, setIsAnimatingAmount] = useState(false);
 
+  // TODO: Refactor into something that makes more sense and doesn't give warnings
   useEffect(() => {
     if (animatedAmount >= amount) return;
 

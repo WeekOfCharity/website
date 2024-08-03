@@ -7,7 +7,7 @@ export type BidwarResults = {
     status: "active" | "inactive" | "results";
     bidwar_name: string;
     bidwar_description: string;
-    options: object;
+    options: Record<string, number>;
   }[];
   id: number;
 };

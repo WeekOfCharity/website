@@ -44,7 +44,7 @@ export const Nav = () => {
         scrollbarGutterOriginalValue;
       document.body.style.scrollbarGutter = scrollbarGutterOriginalValue;
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, scrollbarGutterOriginalValue]);
 
   return (
     <nav className="flex items-center p-5 md:p-10 select-none sticky text-neutral-800 top-0 w-full z-[99999]">
@@ -58,7 +58,7 @@ export const Nav = () => {
           </div>
         </a>
         <span className="absolute font-fat right-1 rotate-3 text-accent-500 top-3">
-          '23
+          &apos;23
         </span>
       </div>
 

@@ -27,7 +27,7 @@ export const Home = () => {
   useTitle();
   const { t, i18n } = useTranslation();
   const validLang = getValidLanguage(i18n.language);
-  const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
+  const [currentDonation, setCurrentDonation] = useState(0);
   const [lastDonationGoal, setLastDonationGoal] = useState(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(
     undefined
@@ -249,26 +249,26 @@ export const Home = () => {
         {bidwarResultsStatus === "success" &&
           bidwarsStatus === "success" &&
           bidwars.map((bidwar) => {
-            if (bidwar.status === "active" || bidwar.status === "results") {
-              return (
-                <div
-                  className="flex flex-col mx-5 md:mx-10 items-center"
-                  key={bidwar.id}
-                >
-                  <Bidwar
-                    name={bidwar.bidwar_name}
-                    description={bidwar.bidwar_description}
-                    options={
-                      bidwarResults.results.find(
-                        (result) => result.id === bidwar.id
-                      )?.options
-                    }
-                    status={bidwar.status}
-                    timeslot={bidwar.timeslot}
-                  />
-                </div>
-              );
-            }
+            if (bidwar.status === "inactive") return;
+            const options = bidwarResults.results.find(
+              (result) => result.id === bidwar.id
+            )?.options;
+            if (!options) return;
+
+            return (
+              <div
+                className="flex flex-col mx-5 md:mx-10 items-center"
+                key={bidwar.id}
+              >
+                <Bidwar
+                  name={bidwar.bidwar_name}
+                  description={bidwar.bidwar_description}
+                  options={options}
+                  status={bidwar.status}
+                  timeslot={bidwar.timeslot}
+                />
+              </div>
+            );
           })}
 
         {donationsStatus === "success" &&
@@ -277,10 +277,10 @@ export const Home = () => {
             <div className="flex flex-col gap-7 xl:grid grid-cols-2 mx-5 md:mx-10">
               {donationGoals.map((goal) => (
                 <DonationGoal
+                  key={goal.id}
                   achieved={goal.reached_at <= currentDonation}
                   amount={goal.reached_at}
                   description={goal.description}
-                  key={goal.id}
                   timeslot={goal.timeslot}
                   title={goal.name}
                 />
@@ -314,7 +314,7 @@ export const Home = () => {
 
           {faqStatus !== "success" && (
             <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
-              {[...Array(8)].map((_, index) => (
+              {Array.from({ length: 8 }).map((_, index) => (
                 <div key={index}>
                   <Shimmer className="h-7 mb-2" />
                   <Shimmer className="h-14" />

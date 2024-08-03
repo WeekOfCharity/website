@@ -126,7 +126,7 @@ export const Activities = () => {
     } else {
       setActiveActivity(undefined);
     }
-  }, [activitiesStatus, searchParams]);
+  }, [activities, activitiesStatus, searchParams]);
 
   return (
     <main className="text-neutral-800 woc-accent-pink23">
@@ -230,7 +230,7 @@ export const Activities = () => {
             </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-              {[...Array(48)].map((_, index) => (
+              {Array.from({ length: 48 }).map((_, index) => (
                 <Activity.Loading key={index} />
               ))}
             </div>

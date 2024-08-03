@@ -22,8 +22,8 @@ export const Privacy = () => {
         <p>
           Mit der folgenden Datenschutzerklärung möchten wir Sie darüber
           aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend
-          auch kurz als "Daten“ bezeichnet) wir zu welchen Zwecken und in
-          welchem Umfang im Rahmen der Bereitstellung unserer Applikation
+          auch kurz als &quot;Daten&quot; bezeichnet) wir zu welchen Zwecken und
+          in welchem Umfang im Rahmen der Bereitstellung unserer Applikation
           verarbeiten.
         </p>
         <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
@@ -196,11 +196,12 @@ export const Privacy = () => {
           Kürzung der IP-Adresse: Sofern IP-Adressen von uns oder von den
           eingesetzten Dienstleistern und Technologien verarbeitet werden und
           die Verarbeitung einer vollständigen IP-Adresse nicht erforderlich
-          ist, wird die IP-Adresse gekürzt (auch als "IP-Masking" bezeichnet).
-          Hierbei werden die letzten beiden Ziffern, bzw. der letzte Teil der
-          IP-Adresse nach einem Punkt entfernt, bzw. durch Platzhalter ersetzt.
-          Mit der Kürzung der IP-Adresse soll die Identifizierung einer Person
-          anhand ihrer IP-Adresse verhindert oder wesentlich erschwert werden.
+          ist, wird die IP-Adresse gekürzt (auch als &quot;IP-Masking&quot;
+          bezeichnet). Hierbei werden die letzten beiden Ziffern, bzw. der
+          letzte Teil der IP-Adresse nach einem Punkt entfernt, bzw. durch
+          Platzhalter ersetzt. Mit der Kürzung der IP-Adresse soll die
+          Identifizierung einer Person anhand ihrer IP-Adresse verhindert oder
+          wesentlich erschwert werden.
         </p>
         <p>
           TLS-Verschlüsselung (https): Um Ihre via unserem Online-Angebot
@@ -279,7 +280,7 @@ export const Privacy = () => {
           Interessen bieten wir den betroffenen Personen effiziente und sichere
           Zahlungsmöglichkeiten an und setzen hierzu neben Banken und
           Kreditinstituten weitere Dienstleister ein (zusammenfassend
-          "Zahlungsdienstleister").
+          &quot;Zahlungsdienstleister&quot;).
         </p>
         <p>
           Zu den durch die Zahlungsdienstleister verarbeiteten Daten gehören
@@ -414,8 +415,8 @@ export const Privacy = () => {
             </span>
             Für die Bereitstellung unseres Onlineangebotes nutzen wir
             Speicherplatz, Rechenkapazität und Software, die wir von einem
-            entsprechenden Serveranbieter (auch "Webhoster" genannt) mieten oder
-            anderweitig beziehen;{" "}
+            entsprechenden Serveranbieter (auch &quot;Webhoster&quot; genannt)
+            mieten oder anderweitig beziehen;{" "}
             <span className="font-semibold">Rechtsgrundlagen:</span> Berechtigte
             Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).
           </li>
@@ -424,9 +425,9 @@ export const Privacy = () => {
               Erhebung von Zugriffsdaten und Logfiles:{" "}
             </span>
             Der Zugriff auf unser Onlineangebot wird in Form von so genannten
-            "Server-Logfiles" protokolliert. Zu den Serverlogfiles können die
-            Adresse und Name der abgerufenen Webseiten und Dateien, Datum und
-            Uhrzeit des Abrufs, übertragene Datenmengen, Meldung über
+            &quot;Server-Logfiles&quot; protokolliert. Zu den Serverlogfiles
+            können die Adresse und Name der abgerufenen Webseiten und Dateien,
+            Datum und Uhrzeit des Abrufs, übertragene Datenmengen, Meldung über
             erfolgreichen Abruf, Browsertyp nebst Version, das Betriebssystem
             des Nutzers, Referrer URL (die zuvor besuchte Seite) und im
             Regelfall IP-Adressen und der anfragende Provider gehören. Die
@@ -680,9 +681,9 @@ export const Privacy = () => {
         <p>
           Wir binden in unser Onlineangebot Funktions- und Inhaltselemente ein,
           die von den Servern ihrer jeweiligen Anbieter (nachfolgend bezeichnet
-          als "Drittanbieter”) bezogen werden. Dabei kann es sich zum Beispiel
-          um Grafiken, Videos oder Stadtpläne handeln (nachfolgend einheitlich
-          bezeichnet als "Inhalte”).
+          als &quot;Drittanbieter&quot;) bezogen werden. Dabei kann es sich zum
+          Beispiel um Grafiken, Videos oder Stadtpläne handeln (nachfolgend
+          einheitlich bezeichnet als &quot;Inhalte&quot;).
         </p>
         <p>
           Die Einbindung setzt immer voraus, dass die Drittanbieter dieser
@@ -692,16 +693,16 @@ export const Privacy = () => {
           Funktionen erforderlich. Wir bemühen uns, nur solche Inhalte zu
           verwenden, deren jeweilige Anbieter die IP-Adresse lediglich zur
           Auslieferung der Inhalte verwenden. Drittanbieter können ferner
-          sogenannte Pixel-Tags (unsichtbare Grafiken, auch als "Web Beacons"
-          bezeichnet) für statistische oder Marketingzwecke verwenden. Durch die
-          "Pixel-Tags" können Informationen, wie der Besucherverkehr auf den
-          Seiten dieser Webseite, ausgewertet werden. Die pseudonymen
-          Informationen können ferner in Cookies auf dem Gerät der Nutzer
-          gespeichert werden und unter anderem technische Informationen zum
-          Browser und zum Betriebssystem, zu verweisenden Webseiten, zur
-          Besuchszeit sowie weitere Angaben zur Nutzung unseres Onlineangebotes
-          enthalten als auch mit solchen Informationen aus anderen Quellen
-          verbunden werden.
+          sogenannte Pixel-Tags (unsichtbare Grafiken, auch als &quot;Web
+          Beacons&quot; bezeichnet) für statistische oder Marketingzwecke
+          verwenden. Durch die &quot;Pixel-Tags&quot; können Informationen, wie
+          der Besucherverkehr auf den Seiten dieser Webseite, ausgewertet
+          werden. Die pseudonymen Informationen können ferner in Cookies auf dem
+          Gerät der Nutzer gespeichert werden und unter anderem technische
+          Informationen zum Browser und zum Betriebssystem, zu verweisenden
+          Webseiten, zur Besuchszeit sowie weitere Angaben zur Nutzung unseres
+          Onlineangebotes enthalten als auch mit solchen Informationen aus
+          anderen Quellen verbunden werden.
         </p>
 
         <ul className="list-inside list-disc">
@@ -735,8 +736,8 @@ export const Privacy = () => {
             <span className="font-semibold">
               Google Fonts (Bereitstellung auf eigenem Server):{" "}
             </span>
-            Schriftarten ("Google Fonts") zwecks einer nutzerfreundlichen
-            Darstellung unseres Onlineangebotes;{" "}
+            Schriftarten (&quot;Google Fonts&quot;) zwecks einer
+            nutzerfreundlichen Darstellung unseres Onlineangebotes;{" "}
             <span className="font-semibold">Dienstanbieter:</span> Die Google
             Fonts werden auf unserem Server gehostet, es werden keine Daten an
             Google übermittelt;{" "}
@@ -856,31 +857,32 @@ export const Privacy = () => {
         <ul className="list-inside list-disc">
           <li>
             <span className="font-semibold">Personenbezogene Daten:</span>{" "}
-            "Personenbezogene Daten“ sind alle Informationen, die sich auf eine
-            identifizierte oder identifizierbare natürliche Person (im Folgenden
-            "betroffene Person“) beziehen; als identifizierbar wird eine
-            natürliche Person angesehen, die direkt oder indirekt, insbesondere
-            mittels Zuordnung zu einer Kennung wie einem Namen, zu einer
-            Kennnummer, zu Standortdaten, zu einer Online-Kennung (z.B. Cookie)
-            oder zu einem oder mehreren besonderen Merkmalen identifiziert
-            werden kann, die Ausdruck der physischen, physiologischen,
-            genetischen, psychischen, wirtschaftlichen, kulturellen oder
-            sozialen Identität dieser natürlichen Person sind.
+            &quot;Personenbezogene Daten&quot; sind alle Informationen, die sich
+            auf eine identifizierte oder identifizierbare natürliche Person (im
+            Folgenden &quot;betroffene Person&quot;) beziehen; als
+            identifizierbar wird eine natürliche Person angesehen, die direkt
+            oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie
+            einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer
+            Online-Kennung (z.B. Cookie) oder zu einem oder mehreren besonderen
+            Merkmalen identifiziert werden kann, die Ausdruck der physischen,
+            physiologischen, genetischen, psychischen, wirtschaftlichen,
+            kulturellen oder sozialen Identität dieser natürlichen Person sind.
           </li>
           <li>
             <span className="font-semibold">Verantwortlicher:</span> Als
-            "Verantwortlicher“ wird die natürliche oder juristische Person,
-            Behörde, Einrichtung oder andere Stelle, die allein oder gemeinsam
-            mit anderen über die Zwecke und Mittel der Verarbeitung von
-            personenbezogenen Daten entscheidet, bezeichnet.
+            &quot;Verantwortlicher&quot; wird die natürliche oder juristische
+            Person, Behörde, Einrichtung oder andere Stelle, die allein oder
+            gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung
+            von personenbezogenen Daten entscheidet, bezeichnet.
           </li>
           <li>
-            <span className="font-semibold">Verarbeitung:</span> "Verarbeitung"
-            ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte
-            Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit
-            personenbezogenen Daten. Der Begriff reicht weit und umfasst
-            praktisch jeden Umgang mit Daten, sei es das Erheben, das Auswerten,
-            das Speichern, das Übermitteln oder das Löschen.
+            <span className="font-semibold">Verarbeitung:</span>{" "}
+            &quot;Verarbeitung&quot; ist jeder mit oder ohne Hilfe
+            automatisierter Verfahren ausgeführte Vorgang oder jede solche
+            Vorgangsreihe im Zusammenhang mit personenbezogenen Daten. Der
+            Begriff reicht weit und umfasst praktisch jeden Umgang mit Daten,
+            sei es das Erheben, das Auswerten, das Speichern, das Übermitteln
+            oder das Löschen.
           </li>
         </ul>
       </section>

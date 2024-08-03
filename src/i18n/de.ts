@@ -1,4 +1,6 @@
-export const deTranslation = {
+import { Translation } from "./i18n";
+
+export const deTranslation: Translation = {
   subNav: {
     donate: "Spenden",
     music: "Musik",

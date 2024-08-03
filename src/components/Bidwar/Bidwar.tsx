@@ -13,8 +13,8 @@ import { useTranslation } from "react-i18next";
 
 type BidwarProps = {
   name: string;
-  description: string;
-  options: object;
+  description: string | null;
+  options: Record<string, number>;
   status: "active" | "inactive" | "results";
   timeslot?: StreamData | null;
 };

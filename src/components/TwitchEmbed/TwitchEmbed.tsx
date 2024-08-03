@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { memo, useEffect, useMemo, useRef, useState } from "react";
-import { TwitchPlayer } from "react-twitch-embed";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { TwitchPlayer, TwitchPlayerInstance } from "react-twitch-embed";
 import { Breakpoint, useBreakpoint } from "../../hooks/useBreakpoint";
 import { Stream, useStreams } from "../../hooks/useStreams";
 import { getState } from "../../utils/dateAndTime";
@@ -14,9 +14,11 @@ function getUserFromTwitchLink(link: string) {
   return "";
 }
 
-const playerDimensions = {
-  [Breakpoint.sm]: { width: 393, height: 221 },
-  [Breakpoint.md]: { width: 640, height: 360 },
+// TODO: Refactor into tailwind breakpoints and classes instead of inline styles
+const getPlayerDimensions = (breakpoint: Breakpoint) => {
+  if (breakpoint === Breakpoint.sm) return { width: 393, height: 221 };
+  if (breakpoint === Breakpoint.md) return { width: 640, height: 360 };
+  return { width: 960, height: 540 };
 };
 
 const TwitchEmbed = memo(function TwitchEmbed() {
@@ -29,15 +31,15 @@ const TwitchEmbed = memo(function TwitchEmbed() {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const { data: streams, status: streamsStatus } = useStreams(validLang);
 
-  function checkRunningStream() {
+  const checkRunningStream = useCallback(() => {
     const stream = (streams ?? []).find(
       (stream) => getState(stream.start, stream.end) === "running"
     );
     setRunning(stream);
     setShowInactive(streamsStatus === "success" && stream === undefined);
-  }
+  }, [streams, streamsStatus]);
 
-  useEffect(checkRunningStream, [streams, streamsStatus]);
+  useEffect(checkRunningStream, [checkRunningStream]);
 
   useEffect(() => {
     if (running) {
@@ -47,14 +49,10 @@ const TwitchEmbed = memo(function TwitchEmbed() {
     }
   }, [running]);
 
-  const embed = useRef(); // We use a ref instead of state to avoid rerenders.
+  const embed = useRef<TwitchPlayerInstance>(); // We use a ref instead of state to avoid rerenders.
 
-  const handleReady = (e) => {
-    embed.current = e;
-  };
-
-  const handleOffline = () => {
-    checkRunningStream();
+  const handleReady = (player: TwitchPlayerInstance) => {
+    embed.current = player;
   };
 
   const TwitchPlayerPreventRerender = useMemo(() => {
@@ -66,10 +64,10 @@ const TwitchEmbed = memo(function TwitchEmbed() {
         autoplay
         muted
         onReady={handleReady}
-        onOffline={handleOffline}
+        onOffline={checkRunningStream}
       />
     );
-  }, [channelName]);
+  }, [channelName, checkRunningStream]);
 
   return (
     <>
@@ -81,10 +79,7 @@ const TwitchEmbed = memo(function TwitchEmbed() {
         >
           <div
             className="bg-neutral-800"
-            style={{
-              width: playerDimensions[breakpoint]?.width || 960,
-              height: playerDimensions[breakpoint]?.height || 540,
-            }}
+            style={getPlayerDimensions(breakpoint)}
           >
             {privacyAccepted ? (
               TwitchPlayerPreventRerender

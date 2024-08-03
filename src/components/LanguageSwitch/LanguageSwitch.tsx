@@ -15,12 +15,12 @@ export const LanguageSwitch = ({ className }: LanguageSwitchProps) => {
 
   useEffect(() => {
     setSelectedLanguage(getValidLanguage(i18n.language));
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     if (!selectedLanguage) return;
-    i18n.changeLanguage(selectedLanguage);
-  }, [selectedLanguage]);
+    void i18n.changeLanguage(selectedLanguage);
+  }, [i18n, selectedLanguage]);
 
   const toggleLanguage = () => {
     setSelectedLanguage((prev) =>

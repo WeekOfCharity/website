@@ -103,7 +103,7 @@ export const Team = () => {
     } else {
       setActiveMember(undefined);
     }
-  }, [membersStatus, searchParams]);
+  }, [members, membersStatus, searchParams]);
 
   return (
     <main className="text-neutral-800">
@@ -237,7 +237,7 @@ export const Team = () => {
             </h2>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-              {[...Array(24)].map((_, index) => (
+              {Array.from({ length: 24 }).map((_, index) => (
                 <Member.Loading key={index} />
               ))}
             </div>

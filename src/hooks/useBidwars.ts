@@ -38,10 +38,28 @@ export const useBidwars = (lang: Language) => {
       timeslot,
       ...rest
     } = dataEntry;
+
+    const translatedBidwar = {
+      ...rest,
+      bidwar_name:
+        lang === Language.DE || !bidwar_name_en ? bidwar_name : bidwar_name_en,
+      bidwar_description:
+        lang === Language.DE || !bidwar_description_en
+          ? bidwar_description
+          : bidwar_description_en,
+      timeslot: null,
+    };
+
+    if (!timeslot) {
+      translatedData.push(translatedBidwar);
+      continue;
+    }
+
     const { activity, ...restTimeslot } = timeslot;
     const { name, name_en, ...restActivity } = activity;
+
     translatedData.push({
-      ...rest,
+      ...translatedBidwar,
       timeslot: {
         ...restTimeslot,
         activity: {
@@ -49,12 +67,6 @@ export const useBidwars = (lang: Language) => {
           name: lang === Language.DE || !name_en ? name : name_en,
         },
       },
-      bidwar_name:
-        lang === Language.DE || !bidwar_name_en ? bidwar_name : bidwar_name_en,
-      bidwar_description:
-        lang === Language.DE || !bidwar_description_en
-          ? bidwar_description
-          : bidwar_description_en,
     });
   }
   return { ...rawQueryResult, data: translatedData };

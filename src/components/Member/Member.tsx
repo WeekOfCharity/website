@@ -7,7 +7,7 @@ type MemberProps = {
   condensed?: boolean;
   name: string;
   onClick?: () => void;
-  pronouns?: string;
+  pronouns?: string | null;
 };
 
 export const Member = ({

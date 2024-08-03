@@ -63,7 +63,7 @@ export const Music = () => {
                 />
               ))}
             {musicReleasesStatus !== "success" &&
-              [...Array(4)].map((_, index) => (
+              Array.from({ length: 4 }).map((_, index) => (
                 <MusicRelease.Loading key={index} />
               ))}
           </div>

@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 type DonationGoalProps = {
   achieved?: boolean;
   amount: number;
-  description: string;
+  description: string | null;
   secret?: boolean;
   timeslot?: StreamData | null;
   title: string;

@@ -19,9 +19,7 @@ import { formatDay, getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
 import { useTranslation } from "react-i18next";
 import { getValidLanguage } from "../i18n/i18n";
-
-const ConditionalWrapper = ({ condition, wrapper, children }) =>
-  condition ? wrapper(children) : children;
+import { ConditionalWrapper } from "../components/ConditionalWrapper/ConditionalWrapper";
 
 export const Program = () => {
   const { t, i18n } = useTranslation();
@@ -62,7 +60,7 @@ export const Program = () => {
 
       return { ...groups, [day]: [...group, stream] };
     }, {});
-  }, [streams]);
+  }, [validLanguage, streams]);
 
   const upcomingHighlights = useMemo(() => {
     if (typeof streams === "undefined") {
@@ -126,7 +124,7 @@ export const Program = () => {
     } else {
       setActiveActivity(undefined);
     }
-  }, [activitiesStatus, searchParams]);
+  }, [activities, activitiesStatus, searchParams]);
 
   return (
     <main className="text-neutral-800 woc-accent-green23">
@@ -144,7 +142,7 @@ export const Program = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      {streamsStatus === "success" && upcomingHighlights.length > 0 && (
+      {streamsStatus === "success" && upcomingHighlights?.length && (
         <section className="mb-20 md:mb-40 mt-12 md:mt-20">
           <div className="max-w-screen-2xl mb-6 mx-auto">
             <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">
@@ -173,7 +171,7 @@ export const Program = () => {
       {streamsStatus !== "success" && (
         <section className="mb-20 md:mb-40 mt-12 md:mt-20">
           <Carousel>
-            {[...Array(4)].map((_, index) => (
+            {Array.from({ length: 4 }).map((_, index) => (
               <HighlightStream.Loading key={"loading" + index} />
             ))}
           </Carousel>
@@ -221,9 +219,9 @@ export const Program = () => {
             ))}
 
           {streamsStatus !== "success" &&
-            [...Array(8)].map((_, index) => (
+            Array.from({ length: 8 }).map((_, index) => (
               <div className="space-y-4" key={index}>
-                {[...Array(5)].map((_, index) => (
+                {Array.from({ length: 5 }).map((_, index) => (
                   <Stream.Loading key={index} />
                 ))}
               </div>

@@ -16,19 +16,16 @@ const formatter = new Intl.NumberFormat("de-DE", {
 export const GoalWidget = () => {
   useTitle("GoalWidget");
 
-  const [currentDonation, setCurrentDonation] = useState<number | undefined>(0);
-  const [nextDonationGoal, setNextDonationGoal] = useState<number | undefined>(
-    undefined
-  );
-  const [nextDonationGoalText, setNextDonationGoalText] = useState<
-    string | undefined
-  >(undefined);
+  const [currentDonation, setCurrentDonation] = useState<number>(0);
+  const [nextDonationGoal, setNextDonationGoal] = useState<number>();
+  const [nextDonationGoalText, setNextDonationGoalText] = useState<string>();
 
   const {
     data: donations,
     status: donationsStatus,
     refetch: refetchDonations,
   } = useExternalDonationTotal();
+
   const {
     data: donationGoals,
     status: donationGoalsStatus,
@@ -61,20 +58,14 @@ export const GoalWidget = () => {
   }, [donations, donationGoals]);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      refetchDonations();
-    }, 5000);
-
+    const id = setInterval(() => void refetchDonations(), 5000);
     return () => clearInterval(id);
-  }, []);
+  }, [refetchDonations]);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      refetchDonationGoals();
-    }, 60000);
-
+    const id = setInterval(() => void refetchDonationGoals(), 60000);
     return () => clearInterval(id);
-  }, []);
+  }, [refetchDonationGoals]);
 
   return (
     <div className="widgetWrapper">

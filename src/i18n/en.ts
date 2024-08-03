@@ -1,4 +1,6 @@
-export const enTranslation = {
+import { Translation } from "./i18n";
+
+export const enTranslation: Translation = {
   subNav: {
     donate: "Donate",
     music: "Music",

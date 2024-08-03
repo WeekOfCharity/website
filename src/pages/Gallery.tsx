@@ -11,22 +11,26 @@ import {
 import { useTitle } from "../hooks/useTitle";
 import { getValidLanguage } from "../i18n/i18n";
 
+const sortMethods = ["year", "category"] as const;
+
 export const Gallery = () => {
   const { t, i18n } = useTranslation();
   useTitle(t("mainNav.gallery"));
 
-  const [nextImageId, setNextImageId] = useState<number | undefined>(undefined);
-  const [prevImageId, setPrevImageId] = useState<number | undefined>(undefined);
+  const [nextImageId, setNextImageId] = useState<number>();
+  const [prevImageId, setPrevImageId] = useState<number>();
   const [imageClicked, setImageClicked] = useState(false);
-  const [sortMethod, setSortMethod] = useState("year");
-  const [imageContent, setImageContent] = useState(null);
-  const [galleryImageOrder, setGalleryImageOrder] = useState([]);
+  const [sortMethod, setSortMethod] =
+    useState<(typeof sortMethods)[number]>("year");
+  const [imageContent, setImageContent] = useState<GalleryImageData>();
 
   const { data: galleryImages, status: galleryImagesStatus } = useGalleryImages(
     getValidLanguage(i18n.language)
   );
 
   const displayLargeImage = (imageId: number) => {
+    if (!galleryImages) return;
+
     setImageClicked(true);
     const newImageData = galleryImages.find((image) => image.id == imageId);
     if (newImageData) {
@@ -39,19 +43,6 @@ export const Gallery = () => {
     setImageClicked(false);
     document.body.style.overflow = "unset";
   };
-
-  useEffect(() => {
-    if (!imageContent || galleryImageOrder.length == 0) {
-      setNextImageId(undefined);
-      setPrevImageId(undefined);
-      return;
-    }
-    const currentIndex = galleryImageOrder.findIndex(
-      (id) => id == imageContent.id
-    );
-    setNextImageId(galleryImageOrder[currentIndex + 1]);
-    setPrevImageId(galleryImageOrder[currentIndex - 1]);
-  }, [imageContent, galleryImageOrder]);
 
   function toggleScrollbarGutter() {
     if (
@@ -67,40 +58,44 @@ export const Gallery = () => {
   }
 
   const galleryImagesGrouped = useMemo(() => {
-    if (typeof galleryImages === "undefined" || galleryImages.length === 0) {
-      return {};
-    }
+    if (!galleryImages?.length) return {};
 
-    return galleryImages.reduce<Record<string, GalleryImageData[]>>(
+    return galleryImages.reduce(
       (groups, image) => {
-        if (sortMethod === "year") {
-          const year = image.year;
-          const group = groups[year] ?? [];
+        const sortValue = image[sortMethod];
+        const group = groups[sortValue] ?? [];
 
-          return { ...groups, [year]: [...group, image] };
-        } else if (sortMethod === "category") {
-          const category = image.category;
-          const group = groups[category] ?? [];
-
-          return { ...groups, [category]: [...group, image] };
-        }
+        return { ...groups, [sortValue]: [...group, image] };
       },
-      {}
+      {} as Record<string, GalleryImageData[]>
     );
   }, [galleryImages, sortMethod]);
 
-  useEffect(() => {
-    const order = [];
-    Object.keys(galleryImagesGrouped).map((categoryValue) => {
-      galleryImagesGrouped[categoryValue].map((galleryImage) => {
+  const galleryImageOrder = useMemo(() => {
+    if (!galleryImagesGrouped) return [];
+    const order: number[] = [];
+    Object.keys(galleryImagesGrouped).forEach((categoryValue) => {
+      galleryImagesGrouped[categoryValue].forEach((galleryImage) => {
         order.push(galleryImage.id);
       });
     });
-    setGalleryImageOrder(order);
+    return order;
   }, [galleryImagesGrouped]);
 
-  const handleCategoryClick = (id) => {
-    const sortMethods = ["year", "category"];
+  useEffect(() => {
+    if (!imageContent || galleryImageOrder.length == 0) {
+      setNextImageId(undefined);
+      setPrevImageId(undefined);
+      return;
+    }
+    const currentIndex = galleryImageOrder.findIndex(
+      (id) => id == imageContent.id
+    );
+    setNextImageId(galleryImageOrder[currentIndex + 1]);
+    setPrevImageId(galleryImageOrder[currentIndex - 1]);
+  }, [imageContent, galleryImageOrder]);
+
+  const handleCategoryClick = (id: number) => {
     setSortMethod(sortMethods[id]);
   };
 
@@ -152,6 +147,7 @@ export const Gallery = () => {
           />
         )}
         {galleryImagesStatus === "success" &&
+          galleryImagesGrouped &&
           Object.keys(galleryImagesGrouped).map((categoryValue) => (
             <div className="space-y-4" key={categoryValue}>
               <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">
@@ -163,7 +159,7 @@ export const Gallery = () => {
                   <GalleryImage
                     imageID={galleryImage.id}
                     imageUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${galleryImage.image}?width=512&height=512&quality=75&fit=cover&format=webp`
                     }
                     key={galleryImage.id}
@@ -176,7 +172,7 @@ export const Gallery = () => {
 
         {galleryImagesStatus !== "success" && (
           <div className="gap-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
-            {[...Array(14)].map((_, index) => (
+            {Array.from({ length: 14 }).map((_, index) => (
               <GalleryImage.Loading key={index} />
             ))}
           </div>

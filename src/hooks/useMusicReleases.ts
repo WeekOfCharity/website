@@ -12,7 +12,7 @@ export type MusicRelease = {
 export const useMusicReleases = () => {
   return useQuery(["music_releases"], async () => {
     const { data } = await axios.get<{ data: MusicRelease[] }>(
-      process.env.BASE_URL + "/items/music_releases?sort=-year"
+      import.meta.env.VITE_BASE_URL + "/items/music_releases?sort=-year"
     );
     return data.data;
   });

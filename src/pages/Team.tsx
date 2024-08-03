@@ -90,20 +90,19 @@ export const Team = () => {
   };
 
   useEffect(() => {
-    if (searchParams.has("id")) {
-      if (membersStatus === "success") {
-        setActiveMember(
-          members.find(
-            (member) =>
-              member.id.toString() === searchParams.get("id") &&
-              !member.hide_from_team_page
-          )
-        );
-      }
-    } else {
+    if (!searchParams.has("id")) {
       setActiveMember(undefined);
+      return;
     }
-  }, [membersStatus, searchParams]);
+    if (membersStatus !== "success") return;
+    setActiveMember(
+      members?.find(
+        (member) =>
+          member.id.toString() === searchParams.get("id") &&
+          !member.hide_from_team_page
+      )
+    );
+  }, [members, membersStatus, searchParams]);
 
   return (
     <main className="text-neutral-800">
@@ -148,7 +147,7 @@ export const Team = () => {
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
                       avatarUrl={
-                        process.env.BASE_URL +
+                        import.meta.env.VITE_BASE_URL +
                         `/assets/${charity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                       }
                       name={charity.name}
@@ -161,7 +160,7 @@ export const Team = () => {
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
                       avatarUrl={
-                        process.env.BASE_URL +
+                        import.meta.env.VITE_BASE_URL +
                         `/assets/${chesster.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                       }
                       name={chesster.name}
@@ -179,7 +178,7 @@ export const Team = () => {
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter(
+                ?.filter(
                   (member) =>
                     member.streamer &&
                     !member.hide_from_team_page &&
@@ -190,7 +189,7 @@ export const Team = () => {
                 .map((member) => (
                   <Member
                     avatarUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                     }
                     name={member.name}
@@ -206,7 +205,7 @@ export const Team = () => {
             </h2>
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {members
-                .filter(
+                ?.filter(
                   (member) =>
                     !member.streamer &&
                     !member.hide_from_team_page &&
@@ -217,7 +216,7 @@ export const Team = () => {
                 .map((member) => (
                   <Member
                     avatarUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                     }
                     name={member.name}
@@ -237,7 +236,7 @@ export const Team = () => {
             </h2>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-              {[...Array(24)].map((_, index) => (
+              {Array.from({ length: 24 }).map((_, index) => (
                 <Member.Loading key={index} />
               ))}
             </div>
@@ -273,7 +272,7 @@ export const Team = () => {
                 <img
                   className="bg-blue23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
                   src={
-                    process.env.BASE_URL +
+                    import.meta.env.VITE_BASE_URL +
                     `/assets/${activeMember.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                   }
                   role="presentation"
@@ -332,7 +331,7 @@ export const Team = () => {
                   <div className="player">
                     <AudioPlayer
                       url={
-                        process.env.BASE_URL +
+                        import.meta.env.VITE_BASE_URL +
                         `/assets/${activeMember.theme}.mp3`
                       }
                     />
@@ -375,7 +374,7 @@ export const Team = () => {
                           condensed
                           endTime={stream.end}
                           gameImageUrl={
-                            process.env.BASE_URL +
+                            import.meta.env.VITE_BASE_URL +
                             `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                           }
                           highlight={stream.highlight}
@@ -402,7 +401,7 @@ export const Team = () => {
                           condensed
                           endTime={stream.end}
                           gameImageUrl={
-                            process.env.BASE_URL +
+                            import.meta.env.VITE_BASE_URL +
                             `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                           }
                           highlight={stream.highlight}

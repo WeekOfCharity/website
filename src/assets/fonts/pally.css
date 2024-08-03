@@ -27,7 +27,8 @@
 
 @font-face {
   font-family: "Pally-var";
-  src: url("./Pally-Variable.woff2") format("woff2"),
+  src:
+    url("./Pally-Variable.woff2") format("woff2"),
     url("./Pally-Variable.woff") format("woff"),
     url("./Pally-Variable.ttf") format("truetype");
   font-weight: 400 700;
@@ -37,7 +38,8 @@
 
 @font-face {
   font-family: "Pally";
-  src: url("./Pally-Regular.woff2") format("woff2"),
+  src:
+    url("./Pally-Regular.woff2") format("woff2"),
     url("./Pally-Regular.woff") format("woff"),
     url("./Pally-Regular.ttf") format("truetype");
   font-weight: 400;
@@ -47,7 +49,8 @@
 
 @font-face {
   font-family: "Pally";
-  src: url("./Pally-Medium.woff2") format("woff2"),
+  src:
+    url("./Pally-Medium.woff2") format("woff2"),
     url("./Pally-Medium.woff") format("woff"),
     url("./Pally-Medium.ttf") format("truetype");
   font-weight: 500;
@@ -57,7 +60,8 @@
 
 @font-face {
   font-family: "Pally";
-  src: url("./Pally-Bold.woff2") format("woff2"),
+  src:
+    url("./Pally-Bold.woff2") format("woff2"),
     url("./Pally-Bold.woff") format("woff"),
     url("./Pally-Bold.ttf") format("truetype");
   font-weight: 700;

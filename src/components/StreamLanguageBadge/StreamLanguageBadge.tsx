@@ -7,7 +7,7 @@ type StreamLanguageProps = {
 };
 
 const getLanguageLabel = (language: string) => {
-  if (language === StreamLanguage.DEEN) return "(DE/EN)";
+  if (language === StreamLanguage.DEEN.valueOf()) return "(DE/EN)";
   else return `(${language.toUpperCase()})`;
 };
 

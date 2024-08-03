@@ -2,8 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Stream, StreamWithAlternatives } from "./useStreams";
 import { Language } from "../i18n/i18n";
+import { useMemo } from "react";
 
-export type Bidwars = {
+export type BidwarData = {
   bidwar_name: string;
   bidwar_description: string | null;
   id: number;
@@ -11,7 +12,7 @@ export type Bidwars = {
   timeslot: Stream | null;
 };
 
-type BidwarsWithAlternatives = Omit<Bidwars, "timeslot"> & {
+type BidwarDataWithAlternatives = Omit<BidwarData, "timeslot"> & {
   bidwar_name_en: string | null;
   bidwar_description_en: string | null;
   timeslot: StreamWithAlternatives | null;
@@ -19,43 +20,55 @@ type BidwarsWithAlternatives = Omit<Bidwars, "timeslot"> & {
 
 export const useBidwars = (lang: Language) => {
   const rawQueryResult = useQuery(["bidwars"], async () => {
-    const { data } = await axios.get<{ data: BidwarsWithAlternatives[] }>(
-      process.env.BASE_URL +
+    const { data } = await axios.get<{ data: BidwarDataWithAlternatives[] }>(
+      import.meta.env.VITE_BASE_URL +
         "/items/bidwars?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.activity.name_en,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name"
     );
     return data.data;
   });
 
-  if (!rawQueryResult.data) return rawQueryResult;
+  const translatedData = useMemo(() => {
+    if (!rawQueryResult.data) return undefined;
+    return rawQueryResult.data.map((dataEntry) => {
+      const {
+        bidwar_name_en,
+        bidwar_name,
+        bidwar_description_en,
+        bidwar_description,
+        timeslot,
+        ...rest
+      } = dataEntry;
 
-  const translatedData: Bidwars[] = [];
-  for (const dataEntry of rawQueryResult.data) {
-    const {
-      bidwar_name_en,
-      bidwar_name,
-      bidwar_description_en,
-      bidwar_description,
-      timeslot,
-      ...rest
-    } = dataEntry;
-    const { activity, ...restTimeslot } = timeslot;
-    const { name, name_en, ...restActivity } = activity;
-    translatedData.push({
-      ...rest,
-      timeslot: {
-        ...restTimeslot,
-        activity: {
-          ...restActivity,
-          name: lang === Language.DE || !name_en ? name : name_en,
+      const translatedBidwar: BidwarData = {
+        ...rest,
+        bidwar_name:
+          lang === Language.DE || !bidwar_name_en
+            ? bidwar_name
+            : bidwar_name_en,
+        bidwar_description:
+          lang === Language.DE || !bidwar_description_en
+            ? bidwar_description
+            : bidwar_description_en,
+        timeslot: null,
+      };
+
+      if (!timeslot) return translatedBidwar;
+
+      const { activity, ...restTimeslot } = timeslot;
+      const { name, name_en, ...restActivity } = activity;
+
+      return {
+        ...translatedBidwar,
+        timeslot: {
+          ...restTimeslot,
+          activity: {
+            ...restActivity,
+            name: lang === Language.DE || !name_en ? name : name_en,
+          },
         },
-      },
-      bidwar_name:
-        lang === Language.DE || !bidwar_name_en ? bidwar_name : bidwar_name_en,
-      bidwar_description:
-        lang === Language.DE || !bidwar_description_en
-          ? bidwar_description
-          : bidwar_description_en,
+      };
     });
-  }
+  }, [lang, rawQueryResult.data]);
+
   return { ...rawQueryResult, data: translatedData };
 };

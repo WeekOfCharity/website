@@ -10,7 +10,7 @@ export const BorderNav = () => {
       </div>
       <a
         className="flex h-[52px] items-center px-5 font-semibold focus-visible:underline hover:underline underline-offset-2"
-        href={process.env.DONATION_URL}
+        href={import.meta.env.VITE_DONATION_URL}
         rel="nofollow noreferrer"
         target="_blank"
       >

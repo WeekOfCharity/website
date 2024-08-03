@@ -42,7 +42,7 @@ function Player() {
     }, 1000);
 
     return () => clearInterval(id);
-  }, [time]);
+  }, [streams, streamsStatus, time]);
 
   return (
     <>

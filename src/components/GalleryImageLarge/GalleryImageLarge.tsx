@@ -1,5 +1,5 @@
 import { DotPulse } from "@uiball/loaders";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { GalleryImage as GalleryImageData } from "../../hooks/useGalleryImages";
 import "./GalleryImageLarge.scss";
 import { useTranslation } from "react-i18next";
@@ -11,8 +11,8 @@ type GalleryImageLargeProps = {
   imageData: GalleryImageData;
   hidePopUp: () => void;
   displayImageFunction: (id: number) => void;
-  nextImage: number;
-  prevImage: number;
+  nextImage: number | undefined;
+  prevImage: number | undefined;
 };
 
 export const GalleryImageLarge = ({
@@ -24,13 +24,16 @@ export const GalleryImageLarge = ({
 }: GalleryImageLargeProps) => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(true);
-  const [currentImageId, setCurrentImageId] = useState<number>(null);
-  const [currentImage, setCurrentImage] = useState(null);
+  const [currentImage, setCurrentImage] = useState<string>();
 
-  const handlePopUpClick = (e) => {
-    if (e.target.className == "fullscreenPopUp") {
-      hidePopUp();
-    }
+  const handlePopUpClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (
+      !(e.target instanceof HTMLDivElement) ||
+      e.target.className !== "fullscreenPopUp"
+    )
+      return;
+
+    hidePopUp();
   };
 
   const handleCloseButtonClick = () => {
@@ -38,22 +41,20 @@ export const GalleryImageLarge = ({
   };
 
   const handleArrowRightClick = () => {
+    if (typeof nextImage === "undefined") return;
     displayImageFunction(nextImage);
   };
 
   const handleArrowLeftClick = () => {
+    if (typeof prevImage === "undefined") return;
     displayImageFunction(prevImage);
   };
 
   useEffect(() => {
-    if (imageData.id == currentImageId) {
-      return;
-    }
     setLoading(true);
-    setCurrentImageId(imageData.id);
 
     const imageUrl =
-      process.env.BASE_URL +
+      import.meta.env.VITE_BASE_URL +
       `/assets/${imageData.image}?&quality=75&format=webp`;
 
     const abortController = new AbortController();
@@ -70,9 +71,7 @@ export const GalleryImageLarge = ({
         setLoading(false);
       })
       .catch(() => {
-        if (abortController.signal.aborted) {
-          console.warn("The user aborted the request");
-        } else {
+        if (!abortController.signal.aborted) {
           console.error("The request failed");
         }
       });
@@ -89,8 +88,9 @@ export const GalleryImageLarge = ({
           className="imageButton closeButton"
           type="button"
           onClick={handleCloseButtonClick}
+          aria-label="Close image modal"
         >
-          <img src={closeIcon.toString()} />
+          <img src={closeIcon.toString()} alt="" />
         </button>
         <div className="absolute flex justify-center items-center w-full h-full pb-16 flex-shrink-0">
           {nextImage !== undefined && (
@@ -98,8 +98,9 @@ export const GalleryImageLarge = ({
               className="imageButton arrowRightButton"
               type="button"
               onClick={handleArrowRightClick}
+              aria-label="Show next image"
             >
-              <img src={galleryArrow.toString()} />
+              <img src={galleryArrow.toString()} alt="" />
             </button>
           )}
           {prevImage !== undefined && (
@@ -107,8 +108,9 @@ export const GalleryImageLarge = ({
               className="imageButton arrowLeftButton"
               type="button"
               onClick={handleArrowLeftClick}
+              aria-label="Show previous image"
             >
-              <img src={galleryArrow.toString()} />
+              <img src={galleryArrow.toString()} alt="" />
             </button>
           )}
         </div>
@@ -127,6 +129,7 @@ export const GalleryImageLarge = ({
                 src={currentImage}
                 className="largeImage"
                 style={{ opacity: loading ? 0 : 1 }}
+                alt=""
               />
             </div>
           )}
@@ -136,7 +139,7 @@ export const GalleryImageLarge = ({
             </div>
             <div
               className="imageDescription"
-              dangerouslySetInnerHTML={{ __html: imageData.description }}
+              dangerouslySetInnerHTML={{ __html: imageData.description || "" }}
             ></div>
             {imageData.author_link && (
               <div className="mt-1">

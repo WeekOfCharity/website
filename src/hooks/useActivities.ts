@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
+import { useMemo } from "react";
 
 export type Activity = {
   description: string | null;
@@ -19,22 +20,25 @@ type ActivityWithAlternatives = Activity & {
 export const useActivities = (lang: Language) => {
   const rawQueryResult = useQuery(["activities"], async () => {
     const { data } = await axios.get<{ data: ActivityWithAlternatives[] }>(
-      process.env.BASE_URL + "/items/activities"
+      import.meta.env.VITE_BASE_URL + "/items/activities"
     );
     return data.data;
   });
 
-  if (!rawQueryResult.data) return rawQueryResult;
-
-  const translatedData: Activity[] = [];
-  for (const dataEntry of rawQueryResult.data) {
-    const { name_en, name, description_en, description, ...rest } = dataEntry;
-    translatedData.push({
-      ...rest,
-      name: lang === Language.DE || !name_en ? name : name_en,
-      description:
-        lang === Language.DE || !description_en ? description : description_en,
+  const translatedData = useMemo(() => {
+    if (!rawQueryResult.data) return undefined;
+    return rawQueryResult.data.map((dataEntry) => {
+      const { name_en, name, description_en, description, ...rest } = dataEntry;
+      return {
+        ...rest,
+        name: lang === Language.DE || !name_en ? name : name_en,
+        description:
+          lang === Language.DE || !description_en
+            ? description
+            : description_en,
+      } as Activity;
     });
-  }
+  }, [lang, rawQueryResult.data]);
+
   return { ...rawQueryResult, data: translatedData };
 };

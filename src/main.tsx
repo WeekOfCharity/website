@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { App } from "./app";
+import { App } from "./App";
 import { Activities } from "./pages/Activities";
 import { Gallery } from "./pages/Gallery";
 import { GoalWidget } from "./pages/GoalWidget";
@@ -14,16 +14,11 @@ import { Projects } from "./pages/Projects";
 import { Team } from "./pages/Team";
 import { Widget } from "./widget";
 import { initi18n } from "./i18n/i18n";
+import { ExternalRedirect } from "./components/ExternalRedirect/ExternalRedirect";
 
-initi18n();
+void initi18n();
 
-const app = document.getElementById("app");
-const root = createRoot(app);
-
-function ExternalRedirect({ to }: { to: string }) {
-  window.location.replace(to);
-  return null;
-}
+const root = createRoot(document.getElementById("root")!);
 
 root.render(
   <StrictMode>

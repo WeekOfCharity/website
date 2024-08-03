@@ -118,7 +118,7 @@ export const Activities = () => {
     if (searchParams.has("id")) {
       if (activitiesStatus === "success") {
         setActiveActivity(
-          activities.find(
+          activities?.find(
             (activity) => activity.id.toString() === searchParams.get("id")
           )
         );
@@ -126,7 +126,7 @@ export const Activities = () => {
     } else {
       setActiveActivity(undefined);
     }
-  }, [activitiesStatus, searchParams]);
+  }, [activities, activitiesStatus, searchParams]);
 
   return (
     <main className="text-neutral-800 woc-accent-pink23">
@@ -154,7 +154,7 @@ export const Activities = () => {
       >
         {activitiesStatus === "success" && (
           <>
-            {activities.length > 0 && (
+            {activities && activities.length > 0 && (
               <div>
                 <div className="flex justify-center mt-8 -rotate-3 w-full">
                   <span className="font-handwriting font-semibold text-xl">
@@ -172,7 +172,7 @@ export const Activities = () => {
                     <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                       <Activity
                         gameImageUrl={
-                          process.env.BASE_URL +
+                          import.meta.env.VITE_BASE_URL +
                           `/assets/${opening.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                         }
                         name={opening.name}
@@ -184,7 +184,7 @@ export const Activities = () => {
                     <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                       <Activity
                         gameImageUrl={
-                          process.env.BASE_URL +
+                          import.meta.env.VITE_BASE_URL +
                           `/assets/${finale.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                         }
                         name={finale.name}
@@ -197,21 +197,21 @@ export const Activities = () => {
             )}
 
             <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">
-              {activities.length > 0
+              {activities && activities.length > 0
                 ? t("activities.activities")
                 : t("seeMoreSoon")}
             </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
               {activities
-                .filter(
+                ?.filter(
                   (activity) => ![openingId, finaleId].includes(activity.id)
                 )
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((activity) => (
                   <Activity
                     gameImageUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${activity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                     }
                     name={activity.name}
@@ -230,7 +230,7 @@ export const Activities = () => {
             </div>
 
             <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
-              {[...Array(48)].map((_, index) => (
+              {Array.from({ length: 48 }).map((_, index) => (
                 <Activity.Loading key={index} />
               ))}
             </div>
@@ -269,7 +269,7 @@ export const Activities = () => {
                 <img
                   alt=""
                   className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={`${process.env.BASE_URL}/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
+                  src={`${import.meta.env.VITE_BASE_URL}/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                 />
               </div>
 
@@ -313,7 +313,7 @@ export const Activities = () => {
                             condensed
                             endTime={stream.end}
                             gameImageUrl={
-                              process.env.BASE_URL +
+                              import.meta.env.VITE_BASE_URL +
                               `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                             }
                             highlight={stream.highlight}
@@ -350,7 +350,7 @@ export const Activities = () => {
                             >
                               <Member
                                 avatarUrl={
-                                  process.env.BASE_URL +
+                                  import.meta.env.VITE_BASE_URL +
                                   `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
                                 }
                                 condensed
@@ -384,7 +384,7 @@ export const Activities = () => {
                                 )}
                               >
                                 <Member
-                                  avatarUrl={`${process.env.BASE_URL}/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
+                                  avatarUrl={`${import.meta.env.VITE_BASE_URL}/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
                                   condensed
                                   name={fellow.people_id.name}
                                 />

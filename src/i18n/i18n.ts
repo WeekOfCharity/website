@@ -4,18 +4,25 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { deTranslation } from "./de";
 import { enTranslation } from "./en";
 
-const haveSameStructure = (obj1: object, obj2: object) => {
+export interface Translation {
+  [key: string]: string | Translation;
+}
+
+const haveSameStructure = (
+  translation1: Translation,
+  translation2: Translation
+) => {
   if (
-    typeof obj1 !== "object" ||
-    typeof obj2 !== "object" ||
-    obj1 === null ||
-    obj2 === null
+    typeof translation1 !== "object" ||
+    typeof translation2 !== "object" ||
+    translation1 === null ||
+    translation2 === null
   ) {
     return false;
   }
 
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
+  const keys1 = Object.keys(translation1);
+  const keys2 = Object.keys(translation2);
 
   if (keys1.length !== keys2.length) {
     return false;
@@ -25,11 +32,14 @@ const haveSameStructure = (obj1: object, obj2: object) => {
     if (!keys2.includes(key)) {
       return false;
     }
-    if (typeof obj1[key] === "object" && typeof obj2[key] === "object") {
-      if (!haveSameStructure(obj1[key], obj2[key])) {
+    if (
+      typeof translation1[key] === "object" &&
+      typeof translation2[key] === "object"
+    ) {
+      if (!haveSameStructure(translation1[key], translation2[key])) {
         return false;
       }
-    } else if (typeof obj1[key] !== typeof obj2[key]) {
+    } else if (typeof translation1[key] !== typeof translation2[key]) {
       return false;
     }
   }
@@ -46,20 +56,21 @@ export const defaultLanguage = Language.DE;
 
 export const getValidLanguage = (lang?: string) => {
   if (!lang) return defaultLanguage;
-  return Object.values(Language).find((validLang) =>
-    lang.startsWith(validLang)
+  return (
+    Object.values(Language).find((validLang) => lang.startsWith(validLang)) ||
+    defaultLanguage
   );
 };
 
-export const initi18n = () => {
+export const initi18n = async () => {
   if (!haveSameStructure(deTranslation, enTranslation))
     console.error("Translation files don't have the same structure!");
 
-  i18n
+  await i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-      debug: true,
+      debug: false,
       fallbackLng: defaultLanguage,
       resources: {
         en: {

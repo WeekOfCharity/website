@@ -13,8 +13,8 @@ import { useTranslation } from "react-i18next";
 
 type BidwarProps = {
   name: string;
-  description: string;
-  options: object;
+  description: string | null;
+  options: Record<string, number>;
   status: "active" | "inactive" | "results";
   timeslot?: StreamData | null;
 };
@@ -180,7 +180,7 @@ export const Bidwar = ({
               condensed
               endTime={timeslot.end}
               gameImageUrl={
-                process.env.BASE_URL +
+                import.meta.env.VITE_BASE_URL +
                 `/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
               }
               highlight={timeslot.highlight}

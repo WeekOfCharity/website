@@ -2,7 +2,7 @@ import { MutableRefObject, ReactNode, useEffect, useRef } from "react";
 
 function useOutsideAlerter(
   onClick: () => void,
-  ref: MutableRefObject<HTMLDivElement>
+  ref: MutableRefObject<HTMLDivElement | null>
 ) {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -21,7 +21,7 @@ function useOutsideAlerter(
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref]);
+  }, [onClick, ref]);
 }
 
 type OutsideAlerterProps = {
@@ -35,7 +35,7 @@ export const OutsideAlerter = ({
   children,
   onClick,
 }: OutsideAlerterProps) => {
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   useOutsideAlerter(onClick, wrapperRef);
 
   return (

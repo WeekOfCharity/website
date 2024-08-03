@@ -19,9 +19,7 @@ import { formatDay, getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
 import { useTranslation } from "react-i18next";
 import { getValidLanguage } from "../i18n/i18n";
-
-const ConditionalWrapper = ({ condition, wrapper, children }) =>
-  condition ? wrapper(children) : children;
+import { ConditionalWrapper } from "../components/ConditionalWrapper/ConditionalWrapper";
 
 export const Program = () => {
   const { t, i18n } = useTranslation();
@@ -62,7 +60,7 @@ export const Program = () => {
 
       return { ...groups, [day]: [...group, stream] };
     }, {});
-  }, [streams]);
+  }, [validLanguage, streams]);
 
   const upcomingHighlights = useMemo(() => {
     if (typeof streams === "undefined") {
@@ -118,7 +116,7 @@ export const Program = () => {
     if (searchParams.has("id")) {
       if (activitiesStatus === "success") {
         setActiveActivity(
-          activities.find(
+          activities?.find(
             (activity) => activity.id.toString() === searchParams.get("id")
           )
         );
@@ -126,7 +124,7 @@ export const Program = () => {
     } else {
       setActiveActivity(undefined);
     }
-  }, [activitiesStatus, searchParams]);
+  }, [activities, activitiesStatus, searchParams]);
 
   return (
     <main className="text-neutral-800 woc-accent-green23">
@@ -144,36 +142,38 @@ export const Program = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      {streamsStatus === "success" && upcomingHighlights.length > 0 && (
-        <section className="mb-20 md:mb-40 mt-12 md:mt-20">
-          <div className="max-w-screen-2xl mb-6 mx-auto">
-            <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">
-              {t("program.highlights")}
+      {streamsStatus === "success" &&
+        upcomingHighlights &&
+        upcomingHighlights.length > 0 && (
+          <section className="mb-20 md:mb-40 mt-12 md:mt-20">
+            <div className="max-w-screen-2xl mb-6 mx-auto">
+              <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">
+                {t("program.highlights")}
+              </div>
             </div>
-          </div>
-          <Carousel>
-            {upcomingHighlights.map((stream) => (
-              <HighlightStream
-                endTime={stream.end}
-                fellowCount={stream.fellows.length}
-                gameImageUrl={
-                  process.env.BASE_URL +
-                  `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-                }
-                startTime={stream.start}
-                streamer={stream.streamer.name}
-                title={stream.activity.name}
-                key={stream.id}
-              />
-            ))}
-          </Carousel>
-        </section>
-      )}
+            <Carousel>
+              {upcomingHighlights.map((stream) => (
+                <HighlightStream
+                  endTime={stream.end}
+                  fellowCount={stream.fellows.length}
+                  gameImageUrl={
+                    import.meta.env.VITE_BASE_URL +
+                    `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
+                  }
+                  startTime={stream.start}
+                  streamer={stream.streamer.name}
+                  title={stream.activity.name}
+                  key={stream.id}
+                />
+              ))}
+            </Carousel>
+          </section>
+        )}
 
       {streamsStatus !== "success" && (
         <section className="mb-20 md:mb-40 mt-12 md:mt-20">
           <Carousel>
-            {[...Array(4)].map((_, index) => (
+            {Array.from({ length: 4 }).map((_, index) => (
               <HighlightStream.Loading key={"loading" + index} />
             ))}
           </Carousel>
@@ -182,7 +182,7 @@ export const Program = () => {
 
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
         <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">
-          {streamsStatus === "success" && streams.length > 0
+          {streamsStatus === "success" && streams && streams.length > 0
             ? t("program.allStreams")
             : t("seeMoreSoon")}
         </div>
@@ -203,7 +203,7 @@ export const Program = () => {
                     activityId={stream.activity.id}
                     endTime={stream.end}
                     gameImageUrl={
-                      process.env.BASE_URL +
+                      import.meta.env.VITE_BASE_URL +
                       `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                     }
                     highlight={stream.highlight}
@@ -221,9 +221,9 @@ export const Program = () => {
             ))}
 
           {streamsStatus !== "success" &&
-            [...Array(8)].map((_, index) => (
+            Array.from({ length: 8 }).map((_, index) => (
               <div className="space-y-4" key={index}>
-                {[...Array(5)].map((_, index) => (
+                {Array.from({ length: 5 }).map((_, index) => (
                   <Stream.Loading key={index} />
                 ))}
               </div>
@@ -262,7 +262,7 @@ export const Program = () => {
                 <img
                   className="bg-green23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
                   src={
-                    process.env.BASE_URL +
+                    import.meta.env.VITE_BASE_URL +
                     `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
                   }
                   alt=""
@@ -309,7 +309,7 @@ export const Program = () => {
                             condensed
                             endTime={stream.end}
                             gameImageUrl={
-                              process.env.BASE_URL +
+                              import.meta.env.VITE_BASE_URL +
                               `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
                             }
                             highlight={stream.highlight}
@@ -346,7 +346,7 @@ export const Program = () => {
                             >
                               <Member
                                 avatarUrl={
-                                  process.env.BASE_URL +
+                                  import.meta.env.VITE_BASE_URL +
                                   `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
                                 }
                                 condensed
@@ -381,7 +381,7 @@ export const Program = () => {
                               >
                                 <Member
                                   avatarUrl={
-                                    process.env.BASE_URL +
+                                    import.meta.env.VITE_BASE_URL +
                                     `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
                                   }
                                   condensed

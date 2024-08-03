@@ -7,7 +7,7 @@ export type BidwarResults = {
     status: "active" | "inactive" | "results";
     bidwar_name: string;
     bidwar_description: string;
-    options: object;
+    options: Record<string, number>;
   }[];
   id: number;
 };
@@ -15,7 +15,7 @@ export type BidwarResults = {
 export const useBidwarResults = () => {
   return useQuery(["bidwar_results"], async () => {
     const { data } = await axios.get<{ data: BidwarResults }>(
-      process.env.BASE_URL + "/items/bidwar_results"
+      import.meta.env.VITE_BASE_URL + "/items/bidwar_results"
     );
     return data.data;
   });

@@ -9,32 +9,20 @@ export enum Breakpoint {
 }
 
 const getBreakPoint = (windowWidth: number): Breakpoint => {
-  if (windowWidth >= Breakpoint.xxl) {
-    return Breakpoint.xxl;
-  }
-
-  if (windowWidth >= Breakpoint.xl) {
-    return Breakpoint.xl;
-  }
-
-  if (windowWidth >= Breakpoint.lg) {
-    return Breakpoint.lg;
-  }
-
-  if (windowWidth >= Breakpoint.md) {
-    return Breakpoint.md;
-  }
-
+  if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.xxl;
+  if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.xl;
+  if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.lg;
+  if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.md;
   return Breakpoint.sm;
 };
 
 export const useBreakpoint = (): Breakpoint => {
-  const [breakpoint, setBreakpoint] = useState(null);
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>(Breakpoint.sm);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const resizeListener = () => {
-        setBreakpoint(() => getBreakPoint(window.innerWidth));
+        setBreakpoint(getBreakPoint(window.innerWidth));
       };
 
       resizeListener();

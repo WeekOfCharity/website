@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useConfiguration } from "../../hooks/useConfiguration";
 import { useStreams } from "../../hooks/useStreams";
 import "./Countdown.scss";
@@ -9,26 +9,23 @@ type CountdownProps = {
   timerZeroCallback: () => void;
 };
 
-function formatNumForCountdown(num) {
-  num = num.toString();
-  while (num.length < 2) num = "0" + num;
-  return num;
-}
+const formatNumForCountdown = (num: number) => String(num).padStart(2, "0");
 
 function Countdown({ timerZeroCallback }: CountdownProps) {
   const { t, i18n } = useTranslation();
   const validLang = getValidLanguage(i18n.language);
-  const [timeLeft, setTimeLeft] = useState(null);
+  const [timeLeft, setTimeLeft] = useState<string[] | null>(null);
 
   const { data: configuration, status: configurationStatus } =
     useConfiguration();
   const { data: streams, status: streamsStatus } = useStreams(validLang);
 
-  const updateTimer = () => {
+  const updateTimer = useCallback(() => {
     const currentTime = new Date();
     let woc_start_date: Date;
     if (
       streamsStatus === "success" &&
+      streams &&
       streams.length > 0 &&
       configurationStatus === "success" &&
       configuration.schedule_complete
@@ -60,13 +57,20 @@ function Countdown({ timerZeroCallback }: CountdownProps) {
       setTimeLeft(["00", "00", "00", "00"]);
       timerZeroCallback();
     }
-  };
+  }, [
+    configuration?.schedule_complete,
+    configuration?.woc_start,
+    configurationStatus,
+    streams,
+    streamsStatus,
+    timerZeroCallback,
+  ]);
 
   useEffect(() => {
     updateTimer();
     const id = setInterval(updateTimer, 1000);
     return () => clearInterval(id);
-  }, [configuration, configurationStatus, streams, streamsStatus]);
+  }, [updateTimer]);
 
   return (
     <>

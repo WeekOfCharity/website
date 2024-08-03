@@ -58,7 +58,7 @@ export const Stream = ({
         "opacity-50": state === "ended",
         "pointer-events-none": clickDisabled || (noLink && !vodLink),
       })}
-      to={condensed && !noLink ? `/streams?id=${activityId}` : undefined}
+      to={condensed && !noLink ? `/streams?id=${activityId}` : ""}
       href={noLink && vodLink ? vodLink : undefined}
       title={noLink && vodLink ? t("program.toVOD") : undefined}
       rel={noLink && vodLink ? "nofollow noreferrer" : undefined}
@@ -98,7 +98,7 @@ export const Stream = ({
               !condensed,
           }
         )}
-        to={!condensed && !noLink ? `/streams?id=${activityId}` : undefined}
+        to={!condensed && !noLink ? `/streams?id=${activityId}` : ""}
       >
         <div
           className="bg-center bg-cover flex-shrink-0 h-28 md:h-20 rounded-l-md rounded-r-md md:rounded-r-none w-full md:w-20"

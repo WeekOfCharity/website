@@ -14,7 +14,7 @@ import "./AudioPlayerControls.scss";
 import ReactPlayer from "react-player";
 
 type AudioPlayerControlsProps = {
-  playerRef: MutableRefObject<ReactPlayer>;
+  playerRef: MutableRefObject<ReactPlayer | null>;
   playing: boolean;
   volume: number;
   muted: boolean;

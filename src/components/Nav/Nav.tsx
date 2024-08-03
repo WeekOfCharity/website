@@ -44,7 +44,7 @@ export const Nav = () => {
         scrollbarGutterOriginalValue;
       document.body.style.scrollbarGutter = scrollbarGutterOriginalValue;
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, scrollbarGutterOriginalValue]);
 
   return (
     <nav className="flex items-center p-5 md:p-10 select-none sticky text-neutral-800 top-0 w-full z-[99999]">
@@ -58,7 +58,7 @@ export const Nav = () => {
           </div>
         </a>
         <span className="absolute font-fat right-1 rotate-3 text-accent-500 top-3">
-          '23
+          &apos;23
         </span>
       </div>
 
@@ -203,7 +203,7 @@ export const Nav = () => {
       </menu>
       <a
         className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white"
-        href={process.env.DONATION_URL}
+        href={import.meta.env.VITE_DONATION_URL}
         rel="nofollow noreferrer"
         target="_blank"
       >

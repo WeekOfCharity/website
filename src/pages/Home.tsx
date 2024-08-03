@@ -59,6 +59,10 @@ export const Home = () => {
       configurationStatus === "success" &&
       (streamsStatus === "error" || !configuration.schedule_complete)
     ) {
+      if (!configuration.woc_start) {
+        setWocStatus("wocUpcomingSoon");
+        return;
+      }
       const woc_start_date = new Date(configuration.woc_start);
       if (time < woc_start_date) {
         setWocStatus("wocUpcoming");
@@ -140,7 +144,9 @@ export const Home = () => {
               ? t("home.runningText")
               : wocStatus === "wocUpcoming"
                 ? t("home.upcomingText")
-                : ""}
+                : wocStatus === "wocUpcomingSoon"
+                  ? t("home.upcomingText")
+                  : ""}
         </h1>
 
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />

@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
-import { getValidLanguage, Language } from "../../i18n/i18n";
+import { defaultLanguage, getValidLanguage, Language } from "../../i18n/i18n";
 import { useEffect, useState } from "react";
 
 type LanguageSwitchProps = {
@@ -8,10 +8,8 @@ type LanguageSwitchProps = {
 };
 
 export const LanguageSwitch = ({ className }: LanguageSwitchProps) => {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
-    null
-  );
-  const { i18n } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState(defaultLanguage);
+  const { i18n, t } = useTranslation();
 
   useEffect(() => {
     setSelectedLanguage(getValidLanguage(i18n.language));
@@ -29,41 +27,38 @@ export const LanguageSwitch = ({ className }: LanguageSwitchProps) => {
   };
 
   return (
-    <div className={cn("flex items-center", className)}>
-      <button
-        type="button"
-        onClick={toggleLanguage}
+    <button
+      type="button"
+      onClick={toggleLanguage}
+      className={cn(
+        "h-7 my-auto items-center shadow-md text-neutral-800 text-sm tracking-tight relative flex gap-3.5 rounded-full bg-neutral-300 py-1 px-2.5 overflow-hidden",
+        className
+      )}
+      aria-label={t(`toggleLanguage.${selectedLanguage}`)}
+    >
+      <div
+        role="presentation"
         className={cn(
-          "shadow-md relative flex gap-4 rounded-full bg-neutral-300 py-1 px-3 overflow-hidden"
+          "bg-white shadow-md absolute w-[53%] inset-0 rounded-full transition-transform duration-200",
+          {
+            "translate-x-8": selectedLanguage === Language.EN,
+          }
         )}
+      />
+      <span
+        className={cn("font-bold z-10 transition-colors", {
+          "text-neutral-600": selectedLanguage !== Language.DE,
+        })}
       >
-        <div
-          role="presentation"
-          className={cn(
-            "bg-white shadow-md absolute w-[55%] inset-0 rounded-full transition-transform duration-200",
-            {
-              "-translate-x-0.5": selectedLanguage === Language.DE,
-              "translate-x-9": selectedLanguage === Language.EN,
-            }
-          )}
-        />
-        <span
-          className={cn("font-semibold z-10 transition-colors", {
-            "text-uiAccent": selectedLanguage === Language.DE,
-            "text-neutral-600": selectedLanguage !== Language.DE,
-          })}
-        >
-          {Language.DE.toUpperCase()}
-        </span>
-        <span
-          className={cn("font-semibold z-10 transition-colors", {
-            "text-uiAccent": selectedLanguage === Language.EN,
-            "text-neutral-600": selectedLanguage !== Language.EN,
-          })}
-        >
-          {Language.EN.toUpperCase()}
-        </span>
-      </button>
-    </div>
+        {Language.DE.toUpperCase()}
+      </span>
+      <span
+        className={cn("font-bold z-10 transition-colors", {
+          "text-neutral-600": selectedLanguage !== Language.EN,
+        })}
+      >
+        {Language.EN.toUpperCase()}
+      </span>
+    </button>
   );
 };

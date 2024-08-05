@@ -16,6 +16,10 @@ export const enTranslation: Translation = {
     team: "Team",
     gallery: "Gallery",
   },
+  toggleLanguage: {
+    de: "Switch language to English",
+    en: "Switch language to German",
+  },
   activities: {
     activities: "Activities",
     subHeader: "All at a glance",

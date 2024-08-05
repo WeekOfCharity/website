@@ -16,6 +16,10 @@ export const deTranslation: Translation = {
     team: "Team",
     gallery: "Galerie",
   },
+  toggleLanguage: {
+    de: "Sprache umstellen auf Englisch",
+    en: "Sprache umstellen auf Deutsch",
+  },
   activities: {
     activities: "Aktivitäten",
     subHeader: "Alle in der Übersicht",

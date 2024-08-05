@@ -209,7 +209,6 @@ export const Nav = () => {
       >
         <span className="font-semibold">{t("subNav.donate")}</span>
       </a>
-      <LanguageSwitch className="h-[52px] px-5" />
       <button
         className="bg-neutral-800 md:hidden inline-flex items-center leading-none ml-2 p-3 rounded-full text-white"
         onClick={() => setMenuOpen(true)}
@@ -232,8 +231,9 @@ export const Nav = () => {
         <div className="flex items-center mb-10">
           <img className="h-12" src={logo.toString()} alt="" />
 
+          <LanguageSwitch className="ml-auto !text-accent-500" />
           <button
-            className="bg-white inline-flex items-center leading-none ml-auto p-3 rounded-full"
+            className="bg-white inline-flex items-center leading-none ml-4 p-3 rounded-full"
             onClick={() => setMenuOpen(false)}
           >
             <Icon path={mdiClose} size="1.25rem" />

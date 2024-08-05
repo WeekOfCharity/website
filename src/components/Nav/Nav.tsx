@@ -167,6 +167,17 @@ export const Nav = () => {
             </span>
           </a>
           <a
+            className="hover:text-neutral-500 pt-px"
+            href="https://bsky.app/profile/chesster.weekofcharity.de"
+            title="Bluesky"
+            rel="nofollow noreferrer"
+            target="_blank"
+          >
+            <span>
+              <Icon path={blueSkyPath} size="1.2rem" />
+            </span>
+          </a>
+          <a
             className="hover:text-neutral-500"
             href="https://www.tiktok.com/@weekofcharity"
             title="TikTok"
@@ -186,17 +197,6 @@ export const Nav = () => {
           >
             <span>
               <Icon path={mdiYoutube} size="1.5rem" />
-            </span>
-          </a>
-          <a
-            className="hover:text-neutral-500 pt-px"
-            href="https://bsky.app/profile/chesster.weekofcharity.de"
-            title="Bluesky"
-            rel="nofollow noreferrer"
-            target="_blank"
-          >
-            <span>
-              <Icon path={blueSkyPath} size="1.2rem" />
             </span>
           </a>
         </div>
@@ -354,6 +354,15 @@ export const Nav = () => {
               <Icon path={mdiMastodon} size="1.5rem" />
             </a>
             <a
+              className="hover:text-neutral-500 pt-0.5"
+              href="https://bsky.app/profile/chesster.weekofcharity.de"
+              title="Bluesky"
+              rel="nofollow noreferrer"
+              target="_blank"
+            >
+              <Icon path={blueSkyPath} size="1.5rem" />
+            </a>
+            <a
               className="hover:text-neutral-500"
               href="https://www.tiktok.com/@weekofcharity"
               title="TikTok"
@@ -370,15 +379,6 @@ export const Nav = () => {
               target="_blank"
             >
               <Icon path={mdiYoutube} size="1.75rem" />
-            </a>
-            <a
-              className="hover:text-neutral-500 pt-0.5"
-              href="https://bsky.app/profile/chesster.weekofcharity.de"
-              title="Bluesky"
-              rel="nofollow noreferrer"
-              target="_blank"
-            >
-              <Icon path={blueSkyPath} size="1.5rem" />
             </a>
           </div>
         </menu>

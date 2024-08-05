@@ -1,29 +1,29 @@
 import cn from "classnames";
 import { useTranslation } from "react-i18next";
-import { defaultLanguage, getValidLanguage, Language } from "../../i18n/i18n";
-import { useEffect, useState } from "react";
+import { getValidLanguage, Language } from "../../i18n/i18n";
+import { useEffect } from "react";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 type LanguageSwitchProps = {
   className?: string;
 };
 
 export const LanguageSwitch = ({ className }: LanguageSwitchProps) => {
-  const [selectedLanguage, setSelectedLanguage] = useState(defaultLanguage);
+  const [storedLang, setStoredLang] = useLocalStorage<string | undefined>(
+    "userLang",
+    undefined
+  );
   const { i18n, t } = useTranslation();
 
-  useEffect(() => {
-    setSelectedLanguage(getValidLanguage(i18n.language));
-  }, [i18n.language]);
+  const selectedLanguage = getValidLanguage(storedLang);
 
   useEffect(() => {
-    if (!selectedLanguage) return;
+    document.documentElement.setAttribute("lang", selectedLanguage);
     void i18n.changeLanguage(selectedLanguage);
   }, [i18n, selectedLanguage]);
 
   const toggleLanguage = () => {
-    setSelectedLanguage((prev) =>
-      prev === Language.DE ? Language.EN : Language.DE
-    );
+    setStoredLang(selectedLanguage === Language.DE ? Language.EN : Language.DE);
   };
 
   return (

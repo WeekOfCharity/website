@@ -80,5 +80,8 @@ export const initi18n = async () => {
           translation: deTranslation,
         },
       },
+      detection: {
+        caches: [],
+      },
     });
 };

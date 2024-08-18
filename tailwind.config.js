@@ -120,6 +120,20 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        bgmoveX: {
+          "0%": { transform: "translate(0)" },
+          "100%": { transform: "translate(-50%)" },
+        },
+        bgmoveXY: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(-50%, 50%)" },
+        },
+      },
+      animation: {
+        clouds: "bgmoveX linear infinite",
+        stars: "bgmoveXY linear infinite",
+      },
       fontFamily: {
         sans: [
           '"Source Sans 3"',
@@ -162,6 +176,20 @@ module.exports = {
           '"Liberation Mono"',
           '"Courier New"',
           "monospace",
+        ],
+        ubuntu: [
+          "Ubuntu",
+          '"Source Sans 3"',
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
         ],
       },
     },

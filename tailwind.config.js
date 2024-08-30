@@ -123,16 +123,31 @@ module.exports = {
       keyframes: {
         bgmoveX: {
           "0%": { transform: "translate(0)" },
-          "100%": { transform: "translate(-50%)" },
+          "100%": { transform: "translate(-2980px)" },
         },
         bgmoveXY: {
           "0%": { transform: "translate(0, 0)" },
-          "100%": { transform: "translate(-50%, 50%)" },
+          "100%": { transform: "translate(-1920px, 1080px)" },
+        },
+        blink: {
+          "0%": { "border-right-width": "8px" },
+          "50%": { "border-right-width": "0px" },
+        },
+        fadeinout1: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.1" },
+        },
+        fadeinout2: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.1" },
         },
       },
       animation: {
         clouds: "bgmoveX linear infinite",
         stars: "bgmoveXY linear infinite",
+        blink: "blink step-end infinite 1.25s",
+        fadeinout1: "fadeinout1 ease-in-out 2s",
+        fadeinout2: "fadeinout2 ease-in-out 2s",
       },
       fontFamily: {
         sans: [
@@ -178,6 +193,21 @@ module.exports = {
           "monospace",
         ],
         ubuntu: [
+          "Ubuntu",
+          '"Source Sans 3"',
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
+        ],
+        pixel: [
+          "DepixelHalbfett",
           "Ubuntu",
           '"Source Sans 3"',
           "ui-sans-serif",

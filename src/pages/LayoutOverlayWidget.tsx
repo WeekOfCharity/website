@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
 import { LayoutDonationList } from "../components/LayoutDonationList/LayoutDonationList";
 import { DonationSorting, useDonations } from "../hooks/useDonations";
+import "./LayoutOverlayWidget.scss";
 
 const overlays = {
   [StreamLayoutTheme.GREEN]: {
@@ -24,17 +25,6 @@ const overlays = {
   [StreamLayoutTheme.RED]: {
     day: overlayRedDay,
     night: overlayRedNight,
-  },
-} as const;
-
-const colorClasses = {
-  [StreamLayoutTheme.GREEN]: {
-    day: "text-[#203737]",
-    night: "text-[#afe2b5]",
-  },
-  [StreamLayoutTheme.RED]: {
-    day: "text-[#451821]",
-    night: "text-[#eac0c0]",
   },
 } as const;
 
@@ -76,11 +66,11 @@ export const LayoutOverlayWidget = () => {
 
   return (
     <div
+      data-theme={`${layoutTheme}-${isDay ? "day" : "night"}`}
       className={cn(
-        "font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden transition-[color,background-color,border-color,text-shadow] ease-in duration-[2000ms]",
-        colorClasses[layoutTheme][isDay ? "day" : "night"],
+        "overlay-root font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden transition-[color,background-color,border-color,text-shadow] ease-in duration-[2000ms]",
         {
-          "[text-shadow:0_0_5px_color-mix(in_srgb,_currentColor_50%,_transparent)]":
+          "[text-shadow:0_0_5px_rgba(var(--text-r),var(--text-g),var(--text-b),0.5)]":
             !isDay,
         }
       )}

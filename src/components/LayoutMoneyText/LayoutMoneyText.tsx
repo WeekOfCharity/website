@@ -16,7 +16,7 @@ export const LayoutMoneyText = ({ amount, isDay }: LayoutMoneyTextProps) => {
         className={cn(
           "ml-px w-3.5 mb-px transition-[filter] duration-[2000ms] ease-in",
           {
-            "drop-shadow-[0_0_5px_color-mix(in_srgb,_currentColor_60%,_transparent)]":
+            "drop-shadow-[0_0_5px_rgba(var(--text-r),var(--text-g),var(--text-b),0.6)]":
               !isDay,
           }
         )}

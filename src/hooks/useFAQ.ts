@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
 import { useMemo } from "react";
+import { BASE_URL } from "../utils/constants";
 
 export type FAQItem = {
   answer: string;
@@ -17,7 +18,7 @@ type FAQItemWithAlternatives = FAQItem & {
 export const useFAQ = (lang: Language) => {
   const rawQueryResult = useQuery(["faq"], async () => {
     const { data } = await axios.get<{ data: FAQItemWithAlternatives[] }>(
-      import.meta.env.VITE_BASE_URL + "/items/faq"
+      `${BASE_URL}/items/faq`
     );
     return data.data;
   });

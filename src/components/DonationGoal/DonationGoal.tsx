@@ -5,6 +5,7 @@ import { Brush4 } from "../Brushes/Brush4";
 import { GoalStamp } from "../Icons/GoalStamp";
 import { Stream } from "../Stream/Stream";
 import { useTranslation } from "react-i18next";
+import { BASE_URL } from "../../utils/constants";
 
 type DonationGoalProps = {
   achieved?: boolean;
@@ -76,10 +77,7 @@ export const DonationGoal = ({
             activityId={timeslot.activity.id}
             condensed
             endTime={timeslot.end}
-            gameImageUrl={
-              import.meta.env.VITE_BASE_URL +
-              `/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-            }
+            gameImageUrl={`${BASE_URL}/assets/${timeslot.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
             highlight={timeslot.highlight}
             startTime={timeslot.start}
             state={getState(timeslot.start, timeslot.end)}

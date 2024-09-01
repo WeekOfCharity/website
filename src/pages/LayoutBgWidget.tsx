@@ -16,7 +16,7 @@ import {
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
 
 const cutout =
-  "path('m0 0 0 1080 1920 0 0-178-1580 0 0-6-12 0 0-6-6 0 0-12-6 0 0-878-354 0z')";
+  "path('m0 0 0 1080 1920 0 0-178-1576 0 0-6-12 0 0-4-8 0 0-16-6 0 0-878-354 0z')";
 
 const MS_IN_HALF_A_DAY = 12 * HOURINMS;
 

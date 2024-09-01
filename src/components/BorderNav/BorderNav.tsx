@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { LanguageSwitch } from "../LanguageSwitch/LanguageSwitch";
+import { DONATION_URL } from "../../utils/constants";
 
 export const BorderNav = () => {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export const BorderNav = () => {
       </div>
       <a
         className="flex h-[52px] items-center px-2 font-semibold focus-visible:underline hover:underline underline-offset-2"
-        href={import.meta.env.VITE_DONATION_URL}
+        href={DONATION_URL}
         rel="nofollow noreferrer"
         target="_blank"
       >

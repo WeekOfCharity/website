@@ -16,6 +16,7 @@ import { useTitle } from "../hooks/useTitle";
 import "./Team.scss";
 import { useTranslation } from "react-i18next";
 import { getValidLanguage } from "../i18n/i18n";
+import { BASE_URL } from "../utils/constants";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
@@ -146,10 +147,7 @@ export const Team = () => {
                 {charity && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={
-                        import.meta.env.VITE_BASE_URL +
-                        `/assets/${charity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                      }
+                      avatarUrl={`${BASE_URL}/assets/${charity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                       name={charity.name}
                       onClick={() => openMember(charity)}
                       pronouns={charity.pronouns}
@@ -159,10 +157,7 @@ export const Team = () => {
                 {chesster && (
                   <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                     <Member
-                      avatarUrl={
-                        import.meta.env.VITE_BASE_URL +
-                        `/assets/${chesster.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                      }
+                      avatarUrl={`${BASE_URL}/assets/${chesster.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                       name={chesster.name}
                       onClick={() => openMember(chesster)}
                       pronouns={chesster.pronouns}
@@ -188,10 +183,7 @@ export const Team = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={
-                      import.meta.env.VITE_BASE_URL +
-                      `/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                    }
+                    avatarUrl={`${BASE_URL}/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -215,10 +207,7 @@ export const Team = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((member) => (
                   <Member
-                    avatarUrl={
-                      import.meta.env.VITE_BASE_URL +
-                      `/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                    }
+                    avatarUrl={`${BASE_URL}/assets/${member.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                     name={member.name}
                     onClick={() => openMember(member)}
                     pronouns={member.pronouns}
@@ -271,10 +260,7 @@ export const Team = () => {
               <div className="flex items-start mb-5">
                 <img
                   className="bg-blue23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={
-                    import.meta.env.VITE_BASE_URL +
-                    `/assets/${activeMember.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                  }
+                  src={`${BASE_URL}/assets/${activeMember.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                   role="presentation"
                 />
               </div>
@@ -330,10 +316,7 @@ export const Team = () => {
                 {themeStarted && (
                   <div className="player">
                     <AudioPlayer
-                      url={
-                        import.meta.env.VITE_BASE_URL +
-                        `/assets/${activeMember.theme}.mp3`
-                      }
+                      url={`${BASE_URL}/assets/${activeMember.theme}.mp3`}
                     />
                   </div>
                 )}
@@ -373,10 +356,7 @@ export const Team = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={
-                            import.meta.env.VITE_BASE_URL +
-                            `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-                          }
+                          gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                           highlight={stream.highlight}
                           startTime={stream.start}
                           state={getState(stream.start, stream.end)}
@@ -400,10 +380,7 @@ export const Team = () => {
                           activityId={stream.activity.id}
                           condensed
                           endTime={stream.end}
-                          gameImageUrl={
-                            import.meta.env.VITE_BASE_URL +
-                            `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-                          }
+                          gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                           highlight={stream.highlight}
                           startTime={stream.start}
                           state={getState(stream.start, stream.end)}

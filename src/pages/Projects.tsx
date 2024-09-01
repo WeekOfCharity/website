@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Brush4 } from "../components/Brushes/Brush4";
 import { useTitle } from "../hooks/useTitle";
 import "./Projects.scss";
+import { DONATION_URL } from "../utils/constants";
 
 const chesster1 = new URL("../assets/chesster-1.png", import.meta.url);
 const chesster2 = new URL("../assets/chesster-2.png", import.meta.url);
@@ -63,7 +64,7 @@ export const Projects = () => {
                   {`${t("projects.text.t8")} `}
                   <a
                     target="_blank"
-                    href={import.meta.env.VITE_DONATION_URL}
+                    href={DONATION_URL}
                     className="underline underline-offset-2 text-blue23-600"
                     rel="noreferrer"
                   >

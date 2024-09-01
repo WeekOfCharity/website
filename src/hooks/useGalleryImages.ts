@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
 import { useMemo } from "react";
+import { BASE_URL } from "../utils/constants";
 
 export type GalleryImage = {
   description: string | null;
@@ -20,7 +21,7 @@ type GalleryImageWithAlternatives = GalleryImage & {
 export const useGalleryImages = (lang: Language) => {
   const rawQueryResult = useQuery(["gallery_images"], async () => {
     const { data } = await axios.get<{ data: GalleryImageWithAlternatives[] }>(
-      import.meta.env.VITE_BASE_URL + "/items/gallery_images"
+      `${BASE_URL}/items/gallery_images`
     );
     return data.data;
   });

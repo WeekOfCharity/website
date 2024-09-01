@@ -22,6 +22,7 @@ import { useStreams } from "../hooks/useStreams";
 import { useTranslation } from "react-i18next";
 import { useTitle } from "../hooks/useTitle";
 import { getValidLanguage } from "../i18n/i18n";
+import { DONATION_URL } from "../utils/constants";
 
 export const Home = () => {
   useTitle();
@@ -241,7 +242,7 @@ export const Home = () => {
               <div className="flex flex-col items-center">
                 <a
                   target="_blank"
-                  href={import.meta.env.VITE_DONATION_URL}
+                  href={DONATION_URL}
                   className="cursor-pointer"
                   rel="noreferrer"
                 >

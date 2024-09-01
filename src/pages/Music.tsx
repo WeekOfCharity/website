@@ -3,6 +3,7 @@ import { Brush4 } from "../components/Brushes/Brush4";
 import { MusicRelease } from "../components/MusicRelease/MusicRelease";
 import { useMusicReleases } from "../hooks/useMusicReleases";
 import { useTitle } from "../hooks/useTitle";
+import { BASE_URL } from "../utils/constants";
 
 export const Music = () => {
   const { t } = useTranslation();
@@ -53,10 +54,7 @@ export const Music = () => {
               musicReleases.map((album) => (
                 <MusicRelease
                   key={album.id}
-                  coverUrl={
-                    import.meta.env.VITE_BASE_URL +
-                    `/assets/${album.cover_art}?width=512&height=512&quality=75&fit=cover&format=webp`
-                  }
+                  coverUrl={`${BASE_URL}/assets/${album.cover_art}?width=512&height=512&quality=75&fit=cover&format=webp`}
                   link={album.link}
                   name={album.name}
                   year={album.year}

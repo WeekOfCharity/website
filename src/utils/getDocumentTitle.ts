@@ -1,5 +1,7 @@
-export function getDocumentTitle(pageName?: string) {
-  if (!pageName) return "Week of Charity 2023";
+import { WOC_YEAR_LONG } from "./constants";
 
-  return `${pageName} – Week of Charity 2023`;
-}
+export const getDocumentTitle = (pageName?: string) => {
+  if (!pageName) return `Week of Charity ${WOC_YEAR_LONG}`;
+
+  return `${pageName} – Week of Charity ${WOC_YEAR_LONG}`;
+};

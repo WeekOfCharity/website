@@ -3,6 +3,7 @@ import axios from "axios";
 import { Stream, StreamWithAlternatives } from "./useStreams";
 import { Language } from "../i18n/i18n";
 import { useMemo } from "react";
+import { BASE_URL } from "../utils/constants";
 
 export type BidwarData = {
   bidwar_name: string;
@@ -21,8 +22,7 @@ type BidwarDataWithAlternatives = Omit<BidwarData, "timeslot"> & {
 export const useBidwars = (lang: Language) => {
   const rawQueryResult = useQuery(["bidwars"], async () => {
     const { data } = await axios.get<{ data: BidwarDataWithAlternatives[] }>(
-      import.meta.env.VITE_BASE_URL +
-        "/items/bidwars?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.activity.name_en,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name"
+      `${BASE_URL}/items/bidwars?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.activity.name_en,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name`
     );
     return data.data;
   });

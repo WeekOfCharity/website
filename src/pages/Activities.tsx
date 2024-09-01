@@ -18,6 +18,7 @@ import { Stream as StreamData, useStreams } from "../hooks/useStreams";
 import { getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
 import { getValidLanguage } from "../i18n/i18n";
+import { BASE_URL } from "../utils/constants";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
@@ -171,10 +172,7 @@ export const Activities = () => {
                   {opening && (
                     <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                       <Activity
-                        gameImageUrl={
-                          import.meta.env.VITE_BASE_URL +
-                          `/assets/${opening.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                        }
+                        gameImageUrl={`${BASE_URL}/assets/${opening.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                         name={opening.name}
                         onClick={() => openActivity(opening)}
                       />
@@ -183,10 +181,7 @@ export const Activities = () => {
                   {finale && (
                     <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%]">
                       <Activity
-                        gameImageUrl={
-                          import.meta.env.VITE_BASE_URL +
-                          `/assets/${finale.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                        }
+                        gameImageUrl={`${BASE_URL}/assets/${finale.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                         name={finale.name}
                         onClick={() => openActivity(finale)}
                       />
@@ -210,10 +205,7 @@ export const Activities = () => {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((activity) => (
                   <Activity
-                    gameImageUrl={
-                      import.meta.env.VITE_BASE_URL +
-                      `/assets/${activity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                    }
+                    gameImageUrl={`${BASE_URL}/assets/${activity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                     name={activity.name}
                     onClick={() => openActivity(activity)}
                     key={activity.id}
@@ -269,7 +261,7 @@ export const Activities = () => {
                 <img
                   alt=""
                   className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={`${import.meta.env.VITE_BASE_URL}/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
+                  src={`${BASE_URL}/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                 />
               </div>
 
@@ -312,10 +304,7 @@ export const Activities = () => {
                             activityId={stream.activity.id}
                             condensed
                             endTime={stream.end}
-                            gameImageUrl={
-                              import.meta.env.VITE_BASE_URL +
-                              `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-                            }
+                            gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                             highlight={stream.highlight}
                             noLink
                             startTime={stream.start}
@@ -349,10 +338,7 @@ export const Activities = () => {
                               )}
                             >
                               <Member
-                                avatarUrl={
-                                  import.meta.env.VITE_BASE_URL +
-                                  `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
-                                }
+                                avatarUrl={`${BASE_URL}/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
                                 condensed
                                 name={streamer.name}
                               />
@@ -384,7 +370,7 @@ export const Activities = () => {
                                 )}
                               >
                                 <Member
-                                  avatarUrl={`${import.meta.env.VITE_BASE_URL}/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
+                                  avatarUrl={`${BASE_URL}/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
                                   condensed
                                   name={fellow.people_id.name}
                                 />

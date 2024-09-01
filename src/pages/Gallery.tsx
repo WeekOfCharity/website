@@ -10,6 +10,7 @@ import {
 } from "../hooks/useGalleryImages";
 import { useTitle } from "../hooks/useTitle";
 import { getValidLanguage } from "../i18n/i18n";
+import { BASE_URL } from "../utils/constants";
 
 const sortMethods = ["year", "category"] as const;
 
@@ -158,10 +159,7 @@ export const Gallery = () => {
                 {galleryImagesGrouped[categoryValue].map((galleryImage) => (
                   <GalleryImage
                     imageID={galleryImage.id}
-                    imageUrl={
-                      import.meta.env.VITE_BASE_URL +
-                      `/assets/${galleryImage.image}?width=512&height=512&quality=75&fit=cover&format=webp`
-                    }
+                    imageUrl={`${BASE_URL}/assets/${galleryImage.image}?width=512&height=512&quality=75&fit=cover&format=webp`}
                     key={galleryImage.id}
                     onClickFunction={displayLargeImage}
                   />

@@ -20,6 +20,7 @@ import { useTitle } from "../hooks/useTitle";
 import { useTranslation } from "react-i18next";
 import { getValidLanguage } from "../i18n/i18n";
 import { ConditionalWrapper } from "../components/ConditionalWrapper/ConditionalWrapper";
+import { BASE_URL } from "../utils/constants";
 
 export const Program = () => {
   const { t, i18n } = useTranslation();
@@ -156,10 +157,7 @@ export const Program = () => {
                 <HighlightStream
                   endTime={stream.end}
                   fellowCount={stream.fellows.length}
-                  gameImageUrl={
-                    import.meta.env.VITE_BASE_URL +
-                    `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-                  }
+                  gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                   startTime={stream.start}
                   streamer={stream.streamer.name}
                   title={stream.activity.name}
@@ -202,10 +200,7 @@ export const Program = () => {
                   <Stream
                     activityId={stream.activity.id}
                     endTime={stream.end}
-                    gameImageUrl={
-                      import.meta.env.VITE_BASE_URL +
-                      `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-                    }
+                    gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                     highlight={stream.highlight}
                     startTime={stream.start}
                     clickDisabled={activeActivity ? true : undefined}
@@ -261,10 +256,7 @@ export const Program = () => {
               <div className="flex items-start mb-5">
                 <img
                   className="bg-green23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
-                  src={
-                    import.meta.env.VITE_BASE_URL +
-                    `/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`
-                  }
+                  src={`${BASE_URL}/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                   alt=""
                 />
               </div>
@@ -308,10 +300,7 @@ export const Program = () => {
                             activityId={stream.activity.id}
                             condensed
                             endTime={stream.end}
-                            gameImageUrl={
-                              import.meta.env.VITE_BASE_URL +
-                              `/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`
-                            }
+                            gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
                             highlight={stream.highlight}
                             noLink
                             startTime={stream.start}
@@ -345,10 +334,7 @@ export const Program = () => {
                               )}
                             >
                               <Member
-                                avatarUrl={
-                                  import.meta.env.VITE_BASE_URL +
-                                  `/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
-                                }
+                                avatarUrl={`${BASE_URL}/assets/${streamer.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
                                 condensed
                                 name={streamer.name}
                               />
@@ -380,10 +366,7 @@ export const Program = () => {
                                 )}
                               >
                                 <Member
-                                  avatarUrl={
-                                    import.meta.env.VITE_BASE_URL +
-                                    `/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`
-                                  }
+                                  avatarUrl={`${BASE_URL}/assets/${fellow.people_id.icon}?width=80&height=80&quality=50&fit=cover&format=webp`}
                                   condensed
                                   name={fellow.people_id.name}
                                 />

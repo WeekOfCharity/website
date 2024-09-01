@@ -15,6 +15,7 @@ import { Brush1 } from "../Brushes/Brush1";
 import { Brush2 } from "../Brushes/Brush2";
 import "./Nav.scss";
 import { LanguageSwitch } from "../LanguageSwitch/LanguageSwitch";
+import { DONATION_URL, WOC_YEAR_SHORT } from "../../utils/constants";
 
 const logo = new URL("../../assets/favicon.png", import.meta.url);
 const tiktokPath =
@@ -58,7 +59,7 @@ export const Nav = () => {
           </div>
         </a>
         <span className="absolute font-fat right-1 rotate-3 text-accent-500 top-3">
-          &apos;23
+          &apos;{WOC_YEAR_SHORT}
         </span>
       </div>
 
@@ -203,7 +204,7 @@ export const Nav = () => {
       </menu>
       <a
         className="bg-accent-500 md:hidden inline-flex items-center leading-none ml-auto px-5 py-[14px] rounded-full text-white"
-        href={import.meta.env.VITE_DONATION_URL}
+        href={DONATION_URL}
         rel="nofollow noreferrer"
         target="_blank"
       >

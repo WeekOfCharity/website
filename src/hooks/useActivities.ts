@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
 import { useMemo } from "react";
+import { BASE_URL } from "../utils/constants";
 
 export type Activity = {
   description: string | null;
@@ -20,7 +21,7 @@ type ActivityWithAlternatives = Activity & {
 export const useActivities = (lang: Language) => {
   const rawQueryResult = useQuery(["activities"], async () => {
     const { data } = await axios.get<{ data: ActivityWithAlternatives[] }>(
-      import.meta.env.VITE_BASE_URL + "/items/activities"
+      `${BASE_URL}/items/activities`
     );
     return data.data;
   });

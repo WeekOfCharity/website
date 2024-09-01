@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Language } from "../i18n/i18n";
 import { useMemo } from "react";
+import { BASE_URL } from "../utils/constants";
 
 export type Member = {
   icon: string;
@@ -24,7 +25,7 @@ type MemberWithAlternatives = Member & {
 export const useTeam = (lang: Language) => {
   const rawQueryResult = useQuery(["team"], async () => {
     const { data } = await axios.get<{ data: MemberWithAlternatives[] }>(
-      import.meta.env.VITE_BASE_URL + "/items/people"
+      `${BASE_URL}/items/people`
     );
     return data.data;
   });

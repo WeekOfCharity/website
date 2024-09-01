@@ -3,6 +3,7 @@ import { MouseEventHandler, useEffect, useState } from "react";
 import { GalleryImage as GalleryImageData } from "../../hooks/useGalleryImages";
 import "./GalleryImageLarge.scss";
 import { useTranslation } from "react-i18next";
+import { BASE_URL } from "../../utils/constants";
 
 const closeIcon = new URL("../../assets/close-line-icon.svg", import.meta.url);
 const galleryArrow = new URL("../../assets/gallery-arrow.svg", import.meta.url);
@@ -53,13 +54,11 @@ export const GalleryImageLarge = ({
   useEffect(() => {
     setLoading(true);
 
-    const imageUrl =
-      import.meta.env.VITE_BASE_URL +
-      `/assets/${imageData.image}?&quality=75&format=webp`;
-
     const abortController = new AbortController();
 
-    fetch(imageUrl, { signal: abortController.signal })
+    fetch(`${BASE_URL}/assets/${imageData.image}?&quality=75&format=webp`, {
+      signal: abortController.signal,
+    })
       .then((response) => {
         if (response.ok) {
           return response.blob();

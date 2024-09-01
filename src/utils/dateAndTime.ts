@@ -26,3 +26,18 @@ export const getState = (start: string, end: string) => {
   if (hasStarted && !hasEnded) return "running";
   if (hasEnded) return "ended";
 };
+
+export const toTimeString = (seconds: number, alwaysShowHours?: boolean) => {
+  const date = new Date(seconds * 1000);
+  const hh = date.getUTCHours();
+  const mm = date.getUTCMinutes();
+  const ss = padString(date.getUTCSeconds());
+  if (hh || alwaysShowHours) {
+    return `${padString(hh)}:${padString(mm)}:${ss}`;
+  }
+  return `${mm}:${ss}`;
+};
+
+const padString = (string: number) => {
+  return ("0" + string).slice(-2);
+};

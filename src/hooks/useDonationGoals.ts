@@ -3,6 +3,7 @@ import axios from "axios";
 import { Stream } from "./useStreams";
 import { Language } from "../i18n/i18n";
 import { useMemo } from "react";
+import { BASE_URL } from "../utils/constants";
 
 export type DonationGoal = {
   timeslot: Stream | null;
@@ -21,8 +22,7 @@ type DonationGoalWithAlternatives = DonationGoal & {
 export const useDonationGoals = (lang: Language) => {
   const rawQueryResult = useQuery(["donation_goals"], async () => {
     const { data } = await axios.get<{ data: DonationGoalWithAlternatives[] }>(
-      import.meta.env.VITE_BASE_URL +
-        "/items/donation_goals?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name&filter[hidden][_eq]=false&sort=reached_at"
+      `${BASE_URL}/items/donation_goals?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name&filter[hidden][_eq]=false&sort=reached_at`
     );
     return data.data;
   });

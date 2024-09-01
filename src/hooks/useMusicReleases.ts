@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 export type MusicRelease = {
   name: string;
@@ -12,7 +13,7 @@ export type MusicRelease = {
 export const useMusicReleases = () => {
   return useQuery(["music_releases"], async () => {
     const { data } = await axios.get<{ data: MusicRelease[] }>(
-      import.meta.env.VITE_BASE_URL + "/items/music_releases?sort=-year"
+      `${BASE_URL}/items/music_releases?sort=-year`
     );
     return data.data;
   });

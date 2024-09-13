@@ -19,12 +19,12 @@ export type GoalWidget24Props = {
 
 const bgColorClasses = {
   [StreamLayoutTheme.GREEN]: {
-    day: "bg-[#E1DFAC]",
-    night: "bg-[#00141E]",
+    day: "bg-layout-bg-green-day",
+    night: "bg-layout-bg-green-night",
   },
   [StreamLayoutTheme.RED]: {
-    day: "bg-[#E9BDBD]",
-    night: "bg-[#370514]",
+    day: "bg-layout-bg-red-day",
+    night: "bg-layout-bg-red-night",
   },
 } as const;
 
@@ -62,12 +62,10 @@ export const GoalWidget24 = ({
     refetch: refetchDonationGoals,
   } = useDonationGoals(isEn ? Language.EN : Language.DE);
 
-  // const moneyTarget =
-  //   nextDonationGoal ||
-  //   donationGoals?.[donationGoals.length - 1].reached_at ||
-  //   0;
-
-  const moneyTarget = 5000;
+  const moneyTarget =
+    nextDonationGoal ||
+    donationGoals?.[donationGoals.length - 1].reached_at ||
+    0;
 
   useEffect(() => {
     if (!donations || !donationGoals) return;

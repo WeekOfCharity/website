@@ -8,6 +8,7 @@ export type LayoutDonationListProps = {
   headline: string;
   donations: Donation[] | undefined;
   isDay: boolean;
+  isEn: boolean;
   className?: string;
   listClassName?: string;
 };
@@ -15,9 +16,10 @@ export type LayoutDonationListProps = {
 export const LayoutDonationList = ({
   headline,
   donations = [],
+  isDay,
+  isEn,
   className,
   listClassName,
-  isDay,
 }: LayoutDonationListProps) => {
   const [newDonationIds, setNewDonationIds] = useState<number[]>([]);
   const [newAnimationRunning, setNewAnimationRunning] = useState(false);
@@ -48,9 +50,14 @@ export const LayoutDonationList = ({
             <LayoutDonationName
               name={donation.donator_name}
               animate={newDonationIds.includes(donation.id)}
+              isEn={isEn}
             />
             <LayoutMoneyText
-              amount={donation.donated_amount_in_cents / 100}
+              amount={
+                donation.donated_amount_in_cents
+                  ? donation.donated_amount_in_cents / 100
+                  : null
+              }
               isDay={isDay}
             />
           </li>

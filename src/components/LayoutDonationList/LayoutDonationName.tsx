@@ -2,41 +2,44 @@ import cn from "classnames";
 import { useEffect, useRef, useState } from "react";
 
 export type LayoutDonationNameProps = {
-  name: string;
+  name: string | null;
   animate: boolean;
+  isEn: boolean;
 };
 
 export const LayoutDonationName = ({
   name,
   animate,
+  isEn,
 }: LayoutDonationNameProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [visibleName, setVisibleName] = useState({ name: "" });
   const animationIntervalId = useRef<ReturnType<typeof setInterval>>();
   const animationTimeoutId = useRef<ReturnType<typeof setInterval>>();
 
+  const formattedName = name || (isEn ? "Anonymous" : "Anonym");
+
   useEffect(() => {
     if (animate) {
       setVisibleName({ name: "" });
     } else {
-      setVisibleName({ name });
+      setVisibleName({ name: formattedName });
     }
     setIsAnimating(animate);
-  }, [animate, name]);
+  }, [animate, formattedName, isEn]);
 
   useEffect(() => {
     if (isAnimating) {
       animationIntervalId.current = setInterval(() => {
-        console.log("Update", name);
-        if (visibleName.name === name) {
+        if (visibleName.name === formattedName) {
           animationTimeoutId.current = setTimeout(
             () => setIsAnimating(false),
-            (4 - (name.length % 4)) * 250
+            (4 - (formattedName.length % 4)) * 250
           );
         } else
           setVisibleName((prev) => {
-            if (!name.startsWith(prev.name)) return { name: "" };
-            return { name: prev.name + name[prev.name.length] };
+            if (!formattedName.startsWith(prev.name)) return { name: "" };
+            return { name: prev.name + formattedName[prev.name.length] };
           });
       }, 249);
     }
@@ -45,7 +48,7 @@ export const LayoutDonationName = ({
       clearInterval(animationIntervalId.current);
       clearTimeout(animationTimeoutId.current);
     };
-  }, [isAnimating, name, visibleName]);
+  }, [isAnimating, formattedName, visibleName]);
 
   return (
     <div

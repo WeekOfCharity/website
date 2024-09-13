@@ -118,6 +118,18 @@ module.exports = {
         800: "#332885",
         900: "#2A186E",
       },
+      layout: {
+        bg: {
+          green: {
+            day: "#E1DFAC",
+            night: "#00141E",
+          },
+          red: {
+            day: "#E9BDBD",
+            night: "#370514",
+          },
+        },
+      },
     },
     extend: {
       keyframes: {
@@ -141,6 +153,16 @@ module.exports = {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.1" },
         },
+        donationAlert: {
+          "0%, 100%": {
+            transform: "scale(1)",
+            "animation-timing-function": "cubic-bezier(0.8,0,1,1)",
+          },
+          "50%": {
+            transform: "scale(0.95)",
+            "animation-timing-function": "cubic-bezier(0,0,0.2,1)",
+          },
+        },
       },
       animation: {
         clouds: "bgmoveX linear infinite",
@@ -148,6 +170,7 @@ module.exports = {
         blink: "blink step-end infinite 1.25s",
         fadeinout1: "fadeinout1 ease-in-out 2s",
         fadeinout2: "fadeinout2 ease-in-out 2s",
+        donationAlert: "donationAlert infinite 1920ms",
       },
       fontFamily: {
         sans: [

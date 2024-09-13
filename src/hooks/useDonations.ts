@@ -4,9 +4,9 @@ import { BASE_URL } from "../utils/constants";
 
 export type Donation = {
   id: number;
-  donated_amount_in_cents: number;
-  donator_name: string;
-  donation_comment: string;
+  donated_amount_in_cents: number | null;
+  donator_name: string | null;
+  donation_comment: string | null;
 };
 
 export enum DonationSorting {
@@ -17,7 +17,7 @@ export enum DonationSorting {
 export const useDonations = (sorting?: DonationSorting) => {
   return useQuery(["donations", sorting], async () => {
     const { data } = await axios.get<{ data: Donation[] }>(
-      `${BASE_URL}/items/donations?fields=id,donated_amount_in_cents,donator_name,donation_comment&limit=3${sorting ? `&sort=${sorting}` : ""}`
+      `${BASE_URL}/items/donations?fields=id,donated_amount_in_cents,donator_name,donation_comment&limit=3${sorting ? `&sort=${sorting}` : ""}${sorting === DonationSorting.HIGHEST ? "&filter[donated_amount_in_cents][_nnull]=true" : ""}`
     );
     return data.data;
   });

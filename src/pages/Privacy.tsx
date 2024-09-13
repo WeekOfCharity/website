@@ -8,7 +8,7 @@ export const Privacy = () => {
   useTitle(t("subNav.dataPrivacy"));
 
   return (
-    <main className="text-neutral-800 woc-accent-neutral">
+    <main className="text-neutral-800 woc-accent-neutral" lang="de">
       <header className="px-5 py-20 relative text-center">
         <h1 className="font-pally font-bold max-w-screen-md mx-auto text-accent-500 text-4xl md:text-7xl w-full md:w-4/5">
           Datenschutzerklärung

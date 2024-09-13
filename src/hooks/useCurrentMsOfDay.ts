@@ -17,7 +17,7 @@ export const STARS_FADE_OUT_STOP = 8 * HOURINMS;
 export const SPEED = 1;
 
 // in miliseconds
-const UPDATE_RATE = 100; // TODO set lower for production
+const UPDATE_RATE = 5000;
 
 const getMsOfDay = (currentTime: Date) => {
   const totalMs =

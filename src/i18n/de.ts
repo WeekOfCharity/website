@@ -68,7 +68,14 @@ export const deTranslation: Translation = {
   twitchPlayer: {
     heading: "Week of Charity Twitch Player",
     privacyNote:
-      "Datenschutzhinweis: Wenn du den Twitch Player aktivierst, werden einige Daten wie deine IP-Adresse an Twitch gesendet. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.",
+      "Datenschutzhinweis: Wenn du den Twitch Player aktivierst, werden können personenbezogene Daten wie deine IP-Adresse an Twitch gesendet. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.",
+    accept: "Einverstanden",
+  },
+  youtubePlayer: {
+    label: "Youtube Player",
+    heading: "Week of Charity Youtube Player",
+    privacyNote:
+      "Datenschutzhinweis: Wenn du den Youtube Player aktivierst, werden können personenbezogene Daten wie deine IP-Adresse an Youtube gesendet. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.",
     accept: "Einverstanden",
   },
   imprint: {
@@ -88,8 +95,8 @@ export const deTranslation: Translation = {
     mainHeader: "Unsere Musik",
     text: {
       t1: "Unsere Musik",
-      t2: "wird jedes Jahr von", // Amy und Mioh
-      t3: "gemacht. Die Lieder könnt ihr auf Bandcamp kaufen. All unsere Einnahmen gehen dabei an die aktuelle Charity. Unten findet ihr eine Auflistung aller Week of Charity Alben, die die beiden im Laufe der Jahre für uns erstellt haben. Wenn ihr auf ein Album klickt, kommt ihr auf die jeweilige Bandcamp-Seite, auf der ihr das Album kaufen könnt. Vielen Dank für eure Unterstützung!",
+      t2: "wird jedes Jahr von",
+      t3: " gemacht. Die Lieder könnt ihr auf Bandcamp kaufen. All unsere Einnahmen gehen dabei an die aktuelle Charity. Unten findet ihr eine Auflistung aller Week of Charity Alben, die die beiden im Laufe der Jahre für uns erstellt haben. Wenn ihr auf ein Album klickt, kommt ihr auf die jeweilige Bandcamp-Seite, auf der ihr das Album kaufen könnt. Vielen Dank für eure Unterstützung!",
     },
   },
   program: {
@@ -97,7 +104,7 @@ export const deTranslation: Translation = {
     mainHeader: "Das Programm der", // Week of Charity
     highlights: "Die Highlights 👑 der Woche",
     allStreams: "Alle Streams",
-    fellows: "Mitspieler*innen", // in the context of: "+4 Mitspieler*innen"
+    fellows: "Mitspieler*innen",
     toVOD: "Zum VOD",
     VODavailable: "VOD verfügbar",
     highlight: "👑 Highlight",
@@ -113,11 +120,11 @@ export const deTranslation: Translation = {
       t5: "Zeitplan",
       t6: ".",
       t7: "Unser Projekt",
-      t8: "wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die dritte Runde! Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an das Tierheim Berlin. Ihr könnt uns über direkte",
+      t8: "wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die dritte Runde! Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an Exit Germany. Ihr könnt uns über direkte",
       t9: "Spenden",
       t10: "während des Streams unterstützen, oder in unserem",
       t11: "Shop",
-      t12: "vorbeischauen. Unser Anteil am verkauften Merchandise wird zu 100% gespendet und ihr könnt euch mit unserem Maskottchen Chesster schmücken.",
+      t12: " vorbeischauen. Unser Anteil am verkauften Merchandise wird zu 100% gespendet und ihr könnt euch mit unserem Maskottchen Chesster schmücken.",
     },
     ourProjects: "Unsere Projekte",
     "2023": {

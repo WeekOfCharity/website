@@ -365,6 +365,7 @@ export const Team = () => {
                           vodLink={stream.vod_link}
                           key={stream.id}
                           streamLanguage={stream.language}
+                          activityHidden={stream.activity.hidden}
                         />
                       ))}
                     </div>
@@ -389,6 +390,7 @@ export const Team = () => {
                           vodLink={stream.vod_link}
                           key={stream.id}
                           streamLanguage={stream.language}
+                          activityHidden={stream.activity.hidden}
                         />
                       ))}
                     </div>

@@ -2,7 +2,7 @@ import { mdiClose, mdiOpenInNew } from "@mdi/js";
 import Icon from "@mdi/react";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Activity } from "../components/Activity/Activity";
 import { Brush1 } from "../components/Brushes/Brush1";
@@ -107,9 +107,9 @@ export const Activities = () => {
       : [];
   };
 
-  const closeActivity = () => {
+  const closeActivity = useCallback(() => {
     setSearchParams({}, { replace: true });
-  };
+  }, [setSearchParams]);
 
   const openActivity = (activity: ActivityData) => {
     setSearchParams({ id: activity.id.toString() }, { replace: true });
@@ -118,16 +118,16 @@ export const Activities = () => {
   useEffect(() => {
     if (searchParams.has("id")) {
       if (activitiesStatus === "success") {
-        setActiveActivity(
-          activities?.find(
-            (activity) => activity.id.toString() === searchParams.get("id")
-          )
+        const activity = activities?.find(
+          (activity) => activity.id.toString() === searchParams.get("id")
         );
+        if (activity) setActiveActivity(activity);
+        else closeActivity();
       }
     } else {
       setActiveActivity(undefined);
     }
-  }, [activities, activitiesStatus, searchParams]);
+  }, [activities, activitiesStatus, closeActivity, searchParams]);
 
   return (
     <main className="text-neutral-800 woc-accent-pink23">
@@ -314,6 +314,7 @@ export const Activities = () => {
                             vodLink={stream.vod_link}
                             key={stream.id}
                             streamLanguage={stream.language}
+                            activityHidden={stream.activity.hidden}
                           />
                         )
                       )}

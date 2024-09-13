@@ -21,7 +21,7 @@ type ActivityWithAlternatives = Activity & {
 export const useActivities = (lang: Language) => {
   const rawQueryResult = useQuery(["activities"], async () => {
     const { data } = await axios.get<{ data: ActivityWithAlternatives[] }>(
-      `${BASE_URL}/items/activities`
+      `${BASE_URL}/items/activities?filter[hidden][_eq]=false`
     );
     return data.data;
   });

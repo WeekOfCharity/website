@@ -68,8 +68,15 @@ export const enTranslation: Translation = {
   twitchPlayer: {
     heading: "Week of Charity Twitch Player",
     privacyNote:
-      "Data Protection Notice: By activating the Twitch Player, data like your IP address will be sent to Twitch directly. This serves as improvement to your streaming experience and the data will be used for analyses..",
+      "Data Protection Notice: By activating the Twitch Player, personal data like your IP address will be sent to Twitch directly. This serves as an improvement to your streaming experience and the data might be used for analyses.",
     accept: "Accept",
+  },
+  youtubePlayer: {
+    label: "Youtube Player",
+    heading: "Week of Charity Youtube Player",
+    privacyNote:
+      "Data Protection Notice: By activating the Youtube Player, personal data like your IP address will be sent to Youtube directly. This serves as an improvement to your watching experience and the data might be used for analyses.",
+    accept: "Einverstanden",
   },
   imprint: {
     paragraph: "Information according § 5 TMG",
@@ -88,15 +95,15 @@ export const enTranslation: Translation = {
     mainHeader: "Our Music",
     text: {
       t1: "Like every year",
-      t2: "our music is made by", // Amy and Mioh
-      t3: "You can buy the songs on Bandcamp. All profits will be donated to the current charity. To the bottom you can find a list of every Week of Charity album that were produced over time. If you click on an album, you will be forwarded to the respective Bandcamp website were you can buy it. Thank you for your support!",
+      t2: "our music is made by",
+      t3: ". You can buy the songs on Bandcamp. All profits will be donated to the current charity. To the bottom you can find a list of every Week of Charity album that were produced over time. If you click on an album, you will be forwarded to the respective Bandcamp website were you can buy it. Thank you for your support!",
     },
   },
   program: {
     subHeader: "Don't miss any events",
     mainHeader: "Program of the", // Week of Charity
     highlights: "Highlights of the week",
-    allStreams: "Every Stream",
+    allStreams: "All streams",
     fellows: "fellow players", // in the context of: "+4 fellow players"
     toVOD: "open VOD",
     VODavailable: "VOD available",
@@ -110,14 +117,14 @@ export const enTranslation: Translation = {
       t2: "is a constant streaming project for a good cause! During one whole week you are able to see constant streams on Twitch from on of our",
       t3: "members",
       t4: "to collect donations. The program is made up of a variety of entertaining streams containing different video games, Dungeons and Dragons and even multiple quiz shows! You don't want to miss anything Special? Look at our",
-      t5: "Schedule",
+      t5: "schedule",
       t6: ".",
       t7: "Our project",
-      t8: "was established in 2021 and has now it's fourth anniversairy! The money that is gathered during this week will be donated to Exit Germany. You can support us either with direct",
+      t8: "was established in 2021 and has it's fourth anniversairy this year! The money that is gathered during this week will be donated to Exit Germany. You can support us either with direct",
       t9: "donations",
       t10: "during the streams or by buying merchandise from our",
       t11: "shop",
-      t12: "The whole profit gathered by the merchandising sales will be donated to the current charity and you will be able to wear our mascot Chesster!",
+      t12: ". The whole profit gathered by the merchandising sales will be donated to the current charity and you will be able to wear our mascot Chesster!",
     },
     ourProjects: "Our Projects",
     "2023": {

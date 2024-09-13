@@ -25,6 +25,7 @@ type StreamProps = {
   title: string;
   vodLink: string;
   streamLanguage?: StreamLanguage;
+  activityHidden?: boolean;
 };
 
 export const Stream = ({
@@ -41,28 +42,41 @@ export const Stream = ({
   title,
   vodLink,
   streamLanguage,
+  activityHidden,
 }: StreamProps) => {
   const { t, i18n } = useTranslation();
   const validLang = getValidLanguage(i18n.language);
   const breakpoint = useBreakpoint();
 
-  const RootElement =
-    noLink && vodLink ? "a" : condensed && !noLink ? Link : "article";
-  const BannerElement =
-    noLink && vodLink ? "div" : !condensed && !noLink ? Link : "div";
+  const getRootElement = () => {
+    if (activityHidden) return "article";
+    if (noLink && vodLink) return "a";
+    if (condensed && !noLink) return Link;
+    return "article";
+  };
+
+  const getBannerElement = () => {
+    if (activityHidden || (noLink && vodLink)) return "div";
+    if (!condensed && !noLink) return Link;
+    return "div";
+  };
+
+  const RootElement = getRootElement();
+  const BannerElement = getBannerElement();
 
   return (
     <RootElement
       className={classNames("flex select-none", {
-        "cursor-pointer duration-300 hover:-mx-1.5 transition-all": condensed,
+        "cursor-pointer duration-300 hover:-mx-1.5 transition-all":
+          condensed && !activityHidden,
         "opacity-50": state === "ended",
         "pointer-events-none": clickDisabled || (noLink && !vodLink),
       })}
-      to={condensed && !noLink ? `/streams?id=${activityId}` : ""}
-      href={noLink && vodLink ? vodLink : undefined}
-      title={noLink && vodLink ? t("program.toVOD") : undefined}
-      rel={noLink && vodLink ? "nofollow noreferrer" : undefined}
-      target={noLink && vodLink ? "_blank" : undefined}
+      to={RootElement === Link ? `/streams?id=${activityId}` : ""}
+      href={RootElement === "a" ? vodLink : undefined}
+      title={RootElement === "a" ? t("program.toVOD") : undefined}
+      rel={RootElement === "a" ? "nofollow noreferrer" : undefined}
+      target={RootElement === "a" ? "_blank" : undefined}
     >
       {!condensed && (
         <div
@@ -95,10 +109,10 @@ export const Stream = ({
           "flex flex-col md:flex-row relative md:rounded-md w-full",
           {
             "cursor-pointer duration-300 hover:-mx-2 transition-all":
-              !condensed,
+              !condensed && !activityHidden,
           }
         )}
-        to={!condensed && !noLink ? `/streams?id=${activityId}` : ""}
+        to={BannerElement === Link ? `/streams?id=${activityId}` : ""}
       >
         <div
           className="bg-center bg-cover flex-shrink-0 h-28 md:h-20 rounded-l-md rounded-r-md md:rounded-r-none w-full md:w-20"
@@ -139,6 +153,11 @@ export const Stream = ({
                   "pr-[5.75rem]": vodLink && noLink,
                 })}
               >
+                {activityHidden && (
+                  <span className="mr-2 text-[#ff8888] font-bold">
+                    Warning: Activity hidden!
+                  </span>
+                )}
                 {title}
                 <StreamLanguageBadge
                   className="font-normal ml-2"

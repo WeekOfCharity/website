@@ -22,7 +22,7 @@ type BidwarDataWithAlternatives = Omit<BidwarData, "timeslot"> & {
 export const useBidwars = (lang: Language) => {
   const rawQueryResult = useQuery(["bidwars"], async () => {
     const { data } = await axios.get<{ data: BidwarDataWithAlternatives[] }>(
-      `${BASE_URL}/items/bidwars?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.activity.name_en,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name`
+      `${BASE_URL}/items/bidwars?fields=*,timeslot.*,timeslot.activity.icon,timeslot.activity.id,timeslot.activity.name,timeslot.activity.name_en,timeslot.activity.hidden,timeslot.streamer.icon,timeslot.streamer.id,timeslot.streamer.name`
     );
     return data.data;
   });

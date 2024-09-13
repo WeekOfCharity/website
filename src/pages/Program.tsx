@@ -1,7 +1,7 @@
 import { mdiClose, mdiOpenInNew } from "@mdi/js";
 import Icon from "@mdi/react";
 import classNames from "classnames";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Brush1 } from "../components/Brushes/Brush1";
 import { Brush4 } from "../components/Brushes/Brush4";
@@ -109,23 +109,23 @@ export const Program = () => {
       : [];
   };
 
-  const closeActivity = () => {
+  const closeActivity = useCallback(() => {
     setSearchParams({}, { replace: true });
-  };
+  }, [setSearchParams]);
 
   useEffect(() => {
     if (searchParams.has("id")) {
       if (activitiesStatus === "success") {
-        setActiveActivity(
-          activities?.find(
-            (activity) => activity.id.toString() === searchParams.get("id")
-          )
+        const activity = activities?.find(
+          (activity) => activity.id.toString() === searchParams.get("id")
         );
+        if (activity) setActiveActivity(activity);
+        else closeActivity();
       }
     } else {
       setActiveActivity(undefined);
     }
-  }, [activities, activitiesStatus, searchParams]);
+  }, [activities, activitiesStatus, closeActivity, searchParams]);
 
   return (
     <main className="text-neutral-800 woc-accent-green23">
@@ -210,6 +210,7 @@ export const Program = () => {
                     vodLink={stream.vod_link}
                     key={stream.id}
                     streamLanguage={stream.language}
+                    activityHidden={stream.activity.hidden}
                   />
                 ))}
               </div>
@@ -310,6 +311,7 @@ export const Program = () => {
                             vodLink={stream.vod_link}
                             key={stream.id}
                             streamLanguage={stream.language}
+                            activityHidden={stream.activity.hidden}
                           />
                         )
                       )}

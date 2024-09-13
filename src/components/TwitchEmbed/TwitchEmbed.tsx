@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TwitchPlayer, TwitchPlayerInstance } from "react-twitch-embed";
-import { Breakpoint, useBreakpoint } from "../../hooks/useBreakpoint";
 import { Stream, useStreams } from "../../hooks/useStreams";
 import { getState } from "../../utils/dateAndTime";
 import { useTranslation } from "react-i18next";
@@ -14,17 +13,9 @@ function getUserFromTwitchLink(link: string) {
   return "";
 }
 
-// TODO: Refactor into tailwind breakpoints and classes instead of inline styles
-const getPlayerDimensions = (breakpoint: Breakpoint) => {
-  if (breakpoint === Breakpoint.sm) return { width: 393, height: 221 };
-  if (breakpoint === Breakpoint.md) return { width: 640, height: 360 };
-  return { width: 960, height: 540 };
-};
-
 const TwitchEmbed = memo(function TwitchEmbed() {
   const { t, i18n } = useTranslation();
   const validLang = getValidLanguage(i18n.language);
-  const breakpoint = useBreakpoint();
   const [running, setRunning] = useState<Stream | undefined>(undefined);
   const [showInactive, setShowInactive] = useState(false);
   const [channelName, setChannelName] = useState("");
@@ -71,15 +62,17 @@ const TwitchEmbed = memo(function TwitchEmbed() {
 
   return (
     <>
-      {channelName && !showInactive && breakpoint !== undefined && (
+      {channelName && !showInactive && (
         <section
           className={classNames("flex justify-center select-none", {
             "mb-32 md:mb-0": !privacyAccepted,
           })}
         >
           <div
-            className="bg-neutral-800"
-            style={getPlayerDimensions(breakpoint)}
+            className={classNames(
+              "aspect-video w-full mx-5 md:mx-10 max-w-screen-lg",
+              { "bg-neutral-800": !privacyAccepted }
+            )}
           >
             {privacyAccepted ? (
               TwitchPlayerPreventRerender

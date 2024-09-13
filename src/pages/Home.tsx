@@ -23,6 +23,7 @@ import { useTranslation } from "react-i18next";
 import { useTitle } from "../hooks/useTitle";
 import { getValidLanguage } from "../i18n/i18n";
 import { DONATION_URL } from "../utils/constants";
+import { YoutubeEmbed } from "../components/YoutubeEmbed/YoutubeEmbed";
 
 export const Home = () => {
   useTitle();
@@ -157,6 +158,11 @@ export const Home = () => {
         {configurationStatus === "success" && wocStatus === "wocUpcoming" && (
           <Countdown timerZeroCallback={hideCountdown} />
         )}
+        {configurationStatus === "success" &&
+          !!configuration.trailer_youtube_id &&
+          (wocStatus === "wocUpcomingSoon" || wocStatus === "wocUpcomping") && (
+            <YoutubeEmbed youtubeId={configuration.trailer_youtube_id} />
+          )}
         {configurationStatus === "success" &&
           configuration.twitch_embed &&
           wocStatus === "wocRunning" && <TwitchEmbed />}

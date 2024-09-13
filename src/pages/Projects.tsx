@@ -55,7 +55,7 @@ export const Projects = () => {
                   >
                     {t("projects.text.t5")}
                   </a>
-                  {` ${t("projects.text.t6")}`}
+                  {`${t("projects.text.t6")}`}
                 </p>
                 <p className="mb-4">
                   <span className="text-lg font-semibold">{`${t(
@@ -79,7 +79,7 @@ export const Projects = () => {
                   >
                     {t("projects.text.t11")}
                   </a>
-                  {` ${t("projects.text.t12")}`}
+                  {`${t("projects.text.t12")}`}
                 </p>
               </div>
             </div>

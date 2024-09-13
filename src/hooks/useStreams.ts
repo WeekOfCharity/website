@@ -9,6 +9,7 @@ export type Stream = {
     icon: string;
     id: number;
     name: string;
+    hidden: boolean;
   };
   end: string;
   fellows: {
@@ -49,7 +50,7 @@ export enum StreamLanguage {
 export const useStreams = (lang: Language) => {
   const rawQueryResult = useQuery(["streams"], async () => {
     const { data } = await axios.get<{ data: StreamWithAlternatives[] }>(
-      `${BASE_URL}/items/timeslots?fields=*,activity.icon,activity.id,activity.name,activity.name_en,fellows.people_id.icon,fellows.people_id.id,fellows.people_id.name,fellows.people_id.hide_from_team_page,streamer.icon,streamer.id,streamer.name,streamer.stream_link,streamer.hide_from_team_page&sort=start`
+      `${BASE_URL}/items/timeslots?fields=*,activity.icon,activity.id,activity.name,activity.name_en,activity.hidden,fellows.people_id.icon,fellows.people_id.id,fellows.people_id.name,fellows.people_id.hide_from_team_page,streamer.icon,streamer.id,streamer.name,streamer.stream_link,streamer.hide_from_team_page&sort=start`
     );
     return data.data;
   });

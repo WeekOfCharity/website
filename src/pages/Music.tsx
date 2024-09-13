@@ -44,7 +44,7 @@ export const Music = () => {
             >
               Mioh
             </a>
-            {` ${t("music.text.t3")}`}
+            {`${t("music.text.t3")}`}
           </div>
         </section>
 

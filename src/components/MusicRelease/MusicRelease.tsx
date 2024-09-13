@@ -18,7 +18,7 @@ export const MusicRelease = ({ name, coverUrl, link }: MusicReleaseProps) => {
       <span>{name}</span>
       <div className="overflow-hidden max-w-[512px] max-h-[512px]">
         <img
-          className="w-max group-hover:scale-[1.03] group-hover:opacity-75 group-focus-visible:opacity-75 group-focus-visible:scale-[1.03] transition-[transform,opacity] duration-300"
+          className="w-max group-hover:scale-[1.03] group-hover:opacity-85 group-focus-visible:opacity-85 group-focus-visible:scale-[1.03] transition-[transform,opacity] duration-300"
           height={512}
           width={512}
           src={coverUrl.toString()}

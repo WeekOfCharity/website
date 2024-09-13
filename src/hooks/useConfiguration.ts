@@ -7,6 +7,7 @@ export type Configuration = {
   twitch_embed: boolean;
   woc_start: string | null;
   schedule_complete: boolean;
+  trailer_youtube_id: string | null;
 };
 
 export const useConfiguration = () => {

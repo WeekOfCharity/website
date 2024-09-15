@@ -23,10 +23,10 @@ import overlayRedDay from "../assets/layout/overlay_red_day.png";
 import overlayRedNight from "../assets/layout/overlay_red_night.png";
 import cn from "classnames";
 import { GoalWidget24 } from "./GoalWidget24";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
 import { LayoutDonationList } from "../components/LayoutDonationList/LayoutDonationList";
-import { DonationSorting, useDonations } from "../hooks/useDonations";
+import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
 import "./LayoutOverlayWidget.scss";
 import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
 
@@ -120,21 +120,42 @@ export const LayoutOverlayWidget = () => {
   const name = searchParams.get("name");
   const pronouns = searchParams.get("pronouns");
   const isEn = searchParams.get("en");
+  const testalert = searchParams.get("testalert");
   const customHours = parseIntSearchParam(searchParams.get("time"));
+
+  const skipAlerts = useRef<boolean>(true);
+  const donationAlertQueue = useRef<Donation[]>([]);
+  const alreadyQueuedIds = useRef<number[]>([]);
 
   const { data: highestDonations, refetch: refetchHighestDonations } =
     useDonations(DonationSorting.HIGHEST);
 
   const { data: newestDonations, refetch: refetchNewestDonations } =
-    useDonations(DonationSorting.NEWEST);
+    useDonations(DonationSorting.NEWEST, 10);
 
   const { currentMsOfDay } = useCurrentMsOfDay({ customHours });
 
   useEffect(() => {
     preloadImages()
-      .then(() => setPreloading(false))
+      .then(() => {
+        setPreloading(false);
+        setTimeout(() => {
+          skipAlerts.current = false;
+          if (testalert === null) return;
+          if (alreadyQueuedIds.current.includes(-1)) return;
+          donationAlertQueue.current.unshift({
+            id: -1,
+            donator_name: "Chesster",
+            donated_amount_in_cents: 556,
+            donation_comment:
+              "Das ist eine Testdonation! Hier steh der Kommentar, der einer Spende hinzugefügt werden kann.",
+          });
+          alreadyQueuedIds.current.push(-1);
+          setPlayDonationAlert(true);
+        }, 2500);
+      })
       .catch(() => {});
-  }, []);
+  }, [testalert]);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -146,8 +167,32 @@ export const LayoutOverlayWidget = () => {
 
   useEffect(() => {
     if (!newestDonations) return;
+
+    [...newestDonations].reverse().forEach((newestDonation) => {
+      if (alreadyQueuedIds.current.some((id) => id >= newestDonation.id))
+        return;
+
+      donationAlertQueue.current.unshift(newestDonation);
+      alreadyQueuedIds.current.push(newestDonation.id);
+    });
+
+    if (playDonationAlert || donationAlertQueue.current.length === 0) return;
+
+    setTimeout(() => setPlayDonationAlert(true), 1700);
+  }, [newestDonations, playDonationAlert]);
+
+  useEffect(() => {
+    if (skipAlerts.current) {
+      setPlayDonationAlert(false);
+      donationAlertQueue.current = [];
+      return;
+    }
+    if (!playDonationAlert) return;
+
+    const currentAlertDonation = donationAlertQueue.current.pop();
+    if (!currentAlertDonation) return;
     const { donation_comment, donator_name, donated_amount_in_cents } =
-      newestDonations[0];
+      currentAlertDonation;
 
     setDonationAlertComment(donation_comment);
     setDonationAlertName(donator_name);
@@ -155,15 +200,13 @@ export const LayoutOverlayWidget = () => {
     setDonationAlertGif(getAlertGifFromDonationAmount(donated_amount_in_cents));
     playSound(donated_amount_in_cents);
 
-    setPlayDonationAlert(true);
-
     const timeout = setTimeout(
       () => setPlayDonationAlert(false),
       getAlertLengthFromDonationAmount(donated_amount_in_cents)
     );
 
     return () => clearTimeout(timeout);
-  }, [newestDonations]);
+  }, [playDonationAlert]);
 
   const isDay = currentMsOfDay < 21 * HOURINMS && currentMsOfDay > 6 * HOURINMS;
   const layoutTheme = getTheme(theme);
@@ -176,7 +219,7 @@ export const LayoutOverlayWidget = () => {
       className={cn(
         "overlay-root font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden transition-[color,background-color,border-color,text-shadow] ease-in duration-[2000ms]",
         {
-          "[text-shadow:0_0_5px_rgba(var(--text-r),var(--text-g),var(--text-b),0.5)]":
+          "[text-shadow:0_0_0.5rem_rgba(var(--text-r),var(--text-g),var(--text-b),0.55)]":
             !isDay,
         }
       )}
@@ -205,11 +248,25 @@ export const LayoutOverlayWidget = () => {
         }}
       />
       <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[25px] overflow-hidden whitespace-nowrap">
-        {name}
+        {name === "empty" ? "" : name}
       </div>
+      {!name && (
+        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[5px] left-[5px]">
+          No name provided. Please provide your name by adding &name=[example]
+          to the layout URL.
+          <br /> Or add &name=empty to not show a name.
+        </div>
+      )}
       <div className="z-10 absolute text-lg w-80 text-center top-[54px] overflow-hidden whitespace-nowrap">
-        {pronouns}
+        {pronouns === "empty" ? "" : pronouns}
       </div>
+      {!pronouns && (
+        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[110px] left-[5px]">
+          No pronouns provided. Please provide your pronouns by adding
+          &pronouns=[example] to the layout URL.
+          <br /> Or add &pronouns=empty to not show any pronouns.
+        </div>
+      )}
       <LayoutDonationList
         className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1060px] top-[922px] overflow-hidden whitespace-nowrap"
         listClassName={cn({
@@ -230,7 +287,7 @@ export const LayoutOverlayWidget = () => {
           "animate-fadeinout2": !isDay && layoutTheme === StreamLayoutTheme.RED,
         })}
         headline={isEn !== null ? "Last Donations" : "Letzte Spenden"}
-        donations={newestDonations}
+        donations={newestDonations?.slice(0, 3)}
         isDay={isDay}
         isEn={isEn !== null}
       />
@@ -239,7 +296,7 @@ export const LayoutOverlayWidget = () => {
       </div>
       <div
         className={cn(
-          "absolute z-10 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[2000ms]",
+          "absolute z-10 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[1500ms]",
           {
             "opacity-0 translate-x-[700px]": !playDonationAlert,
           }
@@ -253,11 +310,11 @@ export const LayoutOverlayWidget = () => {
           />
           <div
             className={cn(
-              "flex flex-col gap-4 rounded-2xl py-5 px-10 animate-donationAlert [box-shadow:0_0_16px_black]",
+              "flex flex-col gap-4 rounded-2xl py-5 px-5 animate-donationAlert [box-shadow:0_0_16px_black]",
               {
                 "bg-layout-bg-green-night/[0.99]":
                   layoutTheme === StreamLayoutTheme.GREEN && !isDay,
-                "bg-layout-bg-red-night/[0.99]":
+                "bg-layout-bg-red-night/[0.98]":
                   layoutTheme === StreamLayoutTheme.RED && !isDay,
                 "bg-layout-bg-green-day/[0.93]":
                   layoutTheme === StreamLayoutTheme.GREEN && isDay,
@@ -266,10 +323,10 @@ export const LayoutOverlayWidget = () => {
               }
             )}
           >
-            <span className="text-[1.375rem] px-3">
+            <span className="text-[1.5rem] px-2">
               {donationAlertName || (isEn !== null ? "Anonymous" : "Anonym")}{" "}
               {isEn !== null ? "donates" : "spendet"}{" "}
-              {donationAlertAmount && (
+              {donationAlertAmount != null && (
                 <LayoutMoneyText
                   amount={donationAlertAmount / 100}
                   isDay={isDay}
@@ -278,7 +335,7 @@ export const LayoutOverlayWidget = () => {
               )}
             </span>
             {donationAlertComment && (
-              <span className="max-w-[550px] max-h-32">
+              <span className="max-w-[550px] max-h-32 text-[1.1875rem] leading-8">
                 {donationAlertComment.length > 150
                   ? `${donationAlertComment?.slice(0, 150)}...`
                   : donationAlertComment}

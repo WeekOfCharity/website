@@ -14,10 +14,10 @@ export enum DonationSorting {
   NEWEST = "-date_created",
 }
 
-export const useDonations = (sorting?: DonationSorting) => {
+export const useDonations = (sorting?: DonationSorting, limit: number = 3) => {
   return useQuery(["donations", sorting], async () => {
     const { data } = await axios.get<{ data: Donation[] }>(
-      `${BASE_URL}/items/donations?fields=id,donated_amount_in_cents,donator_name,donation_comment&limit=3${sorting ? `&sort=${sorting}` : ""}${sorting === DonationSorting.HIGHEST ? "&filter[donated_amount_in_cents][_nnull]=true" : ""}`
+      `${BASE_URL}/items/donations?fields=id,donated_amount_in_cents,donator_name,donation_comment&limit=${limit}${sorting ? `&sort=${sorting}` : ""}${sorting === DonationSorting.HIGHEST ? "&filter[donated_amount_in_cents][_nnull]=true" : ""}`
     );
     return data.data;
   });

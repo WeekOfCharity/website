@@ -16,7 +16,7 @@ export const LayoutMoneyText = ({
 }: LayoutMoneyTextProps) => {
   return (
     <span className="inline-flex items-center">
-      {amount !== null && amount !== undefined ? formatter.format(amount) : "?"}
+      {amount != null ? formatter.format(amount) : "?"}
       <PixelEuro
         className={cn(
           "ml-px w-3.5 mb-px transition-[filter] duration-[2000ms] ease-in",

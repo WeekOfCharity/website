@@ -54,7 +54,7 @@ export const LayoutDonationList = ({
             />
             <LayoutMoneyText
               amount={
-                donation.donated_amount_in_cents
+                donation.donated_amount_in_cents !== null
                   ? donation.donated_amount_in_cents / 100
                   : null
               }

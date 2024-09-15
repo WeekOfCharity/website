@@ -72,7 +72,6 @@ const getStarsOpacity = (currentMs: number) => {
       (STARS_FADE_OUT_STOP - STARS_FADE_OUT_START)
     );
 
-  console.error("getStarsStyles didn't find opacity");
   return 0;
 };
 

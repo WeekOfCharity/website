@@ -247,7 +247,7 @@ export const LayoutOverlayWidget = () => {
           backgroundImage: `url(${overlays[layoutTheme].night})`,
         }}
       />
-      <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[25px] overflow-hidden whitespace-nowrap">
+      <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
         {name === "empty" ? "" : name}
       </div>
       {!name && (
@@ -257,7 +257,7 @@ export const LayoutOverlayWidget = () => {
           <br /> Or add &name=empty to not show a name.
         </div>
       )}
-      <div className="z-10 absolute text-lg w-80 text-center top-[54px] overflow-hidden whitespace-nowrap">
+      <div className="z-10 absolute text-[0.9375rem] w-80 text-center top-[59px] overflow-hidden whitespace-nowrap leading-relaxed">
         {pronouns === "empty" ? "" : pronouns}
       </div>
       {!pronouns && (

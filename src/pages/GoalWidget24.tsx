@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDonationGoals } from "../hooks/useDonationGoals";
+import { DonationGoal, useDonationGoals } from "../hooks/useDonationGoals";
 import { useExternalDonationTotal } from "../hooks/useExternalDonationTotal";
 import { Language } from "../i18n/i18n";
 import cn from "classnames";
@@ -39,6 +39,11 @@ const fillColorClasses = {
   },
 } as const;
 
+const getHighestDonationGoalAmount = (goals: DonationGoal[] | undefined) => {
+  if (!goals || goals.length === 0) return undefined;
+  return goals[goals.length - 1].reached_at;
+};
+
 export const GoalWidget24 = ({
   theme,
   isDay,
@@ -63,9 +68,7 @@ export const GoalWidget24 = ({
   } = useDonationGoals(isEn ? Language.EN : Language.DE);
 
   const moneyTarget =
-    nextDonationGoal ||
-    donationGoals?.[donationGoals.length - 1].reached_at ||
-    0;
+    nextDonationGoal || getHighestDonationGoalAmount(donationGoals);
 
   useEffect(() => {
     if (!donations || !donationGoals) return;
@@ -142,7 +145,9 @@ export const GoalWidget24 = ({
             fillColorClasses[theme][isDay ? "day" : "night"]
           )}
           style={{
-            width: `calc(min(${(currentDonation / moneyTarget) * 100}%, 100%))`,
+            width: moneyTarget
+              ? `calc(min(${(currentDonation / moneyTarget) * 100}%, 100%))`
+              : "",
           }}
         />
         <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px">

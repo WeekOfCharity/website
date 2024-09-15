@@ -2,7 +2,7 @@ import cn from "classnames";
 import { PixelEuro } from "../Icons/PixelEuro";
 
 export type LayoutMoneyTextProps = {
-  amount: number | null;
+  amount: number | null | undefined;
   isDay: boolean;
   customEuroClassName?: string;
 };
@@ -16,7 +16,7 @@ export const LayoutMoneyText = ({
 }: LayoutMoneyTextProps) => {
   return (
     <span className="inline-flex items-center">
-      {amount !== null ? formatter.format(amount) : "??,??"}
+      {amount !== null && amount !== undefined ? formatter.format(amount) : "?"}
       <PixelEuro
         className={cn(
           "ml-px w-3.5 mb-px transition-[filter] duration-[2000ms] ease-in",

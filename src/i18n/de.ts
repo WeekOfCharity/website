@@ -52,7 +52,7 @@ export const deTranslation: Translation = {
     welcome1:
       "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten.",
     welcome2:
-      "Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an EXIT Deutschland, ein Projekt, das Menschen beim Ausstieg aus der rechtsextremistischen Szene unterstützt. Mehr Informationen findet ihr",
+      "Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an EXIT-Deutschland, ein Projekt, das Menschen beim Ausstieg aus der rechtsextremistischen Szene unterstützt. Mehr Informationen findet ihr",
     here: "hier",
     welcome3:
       "Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!",
@@ -120,19 +120,27 @@ export const deTranslation: Translation = {
       t5: "Zeitplan",
       t6: ".",
       t7: "Unser Projekt",
-      t8: "wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die dritte Runde! Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an Exit Germany. Ihr könnt uns über direkte",
+      t8: "wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die vierte Runde! Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an EXIT-Deutschland. Ihr könnt uns über direkte",
       t9: "Spenden",
       t10: "während des Streams unterstützen, oder in unserem",
       t11: "Shop",
       t12: " vorbeischauen. Unser Anteil am verkauften Merchandise wird zu 100% gespendet und ihr könnt euch mit unserem Maskottchen Chesster schmücken.",
     },
     ourProjects: "Unsere Projekte",
+    "2024": {
+      header: "EXIT-Deutschland",
+      text: {
+        t1: "Wir freuen uns, dieses Jahr Spenden für",
+        t2: "EXIT-Deutschland",
+        t3: " sammeln zu dürfen! EXIT-Deutschland ist eine Initiative, welche bereits seit dem Jahr 2000 Menschen beim Ausstieg aus der rechten Szene hilft. Zudem analysieren sie rechtsextreme Bestrebungen und Möglichkeiten, rechte Gewalt vorzubeugen und sie unterstützen Menschen aus dem Umfeld rechtsradikaler Personen. Wir hoffen, dass ihr für diesen guten Zweck ein paar Spenden dalasst und freuen uns, wenn ihr wieder zahlreich einschaltet!",
+      },
+    },
     "2023": {
       header: "Tierheim Berlin",
       text: {
-        t1: "Für den dritten Durchlauf gehen alle unsere Spenden dieses Jahr an das",
+        t1: "Für den dritten Durchlauf gingen all unsere Spenden an das",
         t2: "Tierheim Berlin",
-        t3: ". Dort werden von Nagetieren, über Hunde und Katzen bis hin zu Hoftieren und Exoten insgesamt 1300 Tiere behaust, versorgt und gesund gepflegt. Da das nicht nur emotional sehr fordernd ist, sondern auch erhebliche finanzielle Mittel erfordert, würden wir uns sehr über eure Spenden freuen!",
+        t3: ". Dort werden von Nagetieren, über Hunde und Katzen bis hin zu Hoftieren und Exoten insgesamt 1300 Tiere behaust, versorgt und gesund gepflegt. Da das nicht nur emotional sehr fordernd ist, sondern auch erhebliche finanzielle Mittel erfordert, haben wir uns für diese Organisation entschieden. Dank Eurer Unterstützung konnten wir für das Tierheim über 2640 Euro sammeln!",
       },
     },
     "2022": {
@@ -140,7 +148,7 @@ export const deTranslation: Translation = {
       text: {
         t1: "Für unsere zweite Runde haben wir 2022 das LGBTQ+ Jugendwohnheim",
         t2: "Queere Vielfalt leben",
-        t3: "in Köln unterstützt. Dort finden queere Jugendliche eine sensible und liebevolle Unterkunft, die sie außerdem bei ihrer Identitätsfindung und eigenverantwortlichen Lebensgestaltung unterstützt. Am Ende der zweiten WoC, bei der manchmal sogar die Jugendlichen und Mitarbeitenden des Wohnheims mitgespielt haben, konnten wir unseren ersten Streamingmarathon überbieten und unglaubliche 3550€ sammeln! Mit diesem Geld konnte unter anderem endlich der Keller des Hauses ausgebaut werden.",
+        t3: " in Köln unterstützt. Dort finden queere Jugendliche eine sensible und liebevolle Unterkunft, die sie außerdem bei ihrer Identitätsfindung und eigenverantwortlichen Lebensgestaltung unterstützt. Am Ende der zweiten WoC, bei der manchmal sogar die Jugendlichen und Mitarbeitenden des Wohnheims mitgespielt haben, konnten wir unseren ersten Streamingmarathon überbieten und unglaubliche 3550€ sammeln! Mit diesem Geld konnte unter anderem endlich der Keller des Hauses ausgebaut werden.",
       },
     },
     "2021": {
@@ -148,7 +156,7 @@ export const deTranslation: Translation = {
       text: {
         t1: "Der",
         t2: "Lesben- und Schwulenverband in Deutschland",
-        t3: "(oder kurz: LSVD) war die erste Organisation, die wir durch unsere Week of Charity 2021 unterstützten. Bei dem LSVD handelt es sich um einen Bürgerrechtsverband, der sich für die Rechte und Interessen von Lesben, Schwulen, Bisexuellen, trans- und intergeschlechtlichen sowie queeren Menschen einsetzt. Unsere Spenden gingen dabei konkret an das Covidhilfe Afrika Projekt, bei dem der LSVD mit Partner*innen vor Ort queere Menschen in Afrika unterstützte, die als Minderheit oft besonders hart von Krisensituationen betroffen sind. Sie werden zum Sündenbock für Virenausbrüche gemacht, wodurch der Hass gegen sie zunimmt und sie schneller als andere ihren Job oder familiäre Unterstützung verlieren. Außerdem fehlte es an kritischen Gütern wie Masken, Desinfektions- und Hygienemitteln. Für die Unterstützung dieser Menschen haben wir insgesamt bei unserer ersten WoC jemals unglaubliche 2500€ dank eurer Hilfe sammeln können!",
+        t3: " (oder kurz: LSVD) war die erste Organisation, die wir durch unsere Week of Charity 2021 unterstützten. Bei dem LSVD handelt es sich um einen Bürgerrechtsverband, der sich für die Rechte und Interessen von Lesben, Schwulen, Bisexuellen, trans- und intergeschlechtlichen sowie queeren Menschen einsetzt. Unsere Spenden gingen dabei konkret an das Covidhilfe Afrika Projekt, bei dem der LSVD mit Partner*innen vor Ort queere Menschen in Afrika unterstützte, die als Minderheit oft besonders hart von Krisensituationen betroffen sind. Sie werden zum Sündenbock für Virenausbrüche gemacht, wodurch der Hass gegen sie zunimmt und sie schneller als andere ihren Job oder familiäre Unterstützung verlieren. Außerdem fehlte es an kritischen Gütern wie Masken, Desinfektions- und Hygienemitteln. Für die Unterstützung dieser Menschen haben wir insgesamt bei unserer ersten WoC jemals unglaubliche 2500€ dank eurer Hilfe sammeln können!",
       },
     },
   },

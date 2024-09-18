@@ -52,7 +52,7 @@ export const enTranslation: Translation = {
     welcome1:
       "Welcome! We are the Week of Charity, a project designed to stream once a year for a good cause. For one week, different members of our group will alternate in streaming their activities to collect donations. We have a diverse program in addition to various video games, real life projects like Dungeons and Dragons and quiz shows will be broadcasted.",
     welcome2:
-      'This year all donations will go to the project "EXIT Deutschland", a charity dedicated to helping people exit right-wing extremism. More information can be found',
+      'This year all donations will go to the project "EXIT-Deutschland", a charity dedicated to helping people exit right-wing extremism. More information can be found',
     here: "here",
     welcome3:
       "We hope this week will be as fun and entertaining to you as it will be to us! We look forward to seeing you!",
@@ -120,19 +120,27 @@ export const enTranslation: Translation = {
       t5: "schedule",
       t6: ".",
       t7: "Our project",
-      t8: "was established in 2021 and has it's fourth anniversairy this year! The money that is gathered during this week will be donated to Exit Germany. You can support us either with direct",
+      t8: "was established in 2021 and has it's fourth anniversairy this year! The money that is gathered during this week will be donated to EXIT-Deutschland. You can support us either with direct",
       t9: "donations",
       t10: "during the streams or by buying merchandise from our",
       t11: "shop",
       t12: ". The whole profit gathered by the merchandising sales will be donated to the current charity and you will be able to wear our mascot Chesster!",
     },
     ourProjects: "Our Projects",
+    "2024": {
+      header: "EXIT-Deutschland",
+      text: {
+        t1: "We are delighted to be able to collect donations for",
+        t2: "EXIT-Deutschland",
+        t3: " this year! EXIT-Deutschland is an initiative that has been helping people to leave the right-wing scene since 2000. They also analyze right-wing extremist efforts and ways to prevent right-wing violence and they support people from the environment of right-wing extremists. We hope that you will leave a few donations for this good cause and would be delighted if you tune in again in large numbers!",
+      },
+    },
     "2023": {
       header: "Tierheim Berlin",
       text: {
-        t1: "For our third event in 2023 we gathered donations for the",
+        t1: "For the third run, all of our donations went to the",
         t2: "Tierheim Berlin",
-        t3: ", the biggest pet shelter in germany's capital city. The shelter gives a home to cats, dogs, farm animals and even some exotic animals, thus taking care of over 1300 animals. During the Week of Charity 2023 we gathered over 2600€ for the Tierheim Berlin to support their work helping and caring for their animals.",
+        t3: ". A total of 1,300 animals, from rodents, dogs and cats to farmyard animals and exotic species, are housed, cared for and nursed back to health there. As this is not only very emotionally demanding, but also requires considerable financial resources, we decided to support this organization. Thanks to your support, we were able to raise over 2640 euros for the animal shelter!",
       },
     },
     "2022": {
@@ -148,7 +156,7 @@ export const enTranslation: Translation = {
       text: {
         t1: "The",
         t2: "Lesben- und Schwulenverband in Deutschland",
-        t3: "(for short: LSVD) was the first organization we supported through our Week of Charity 2021. The LSVD is a civil rights association which campaigns for the rights and interests of lesbian, gay, bisexual, transgender, intersex and queer people. Our donations went specifically to the Covid Aid Africa project, in which the LSVD and local partners supported queer people in Africa who, as a minority, are often particularly affected by crisis situations. They are scapegoated for virus outbreaks, which increases hatred towards them and causes them to lose their jobs or family support faster than others. There was also a lack of critical goods such as masks, disinfectants and hygiene products. To support these people, we were able to raise an incredible €2,500 in total at our first ever WoC thanks to your help!",
+        t3: " (for short: LSVD) was the first organization we supported through our Week of Charity 2021. The LSVD is a civil rights association which campaigns for the rights and interests of lesbian, gay, bisexual, transgender, intersex and queer people. Our donations went specifically to the Covid Aid Africa project, in which the LSVD and local partners supported queer people in Africa who, as a minority, are often particularly affected by crisis situations. They are scapegoated for virus outbreaks, which increases hatred towards them and causes them to lose their jobs or family support faster than others. There was also a lack of critical goods such as masks, disinfectants and hygiene products. To support these people, we were able to raise an incredible €2,500 in total at our first ever WoC thanks to your help!",
       },
     },
   },
@@ -184,8 +192,8 @@ export const enTranslation: Translation = {
   },
   player: {
     currentStream: "Current Stream",
-    notActive1: "Currently, the Week of Charity is not ongoing.",
-    notActive2: "To not miss any events, have a look at our schedule.",
+    notActive1: "The Week of Charity is not currently ongoing.",
+    notActive2: "To avoid missing any events, have a look at our schedule.",
     loading: "Current stream loading...",
     watchNow: "watch now",
   },

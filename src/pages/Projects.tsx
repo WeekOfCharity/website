@@ -4,10 +4,13 @@ import { useTitle } from "../hooks/useTitle";
 import "./Projects.scss";
 import { DONATION_URL } from "../utils/constants";
 
-const chesster1 = new URL("../assets/chesster-1.png", import.meta.url);
-const chesster2 = new URL("../assets/chesster-2.png", import.meta.url);
-const chesster3 = new URL("../assets/chesster-3.png", import.meta.url);
-const chesster4 = new URL("../assets/chesster-4.png", import.meta.url);
+import { ProjectCard } from "../components/ProjectCard/ProjectCard";
+
+const chessterMain = new URL("../assets/chesster-main.webp", import.meta.url);
+const chesster2021 = new URL("../assets/chesster-2021.webp", import.meta.url);
+const chesster2022 = new URL("../assets/chesster-2022.webp", import.meta.url);
+const chesster2023 = new URL("../assets/chesster-2023.webp", import.meta.url);
+const chesster2024 = new URL("../assets/chesster-2024.webp", import.meta.url);
 
 export const Projects = () => {
   const { t } = useTranslation();
@@ -15,7 +18,7 @@ export const Projects = () => {
 
   return (
     <main className="text-neutral-800 woc-accent-blue23">
-      <header className="px-5 py-20 relative text-center">
+      <header className="px-5 pt-20 pb-16 relative text-center">
         <div className="font-round2 font-bold text-blue23-900 uppercase">
           {t("projects.subHeader")}
         </div>
@@ -25,18 +28,18 @@ export const Projects = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      <div className="max-w-screen-2xl mt-5 mb-40 mx-auto flex place-content-center">
-        <div className="max-w-screen-xl flex flex-col items-center mx-10 md:mx-28 lg:mx-32">
-          <section className="max-w-screen-lg mx-0 sm:mx-8 lg:mx-16 flex bg-blue23-100 bg-opacity-50 py-10 row-span-2">
-            <div id="projectIntroduction">
-              <div className="leading-relaxed mx-5 md:mx-10 text-left">
-                <div className="inline chesster-1-wrapper">
-                  <img
-                    className="chesster-timeline-image chesster-1"
-                    src={chesster1.toString()}
-                    role="presentation"
-                  />
-                </div>
+      <div className="max-w-screen-2xl mb-40 mx-auto flex place-content-center hyphens-auto lg:hyphens-none">
+        <div className="max-w-screen-xl flex flex-col items-center mx-1 md:mx-10 md:ml-[7.5rem] lg:mr-16">
+          <div className="group">
+            <div className="relative ml-4 float-right w-[142px] md:w-[272px] lg:w-[320px]">
+              <img
+                className="object-contain size-full object-right-top hover:scale-105 group-has-[.hover-target:hover]:scale-105 transition-transform duration-300"
+                src={chessterMain.toString()}
+                role="presentation"
+              />
+            </div>
+            <div className="peer py-10 pl-4 md:pl-0 pr-8 md:pr-28 lg:pl-24 lg:pr-40">
+              <div className="hover-target leading-relaxed p-6 md:p-10 min-h-56 bg-[#f3f9fe] max-w-screen-lg">
                 <p className="mb-4">
                   <span className="text-lg font-semibold">
                     {`${t("projects.text.t1")} `}
@@ -83,99 +86,41 @@ export const Projects = () => {
                 </p>
               </div>
             </div>
-          </section>
+          </div>
 
-          <h2 className="font-pally font-bold max-w-screen-md mx-auto mt-20 mb-10 text-blue23-500 text-4xl md:text-5xl w-4/5 text-center">
+          <h2 className="font-pally font-bold max-w-screen-md mx-auto my-8 text-blue23-500 text-4xl md:text-5xl w-4/5 text-center">
             {t("projects.ourProjects")}
           </h2>
 
           <div className="timeline">
             <div className="line"></div>
-            <div className="card-container">
-              <div className="card">
-                <div className="timeline-image-wrapper-right wrapper-chesster-4">
-                  <img
-                    className="chesster-timeline-image chesster-4"
-                    src={chesster4.toString()}
-                    role="presentation"
-                  />
-                </div>
-                <div className="leading-relaxed py-5 pl-5 md:pl-8 pr-5 text-left">
-                  <div className="year">2023</div>
-                  <h3 className="title font-bold">
-                    {t("projects.2023.header")}
-                  </h3>
-                  <p>
-                    {`${t("projects.2023.text.t1")} `}
-                    <a
-                      target="_blank"
-                      href="https://tierschutz-berlin.de/"
-                      className="underline underline-offset-2 text-blue23-600"
-                      rel="noreferrer"
-                    >
-                      {t("projects.2023.text.t2")}
-                    </a>
-                    {t("projects.2023.text.t3")}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="timeline-image-wrapper-left wrapper-chesster-3">
-                  <img
-                    className="chesster-timeline-image chesster-3"
-                    src={chesster3.toString()}
-                    role="presentation"
-                  />
-                </div>
-
-                <div className="leading-relaxed py-5 pr-5 md:pr-8 pl-5 text-right">
-                  <div className="year">2022</div>
-                  <h3 className="title font-bold">
-                    {t("projects.2022.header")}
-                  </h3>
-                  <p>
-                    {`${t("projects.2022.text.t1")} `}
-                    <a
-                      target="_blank"
-                      href="https://www.godesheim.de/angebote/queere-vielfalt-leben/"
-                      className="underline underline-offset-2 text-blue23-600"
-                      rel="noreferrer"
-                    >
-                      {t("projects.2022.text.t2")}
-                    </a>
-                    {` ${t("projects.2022.text.t3")}`}
-                  </p>
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="leading-relaxed py-5 pl-5 md:pl-8 pr-5 text-left">
-                  <div className="timeline-image-wrapper-right wrapper-chesster-2">
-                    <img
-                      className="chesster-timeline-image chesster-2"
-                      src={chesster2.toString()}
-                      role="presentation"
-                    />
-                  </div>
-                  <div className="year">2021</div>
-                  <h3 className="title font-bold">
-                    {t("projects.2021.header")}
-                  </h3>
-                  <p>
-                    {`${t("projects.2021.text.t1")} `}
-                    <a
-                      target="_blank"
-                      href="https://www.lsvd.de/de/home"
-                      className="underline underline-offset-2 text-blue23-600"
-                      rel="noreferrer"
-                    >
-                      {t("projects.2021.text.t2")}
-                    </a>
-                    {` ${t("projects.2021.text.t3")}`}
-                  </p>
-                </div>
-              </div>
+            <div className="card-container flex flex-col">
+              <ProjectCard
+                image={chesster2024.toString()}
+                year="2024"
+                textlink="https://www.exit-deutschland.de/"
+                imageWrapperClassName="h-[228px] md:h-[284px] lg:h-[338px]"
+              />
+              <ProjectCard
+                image={chesster2023.toString()}
+                year="2023"
+                textlink="https://tierschutz-berlin.de/"
+                imageWrapperClassName="h-[254px] md:h-[304px] lg:h-[352px]"
+                imageSide="right"
+              />
+              <ProjectCard
+                image={chesster2022.toString()}
+                year="2022"
+                textlink="https://www.godesheim.de/angebote/queere-vielfalt-leben/"
+                imageWrapperClassName="w-[186px] md:w-[272px] lg:w-[320px]"
+              />
+              <ProjectCard
+                image={chesster2021.toString()}
+                year="2021"
+                textlink="https://www.lsvd.de/de/home"
+                imageWrapperClassName="w-[154px] md:w-[192px] lg:h-[368px]"
+                imageSide="right"
+              />
             </div>
           </div>
         </div>

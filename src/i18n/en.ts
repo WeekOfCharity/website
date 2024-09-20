@@ -132,7 +132,7 @@ export const enTranslation: Translation = {
       text: {
         t1: "We are delighted to be able to collect donations for",
         t2: "EXIT-Deutschland",
-        t3: " this year! EXIT-Deutschland is an initiative that has been helping people to leave the right-wing scene since 2000. They also analyze right-wing extremist efforts and ways to prevent right-wing violence and they support people from the environment of right-wing extremists. We hope that you will leave a few donations for this good cause and would be delighted if you tune in again in large numbers!",
+        t3: " this year! EXIT-Deutschland is an initiative that has been helping people to leave the right-wing extremist movement for over 20 years. Among other things, EXIT-Deutschland monitors various right-wing extremist movements and works on prevention, intervention, victim protection and the resocialization of people willing to leave. They also support people associated with right-wing extremists. We hope that you will leave a few donations for this good cause and would be delighted if you tune in again in large numbers!",
       },
     },
     "2023": {

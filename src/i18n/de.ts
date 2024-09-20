@@ -132,7 +132,7 @@ export const deTranslation: Translation = {
       text: {
         t1: "Wir freuen uns, dieses Jahr Spenden für",
         t2: "EXIT-Deutschland",
-        t3: " sammeln zu dürfen! EXIT-Deutschland ist eine Initiative, welche bereits seit dem Jahr 2000 Menschen beim Ausstieg aus der rechten Szene hilft. Zudem analysieren sie rechtsextreme Bestrebungen und Möglichkeiten, rechte Gewalt vorzubeugen und sie unterstützen Menschen aus dem Umfeld rechtsradikaler Personen. Wir hoffen, dass ihr für diesen guten Zweck ein paar Spenden dalasst und freuen uns, wenn ihr wieder zahlreich einschaltet!",
+        t3: " sammeln zu dürfen! EXIT-Deutschland ist eine Initiative, welche bereits seit über 20 Jahren Menschen hilft, sich aus der rechtsradikalen Bewegung zu lösen. EXIT-Deutschland beobachtet unter anderem verschiedene rechtsextreme Bestrebungen und arbeitet an Prävention, Intervention, Opferschutz sowie Resozialisierung ausstiegswilliger Personen. Außerdem unterstützen sie Menschen aus dem Umfeld Rechtsradikaler. Wir hoffen, dass ihr für diesen guten Zweck ein paar Spenden dalasst und freuen uns, wenn ihr wieder zahlreich einschaltet!",
       },
     },
     "2023": {

@@ -19,10 +19,10 @@ export const YoutubeEmbed = ({ youtubeId }: YoutubeEmbedProps) => {
       aria-label={t("youtubePlayer.label")}
     >
       <div
-        className={classNames(
-          "aspect-video w-full mx-5 md:mx-10 max-w-screen-lg",
-          { "bg-neutral-800": !privacyAccepted }
-        )}
+        className={classNames("w-full mx-5 md:mx-10 max-w-screen-lg", {
+          "bg-neutral-800 md:aspect-video": !privacyAccepted,
+          "aspect-video": privacyAccepted,
+        })}
       >
         {privacyAccepted ? (
           <iframe

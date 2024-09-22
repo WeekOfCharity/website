@@ -75,8 +75,8 @@ function Countdown({ timerZeroCallback }: CountdownProps) {
   return (
     <>
       {timeLeft && (
-        <div className="font-pally font-bold text-center max-w-screen-md mx-auto my-5 text-pink23-500 text-6xl md:text-8xl">
-          <table style={{ margin: "auto" }}>
+        <div className="font-pally font-bold text-center max-w-screen-md md:mx-auto text-pink23-500 text-5xl md:text-7xl">
+          <table className="mx-auto">
             <tr>
               <th className="countdownFieldNumber">{timeLeft[0]}</th>
               <th className="countdownFieldDots">{":"}</th>
@@ -86,7 +86,7 @@ function Countdown({ timerZeroCallback }: CountdownProps) {
               <th className="countdownFieldDots">{":"}</th>
               <th className="countdownFieldNumber">{timeLeft[3]}</th>
             </tr>
-            <tr className="text-pink23-900" style={{ fontSize: "1rem" }}>
+            <tr className="text-pink23-900 text-sm md:text-base">
               <td>{t("home.countdown.days").toUpperCase()}</td>
               <td> </td>
               <td>{t("home.countdown.hours").toUpperCase()}</td>

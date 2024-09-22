@@ -134,7 +134,7 @@ export const Home = () => {
 
   return (
     <main className="text-neutral-800">
-      <header className="px-5 pt-20 pb-10 relative text-center">
+      <header className="px-5 pt-20 pb-5 relative text-center">
         <div className="font-round2 font-bold text-pink23-900 uppercase">
           {t("home.subHeader")}
         </div>
@@ -154,13 +154,13 @@ export const Home = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      <div className="max-w-screen-2xl my-5 md:my-20 mx-auto space-y-16 md:space-y-32">
+      <div className="max-w-screen-2xl my-5 md:my-10 mx-auto space-y-16 md:space-y-32">
         {configurationStatus === "success" && wocStatus === "wocUpcoming" && (
           <Countdown timerZeroCallback={hideCountdown} />
         )}
         {configurationStatus === "success" &&
           !!configuration.trailer_youtube_id &&
-          (wocStatus === "wocUpcomingSoon" || wocStatus === "wocUpcomping") && (
+          (wocStatus === "wocUpcomingSoon" || wocStatus === "wocUpcoming") && (
             <YoutubeEmbed youtubeId={configuration.trailer_youtube_id} />
           )}
         {configurationStatus === "success" &&

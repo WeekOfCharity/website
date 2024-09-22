@@ -76,7 +76,7 @@ export const enTranslation: Translation = {
     heading: "Week of Charity Youtube Player",
     privacyNote:
       "Data Protection Notice: By activating the Youtube Player, personal data like your IP address will be sent to Youtube directly. This serves as an improvement to your watching experience and the data might be used for analyses.",
-    accept: "Einverstanden",
+    accept: "Accept",
   },
   imprint: {
     paragraph: "Information according § 5 TMG",

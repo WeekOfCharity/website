@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 import { getValidLanguage } from "../i18n/i18n";
 import { ConditionalWrapper } from "../components/ConditionalWrapper/ConditionalWrapper";
 import { BASE_URL } from "../utils/constants";
+import { useConfiguration } from "../hooks/useConfiguration";
 
 export const Program = () => {
   const { t, i18n } = useTranslation();
@@ -49,6 +50,8 @@ export const Program = () => {
   const { data: activities, status: activitiesStatus } =
     useActivities(validLanguage);
   const { data: streams, status: streamsStatus } = useStreams(validLanguage);
+  const { data: configuration, status: configurationStatus } =
+    useConfiguration();
 
   const streamsGrouped = useMemo(() => {
     if (typeof streams === "undefined" || streams.length === 0) {
@@ -61,7 +64,7 @@ export const Program = () => {
 
       return { ...groups, [day]: [...group, stream] };
     }, {});
-  }, [validLanguage, streams]);
+  }, [streams, validLanguage]);
 
   const upcomingHighlights = useMemo(() => {
     if (typeof streams === "undefined") {
@@ -114,18 +117,24 @@ export const Program = () => {
   }, [setSearchParams]);
 
   useEffect(() => {
-    if (searchParams.has("id")) {
-      if (activitiesStatus === "success") {
-        const activity = activities?.find(
-          (activity) => activity.id.toString() === searchParams.get("id")
-        );
-        if (activity) setActiveActivity(activity);
-        else closeActivity();
-      }
-    } else {
+    if (!searchParams.has("id")) {
       setActiveActivity(undefined);
+      return;
     }
+
+    if (activitiesStatus !== "success") return;
+
+    const activity = activities?.find(
+      (activity) => activity.id.toString() === searchParams.get("id")
+    );
+    if (activity) setActiveActivity(activity);
+    else closeActivity();
   }, [activities, activitiesStatus, closeActivity, searchParams]);
+
+  const showStreams =
+    streamsStatus === "success" &&
+    configurationStatus === "success" &&
+    configuration.schedule_complete;
 
   return (
     <main className="text-neutral-800 woc-accent-green23">
@@ -143,30 +152,28 @@ export const Program = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      {streamsStatus === "success" &&
-        upcomingHighlights &&
-        upcomingHighlights.length > 0 && (
-          <section className="mb-20 md:mb-40 mt-12 md:mt-20">
-            <div className="max-w-screen-2xl mb-6 mx-auto">
-              <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">
-                {t("program.highlights")}
-              </div>
+      {showStreams && upcomingHighlights && upcomingHighlights.length > 0 && (
+        <section className="mb-20 md:mb-40 mt-12 md:mt-20">
+          <div className="max-w-screen-2xl mb-6 mx-auto">
+            <div className="font-semibold px-10 2xl:px-2.5 text-3xl md:text-4xl text-center md:text-left">
+              {t("program.highlights")}
             </div>
-            <Carousel>
-              {upcomingHighlights.map((stream) => (
-                <HighlightStream
-                  endTime={stream.end}
-                  fellowCount={stream.fellows.length}
-                  gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
-                  startTime={stream.start}
-                  streamer={stream.streamer.name}
-                  title={stream.activity.name}
-                  key={stream.id}
-                />
-              ))}
-            </Carousel>
-          </section>
-        )}
+          </div>
+          <Carousel>
+            {upcomingHighlights.map((stream) => (
+              <HighlightStream
+                endTime={stream.end}
+                fellowCount={stream.fellows.length}
+                gameImageUrl={`${BASE_URL}/assets/${stream.activity.icon}?width=512&height=512&quality=75&fit=cover&format=webp`}
+                startTime={stream.start}
+                streamer={stream.streamer.name}
+                title={stream.activity.name}
+                key={stream.id}
+              />
+            ))}
+          </Carousel>
+        </section>
+      )}
 
       {streamsStatus !== "success" && (
         <section className="mb-20 md:mb-40 mt-12 md:mt-20">
@@ -180,13 +187,13 @@ export const Program = () => {
 
       <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
         <div className="font-semibold mb-6 text-3xl md:text-4xl text-center md:text-left">
-          {streamsStatus === "success" && streams && streams.length > 0
+          {showStreams && streams && streams.length > 0
             ? t("program.allStreams")
             : t("seeMoreSoon")}
         </div>
 
         <div className="gap-x-5 gap-y-10 grid xl:grid-cols-2">
-          {streamsStatus === "success" &&
+          {showStreams &&
             Object.keys(streamsGrouped).map((day) => (
               <div className="space-y-4" key={day}>
                 <div>
@@ -216,7 +223,7 @@ export const Program = () => {
               </div>
             ))}
 
-          {streamsStatus !== "success" &&
+          {!showStreams &&
             Array.from({ length: 8 }).map((_, index) => (
               <div className="space-y-4" key={index}>
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -288,7 +295,7 @@ export const Program = () => {
                 />
               )}
 
-              {streamsStatus === "success" && (
+              {showStreams && (
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">

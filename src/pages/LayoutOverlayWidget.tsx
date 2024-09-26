@@ -121,6 +121,7 @@ export const LayoutOverlayWidget = () => {
   const pronouns = searchParams.get("pronouns");
   const isEn = searchParams.get("en");
   const testalert = searchParams.get("testalert");
+  const alertonly = searchParams.get("alertonly");
   const customHours = parseIntSearchParam(searchParams.get("time"));
 
   const skipAlerts = useRef<boolean>(true);
@@ -224,76 +225,85 @@ export const LayoutOverlayWidget = () => {
         }
       )}
     >
-      <GoalWidget24
-        className="absolute w-[665px] left-[348px] top-[916px] h-[150px] text-center"
-        isEn={isEn !== null}
-        theme={layoutTheme}
-        isDay={isDay}
-        onDonationTextChange={setDonationGoalText}
-      />
-      <div
-        className={cn("z-10 transition-opacity ease-in duration-[2000ms]", {
-          "opacity-0": !isDay,
-        })}
-        style={{
-          backgroundImage: `url(${overlays[layoutTheme].day})`,
-        }}
-      />
-      <div
-        className={cn("z-10 transition-opacity ease-in duration-[2000ms]", {
-          "opacity-0": isDay,
-        })}
-        style={{
-          backgroundImage: `url(${overlays[layoutTheme].night})`,
-        }}
-      />
-      <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
-        {name === "empty" ? "" : name}
-      </div>
-      {!name && (
-        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[5px] left-[5px]">
-          No name provided. Please provide your name by adding &name=[example]
-          to the layout URL.
-          <br /> Or add &name=empty to not show a name.
-        </div>
+      {alertonly === null && (
+        <>
+          <GoalWidget24
+            className="absolute w-[665px] left-[348px] top-[916px] h-[150px] text-center"
+            isEn={isEn !== null}
+            theme={layoutTheme}
+            isDay={isDay}
+            onDonationTextChange={setDonationGoalText}
+          />
+          <div
+            className={cn("z-10 transition-opacity ease-in duration-[2000ms]", {
+              "opacity-0": !isDay,
+            })}
+            style={{
+              backgroundImage: `url(${overlays[layoutTheme].day})`,
+            }}
+          />
+          <div
+            className={cn("z-10 transition-opacity ease-in duration-[2000ms]", {
+              "opacity-0": isDay,
+            })}
+            style={{
+              backgroundImage: `url(${overlays[layoutTheme].night})`,
+            }}
+          />
+          <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
+            {name === "empty" ? "" : name}
+          </div>
+          {!name && (
+            <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[5px] left-[5px]">
+              No name provided. Please provide your name by adding
+              &name=[example] to the layout URL.
+              <br /> Or add &name=empty to not show a name.
+            </div>
+          )}
+          <div className="z-10 absolute text-[0.9375rem] w-80 text-center top-[59px] overflow-hidden whitespace-nowrap leading-relaxed">
+            {pronouns === "empty" ? "" : pronouns}
+          </div>
+          {!pronouns && (
+            <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[110px] left-[5px]">
+              No pronouns provided. Please provide your pronouns by adding
+              &pronouns=[example] to the layout URL.
+              <br /> Or add &pronouns=empty to not show any pronouns.
+            </div>
+          )}
+          <LayoutDonationList
+            className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1060px] top-[922px] overflow-hidden whitespace-nowrap"
+            listClassName={cn({
+              "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
+              "animate-fadeinout1":
+                isDay && layoutTheme === StreamLayoutTheme.RED,
+              "animate-fadeinout2":
+                !isDay && layoutTheme === StreamLayoutTheme.RED,
+            })}
+            headline={isEn !== null ? "Top Donations" : "Höchste Spenden"}
+            donations={highestDonations}
+            isDay={isDay}
+            isEn={isEn !== null}
+          />
+          <LayoutDonationList
+            className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1508px] top-[922px] overflow-hidden whitespace-nowrap"
+            listClassName={cn({
+              "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
+              "animate-fadeinout1":
+                isDay && layoutTheme === StreamLayoutTheme.RED,
+              "animate-fadeinout2":
+                !isDay && layoutTheme === StreamLayoutTheme.RED,
+            })}
+            headline={isEn !== null ? "Last Donations" : "Letzte Spenden"}
+            donations={newestDonations?.slice(0, 3)}
+            isDay={isDay}
+            isEn={isEn !== null}
+          />
+          <div className="z-10 absolute text-[1.1875rem] w-[665px] left-[348px] top-[918px] h-[90px] flex justify-center items-center text-center overflow-hidden">
+            {donationGoalText}
+          </div>
+        </>
       )}
-      <div className="z-10 absolute text-[0.9375rem] w-80 text-center top-[59px] overflow-hidden whitespace-nowrap leading-relaxed">
-        {pronouns === "empty" ? "" : pronouns}
-      </div>
-      {!pronouns && (
-        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[110px] left-[5px]">
-          No pronouns provided. Please provide your pronouns by adding
-          &pronouns=[example] to the layout URL.
-          <br /> Or add &pronouns=empty to not show any pronouns.
-        </div>
-      )}
-      <LayoutDonationList
-        className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1060px] top-[922px] overflow-hidden whitespace-nowrap"
-        listClassName={cn({
-          "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
-          "animate-fadeinout1": isDay && layoutTheme === StreamLayoutTheme.RED,
-          "animate-fadeinout2": !isDay && layoutTheme === StreamLayoutTheme.RED,
-        })}
-        headline={isEn !== null ? "Top Donations" : "Höchste Spenden"}
-        donations={highestDonations}
-        isDay={isDay}
-        isEn={isEn !== null}
-      />
-      <LayoutDonationList
-        className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1508px] top-[922px] overflow-hidden whitespace-nowrap"
-        listClassName={cn({
-          "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
-          "animate-fadeinout1": isDay && layoutTheme === StreamLayoutTheme.RED,
-          "animate-fadeinout2": !isDay && layoutTheme === StreamLayoutTheme.RED,
-        })}
-        headline={isEn !== null ? "Last Donations" : "Letzte Spenden"}
-        donations={newestDonations?.slice(0, 3)}
-        isDay={isDay}
-        isEn={isEn !== null}
-      />
-      <div className="z-10 absolute text-[1.1875rem] w-[665px] left-[348px] top-[918px] h-[90px] flex justify-center items-center text-center overflow-hidden">
-        {donationGoalText}
-      </div>
+
       <div
         className={cn(
           "absolute z-10 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[1500ms]",

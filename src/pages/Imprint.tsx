@@ -8,7 +8,7 @@ export const Imprint = () => {
 
   return (
     <main className="text-neutral-800 woc-accent-neutral">
-      <header className="px-5 py-20 relative text-center">
+      <header className="px-5 pt-14 pb-5 relative text-center">
         <h1 className="font-pally font-bold max-w-screen-md mx-auto text-accent-500 text-4xl md:text-7xl w-4/5">
           {t("subNav.imprint")}
         </h1>

@@ -61,8 +61,8 @@ export const Activities = () => {
     useActivities(validLanguage);
   const { data: streams, status: streamsStatus } = useStreams(validLanguage);
 
-  const openingId = 999; // TODO
-  const finaleId = 1000; // TODO
+  const openingId = 26;
+  const finaleId = 111;
   const opening =
     typeof activities !== "undefined" && activities.length > 0
       ? activities.find((activity) => activity.id === openingId)
@@ -131,7 +131,7 @@ export const Activities = () => {
 
   return (
     <main className="text-neutral-800 woc-accent-pink23">
-      <header className="px-5 py-20 relative text-center">
+      <header className="px-5 pt-10 pb-5 relative text-center">
         <div className="font-round2 font-bold text-pink23-900 uppercase">
           {t("activities.subHeader")}
         </div>

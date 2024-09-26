@@ -138,7 +138,7 @@ export const Program = () => {
 
   return (
     <main className="text-neutral-800 woc-accent-green23">
-      <header className="px-5 py-20 relative text-center">
+      <header className="px-5 pt-10 pb-5 relative text-center">
         <div className="font-round2 font-bold text-green23-900 uppercase">
           {t("program.subHeader")}
         </div>

@@ -48,8 +48,8 @@ export const Team = () => {
   const { data: streams, status: streamsStatus } = useStreams(validLanguage);
   const { data: members, status: membersStatus } = useTeam(validLanguage);
 
-  const charityId = 999; // TODO
-  const chessterId = 1000; // TODO
+  const charityId = -1;
+  const chessterId = 30;
   const charity =
     typeof members !== "undefined" && members.length > 0
       ? members.find((member) => member.id === charityId)
@@ -107,7 +107,7 @@ export const Team = () => {
 
   return (
     <main className="text-neutral-800">
-      <header className="px-5 py-20 relative text-center">
+      <header className="px-5 pt-10 pb-5 relative text-center">
         <div className="font-round2 font-bold text-blue23-900 uppercase">
           {t("team.subHeader")}
         </div>

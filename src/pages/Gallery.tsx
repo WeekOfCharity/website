@@ -114,12 +114,12 @@ export const Gallery = () => {
 
   return (
     <main className="text-neutral-800 woc-accent-green23">
-      <header className="px-5 py-20 relative text-center">
+      <header className="px-5 pt-10 pb-5 relative text-center">
         <div className="font-round2 font-bold text-green23-900 uppercase">
           {t("gallery.subHeader")}
         </div>
 
-        <h1 className="font-pally font-bold max-w-screen-md mx-auto mt-5 text-green23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-green23-500 text-4xl md:text-7xl w-4/5">
           {t("gallery.mainHeader")}
           <br />
           Week of Charity
@@ -128,7 +128,7 @@ export const Gallery = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      <section className="max-w-screen-2xl mb-6 md:mb-12 mt-10 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
+      <section className="max-w-screen-2xl mt-10 md:mt-28 mx-auto px-4 md:px-10 2xl:px-2.5">
         <div className="flex justify-center">
           <ButtonGroup
             buttons={[t("gallery.year"), t("gallery.category")]}
@@ -137,7 +137,7 @@ export const Gallery = () => {
         </div>
       </section>
 
-      <section className="max-w-screen-2xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto px-4 md:px-10 2xl:px-2.5">
+      <section className="max-w-screen-2xl mb-20 md:mb-40 mt-10 md:mt-14 mx-auto px-4 md:px-10 2xl:px-2.5">
         {imageClicked && imageContent && (
           <GalleryImageLarge
             imageData={imageContent}

@@ -18,7 +18,7 @@ export const Projects = () => {
 
   return (
     <main className="text-neutral-800 woc-accent-blue23">
-      <header className="px-5 pt-20 pb-16 relative text-center">
+      <header className="px-5 py-16 relative text-center">
         <div className="font-round2 font-bold text-blue23-900 uppercase">
           {t("projects.subHeader")}
         </div>
@@ -28,7 +28,7 @@ export const Projects = () => {
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
       </header>
 
-      <div className="max-w-screen-2xl mb-40 mx-auto flex place-content-center hyphens-auto lg:hyphens-none">
+      <div className="max-w-screen-2xl mt-16 mb-40 mx-auto flex place-content-center hyphens-auto lg:hyphens-none">
         <div className="max-w-screen-xl flex flex-col items-center mx-1 md:mx-10 md:ml-[7.5rem] lg:mr-16">
           <div className="group">
             <div className="relative ml-4 float-right w-[142px] md:w-[272px] lg:w-[320px]">

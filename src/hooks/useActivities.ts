@@ -6,7 +6,7 @@ import { BASE_URL } from "../utils/constants";
 
 export type Activity = {
   description: string | null;
-  icon: string;
+  icon: string | null;
   id: number;
   kind: string | null;
   name: string;

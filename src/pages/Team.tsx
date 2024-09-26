@@ -17,6 +17,7 @@ import "./Team.scss";
 import { useTranslation } from "react-i18next";
 import { getValidLanguage } from "../i18n/i18n";
 import { BASE_URL } from "../utils/constants";
+import { useConfiguration } from "../hooks/useConfiguration";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
@@ -30,6 +31,9 @@ export const Team = () => {
   );
   const [searchParams, setSearchParams] = useSearchParams();
   const [themeStarted, setThemeStarted] = useState(false);
+
+  const { data: configuration, status: configurationStatus } =
+    useConfiguration();
 
   useEffect(() => {
     if (typeof activeMember !== "undefined") {
@@ -104,6 +108,11 @@ export const Team = () => {
       )
     );
   }, [members, membersStatus, searchParams]);
+
+  const showStreams =
+    streamsStatus === "success" &&
+    configurationStatus === "success" &&
+    configuration.schedule_complete;
 
   return (
     <main className="text-neutral-800">
@@ -344,7 +353,7 @@ export const Team = () => {
                 />
               )}
 
-              {streamsStatus === "success" && (
+              {showStreams && (
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithHost(activeMember.id).length > 0 && (
                     <div className="flex flex-col gap-2">

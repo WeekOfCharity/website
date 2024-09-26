@@ -19,6 +19,7 @@ import { getState } from "../utils/dateAndTime";
 import { useTitle } from "../hooks/useTitle";
 import { getValidLanguage } from "../i18n/i18n";
 import { BASE_URL } from "../utils/constants";
+import { useConfiguration } from "../hooks/useConfiguration";
 
 const arrowDown = new URL("../assets/arrow-down.svg", import.meta.url);
 
@@ -60,6 +61,8 @@ export const Activities = () => {
   const { data: activities, status: activitiesStatus } =
     useActivities(validLanguage);
   const { data: streams, status: streamsStatus } = useStreams(validLanguage);
+  const { data: configuration, status: configurationStatus } =
+    useConfiguration();
 
   const openingId = 26;
   const finaleId = 111;
@@ -128,6 +131,11 @@ export const Activities = () => {
       setActiveActivity(undefined);
     }
   }, [activities, activitiesStatus, closeActivity, searchParams]);
+
+  const showStreams =
+    streamsStatus === "success" &&
+    configurationStatus === "success" &&
+    configuration.schedule_complete;
 
   return (
     <main className="text-neutral-800 woc-accent-pink23">
@@ -291,7 +299,7 @@ export const Activities = () => {
                 />
               )}
 
-              {streamsStatus === "success" && (
+              {showStreams && (
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">

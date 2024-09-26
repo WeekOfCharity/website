@@ -7,7 +7,6 @@ import { LayoutDonationName } from "./LayoutDonationName";
 export type LayoutDonationListProps = {
   headline: string;
   donations: Donation[] | undefined;
-  isDay: boolean;
   isEn: boolean;
   className?: string;
   listClassName?: string;
@@ -16,7 +15,6 @@ export type LayoutDonationListProps = {
 export const LayoutDonationList = ({
   headline,
   donations = [],
-  isDay,
   isEn,
   className,
   listClassName,
@@ -58,7 +56,6 @@ export const LayoutDonationList = ({
                   ? donation.donated_amount_in_cents / 100
                   : null
               }
-              isDay={isDay}
             />
           </li>
         ))}

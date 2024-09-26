@@ -14,6 +14,7 @@ import {
   useCurrentMsOfDay,
 } from "../hooks/useCurrentMsOfDay";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
+import { isBetweenMod } from "../utils/isBetweenMod";
 
 const cutout =
   "path('m0 0 0 1080 1920 0 0-178-1576 0 0-6-12 0 0-4-8 0 0-16-6 0 0-878-354 0z')";
@@ -42,14 +43,6 @@ const getSkyPosition = (currentMs: number) => {
   }
 
   return 200 - percentage;
-};
-
-const isBetweenMod = (value: number, start: number, end: number) => {
-  if (start <= end) {
-    return value >= start && value <= end;
-  } else {
-    return value >= start || value <= end;
-  }
 };
 
 const getStarsOpacity = (currentMs: number) => {

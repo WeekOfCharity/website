@@ -21,14 +21,21 @@ import overlayGreenDay from "../assets/layout/overlay_green_day.png";
 import overlayGreenNight from "../assets/layout/overlay_green_night.png";
 import overlayRedDay from "../assets/layout/overlay_red_day.png";
 import overlayRedNight from "../assets/layout/overlay_red_night.png";
+
+import bannerGreenDay from "../assets/layout/banner_green_day.png";
+import bannerGreenNight from "../assets/layout/banner_green_night.png";
+import bannerRedDay from "../assets/layout/banner_red_day.png";
+import bannerRedNight from "../assets/layout/banner_red_night.png";
+
 import cn from "classnames";
-import { GoalWidget24 } from "./GoalWidget24";
+import { GoalWidget24 } from "../components/GoalWidget24/GoalWidget24";
 import { useEffect, useRef, useState } from "react";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
 import { LayoutDonationList } from "../components/LayoutDonationList/LayoutDonationList";
 import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
 import "./LayoutOverlayWidget.scss";
 import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
+import { AnimatedStreamBanner } from "../components/AnimatedStreamBanner/AnimatedStreamBanner";
 
 const overlays = {
   [StreamLayoutTheme.GREEN]: {
@@ -38,6 +45,17 @@ const overlays = {
   [StreamLayoutTheme.RED]: {
     day: overlayRedDay,
     night: overlayRedNight,
+  },
+} as const;
+
+const banners = {
+  [StreamLayoutTheme.GREEN]: {
+    day: bannerGreenDay,
+    night: bannerGreenNight,
+  },
+  [StreamLayoutTheme.RED]: {
+    day: bannerRedDay,
+    night: bannerRedNight,
   },
 } as const;
 
@@ -220,8 +238,16 @@ export const LayoutOverlayWidget = () => {
       className={cn(
         "overlay-root font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden transition-[color,background-color,border-color,text-shadow] ease-in duration-[2000ms]",
         {
-          "[text-shadow:0_0_0.5rem_rgba(var(--text-r),var(--text-g),var(--text-b),0.55)]":
+          "[text-shadow:0_0_0.5rem_rgba(var(--text-r),var(--text-g),var(--text-b),0.55)] [--drop-shadow-layout-text:0_0_5px_rgba(var(--text-r),var(--text-g),var(--text-b),0.6)]":
             !isDay,
+          "[--current-layout-bg:#E1DFAC]":
+            isDay && layoutTheme === StreamLayoutTheme.GREEN,
+          "[--current-layout-bg:#00141E]":
+            !isDay && layoutTheme === StreamLayoutTheme.GREEN,
+          "[--current-layout-bg:#E9BDBD]":
+            isDay && layoutTheme === StreamLayoutTheme.RED,
+          "[--current-layout-bg:#370514]":
+            !isDay && layoutTheme === StreamLayoutTheme.RED,
         }
       )}
     >
@@ -281,7 +307,6 @@ export const LayoutOverlayWidget = () => {
             })}
             headline={isEn !== null ? "Top Donations" : "Höchste Spenden"}
             donations={highestDonations}
-            isDay={isDay}
             isEn={isEn !== null}
           />
           <LayoutDonationList
@@ -295,12 +320,21 @@ export const LayoutOverlayWidget = () => {
             })}
             headline={isEn !== null ? "Last Donations" : "Letzte Spenden"}
             donations={newestDonations?.slice(0, 3)}
-            isDay={isDay}
             isEn={isEn !== null}
           />
           <div className="z-10 absolute text-[1.1875rem] w-[665px] left-[348px] top-[918px] h-[90px] flex justify-center items-center text-center overflow-hidden">
             {donationGoalText}
           </div>
+          <AnimatedStreamBanner
+            className="z-10 absolute w-[322px] left-[12px] top-[916px] h-[156px] text-center"
+            isEn={isEn !== null}
+          >
+            <img
+              className="col-start-1 row-start-1 object-fill size-full absolute scale-[1.12]"
+              alt=""
+              src={banners[layoutTheme][isDay ? "day" : "night"]}
+            />
+          </AnimatedStreamBanner>
         </>
       )}
 
@@ -339,7 +373,6 @@ export const LayoutOverlayWidget = () => {
               {donationAlertAmount != null && (
                 <LayoutMoneyText
                   amount={donationAlertAmount / 100}
-                  isDay={isDay}
                   customEuroClassName="w-5"
                 />
               )}

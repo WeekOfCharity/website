@@ -10,8 +10,8 @@ export type AnimatedStreamBannerProps = PropsWithChildren<{
   className?: string;
 }>;
 
-const BANNER_VISIBLE_DURATION = 8000;
-const BANNER_HIDDEN_DURATION = 5000;
+const BANNER_VISIBLE_DURATION = 12000;
+const BANNER_HIDDEN_DURATION = 30000;
 const CHESSTER_ALONE_DURATION = 1000;
 
 enum ChessterState {
@@ -106,7 +106,7 @@ export const AnimatedStreamBanner = ({
       >
         <div className="animate-float">
           {children}
-          <div className="absolute inset-0 flex items-center justify-center flex-col">
+          <div className="absolute inset-0 flex items-center justify-center flex-col leading-7">
             {currentBanner >= 0 &&
               streamBanners[currentBanner][isEn ? "en" : "de"]}
             {currentBanner >= 0 && streamBanners[currentBanner].both}

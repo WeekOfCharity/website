@@ -326,11 +326,11 @@ export const LayoutOverlayWidget = () => {
             {donationGoalText}
           </div>
           <AnimatedStreamBanner
-            className="z-10 absolute w-[322px] left-[12px] top-[916px] h-[156px] text-center"
+            className="z-10 absolute w-[320px] left-[12px] top-[916px] h-[156px] text-center"
             isEn={isEn !== null}
           >
             <img
-              className="col-start-1 row-start-1 object-fill size-full absolute scale-[1.12]"
+              className="col-start-1 row-start-1 size-full absolute"
               alt=""
               src={banners[layoutTheme][isDay ? "day" : "night"]}
             />

@@ -26,7 +26,7 @@ export const streamBanners: MultiLanguageBanner[] = [
     both: (
       <>
         <br />
-        <span className="text-xl">EXIT-Deutschland</span>
+        <span className="text-xl mt-1">EXIT-Deutschland</span>
       </>
     ),
   },
@@ -37,7 +37,7 @@ export const streamBanners: MultiLanguageBanner[] = [
         <br />
         Spenden schreibt
         <br />
-        <span className="text-xl">!spenden</span>
+        <span className="text-xl my-1">!spenden</span>
         in den Chat
       </>
     ),
@@ -47,7 +47,7 @@ export const streamBanners: MultiLanguageBanner[] = [
         <br />
         link write
         <br />
-        <span className="text-xl">!donate</span>
+        <span className="text-xl my-1">!donate</span>
         in the chat
       </>
     ),
@@ -56,8 +56,8 @@ export const streamBanners: MultiLanguageBanner[] = [
     de: "Folgt uns auf",
     en: "Follow us on",
     both: (
-      <div className="flex flex-col text-[15px] gap-2.5 mt-4 *:flex *:items-center *:justify-center *:gap-2 *:leading-6 *:tracking-tighter">
-        <span key="twitter">
+      <div className="flex flex-col text-[15px] gap-1.5 mt-2 *:flex *:items-center *:justify-center *:leading-6">
+        <span className="gap-2 tracking-tighter" key="twitter">
           <Icon
             className="drop-shadow-layout-text"
             path={mdiTwitter}
@@ -65,7 +65,7 @@ export const streamBanners: MultiLanguageBanner[] = [
           />
           @WeekOfCharity
         </span>
-        <span key="mastodon">
+        <span className="gap-1 tracking-tighter" key="mastodon">
           <Icon
             className="drop-shadow-layout-text"
             path={mdiMastodon}
@@ -73,7 +73,7 @@ export const streamBanners: MultiLanguageBanner[] = [
           />
           WeekOfCharity@tech.lgbt
         </span>
-        <span key="bluesky">
+        <span className="gap-1 tracking-[-0.065em]" key="bluesky">
           <Icon
             className="drop-shadow-layout-text"
             path={blueSkyPath}
@@ -88,7 +88,7 @@ export const streamBanners: MultiLanguageBanner[] = [
     de: "Folgt uns auf",
     en: "Follow us on",
     both: (
-      <div className="flex flex-col text-[15px] gap-2.5 mt-4 *:flex *:items-center *:justify-center *:gap-2 *:leading-6 *:tracking-tighter">
+      <div className="flex flex-col text-[15px] gap-1.5 mt-2 *:flex *:items-center *:justify-center *:gap-2 *:leading-5 *:tracking-tighter">
         <span key="youtube">
           <span className="w-8">
             <Icon
@@ -99,25 +99,25 @@ export const streamBanners: MultiLanguageBanner[] = [
           </span>
           @WeekOfCharity
         </span>
-        <span key="instagram">
+        <span key="tiktok">
+          <span className="w-6">
+            <Icon
+              className="drop-shadow-layout-text mb-0.5"
+              path={tiktokPath}
+              size="1.4rem"
+            />
+          </span>
+          @WeekOfCharity
+        </span>
+        <span key="instagram" className="mb-0.5">
           <span className="w-7">
             <Icon
               className="drop-shadow-layout-text"
               path={mdiInstagram}
-              size="1.625rem"
+              size="1.5rem"
             />
           </span>
           weekofcharity
-        </span>
-        <span key="tiktok">
-          <span className="w-7">
-            <Icon
-              className="drop-shadow-layout-text"
-              path={tiktokPath}
-              size="1.35rem"
-            />
-          </span>
-          @WeekOfCharity
         </span>
       </div>
     ),

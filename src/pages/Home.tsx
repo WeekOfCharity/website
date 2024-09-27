@@ -260,31 +260,32 @@ export const Home = () => {
             </>
           )}
 
-        <div id="bidwar" />
-        {bidwarResultsStatus === "success" &&
-          bidwarsStatus === "success" &&
-          bidwars?.map((bidwar) => {
-            if (bidwar.status === "inactive") return;
-            const options = bidwarResults.results.find(
-              (result) => result.id === bidwar.id
-            )?.options;
-            if (!options) return;
+        <div id="bidwar" className="flex flex-col gap-10">
+          {bidwarResultsStatus === "success" &&
+            bidwarsStatus === "success" &&
+            bidwars?.map((bidwar) => {
+              if (bidwar.status === "inactive") return;
+              const options = bidwarResults.results.find(
+                (result) => result.id === bidwar.id
+              )?.options;
+              if (!options) return;
 
-            return (
-              <div
-                className="flex flex-col mx-5 md:mx-10 items-center"
-                key={bidwar.id}
-              >
-                <Bidwar
-                  name={bidwar.bidwar_name}
-                  description={bidwar.bidwar_description}
-                  options={options}
-                  status={bidwar.status}
-                  timeslot={bidwar.timeslot}
-                />
-              </div>
-            );
-          })}
+              return (
+                <div
+                  className="flex flex-col mx-5 md:mx-10 items-center"
+                  key={bidwar.id}
+                >
+                  <Bidwar
+                    name={bidwar.bidwar_name}
+                    description={bidwar.bidwar_description}
+                    options={options}
+                    status={bidwar.status}
+                    timeslot={bidwar.timeslot}
+                  />
+                </div>
+              );
+            })}
+        </div>
 
         {donationsStatus === "success" &&
           donationGoalsStatus === "success" &&

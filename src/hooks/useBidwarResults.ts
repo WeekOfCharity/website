@@ -8,6 +8,8 @@ export type BidwarResults = {
     status: "active" | "inactive" | "results";
     bidwar_name: string;
     bidwar_description: string;
+    bidwar_name_en: string | null;
+    bidwar_description_en: string | null;
     options: Record<string, number>;
   }[];
   id: number;

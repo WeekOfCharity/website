@@ -36,6 +36,7 @@ import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
 import "./LayoutOverlayWidget.scss";
 import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
 import { AnimatedStreamBanner } from "../components/AnimatedStreamBanner/AnimatedStreamBanner";
+import { LayoutBidwarWidget } from "../components/LayoutBidwarWidget/LayoutBidwarWidget";
 
 const overlays = {
   [StreamLayoutTheme.GREEN]: {
@@ -276,6 +277,13 @@ export const LayoutOverlayWidget = () => {
               backgroundImage: `url(${overlays[layoutTheme].night})`,
             }}
           />
+          <LayoutBidwarWidget
+            className="z-10 absolute text-[1.1875rem] w-[664px] left-[348px] top-[920px] h-[88px] flex justify-center items-center text-center overflow-hidden"
+            theme={layoutTheme}
+            isEn={isEn !== null}
+            isDay={isDay}
+            donationGoalsText={donationGoalText}
+          />
           <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
             {name === "empty" ? "" : name}
           </div>
@@ -322,17 +330,29 @@ export const LayoutOverlayWidget = () => {
             donations={newestDonations?.slice(0, 3)}
             isEn={isEn !== null}
           />
-          <div className="z-10 absolute text-[1.1875rem] w-[665px] left-[348px] top-[918px] h-[90px] flex justify-center items-center text-center overflow-hidden">
-            {donationGoalText}
-          </div>
           <AnimatedStreamBanner
             className="z-10 absolute w-[320px] left-[12px] top-[916px] h-[156px] text-center"
             isEn={isEn !== null}
           >
             <img
-              className="col-start-1 row-start-1 size-full absolute"
+              className={cn(
+                "col-start-1 row-start-1 size-full absolute transition-opacity ease-in duration-[2000ms]",
+                {
+                  "opacity-0": !isDay,
+                }
+              )}
               alt=""
-              src={banners[layoutTheme][isDay ? "day" : "night"]}
+              src={banners[layoutTheme].day}
+            />
+            <img
+              className={cn(
+                "col-start-1 row-start-1 size-full absolute transition-opacity ease-in duration-[2000ms]",
+                {
+                  "opacity-0": isDay,
+                }
+              )}
+              alt=""
+              src={banners[layoutTheme].night}
             />
           </AnimatedStreamBanner>
         </>

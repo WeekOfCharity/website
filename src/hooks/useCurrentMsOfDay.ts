@@ -34,7 +34,7 @@ export type UseCurrentMsOfDayOptions = {
 };
 
 export const useCurrentMsOfDay = ({
-  customHours = 12,
+  customHours,
 }: UseCurrentMsOfDayOptions = {}) => {
   const [currentMsOfDay, setCurrentMsOfDay] = useState(0);
 

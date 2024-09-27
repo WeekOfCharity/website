@@ -37,7 +37,7 @@ export const streamBanners: MultiLanguageBanner[] = [
         <br />
         Spenden schreibt
         <br />
-        <span className="text-xl my-1">!spenden</span>
+        <span className="text-xl my-1">! spenden</span>
         in den Chat
       </>
     ),
@@ -47,7 +47,7 @@ export const streamBanners: MultiLanguageBanner[] = [
         <br />
         link write
         <br />
-        <span className="text-xl my-1">!donate</span>
+        <span className="text-xl my-1">! donate</span>
         in the chat
       </>
     ),
@@ -59,7 +59,7 @@ export const streamBanners: MultiLanguageBanner[] = [
       <div className="flex flex-col text-[15px] gap-1.5 mt-2 *:flex *:items-center *:justify-center *:leading-6">
         <span className="gap-2 tracking-tighter" key="twitter">
           <Icon
-            className="drop-shadow-layout-text"
+            className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
             path={mdiTwitter}
             size="1.5rem"
           />
@@ -67,17 +67,17 @@ export const streamBanners: MultiLanguageBanner[] = [
         </span>
         <span className="gap-1 tracking-tighter" key="mastodon">
           <Icon
-            className="drop-shadow-layout-text"
+            className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
             path={mdiMastodon}
             size="1.5rem"
           />
           WeekOfCharity@tech.lgbt
         </span>
-        <span className="gap-1 tracking-[-0.065em]" key="bluesky">
+        <span className="gap-1 tracking-[-0.07em]" key="bluesky">
           <Icon
-            className="drop-shadow-layout-text"
+            className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
             path={blueSkyPath}
-            size="1.4rem"
+            size="1.35rem"
           />
           chesster.weekofcharity.de
         </span>
@@ -92,7 +92,7 @@ export const streamBanners: MultiLanguageBanner[] = [
         <span key="youtube">
           <span className="w-8">
             <Icon
-              className="drop-shadow-layout-text"
+              className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
               path={mdiYoutube}
               size="1.75rem"
             />
@@ -102,7 +102,7 @@ export const streamBanners: MultiLanguageBanner[] = [
         <span key="tiktok">
           <span className="w-6">
             <Icon
-              className="drop-shadow-layout-text mb-0.5"
+              className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms] mb-0.5"
               path={tiktokPath}
               size="1.4rem"
             />
@@ -112,7 +112,7 @@ export const streamBanners: MultiLanguageBanner[] = [
         <span key="instagram" className="mb-0.5">
           <span className="w-7">
             <Icon
-              className="drop-shadow-layout-text"
+              className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
               path={mdiInstagram}
               size="1.5rem"
             />

@@ -118,7 +118,7 @@ export const AnimatedStreamBanner = ({
           "absolute bottom-0 size-24 object-contain object-top -mb-6 ease-in-out-back transition-transform duration-1000",
           {
             "rotate-[18deg] left-0": chessterLeft,
-            "translate-x-4 right-0": chessterRight,
+            "translate-x-12 right-0": chessterRight,
             "translate-y-2": chessterVisible,
             "translate-y-20": chessterHidden,
             "-translate-x-10": chessterState === ChessterState.LEFT,

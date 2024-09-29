@@ -1,7 +1,6 @@
 import { mdiInstagram, mdiTwitter, mdiYoutube, mdiMastodon } from "@mdi/js";
 import Icon from "@mdi/react";
-
-import cardgourmetLogo from "../../assets/cardgourmet.png";
+import { LayoutSponsorImage } from "../LayoutSponsorImage/LayoutSponsorImage";
 
 type MultiLanguageBanner = {
   de?: React.ReactNode;
@@ -16,9 +15,9 @@ const blueSkyPath =
 
 export const streamBanners: MultiLanguageBanner[] = [
   {
-    de: "Gesponsert von",
-    en: "Sponsored by",
-    both: <img className="mt-4 px-2" alt="" src={cardgourmetLogo} />,
+    de: <span className="text-lg">Gesponsert von</span>,
+    en: <span className="text-lg">Sponsored by</span>,
+    both: <LayoutSponsorImage />,
   },
   {
     de: "Alle Spenden gehen an",
@@ -57,14 +56,6 @@ export const streamBanners: MultiLanguageBanner[] = [
     en: "Follow us on",
     both: (
       <div className="flex flex-col text-[15px] gap-1.5 mt-2 *:flex *:items-center *:justify-center *:leading-6">
-        <span className="gap-2 tracking-tighter" key="twitter">
-          <Icon
-            className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
-            path={mdiTwitter}
-            size="1.5rem"
-          />
-          @WeekOfCharity
-        </span>
         <span className="gap-1 tracking-tighter" key="mastodon">
           <Icon
             className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
@@ -80,6 +71,14 @@ export const streamBanners: MultiLanguageBanner[] = [
             size="1.35rem"
           />
           chesster.weekofcharity.de
+        </span>
+        <span className="gap-2 tracking-tighter" key="twitter">
+          <Icon
+            className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
+            path={mdiTwitter}
+            size="1.5rem"
+          />
+          @WeekOfCharity
         </span>
       </div>
     ),

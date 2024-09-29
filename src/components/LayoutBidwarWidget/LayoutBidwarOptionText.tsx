@@ -15,16 +15,16 @@ export const LayoutBidwarOptionText = ({
   useEffect(() => {
     if (!spanRef.current) return;
     const difference = spanRef.current.getBoundingClientRect().width - maxWidth;
-    if (difference + 12 <= 0) return;
+    if (difference + 8 <= 0) return;
     setStyles({
-      "--max-scroll-x": `-${difference + 12}px`,
+      "--max-scroll-x": `-${difference + 14}px`,
     } as React.CSSProperties);
   }, [maxWidth, text]);
 
   return (
     <span
       ref={spanRef}
-      className="inline-block animate-scrollX whitespace-nowrap"
+      className="inline-block animate-scrollX whitespace-nowrap tracking-[-0.06em]"
       style={styles}
     >
       {text}

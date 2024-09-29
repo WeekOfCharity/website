@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { StreamLayoutTheme } from "../../hooks/useCurrentMsOfDay";
 import { useBidwarResults } from "../../hooks/useBidwarResults";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import dividerGreenDay from "../../assets/layout/Divider_Green_Day.png";
 import dividerGreenNight from "../../assets/layout/Divider_Green_Night.png";
@@ -9,17 +9,17 @@ import dividerRedDay from "../../assets/layout/Divider_Red_Day.png";
 import dividerRedNight from "../../assets/layout/Divider_Red_Night.png";
 import { LayoutMoneyText } from "../LayoutMoneyText/LayoutMoneyText";
 import { LayoutBidwarOptionText } from "./LayoutBidwarOptionText";
+import { IsDayContext } from "../../utils/IsDayContext";
 
 export type LayoutBidwarWidgetProps = {
   theme: StreamLayoutTheme;
-  isDay: boolean;
   isEn?: boolean;
   donationGoalsText?: string;
   className?: string;
 };
 
-const TOTAL_CYCLE_DURATION = 1 * 60 * 1000;
-const SINGLE_BIDWAR_DURATION = 0.1 * 60 * 1000;
+const TOTAL_CYCLE_DURATION = 15 * 60 * 1000;
+const SINGLE_BIDWAR_DURATION = 1 * 60 * 1000;
 
 const MAX_BIDWAR_OPTION_AMOUNT = 6;
 
@@ -44,12 +44,11 @@ type PreparedBidwar = {
 
 export const LayoutBidwarWidget = ({
   theme,
-  isDay,
   isEn,
   donationGoalsText,
   className,
 }: LayoutBidwarWidgetProps) => {
-  const [showBidwards, setShowBidwars] = useState(true);
+  const [showBidwards, setShowBidwars] = useState(false);
   const [currentBidwarIndex, setCurrentBidwarIndex] = useState<number>(0);
   const [preparedBidwars, setPreparedBidwars] = useState<PreparedBidwar[]>([]);
   const {
@@ -57,26 +56,14 @@ export const LayoutBidwarWidget = ({
     status: bidwarResultsStatus,
     refetch: refetchBidwarResults,
   } = useBidwarResults();
-  const [styles, setStyles] = useState<React.CSSProperties>();
-  const bidwarOptionList = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (!bidwarOptionList.current) return;
-      const difference =
-        bidwarOptionList.current.getBoundingClientRect().height - 88;
-      if (difference <= 0) return;
-      setStyles({
-        "--max-scroll-y": `-${difference}px`,
-      } as React.CSSProperties);
-    }, 100);
-  }, [showBidwards, currentBidwarIndex]);
+  const isDay = useContext(IsDayContext);
+  const [styleList, setStyleList] = useState<React.CSSProperties[]>([]);
 
   useEffect(() => {
     const bidwars = bidwarResults?.results;
     const newPreparedBidwars: PreparedBidwar[] =
       bidwars
-        //?.filter((bidwar) => bidwar.status !== "active")
+        ?.filter((bidwar) => bidwar.status === "inactive") // TODO: CHANGE TO ACTIVE
         ?.map((bidwar) => {
           const optionNames = Object.keys(bidwar.options);
           return {
@@ -94,25 +81,50 @@ export const LayoutBidwarWidget = ({
           };
         }) || [];
 
+    newPreparedBidwars.forEach((bidwar) => {
+      const difference = 10 + 26 * bidwar.options.length - 88;
+      setStyleList((prev) => [
+        ...prev,
+        {
+          "--max-scroll-y": difference <= 0 ? "0px" : `-${difference}px`,
+        } as React.CSSProperties,
+      ]);
+    });
+
     setPreparedBidwars(newPreparedBidwars);
   }, [bidwarResults, isEn]);
 
   useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (preparedBidwars.length === 0) return;
+
     const startBidwarRotation = () => {
-      setCurrentBidwarIndex(0);
+      clearInterval(interval);
+      interval = setInterval(() => {
+        setCurrentBidwarIndex((prev) => {
+          if (prev < preparedBidwars.length - 1) return prev + 1;
+          else {
+            setShowBidwars(false);
+            clearInterval(interval);
+            return prev;
+          }
+        });
+      }, SINGLE_BIDWAR_DURATION);
     };
 
     if (showBidwards) {
+      setCurrentBidwarIndex(0);
       startBidwarRotation();
       return;
     }
+
     const timeout = setTimeout(
       () => setShowBidwars(true),
       TOTAL_CYCLE_DURATION - preparedBidwars.length * SINGLE_BIDWAR_DURATION
     );
 
     return () => clearTimeout(timeout);
-  }, [preparedBidwars, preparedBidwars.length, showBidwards]);
+  }, [preparedBidwars.length, showBidwards]);
 
   useEffect(() => {
     const id = setInterval(() => void refetchBidwarResults(), 15 * 1000);
@@ -137,8 +149,18 @@ export const LayoutBidwarWidget = ({
               { "opacity-0": !showBidwards }
             )}
           >
-            <div className="w-[44%] px-3 text-base">
-              ! bidwar: {preparedBidwars[currentBidwarIndex]?.name}
+            <div className="w-[44%] h-full text-base relative top-0">
+              {preparedBidwars.map((bidwar, bidwar_index) => (
+                <span
+                  key={`${bidwar.name}-${bidwar_index}`}
+                  className={cn(
+                    "absolute flex items-center px-3 justify-center size-full left-0 transition-opacity ease-in duration-[2000ms]",
+                    { "opacity-0": bidwar_index !== currentBidwarIndex }
+                  )}
+                >
+                  ! bidwar: {bidwar.name}
+                </span>
+              ))}
             </div>
             <div className="absolute z-10 h-full w-2 left-[286px]">
               <img
@@ -162,35 +184,40 @@ export const LayoutBidwarWidget = ({
                 src={dividers[theme].night}
               />
             </div>
-            <div className="text-sm w-[56%] h-full animate-scrollY relative">
-              <div
-                ref={bidwarOptionList}
-                className="absolute animate-scrollY pl-3 pr-4 py-1 w-full top-0"
-                style={styles}
-              >
-                {preparedBidwars[currentBidwarIndex]?.options.map(
-                  (option, index) => (
-                    <span
-                      key={option.name}
-                      className="flex justify-between w-full h-7 relative"
-                    >
-                      <span className="flex items-center">
-                        {index + 1}.
-                        <div className="w-[236px] text-left overflow-x-hidden no-scrollbar flex items-center text-nowrap px-1 translate-x-5 absolute h-full">
-                          <LayoutBidwarOptionText
-                            text={option.name}
-                            maxWidth={236}
-                          />
-                        </div>
+            <div className="text-[15px] w-[56%] h-full animate-scrollY relative">
+              <div className="grid w-full">
+                {preparedBidwars.map((bidwar, bidwar_index) => (
+                  <div
+                    key={`${bidwar.name}-${bidwar_index}`}
+                    className={cn(
+                      "col-start-1 row-start-1 animate-scrollY pl-3 pr-4 py-[5px] w-full h-fit top-0 transition-opacity ease-in duration-[2000ms]",
+                      { "opacity-0": bidwar_index !== currentBidwarIndex }
+                    )}
+                    style={styleList[bidwar_index]}
+                  >
+                    {bidwar.options.map((option, option_index) => (
+                      <span
+                        key={option.name}
+                        className="flex justify-between w-full h-[26px] relative"
+                      >
+                        <span className="flex items-center">
+                          {option_index + 1}.
+                          <div className="w-[230px] text-left overflow-x-hidden no-scrollbar flex items-center text-nowrap px-2 translate-x-5 absolute h-full">
+                            <LayoutBidwarOptionText
+                              text={option.name}
+                              maxWidth={236}
+                            />
+                          </div>
+                        </span>
+                        <LayoutMoneyText
+                          amount={
+                            option.amount !== null ? option.amount / 100 : null
+                          }
+                        />
                       </span>
-                      <LayoutMoneyText
-                        amount={
-                          option.amount !== null ? option.amount / 100 : null
-                        }
-                      />
-                    </span>
-                  )
-                )}
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

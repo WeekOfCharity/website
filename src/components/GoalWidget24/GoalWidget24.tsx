@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DonationGoal, useDonationGoals } from "../../hooks/useDonationGoals";
 import { useExternalDonationTotal } from "../../hooks/useExternalDonationTotal";
 import { Language } from "../../i18n/i18n";
 import cn from "classnames";
 import { StreamLayoutTheme } from "../../hooks/useCurrentMsOfDay";
 import { LayoutMoneyText } from "../LayoutMoneyText/LayoutMoneyText";
+import { IsDayContext } from "../../utils/IsDayContext";
 
 export type GoalWidget24Props = {
   theme: StreamLayoutTheme;
-  isDay: boolean;
   isEn?: boolean;
   onDonationTextChange?: (donationGoalText: string) => void;
   className?: string;
@@ -35,7 +35,6 @@ const getHighestDonationGoalAmount = (goals: DonationGoal[] | undefined) => {
 
 export const GoalWidget24 = ({
   theme,
-  isDay,
   isEn,
   onDonationTextChange,
   className,
@@ -43,6 +42,7 @@ export const GoalWidget24 = ({
   const [currentDonation, setCurrentDonation] = useState<number>(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number>();
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string>();
+  const isDay = useContext(IsDayContext);
 
   const {
     data: donations,

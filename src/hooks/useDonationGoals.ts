@@ -12,6 +12,7 @@ export type DonationGoal = {
   id: number;
   name: string;
   reached_at: number;
+  reached_at_hidden: boolean;
 };
 
 type DonationGoalWithAlternatives = Omit<DonationGoal, "timeslot"> & {

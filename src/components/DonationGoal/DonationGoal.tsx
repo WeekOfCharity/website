@@ -9,7 +9,7 @@ import { BASE_URL } from "../../utils/constants";
 
 type DonationGoalProps = {
   achieved?: boolean;
-  amount: number;
+  amount: number | null;
   description: string | null;
   secret?: boolean;
   timeslot?: StreamData | null;
@@ -47,11 +47,12 @@ export const DonationGoal = ({
           />
           <div
             className={classNames("absolute font-fat ml-2 text-5xl z-10", {
+              "tracking-[-0.075em]": amount === null,
               "text-blue23-900": achieved,
               "text-neutral-500": !achieved,
             })}
           >
-            {amount}
+            {amount === null ? "???" : amount}
           </div>
         </div>
         <div>

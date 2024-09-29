@@ -296,7 +296,7 @@ export const Home = () => {
                 <DonationGoal
                   key={goal.id}
                   achieved={goal.reached_at <= currentDonation}
-                  amount={goal.reached_at}
+                  amount={goal.reached_at_hidden ? null : goal.reached_at}
                   description={goal.description}
                   timeslot={goal.timeslot}
                   title={goal.name}

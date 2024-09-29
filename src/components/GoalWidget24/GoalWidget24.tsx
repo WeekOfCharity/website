@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { DonationGoal, useDonationGoals } from "../hooks/useDonationGoals";
-import { useExternalDonationTotal } from "../hooks/useExternalDonationTotal";
-import { Language } from "../i18n/i18n";
+import { useContext, useEffect, useState } from "react";
+import { DonationGoal, useDonationGoals } from "../../hooks/useDonationGoals";
+import { useExternalDonationTotal } from "../../hooks/useExternalDonationTotal";
+import { Language } from "../../i18n/i18n";
 import cn from "classnames";
-import { StreamLayoutTheme } from "../hooks/useCurrentMsOfDay";
-import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
+import { StreamLayoutTheme } from "../../hooks/useCurrentMsOfDay";
+import { LayoutMoneyText } from "../LayoutMoneyText/LayoutMoneyText";
+import { IsDayContext } from "../../utils/IsDayContext";
 
 export type GoalWidget24Props = {
   theme: StreamLayoutTheme;
-  isDay: boolean;
   isEn?: boolean;
   onDonationTextChange?: (donationGoalText: string) => void;
   className?: string;
@@ -16,17 +16,6 @@ export type GoalWidget24Props = {
 
 // const goalCutout =
 //   "path('m12 0 0 4-8 0 0 8-4 0 0 11 4 0 0 8 8 0 0 4 607 0 0-4 8 0 0-8 4 0 0-11-4 0 0-8-8 0 0-4-607 0')";
-
-const bgColorClasses = {
-  [StreamLayoutTheme.GREEN]: {
-    day: "bg-layout-bg-green-day",
-    night: "bg-layout-bg-green-night",
-  },
-  [StreamLayoutTheme.RED]: {
-    day: "bg-layout-bg-red-day",
-    night: "bg-layout-bg-red-night",
-  },
-} as const;
 
 const fillColorClasses = {
   [StreamLayoutTheme.GREEN]: {
@@ -46,7 +35,6 @@ const getHighestDonationGoalAmount = (goals: DonationGoal[] | undefined) => {
 
 export const GoalWidget24 = ({
   theme,
-  isDay,
   isEn,
   onDonationTextChange,
   className,
@@ -54,6 +42,7 @@ export const GoalWidget24 = ({
   const [currentDonation, setCurrentDonation] = useState<number>(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number>();
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string>();
+  const isDay = useContext(IsDayContext);
 
   const {
     data: donations,
@@ -135,8 +124,7 @@ export const GoalWidget24 = ({
     <div className={cn("flex flex-col", className)}>
       <div
         className={cn(
-          "relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in",
-          bgColorClasses[theme][isDay ? "day" : "night"]
+          "relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in bg-layout-bg-current"
         )}
       >
         <div
@@ -151,9 +139,9 @@ export const GoalWidget24 = ({
           }}
         />
         <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px">
-          <LayoutMoneyText amount={currentDonation || 0} isDay={isDay} />
+          <LayoutMoneyText amount={currentDonation || 0} />
           <span>{isEn ? "of" : "von"}</span>
-          <LayoutMoneyText amount={moneyTarget} isDay={isDay} />
+          <LayoutMoneyText amount={moneyTarget} />
         </div>
       </div>
     </div>

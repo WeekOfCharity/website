@@ -128,11 +128,22 @@ module.exports = {
             day: "#E9BDBD",
             night: "#370514",
           },
+          current: "var(--current-layout-bg)",
         },
       },
     },
     extend: {
       keyframes: {
+        float: {
+          "0%, 100%": {
+            transform: "translateY(-4px)",
+            "animation-timing-function": "cubic-bezier(0.7,0,1,1)",
+          },
+          "50%": {
+            transform: "translateY(0px)",
+            "animation-timing-function": "cubic-bezier(0,0,0.2,1)",
+          },
+        },
         bgmoveX: {
           "0%": { transform: "translate(0)" },
           "100%": { transform: "translate(-2980px)" },
@@ -163,6 +174,21 @@ module.exports = {
             "animation-timing-function": "cubic-bezier(0,0,0.2,1)",
           },
         },
+        scrollX: {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "50%": { transform: "translate(var(--max-scroll-x), 0)" },
+        },
+        scrollY: {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "50%": { transform: "translate(0, var(--max-scroll-y))" },
+        },
+      },
+      transitionTimingFunction: {
+        "in-out-back": "cubic-bezier(0.68, -0.6, 0.32, 1.6)",
+        "in-out-sine": "cubic-bezier(0.37, 0, 0.63, 1)",
+      },
+      dropShadow: {
+        "layout-text": "var(--drop-shadow-layout-text)",
       },
       animation: {
         clouds: "bgmoveX linear infinite",
@@ -171,6 +197,9 @@ module.exports = {
         fadeinout1: "fadeinout1 ease-in-out 2s",
         fadeinout2: "fadeinout2 ease-in-out 2s",
         donationAlert: "donationAlert infinite 1920ms",
+        float: "float infinite ease-in 3s",
+        scrollX: "scrollX 10s cubic-bezier(0.37, 0, 0.63, 1) infinite",
+        scrollY: "scrollY 30s ease-in-out infinite",
       },
       fontFamily: {
         sans: [

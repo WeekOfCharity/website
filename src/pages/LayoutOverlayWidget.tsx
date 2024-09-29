@@ -21,14 +21,23 @@ import overlayGreenDay from "../assets/layout/overlay_green_day.png";
 import overlayGreenNight from "../assets/layout/overlay_green_night.png";
 import overlayRedDay from "../assets/layout/overlay_red_day.png";
 import overlayRedNight from "../assets/layout/overlay_red_night.png";
+
+import bannerGreenDay from "../assets/layout/banner_green_day.png";
+import bannerGreenNight from "../assets/layout/banner_green_night.png";
+import bannerRedDay from "../assets/layout/banner_red_day.png";
+import bannerRedNight from "../assets/layout/banner_red_night.png";
+
 import cn from "classnames";
-import { GoalWidget24 } from "./GoalWidget24";
+import { GoalWidget24 } from "../components/GoalWidget24/GoalWidget24";
 import { useEffect, useRef, useState } from "react";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
 import { LayoutDonationList } from "../components/LayoutDonationList/LayoutDonationList";
 import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
 import "./LayoutOverlayWidget.scss";
 import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
+import { AnimatedStreamBanner } from "../components/AnimatedStreamBanner/AnimatedStreamBanner";
+import { LayoutBidwarWidget } from "../components/LayoutBidwarWidget/LayoutBidwarWidget";
+import { IsDayContext } from "../utils/IsDayContext";
 
 const overlays = {
   [StreamLayoutTheme.GREEN]: {
@@ -38,6 +47,17 @@ const overlays = {
   [StreamLayoutTheme.RED]: {
     day: overlayRedDay,
     night: overlayRedNight,
+  },
+} as const;
+
+const banners = {
+  [StreamLayoutTheme.GREEN]: {
+    day: bannerGreenDay,
+    night: bannerGreenNight,
+  },
+  [StreamLayoutTheme.RED]: {
+    day: bannerRedDay,
+    night: bannerRedNight,
   },
 } as const;
 
@@ -149,7 +169,7 @@ export const LayoutOverlayWidget = () => {
             donator_name: "Chesster",
             donated_amount_in_cents: 556,
             donation_comment:
-              "Das ist eine Testdonation! Hier steh der Kommentar, der einer Spende hinzugefügt werden kann.",
+              "Das ist eine Testdonation! Hier steht der Kommentar, der einer Spende hinzugefügt werden kann.",
           });
           alreadyQueuedIds.current.push(-1);
           setPlayDonationAlert(true);
@@ -215,145 +235,185 @@ export const LayoutOverlayWidget = () => {
   if (isPreloading) return <div className="text-7xl">Loading...</div>;
 
   return (
-    <div
-      data-theme={`${layoutTheme}-${isDay ? "day" : "night"}`}
-      className={cn(
-        "overlay-root font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden transition-[color,background-color,border-color,text-shadow] ease-in duration-[2000ms]",
-        {
-          "[text-shadow:0_0_0.5rem_rgba(var(--text-r),var(--text-g),var(--text-b),0.55)]":
-            !isDay,
-        }
-      )}
-    >
-      {alertonly === null && (
-        <>
-          <GoalWidget24
-            className="absolute w-[665px] left-[348px] top-[916px] h-[150px] text-center"
-            isEn={isEn !== null}
-            theme={layoutTheme}
-            isDay={isDay}
-            onDonationTextChange={setDonationGoalText}
-          />
-          <div
-            className={cn("z-10 transition-opacity ease-in duration-[2000ms]", {
-              "opacity-0": !isDay,
-            })}
-            style={{
-              backgroundImage: `url(${overlays[layoutTheme].day})`,
-            }}
-          />
-          <div
-            className={cn("z-10 transition-opacity ease-in duration-[2000ms]", {
-              "opacity-0": isDay,
-            })}
-            style={{
-              backgroundImage: `url(${overlays[layoutTheme].night})`,
-            }}
-          />
-          <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
-            {name === "empty" ? "" : name}
-          </div>
-          {!name && (
-            <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[5px] left-[5px]">
-              No name provided. Please provide your name by adding
-              &name=[example] to the layout URL.
-              <br /> Or add &name=empty to not show a name.
-            </div>
-          )}
-          <div className="z-10 absolute text-[0.9375rem] w-80 text-center top-[59px] overflow-hidden whitespace-nowrap leading-relaxed">
-            {pronouns === "empty" ? "" : pronouns}
-          </div>
-          {!pronouns && (
-            <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[110px] left-[5px]">
-              No pronouns provided. Please provide your pronouns by adding
-              &pronouns=[example] to the layout URL.
-              <br /> Or add &pronouns=empty to not show any pronouns.
-            </div>
-          )}
-          <LayoutDonationList
-            className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1060px] top-[922px] overflow-hidden whitespace-nowrap"
-            listClassName={cn({
-              "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
-              "animate-fadeinout1":
-                isDay && layoutTheme === StreamLayoutTheme.RED,
-              "animate-fadeinout2":
-                !isDay && layoutTheme === StreamLayoutTheme.RED,
-            })}
-            headline={isEn !== null ? "Top Donations" : "Höchste Spenden"}
-            donations={highestDonations}
-            isDay={isDay}
-            isEn={isEn !== null}
-          />
-          <LayoutDonationList
-            className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1508px] top-[922px] overflow-hidden whitespace-nowrap"
-            listClassName={cn({
-              "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
-              "animate-fadeinout1":
-                isDay && layoutTheme === StreamLayoutTheme.RED,
-              "animate-fadeinout2":
-                !isDay && layoutTheme === StreamLayoutTheme.RED,
-            })}
-            headline={isEn !== null ? "Last Donations" : "Letzte Spenden"}
-            donations={newestDonations?.slice(0, 3)}
-            isDay={isDay}
-            isEn={isEn !== null}
-          />
-          <div className="z-10 absolute text-[1.1875rem] w-[665px] left-[348px] top-[918px] h-[90px] flex justify-center items-center text-center overflow-hidden">
-            {donationGoalText}
-          </div>
-        </>
-      )}
-
+    <IsDayContext.Provider value={isDay}>
       <div
+        data-theme={`${layoutTheme}-${isDay ? "day" : "night"}`}
         className={cn(
-          "absolute z-10 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[1500ms]",
+          "overlay-root font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden transition-[color,background-color,border-color,text-shadow] ease-in duration-[2000ms]",
           {
-            "opacity-0 translate-x-[700px]": !playDonationAlert,
+            "[text-shadow:0_0_0.5rem_rgba(var(--text-r),var(--text-g),var(--text-b),0.55)] [--drop-shadow-layout-text:0_0_5px_rgba(var(--text-r),var(--text-g),var(--text-b),0.6)]":
+              !isDay,
+            "[--current-layout-bg:#E1DFAC]":
+              isDay && layoutTheme === StreamLayoutTheme.GREEN,
+            "[--current-layout-bg:#00141E]":
+              !isDay && layoutTheme === StreamLayoutTheme.GREEN,
+            "[--current-layout-bg:#E9BDBD]":
+              isDay && layoutTheme === StreamLayoutTheme.RED,
+            "[--current-layout-bg:#370514]":
+              !isDay && layoutTheme === StreamLayoutTheme.RED,
           }
         )}
       >
-        <div className="flex flex-col items-center justify-center text-center -rotate-6">
-          <img
-            className="size-96 object-contain object-top -mb-6"
-            src={donationAlertGif}
-            alt=""
-          />
-          <div
-            className={cn(
-              "flex flex-col gap-4 rounded-2xl py-5 px-5 animate-donationAlert [box-shadow:0_0_16px_black]",
-              {
-                "bg-layout-bg-green-night/[0.99]":
-                  layoutTheme === StreamLayoutTheme.GREEN && !isDay,
-                "bg-layout-bg-red-night/[0.98]":
-                  layoutTheme === StreamLayoutTheme.RED && !isDay,
-                "bg-layout-bg-green-day/[0.93]":
-                  layoutTheme === StreamLayoutTheme.GREEN && isDay,
-                "bg-layout-bg-red-day/[0.93]":
-                  layoutTheme === StreamLayoutTheme.RED && isDay,
-              }
-            )}
-          >
-            <span className="text-[1.5rem] px-2">
-              {donationAlertName || (isEn !== null ? "Anonymous" : "Anonym")}{" "}
-              {isEn !== null ? "donates" : "spendet"}{" "}
-              {donationAlertAmount != null && (
-                <LayoutMoneyText
-                  amount={donationAlertAmount / 100}
-                  isDay={isDay}
-                  customEuroClassName="w-5"
-                />
+        {alertonly === null && (
+          <>
+            <GoalWidget24
+              className="absolute w-[665px] left-[348px] top-[916px] h-[150px] text-center"
+              isEn={isEn !== null}
+              theme={layoutTheme}
+              onDonationTextChange={setDonationGoalText}
+            />
+            <div
+              className={cn(
+                "z-10 transition-opacity ease-in duration-[2000ms]",
+                {
+                  "opacity-0": !isDay,
+                }
               )}
-            </span>
-            {donationAlertComment && (
-              <span className="max-w-[550px] max-h-32 text-[1.1875rem] leading-8">
-                {donationAlertComment.length > 150
-                  ? `${donationAlertComment?.slice(0, 150)}...`
-                  : donationAlertComment}
-              </span>
+              style={{
+                backgroundImage: `url(${overlays[layoutTheme].day})`,
+              }}
+            />
+            <div
+              className={cn(
+                "z-10 transition-opacity ease-in duration-[2000ms]",
+                {
+                  "opacity-0": isDay,
+                }
+              )}
+              style={{
+                backgroundImage: `url(${overlays[layoutTheme].night})`,
+              }}
+            />
+            <LayoutBidwarWidget
+              className="z-10 absolute text-[1.1875rem] w-[664px] left-[348px] top-[920px] h-[88px] flex justify-center items-center text-center overflow-hidden"
+              theme={layoutTheme}
+              isEn={isEn !== null}
+              donationGoalsText={donationGoalText}
+            />
+            <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
+              {name === "empty" ? "" : name}
+            </div>
+            {!name && (
+              <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[5px] left-[5px]">
+                No name provided. Please provide your name by adding
+                &name=[example] to the layout URL.
+                <br /> Or add &name=empty to not show a name.
+              </div>
             )}
+            <div className="z-10 absolute text-[0.9375rem] w-80 text-center top-[59px] overflow-hidden whitespace-nowrap leading-relaxed">
+              {pronouns === "empty" ? "" : pronouns}
+            </div>
+            {!pronouns && (
+              <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[110px] left-[5px]">
+                No pronouns provided. Please provide your pronouns by adding
+                &pronouns=[example] to the layout URL.
+                <br /> Or add &pronouns=empty to not show any pronouns.
+              </div>
+            )}
+            <LayoutDonationList
+              className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1060px] top-[922px] overflow-hidden whitespace-nowrap"
+              listClassName={cn({
+                "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
+                "animate-fadeinout1":
+                  isDay && layoutTheme === StreamLayoutTheme.RED,
+                "animate-fadeinout2":
+                  !isDay && layoutTheme === StreamLayoutTheme.RED,
+              })}
+              headline={isEn !== null ? "Top Donations" : "Höchste Spenden"}
+              donations={highestDonations}
+              isEn={isEn !== null}
+            />
+            <LayoutDonationList
+              className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1508px] top-[922px] overflow-hidden whitespace-nowrap"
+              listClassName={cn({
+                "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
+                "animate-fadeinout1":
+                  isDay && layoutTheme === StreamLayoutTheme.RED,
+                "animate-fadeinout2":
+                  !isDay && layoutTheme === StreamLayoutTheme.RED,
+              })}
+              headline={isEn !== null ? "Last Donations" : "Letzte Spenden"}
+              donations={newestDonations?.slice(0, 3)}
+              isEn={isEn !== null}
+            />
+            <AnimatedStreamBanner
+              className="z-10 absolute w-[320px] left-[12px] top-[916px] h-[156px] text-center"
+              isEn={isEn !== null}
+            >
+              <img
+                className={cn(
+                  "col-start-1 row-start-1 size-full absolute transition-opacity ease-in duration-[2000ms]",
+                  {
+                    "opacity-0": !isDay,
+                  }
+                )}
+                alt=""
+                src={banners[layoutTheme].day}
+              />
+              <img
+                className={cn(
+                  "col-start-1 row-start-1 size-full absolute transition-opacity ease-in duration-[2000ms]",
+                  {
+                    "opacity-0": isDay,
+                  }
+                )}
+                alt=""
+                src={banners[layoutTheme].night}
+              />
+            </AnimatedStreamBanner>
+          </>
+        )}
+
+        <div
+          className={cn(
+            "absolute z-10 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[1500ms]",
+            {
+              "opacity-0 translate-x-[700px]": !playDonationAlert,
+            }
+          )}
+        >
+          <div className="flex flex-col items-center justify-center text-center -rotate-6">
+            <img
+              className="size-96 object-contain object-top -mb-6"
+              src={donationAlertGif}
+              alt=""
+            />
+            <div
+              className={cn(
+                "flex flex-col gap-4 rounded-2xl py-5 px-5 animate-donationAlert [box-shadow:0_0_16px_black]",
+                {
+                  "bg-layout-bg-green-night/[0.99]":
+                    layoutTheme === StreamLayoutTheme.GREEN && !isDay,
+                  "bg-layout-bg-red-night/[0.98]":
+                    layoutTheme === StreamLayoutTheme.RED && !isDay,
+                  "bg-layout-bg-green-day/[0.93]":
+                    layoutTheme === StreamLayoutTheme.GREEN && isDay,
+                  "bg-layout-bg-red-day/[0.93]":
+                    layoutTheme === StreamLayoutTheme.RED && isDay,
+                }
+              )}
+            >
+              <span className="text-[1.5rem] px-2">
+                {donationAlertName || (isEn !== null ? "Anonymous" : "Anonym")}{" "}
+                {isEn !== null ? "donates" : "spendet"}{" "}
+                {donationAlertAmount != null && (
+                  <LayoutMoneyText
+                    amount={donationAlertAmount / 100}
+                    customEuroClassName="w-5"
+                  />
+                )}
+              </span>
+              {donationAlertComment && (
+                <span className="max-w-[550px] max-h-32 text-[1.1875rem] leading-8">
+                  {donationAlertComment.length > 150
+                    ? `${donationAlertComment?.slice(0, 150)}...`
+                    : donationAlertComment}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </IsDayContext.Provider>
   );
 };

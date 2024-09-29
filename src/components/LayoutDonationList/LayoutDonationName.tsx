@@ -53,7 +53,7 @@ export const LayoutDonationName = ({
   return (
     <div
       className={cn(
-        "flex items-center border-current pl-2 h-5 max-w-[234px] overflow-x-clip",
+        "flex items-center border-current pl-2 h-5 max-w-[234px] overflow-x-clip pt-1.5 tracking-[-0.06em]",
         {
           "animate-blink": isAnimating,
         }

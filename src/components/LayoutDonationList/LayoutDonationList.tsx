@@ -7,7 +7,6 @@ import { LayoutDonationName } from "./LayoutDonationName";
 export type LayoutDonationListProps = {
   headline: string;
   donations: Donation[] | undefined;
-  isDay: boolean;
   isEn: boolean;
   className?: string;
   listClassName?: string;
@@ -16,7 +15,6 @@ export type LayoutDonationListProps = {
 export const LayoutDonationList = ({
   headline,
   donations = [],
-  isDay,
   isEn,
   className,
   listClassName,
@@ -43,7 +41,10 @@ export const LayoutDonationList = ({
     <div className={className}>
       <h2 className={cn("mb-[16px] px-5")}>{headline}</h2>
       <ul
-        className={cn("flex flex-col gap-1 pl-8 pr-2 text-base", listClassName)}
+        className={cn(
+          "flex flex-col gap-1.5 pl-8 pr-2 text-[15px]",
+          listClassName
+        )}
       >
         {donations?.map((donation) => (
           <li key={donation.id} className="flex justify-between">
@@ -58,7 +59,6 @@ export const LayoutDonationList = ({
                   ? donation.donated_amount_in_cents / 100
                   : null
               }
-              isDay={isDay}
             />
           </li>
         ))}

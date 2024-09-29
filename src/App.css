@@ -13,3 +13,9 @@
 *:focus-visible {
   outline-offset: 2px;
 }
+
+.crisp-rendering {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}

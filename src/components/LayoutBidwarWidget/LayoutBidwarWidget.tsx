@@ -63,7 +63,7 @@ export const LayoutBidwarWidget = ({
     const bidwars = bidwarResults?.results;
     const newPreparedBidwars: PreparedBidwar[] =
       bidwars
-        ?.filter((bidwar) => bidwar.status === "inactive") // TODO: CHANGE TO ACTIVE
+        ?.filter((bidwar) => bidwar.status === "active")
         ?.map((bidwar) => {
           const optionNames = Object.keys(bidwar.options);
           return {

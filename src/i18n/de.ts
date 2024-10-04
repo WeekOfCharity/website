@@ -68,14 +68,14 @@ export const deTranslation: Translation = {
   twitchPlayer: {
     heading: "Week of Charity Twitch Player",
     privacyNote:
-      "Datenschutzhinweis: Wenn du den Twitch Player aktivierst, werden können personenbezogene Daten wie deine IP-Adresse an Twitch gesendet. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.",
+      "Datenschutzhinweis: Wenn du den Twitch Player aktivierst, können personenbezogene Daten wie deine IP-Adresse an Twitch gesendet werden. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.",
     accept: "Einverstanden",
   },
   youtubePlayer: {
     label: "Youtube Player",
     heading: "Week of Charity Youtube Player",
     privacyNote:
-      "Datenschutzhinweis: Wenn du den Youtube Player aktivierst, werden können personenbezogene Daten wie deine IP-Adresse an Youtube gesendet. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.",
+      "Datenschutzhinweis: Wenn du den Youtube Player aktivierst, können personenbezogene Daten wie deine IP-Adresse an Youtube gesendet werden. Dies dient der Verbesserung deines Streamingerlebnisses und wird auch für Analysen genutzt.",
     accept: "Einverstanden",
   },
   imprint: {

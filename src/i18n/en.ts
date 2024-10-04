@@ -68,14 +68,14 @@ export const enTranslation: Translation = {
   twitchPlayer: {
     heading: "Week of Charity Twitch Player",
     privacyNote:
-      "Data Protection Notice: By activating the Twitch Player, personal data like your IP address will be sent to Twitch directly. This serves as an improvement to your streaming experience and the data might be used for analyses.",
+      "Data Protection Notice: By activating the Twitch Player, personal data like your IP address might be sent to Twitch directly. This serves as an improvement to your streaming experience and the data might be used for analyses.",
     accept: "Accept",
   },
   youtubePlayer: {
     label: "Youtube Player",
     heading: "Week of Charity Youtube Player",
     privacyNote:
-      "Data Protection Notice: By activating the Youtube Player, personal data like your IP address will be sent to Youtube directly. This serves as an improvement to your watching experience and the data might be used for analyses.",
+      "Data Protection Notice: By activating the Youtube Player, personal data like your IP address might be sent to Youtube directly. This serves as an improvement to your watching experience and the data might be used for analyses.",
     accept: "Accept",
   },
   imprint: {

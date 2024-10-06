@@ -1,8 +1,8 @@
 @font-face {
   font-family: "DepixelHalbfett";
   src:
-    url("./depixelhalbfett.woff2") format("woff2"),
-    url("./depixelhalbfett.woff") format("woff");
+    url("./depixelhalbfett-hashtag.woff2") format("woff2"),
+    url("./depixelhalbfett-hashtag.woff") format("woff");
   font-weight: 400 700;
   font-style: normal;
 }

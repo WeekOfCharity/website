@@ -42,7 +42,7 @@ export const LayoutDonationList = ({
       <h2 className={cn("mb-[16px] px-5")}>{headline}</h2>
       <ul
         className={cn(
-          "flex flex-col gap-1.5 pl-8 pr-2 text-[15px]",
+          "flex flex-col gap-1.5 pl-8 pr-2 text-[15px] pb-1.5",
           listClassName
         )}
       >

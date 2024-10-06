@@ -42,6 +42,7 @@ export const GoalWidget24 = ({
   const [currentDonation, setCurrentDonation] = useState<number>(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number>();
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string>();
+  const [lastReachedGoalAmount, setLastReachedGoalAmount] = useState<number>(0);
   const isDay = useContext(IsDayContext);
 
   const {
@@ -59,6 +60,12 @@ export const GoalWidget24 = ({
   const moneyTarget =
     nextDonationGoal || getHighestDonationGoalAmount(donationGoals);
 
+  const targetProgress =
+    moneyTarget && moneyTarget - lastReachedGoalAmount !== 0
+      ? ((currentDonation - lastReachedGoalAmount) * 100) /
+        (moneyTarget - lastReachedGoalAmount)
+      : 0;
+
   useEffect(() => {
     if (!donations || !donationGoals) return;
 
@@ -71,6 +78,10 @@ export const GoalWidget24 = ({
         lastIndex = index;
       }
     });
+
+    setLastReachedGoalAmount(
+      lastIndex >= 0 ? donationGoals[lastIndex].reached_at : 0
+    );
 
     setNextDonationGoal(
       donationGoals.length > lastIndex + 1
@@ -133,9 +144,7 @@ export const GoalWidget24 = ({
             fillColorClasses[theme][isDay ? "day" : "night"]
           )}
           style={{
-            width: moneyTarget
-              ? `calc(min(${(currentDonation / moneyTarget) * 100}%, 100%))`
-              : "",
+            width: targetProgress ? `calc(min(${targetProgress}%, 100%))` : "",
           }}
         />
         <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px">

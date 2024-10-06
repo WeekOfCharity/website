@@ -81,15 +81,14 @@ export const LayoutBidwarWidget = ({
           };
         }) || [];
 
-    newPreparedBidwars.forEach((bidwar) => {
-      const difference = 10 + 26 * bidwar.options.length - 88;
-      setStyleList((prev) => [
-        ...prev,
-        {
+    setStyleList(
+      newPreparedBidwars.map((bidwar) => {
+        const difference = 10 + 26 * bidwar.options.length - 88;
+        return {
           "--max-scroll-y": difference <= 0 ? "0px" : `-${difference}px`,
-        } as React.CSSProperties,
-      ]);
-    });
+        } as React.CSSProperties;
+      })
+    );
 
     setPreparedBidwars(newPreparedBidwars);
   }, [bidwarResults, isEn]);

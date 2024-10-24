@@ -50,12 +50,12 @@ export const enTranslation: Translation = {
     weekOfWhat: "Week of What?",
     aboutProject: "About the project",
     welcome1:
-      "Welcome! We are the Week of Charity, a project designed to stream once a year for a good cause. For one week, different members of our group will alternate in streaming their activities to collect donations. We have a diverse program in addition to various video games, real life projects like Dungeons and Dragons and quiz shows will be broadcasted.",
+      "Welcome! We are the Week of Charity, a project designed to stream once a year for a good cause. For one week, different members of our group will alternate in streaming their activities to collect donations. We have a diverse program: In addition to various video games, real life projects like Dungeons and Dragons and quiz shows will be broadcasted.",
     welcome2:
-      'This year all donations will go to the project "EXIT-Deutschland", a charity dedicated to helping people exit right-wing extremism. More information can be found',
+      'All donations collected in 2024 went to EXIT-Deutschland, a project that helps people leave the far-right scene. You can find more information',
     here: "here",
     welcome3:
-      "We hope this week will be as fun and entertaining to you as it will be to us! We look forward to seeing you!",
+      "Together we were able to collect 5408.38€ for a good cause! Be there next time too!",
     entertainment1: "Entertainment",
     entertainment2: "without end",
     fullProgram: "The full program",
@@ -114,25 +114,25 @@ export const enTranslation: Translation = {
     mainHeader: "The Week of Charity",
     text: {
       t1: "The Week of Charity",
-      t2: "is a constant streaming project for a good cause! During one whole week you are able to see constant streams on Twitch from on of our",
+      t2: "is a continuous streaming project for a good cause! For one week, the Twitch channels of our",
       t3: "members",
-      t4: "to collect donations. The program is made up of a variety of entertaining streams containing different video games, Dungeons and Dragons and even multiple quiz shows! You don't want to miss anything Special? Look at our",
+      t4: "will stream continuously to collect donations. The program is made up of a variety of entertaining streams containing different video games, Dungeons and Dragons and even multiple quiz shows! What was shown where and when, as well as the links to our VODs, can be found in our",
       t5: "schedule",
       t6: ".",
       t7: "Our project",
-      t8: "was established in 2021 and has it's fourth anniversairy this year! The money that is gathered during this week will be donated to EXIT-Deutschland. You can support us either with direct",
+      t8: "was established in 2021 and entered its fourth round in 2024! All donations collected this week went to EXIT-Deutschland. We collected over 5400€ via direct ",
       t9: "donations",
-      t10: "during the streams or by buying merchandise from our",
-      t11: "shop",
-      t12: ". The whole profit gathered by the merchandising sales will be donated to the current charity and you will be able to wear our mascot Chesster!",
+      t10: "during the streams and from our share of the profits from our ",
+      t11: "merch shop",
+      t12: "! Thank you for the most successful Week Of Charity to date! Let's hope that we can pull off something great together again next time!",
     },
     ourProjects: "Our Projects",
     "2024": {
       header: "EXIT-Deutschland",
       text: {
-        t1: "We are delighted to be able to collect donations for",
+        t1: "For the fourth instance of the Week of Charity, we decided to collect donations for",
         t2: "EXIT-Deutschland",
-        t3: " this year! EXIT-Deutschland is an initiative that has been helping people to leave the right-wing extremist movement for over 20 years. Among other things, EXIT-Deutschland monitors various right-wing extremist movements and works on prevention, intervention, victim protection and the resocialization of people willing to leave. They also support people associated with right-wing extremists. We hope that you will leave a few donations for this good cause and would be delighted if you tune in again in large numbers!",
+        t3: "! EXIT-Deutschland is an initiative that has been helping people to break away from the right-wing extremist movement for over 20 years. Among other things, EXIT-Deutschland monitors various right-wing extremist movements and works on prevention, intervention, victim protection and the resocialization of people willing to leave. They also offer help to people who are associated with right-wing extremists. Thanks to the community, we were able to surpass all previous years and collect over 5400€ for this good cause!",
       },
     },
     "2023": {
@@ -140,7 +140,7 @@ export const enTranslation: Translation = {
       text: {
         t1: "For the third run, all of our donations went to the",
         t2: "Tierheim Berlin",
-        t3: ". A total of 1,300 animals, from rodents, dogs and cats to farmyard animals and exotic species, are housed, cared for and nursed back to health there. As this is not only very emotionally demanding, but also requires considerable financial resources, we decided to support this organization. Thanks to your support, we were able to raise over 2640 euros for the animal shelter!",
+        t3: ". A total of 1300 animals, from rodents, dogs and cats to farmyard animals and exotic species, are housed, cared for and nursed back to health there. As this is not only very emotionally demanding, but also requires considerable financial resources, we decided to support this organization. Thanks to your support, we were able to raise over 2640€ for the animal shelter!",
       },
     },
     "2022": {
@@ -156,7 +156,7 @@ export const enTranslation: Translation = {
       text: {
         t1: "The",
         t2: "Lesben- und Schwulenverband in Deutschland",
-        t3: " (for short: LSVD) was the first organization we supported through our Week of Charity 2021. The LSVD is a civil rights association which campaigns for the rights and interests of lesbian, gay, bisexual, transgender, intersex and queer people. Our donations went specifically to the Covid Aid Africa project, in which the LSVD and local partners supported queer people in Africa who, as a minority, are often particularly affected by crisis situations. They are scapegoated for virus outbreaks, which increases hatred towards them and causes them to lose their jobs or family support faster than others. There was also a lack of critical goods such as masks, disinfectants and hygiene products. To support these people, we were able to raise an incredible €2,500 in total at our first ever WoC thanks to your help!",
+        t3: " (for short: LSVD) was the first organization we supported through our Week of Charity 2021. The LSVD is a civil rights association which campaigns for the rights and interests of lesbian, gay, bisexual, transgender, intersex and queer people. Our donations went specifically to the Covid Aid Africa project, in which the LSVD and local partners supported queer people in Africa who, as a minority, are often particularly affected by crisis situations. They are scapegoated for virus outbreaks, which increases hatred towards them and causes them to lose their jobs or family support faster than others. There was also a lack of critical goods such as masks, disinfectants and hygiene products. To support these people, we were able to raise an incredible 2500€ in total at our first ever WoC thanks to your help!",
       },
     },
   },

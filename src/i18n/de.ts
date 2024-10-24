@@ -50,12 +50,12 @@ export const deTranslation: Translation = {
     weekOfWhat: "Week of Was?",
     aboutProject: "Über das Projekt",
     welcome1:
-      "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten.",
+      "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten.",
     welcome2:
-      "Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an EXIT-Deutschland, ein Projekt, das Menschen beim Ausstieg aus der rechtsextremistischen Szene unterstützt. Mehr Informationen findet ihr",
+      "Alle Spenden, die 2024 gesammelt wurden, gingen an EXIT-Deutschland, ein Projekt, das Menschen beim Ausstieg aus der rechtsextremen Szene unterstützt. Weitere Informationen findet ihr",
     here: "hier",
     welcome3:
-      "Wir hoffen, die Woche wird euch genau so viel Freude und Unterhaltung bringen wie uns. Wir freuen uns auf euch!",
+      "Zusammen konnten wir 5408,38€ für einen guten Zweck sammeln! Seid beim nächsten Mal auch dabei!",
     entertainment1: "Entertainment",
     entertainment2: "ohne Ende",
     fullProgram: "Das ganze Programm",
@@ -116,23 +116,23 @@ export const deTranslation: Translation = {
       t1: "Die Week of Charity",
       t2: "ist ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer",
       t3: "Mitglieder",
-      t4: "durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert und neben diversen Videospielen wird unter Anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten. Was wann wo zu sehen ist, findet ihr in unserem",
+      t4: "durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter Anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten. Was wann wo zu sehen war, sowie die Links zu unseren VODs, findet ihr in unserem",
       t5: "Zeitplan",
       t6: ".",
       t7: "Unser Projekt",
-      t8: "wurde zuerst 2021 auf die Beine gestellt und geht in diesem Jahr schon in die vierte Runde! Alle Spenden, die in dieser Woche gesammelt werden, gehen dieses Jahr an EXIT-Deutschland. Ihr könnt uns über direkte",
+      t8: "wurde zuerst 2021 auf die Beine gestellt und ging 2024 schon in die vierte Runde! Alle Spenden, die in dieser Woche gesammelt wurden, gingen an EXIT-Deutschland. Über 5400€ konnten über direkte",
       t9: "Spenden",
-      t10: "während des Streams unterstützen, oder in unserem",
-      t11: "Shop",
-      t12: " vorbeischauen. Unser Anteil am verkauften Merchandise wird zu 100% gespendet und ihr könnt euch mit unserem Maskottchen Chesster schmücken.",
+      t10: "während der Streams, und aus unserem Gewinn-Anteil unseres",
+      t11: "Merch-Shops",
+      t12: " gesammelt werden! Wir bedanken uns für die wohl erfolgreichste Week Of Charity bis dato! Auf dass wir nächstes Mal erneut sowas tolles gemeinsam auf die Beine stellen können!",
     },
     ourProjects: "Unsere Projekte",
     "2024": {
       header: "EXIT-Deutschland",
       text: {
-        t1: "Wir freuen uns, dieses Jahr Spenden für",
+        t1: "Für die vierte Instanz der Week of Charity entschieden wir uns dazu, Spenden für",
         t2: "EXIT-Deutschland",
-        t3: " sammeln zu dürfen! EXIT-Deutschland ist eine Initiative, welche bereits seit über 20 Jahren Menschen hilft, sich aus der rechtsradikalen Bewegung zu lösen. EXIT-Deutschland beobachtet unter anderem verschiedene rechtsextreme Bestrebungen und arbeitet an Prävention, Intervention, Opferschutz sowie Resozialisierung ausstiegswilliger Personen. Außerdem unterstützen sie Menschen aus dem Umfeld Rechtsradikaler. Wir hoffen, dass ihr für diesen guten Zweck ein paar Spenden dalasst und freuen uns, wenn ihr wieder zahlreich einschaltet!",
+        t3: " zu sammeln! EXIT-Deutschland ist eine Initiative, welche bereits seit über 20 Jahren Menschen hilft, sich aus der rechtsradikalen Bewegung zu lösen. EXIT-Deutschland beobachtet unter anderem verschiedene rechtsextreme Bestrebungen und arbeitet an Prävention, Intervention, Opferschutz sowie Resozialisierung ausstiegswilliger Personen. Außerdem unterstützen sie Menschen aus dem Umfeld Rechtsradikaler. Für diesen guten Zweck konnten wir dank der Community all die bisherigen Jahre übertrumpfen und über 5400€ an Spenden sammeln!",
       },
     },
     "2023": {
@@ -140,7 +140,7 @@ export const deTranslation: Translation = {
       text: {
         t1: "Für den dritten Durchlauf gingen all unsere Spenden an das",
         t2: "Tierheim Berlin",
-        t3: ". Dort werden von Nagetieren, über Hunde und Katzen bis hin zu Hoftieren und Exoten insgesamt 1300 Tiere behaust, versorgt und gesund gepflegt. Da das nicht nur emotional sehr fordernd ist, sondern auch erhebliche finanzielle Mittel erfordert, haben wir uns für diese Organisation entschieden. Dank Eurer Unterstützung konnten wir für das Tierheim über 2640 Euro sammeln!",
+        t3: ". Dort werden von Nagetieren, über Hunde und Katzen bis hin zu Hoftieren und Exoten insgesamt 1300 Tiere behaust, versorgt und gesund gepflegt. Da das nicht nur emotional sehr fordernd ist, sondern auch erhebliche finanzielle Mittel erfordert, haben wir uns für diese Organisation entschieden. Dank Eurer Unterstützung konnten wir für das Tierheim über 2640€ sammeln!",
       },
     },
     "2022": {

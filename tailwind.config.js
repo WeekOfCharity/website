@@ -228,23 +228,20 @@ module.exports = {
 
       const accentUtilities = Object.fromEntries(
         colors.map((color) => {
-          return [
-            `.woc-accent-${color}`,
-            Object.fromEntries(
-              intensities.flatMap((intensity) => {
-                return [
-                  [
-                    `--accent-${intensity}`,
-                    theme(`colors.${color}.${intensity}`),
-                  ],
-                  [
-                    `--accent-${intensity}-rgb`,
-                    hexToRgb(theme(`colors.${color}.${intensity}`)),
-                  ],
-                ];
-              })
-            ),
-          ];
+          const entries = [];
+
+          for (const intensity of intensities) {
+            entries.push([
+              `--accent-${intensity}`,
+              theme(`colors.${color}.${intensity}`),
+            ]);
+            entries.push([
+              `--accent-${intensity}-rgb`,
+              hexToRgb(theme(`colors.${color}.${intensity}`)),
+            ]);
+          }
+
+          return [`.woc-accent-${color}`, Object.fromEntries(entries)];
         })
       );
 

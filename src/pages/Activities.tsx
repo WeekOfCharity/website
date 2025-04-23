@@ -138,13 +138,13 @@ export const Activities = () => {
     configuration.schedule_complete;
 
   return (
-    <main className="text-neutral-800 woc-accent-pink23">
+    <main className="text-neutral-800 woc-accent-pink">
       <header className="px-5 pt-10 pb-5 relative text-center">
-        <div className="font-round2 font-bold text-pink23-900 uppercase">
+        <div className="font-round2 font-bold text-pink-900 uppercase">
           {t("activities.subHeader")}
         </div>
 
-        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink-500 text-4xl md:text-7xl w-4/5">
           {t("activities.mainHeader")}
           <br />
           Week of Charity
@@ -263,12 +263,12 @@ export const Activities = () => {
               className="h-full max-h-screen overflow-y-scroll p-5 text-white pb-24"
               style={{ scrollbarWidth: "thin" }}
             >
-              <Brush1 className="absolute -right-24 text-pink23-500 -top-8 w-[400px] -z-10" />
+              <Brush1 className="absolute -right-24 text-pink-500 -top-8 w-[400px] -z-10" />
 
               <div className="flex items-start mb-5">
                 <img
                   alt=""
-                  className="bg-pink23-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
+                  className="bg-pink-500 h-40 object-cover object-center rounded-lg shadow-2xl w-40"
                   src={`${BASE_URL}/assets/${activeActivity.icon}?width=256&height=256&quality=50&fit=cover&format=webp`}
                 />
               </div>
@@ -280,7 +280,7 @@ export const Activities = () => {
 
                 {activeActivity.reference_link && (
                   <a
-                    className="bg-pink23-500 hover:bg-pink23-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
+                    className="bg-pink-500 hover:bg-pink-200 duration-300 p-3 rounded-full text-neutral-800 transition-all"
                     href={activeActivity.reference_link}
                     rel="nofollow noreferrer"
                     target="_blank"
@@ -303,7 +303,7 @@ export const Activities = () => {
                 <section className="flex flex-col gap-5 mt-5">
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">
+                      <div className="font-round2 font-bold text-pink-500">
                         {t("activities.joinTheseStreams")}
                       </div>
                       {getStreamsWithActivity(activeActivity.id).map(
@@ -331,7 +331,7 @@ export const Activities = () => {
 
                   {getStreamsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">
+                      <div className="font-round2 font-bold text-pink-500">
                         {activeActivity.name} {t("activities.isHostedBy")}
                       </div>
                       <div className="flex gap-2">
@@ -360,7 +360,7 @@ export const Activities = () => {
 
                   {getFellowsWithActivity(activeActivity.id).length > 0 && (
                     <div className="flex flex-col gap-2">
-                      <div className="font-round2 font-bold text-pink23-500">
+                      <div className="font-round2 font-bold text-pink-500">
                         {activeActivity.name} {t("activities.isAccompaniedBy")}
                       </div>
                       <div className="flex flex-wrap gap-2">

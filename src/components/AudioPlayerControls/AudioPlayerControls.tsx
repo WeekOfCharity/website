@@ -80,7 +80,7 @@ export const AudioPlayerControls = ({
   }, [progress, seeking]);
 
   return (
-    <div className="w-80 h-full bg-blue23-700 flex flex-row justify-between items-center rounded-md px-2">
+    <div className="w-80 h-full bg-royal-700 flex flex-row justify-between items-center rounded-md px-2">
       {/* play/pause button */}
       <button
         className="focus:outline-none"

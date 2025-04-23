@@ -17,12 +17,12 @@ export const Projects = () => {
   useTitle(t("mainNav.projects"));
 
   return (
-    <main className="text-neutral-800 woc-accent-blue23">
+    <main className="text-neutral-800 woc-accent-royal">
       <header className="px-5 py-16 relative text-center">
-        <div className="font-round2 font-bold text-blue23-900 uppercase">
+        <div className="font-round2 font-bold text-royal-900 uppercase">
           {t("projects.subHeader")}
         </div>
-        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-blue23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-royal-500 text-4xl md:text-7xl w-4/5">
           {t("projects.mainHeader")}
         </h1>
         <Brush4 className="absolute h-96 left-1/2 mt-8 text-neutral-100 top-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 w-auto -z-10" />
@@ -47,14 +47,14 @@ export const Projects = () => {
                   {`${t("projects.text.t2")} `}
                   <a
                     href="/team"
-                    className="underline underline-offset-2 text-blue23-600"
+                    className="underline underline-offset-2 text-royal-600"
                   >
                     {t("projects.text.t3")}
                   </a>
                   {` ${t("projects.text.t4")} `}
                   <a
                     href="/streams"
-                    className="underline underline-offset-2 text-blue23-600"
+                    className="underline underline-offset-2 text-royal-600"
                   >
                     {t("projects.text.t5")}
                   </a>
@@ -68,7 +68,7 @@ export const Projects = () => {
                   <a
                     target="_blank"
                     href={DONATION_URL}
-                    className="underline underline-offset-2 text-blue23-600"
+                    className="underline underline-offset-2 text-royal-600"
                     rel="noreferrer"
                   >
                     {t("projects.text.t9")}
@@ -77,7 +77,7 @@ export const Projects = () => {
                   <a
                     target="_blank"
                     href="https://www.shirtee.com/de/store/weekofcharity/"
-                    className="underline underline-offset-2 text-blue23-600"
+                    className="underline underline-offset-2 text-royal-600"
                     rel="noreferrer"
                   >
                     {t("projects.text.t11")}
@@ -88,7 +88,7 @@ export const Projects = () => {
             </div>
           </div>
 
-          <h2 className="font-pally font-bold max-w-screen-md mx-auto my-8 text-blue23-500 text-4xl md:text-5xl w-4/5 text-center">
+          <h2 className="font-pally font-bold max-w-screen-md mx-auto my-8 text-royal-500 text-4xl md:text-5xl w-4/5 text-center">
             {t("projects.ourProjects")}
           </h2>
 

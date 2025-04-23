@@ -144,7 +144,7 @@ export const GalleryImageLarge = ({
               <div className="mt-1">
                 {`${t("gallery.credit")} `}
                 <a
-                  className="text-green23-600"
+                  className="text-mint-600"
                   href={imageData.author_link}
                   target="_blank"
                   rel="noreferrer"

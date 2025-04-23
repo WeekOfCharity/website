@@ -23,8 +23,8 @@ export const Member = ({
       className={classNames(
         "aspect-square flex flex-col overflow-hidden relative rounded-md select-none",
         {
-          "bg-blue23-500 group cursor-pointer": !condensed,
-          "bg-blue23-500 h-20 w-20": condensed,
+          "bg-royal-500 group cursor-pointer": !condensed,
+          "bg-royal-500 h-20 w-20": condensed,
         }
       )}
       onClick={onClick}
@@ -37,8 +37,8 @@ export const Member = ({
           className={classNames(
             "bg-gradient-to-b duration-300 flex flex-col h-full rounded-md group-hover:rounded-b-none transition-all w-full",
             {
-              "from-transparent via-blue23-500/10 to-blue23-900/90": !condensed,
-              "from-transparent to-blue23-900/90": condensed,
+              "from-transparent via-royal-500/10 to-royal-900/90": !condensed,
+              "from-transparent to-royal-900/90": condensed,
             }
           )}
         >
@@ -66,7 +66,7 @@ export const Member = ({
         </div>
       </div>
 
-      <div className="absolute bg-blue23-500 bottom-0 duration-300 font-round2 font-semibold h-8 p-1 rounded-b text-white text-center transition-all translate-y-full group-hover:translate-y-0 w-full">
+      <div className="absolute bg-royal-500 bottom-0 duration-300 font-round2 font-semibold h-8 p-1 rounded-b text-white text-center transition-all translate-y-full group-hover:translate-y-0 w-full">
         {t("viewDetails")}
       </div>
     </div>

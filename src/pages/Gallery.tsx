@@ -113,13 +113,13 @@ export const Gallery = () => {
   }, []);
 
   return (
-    <main className="text-neutral-800 woc-accent-green23">
+    <main className="text-neutral-800 woc-accent-mint">
       <header className="px-5 pt-10 pb-5 relative text-center">
-        <div className="font-round2 font-bold text-green23-900 uppercase">
+        <div className="font-round2 font-bold text-mint-900 uppercase">
           {t("gallery.subHeader")}
         </div>
 
-        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-green23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-mint-500 text-4xl md:text-7xl w-4/5">
           {t("gallery.mainHeader")}
           <br />
           Week of Charity

@@ -68,7 +68,7 @@ export const Nav = () => {
           <NavLink
             className={({ isActive }) =>
               classNames(
-                isActive ? "text-pink23-500" : "hover:text-pink23-500",
+                isActive ? "text-pink-500" : "hover:text-pink-500",
                 "hideable"
               )
             }
@@ -80,7 +80,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(isActive ? "text-blue23-500" : "hover:text-blue23-500")
+              classNames(isActive ? "text-royal-500" : "hover:text-royal-500")
             }
             to="/projekte"
           >
@@ -90,9 +90,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(
-                isActive ? "text-green23-500" : "hover:text-green23-500"
-              )
+              classNames(isActive ? "text-mint-500" : "hover:text-mint-500")
             }
             to="/streams"
           >
@@ -102,7 +100,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(isActive ? "text-pink23-500" : "hover:text-pink23-500")
+              classNames(isActive ? "text-pink-500" : "hover:text-pink-500")
             }
             to="/aktivitaeten"
           >
@@ -112,7 +110,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(isActive ? "text-blue23-500" : "hover:text-blue23-500")
+              classNames(isActive ? "text-royal-500" : "hover:text-royal-500")
             }
             to="/team"
           >
@@ -122,9 +120,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(
-                isActive ? "text-green23-500" : "hover:text-green23-500"
-              )
+              classNames(isActive ? "text-mint-500" : "hover:text-mint-500")
             }
             to="/galerie"
           >
@@ -244,7 +240,7 @@ export const Nav = () => {
         <menu className="flex flex-col space-y-5 text-white">
           <NavLink
             className={({ isActive }) =>
-              classNames(isActive ? "text-pink23-500" : "hover:text-pink23-500")
+              classNames(isActive ? "text-pink-500" : "hover:text-pink-500")
             }
             onClick={() => setMenuOpen(false)}
             to="/"
@@ -255,7 +251,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(isActive ? "text-blue23-500" : "hover:text-blue23-500")
+              classNames(isActive ? "text-royal-500" : "hover:text-royal-500")
             }
             onClick={() => setMenuOpen(false)}
             to="/projekte"
@@ -266,9 +262,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(
-                isActive ? "text-green23-500" : "hover:text-green23-500"
-              )
+              classNames(isActive ? "text-mint-500" : "hover:text-mint-500")
             }
             onClick={() => setMenuOpen(false)}
             to="/streams"
@@ -279,7 +273,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(isActive ? "text-pink23-500" : "hover:text-pink23-500")
+              classNames(isActive ? "text-pink-500" : "hover:text-pink-500")
             }
             onClick={() => setMenuOpen(false)}
             to="/aktivitaeten"
@@ -290,7 +284,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(isActive ? "text-blue23-500" : "hover:text-blue23-500")
+              classNames(isActive ? "text-royal-500" : "hover:text-royal-500")
             }
             onClick={() => setMenuOpen(false)}
             to="/team"
@@ -301,9 +295,7 @@ export const Nav = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              classNames(
-                isActive ? "text-green23-500" : "hover:text-green23-500"
-              )
+              classNames(isActive ? "text-mint-500" : "hover:text-mint-500")
             }
             onClick={() => setMenuOpen(false)}
             to="/galerie"
@@ -313,7 +305,7 @@ export const Nav = () => {
             </span>
           </NavLink>
           <a href="/musik">
-            <span className="font-pally font-medium hover:text-green23-500 text-2xl">
+            <span className="font-pally font-medium hover:text-mint-500 text-2xl">
               {t("subNav.music")}
             </span>
           </a>
@@ -322,7 +314,7 @@ export const Nav = () => {
             rel="nofollow noreferrer"
             target="_blank"
           >
-            <span className="font-pally font-medium hover:text-mustard-500 text-2xl">
+            <span className="font-pally font-medium hover:text-mint-500 text-2xl">
               {t("subNav.merch")}
             </span>
           </a>

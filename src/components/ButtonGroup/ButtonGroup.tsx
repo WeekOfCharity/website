@@ -21,7 +21,7 @@ export const ButtonGroup = ({
   };
 
   return (
-    <div className="border-2 border-green23-800 bg-green23-800 overflow-hidden rounded-lg">
+    <div className="border-2 border-mint-800 bg-mint-800 overflow-hidden rounded-lg">
       {buttons.map((buttonLabel, i) => (
         <button
           key={i}
@@ -30,8 +30,8 @@ export const ButtonGroup = ({
           className={cn(
             "font-medium text-lg py-3 px-5 transition-colors duration-300",
             {
-              "bg-green23-800 text-green23-100": i === clickedId,
-              "bg-green23-100 hover:bg-green23-300 active:bg-green23-400 text-green23-900":
+              "bg-mint-800 text-mint-100": i === clickedId,
+              "bg-mint-100 hover:bg-mint-300 active:bg-mint-400 text-mint-900":
                 i !== clickedId,
             }
           )}

@@ -10,7 +10,7 @@ export const Ticket = () => {
   return (
     <section className="flex justify-center pt-5 select-none">
       <div className="flex m-5 max-w-lg -rotate-2 transform-gpu w-full">
-        <div className="backdrop-blur-md bg-gradient-to-br from-lavender-200 to-arctic-200 bg-opacity-10 px-3 py-2 relative rounded-lg shadow w-full">
+        <div className="backdrop-blur-md bg-gradient-to-br from-pink-200 to-royal-200 bg-opacity-10 px-3 py-2 relative rounded-lg shadow w-full">
           <div className="flex justify-between mb-10">
             <span className="font-brush text-2xl">Week of Charity</span>
             <img className="h-8 rotate-12" src={logo.toString()} />
@@ -20,14 +20,14 @@ export const Ticket = () => {
             <Icon className="mr-auto" path={mdiTwitch} size="2rem" />
 
             <div className="mr-6 text-right">
-              <p className="font-semibold text-lavender-800 text-xs uppercase">
+              <p className="font-semibold text-pink-800 text-xs uppercase">
                 Beginn
               </p>
               <p className="font-round font-bold">13:00</p>
             </div>
 
             <div className="text-right">
-              <p className="font-semibold text-lavender-800 text-xs uppercase">
+              <p className="font-semibold text-pink-800 text-xs uppercase">
                 Eventzeitraum
               </p>
               <p className="font-round font-bold">25.9. &mdash; 2.10.</p>

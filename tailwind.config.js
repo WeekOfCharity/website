@@ -30,7 +30,7 @@ module.exports = {
         800: "var(--accent-800)",
         900: "var(--accent-900)",
       },
-      persian: {
+      pink: {
         100: "#FEE4E8",
         200: "#FECAD6",
         300: "#FCAFC9",
@@ -41,7 +41,7 @@ module.exports = {
         800: "#8E267D",
         900: "#76176F",
       },
-      aqua: {
+      mint: {
         100: "#E7FDEC",
         200: "#CFFCDE",
         300: "#B4F7D2",
@@ -52,62 +52,7 @@ module.exports = {
         800: "#28857F",
         900: "#186B6E",
       },
-      arctic: {
-        100: "#E8FEFE",
-        200: "#D2FAFE",
-        300: "#BBF2FD",
-        400: "#AAE9FB",
-        500: "#8EDAFA",
-        600: "#67AED7",
-        700: "#4785B3",
-        800: "#2D5F90",
-        900: "#1B4377",
-      },
-      mustard: {
-        100: "#FFFDE2",
-        200: "#FFFBC5",
-        300: "#FFF9A9",
-        400: "#FFF693",
-        500: "#FFF370",
-        600: "#DBCE51",
-        700: "#B7AA38",
-        800: "#938723",
-        900: "#7A6E15",
-      },
-      lavender: {
-        100: "#F9E5FE",
-        200: "#F1CBFD",
-        300: "#E5B0FB",
-        400: "#D69BF7",
-        500: "#C17AF2",
-        600: "#9859D0",
-        700: "#733DAE",
-        800: "#51268C",
-        900: "#381774",
-      },
-      pink23: {
-        100: "#FEE4E8",
-        200: "#FECAD6",
-        300: "#FCAFC9",
-        400: "#F99BC4",
-        500: "#F67ABC",
-        600: "#D359A6",
-        700: "#B13D92",
-        800: "#8E267D",
-        900: "#76176F",
-      },
-      green23: {
-        100: "#E7FDEC",
-        200: "#CFFCDE",
-        300: "#B4F7D2",
-        400: "#9FF0CB",
-        500: "#7FE6C1",
-        600: "#5CC5AA",
-        700: "#40A595",
-        800: "#28857F",
-        900: "#186B6E",
-      },
-      blue23: {
+      royal: {
         100: "#E7F3FD",
         200: "#CFE4FC",
         300: "#B4CCF7",
@@ -278,17 +223,7 @@ module.exports = {
   },
   plugins: [
     plugin(function ({ addUtilities, theme }) {
-      const colors = [
-        "persian",
-        "aqua",
-        "arctic",
-        "mustard",
-        "lavender",
-        "neutral",
-        "pink23",
-        "blue23",
-        "green23",
-      ];
+      const colors = ["neutral", "pink", "royal", "mint"];
       const intensities = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
       const accentUtilities = Object.fromEntries(
@@ -318,7 +253,7 @@ module.exports = {
     plugin(function ({ addUtilities, theme }) {
       const newUtilities = {
         ".bg-repeating-linear-gradient": {
-          backgroundImage: `repeating-linear-gradient(-45deg, ${theme("colors.blue23.500")} 0 6px, transparent 6px 12px)`,
+          backgroundImage: `repeating-linear-gradient(-45deg, ${theme("colors.royal.500")} 0 6px, transparent 6px 12px)`,
         },
       };
 

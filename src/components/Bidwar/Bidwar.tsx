@@ -56,17 +56,17 @@ export const Bidwar = ({
   return (
     <div className="relative flex flex-col font-bold max-w-screen-lg w-full">
       {timeslot && getState(timeslot.start, timeslot.end) === "ended" && (
-        <GoalStamp className="absolute text-blue23-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-56 z-[1]" />
+        <GoalStamp className="absolute text-royal-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-56 z-[1]" />
       )}
-      <div className="bg-blue23-200">
+      <div className="bg-royal-200">
         <div className="relative py-7 px-2 md:px-4">
-          <Brush1 className="absolute text-blue23-400 opacity-20 max-w-[700px] lg:w-[700px] top-1/2 left-0 right-0 m-auto -translate-y-1/3" />
-          <h2 className="relative text-blue23-800 text-2xl md:text-3xl text-center mt-3 md:mt-6 mx-6 z-[1]">
+          <Brush1 className="absolute text-royal-400 opacity-20 max-w-[700px] lg:w-[700px] top-1/2 left-0 right-0 m-auto -translate-y-1/3" />
+          <h2 className="relative text-royal-800 text-2xl md:text-3xl text-center mt-3 md:mt-6 mx-6 z-[1]">
             {name}
           </h2>
           <div className="flex flex-row items-center justify-center mt-2 mb-6 z-[1]">
             <h3
-              className={classNames("text-blue23-800 text-center z-[1]", {
+              className={classNames("text-royal-800 text-center z-[1]", {
                 "text-xl md:text-2xl": status === "active",
                 "text-2xl md:text-3xl": status === "results",
               })}
@@ -84,8 +84,8 @@ export const Bidwar = ({
                 >
                   <Icon
                     className={classNames("ml-2", {
-                      "text-blue23-600": descriptionShown,
-                      "text-blue23-800": !descriptionShown,
+                      "text-royal-600": descriptionShown,
+                      "text-royal-800": !descriptionShown,
                     })}
                     path={mdiInformationOutline}
                     size="2rem"
@@ -94,9 +94,9 @@ export const Bidwar = ({
                   {descriptionShown && (
                     <>
                       <div className="absolute top-10 right-1 left-1/2 -translate-x-1/4 w-18 flex items-center justify-center">
-                        <div className="w-0 h-0 border-solid border-x-[14px] border-x-transparent border-b-[26px] border-b-blue23-700"></div>
+                        <div className="w-0 h-0 border-solid border-x-[14px] border-x-transparent border-b-[26px] border-b-royal-700"></div>
                       </div>
-                      <div className="absolute cursor-auto select-text top-16 -left-[296px] -right-[33px] md:-left-[446px] md:-right-[133px] bg-blue23-700 text-blue23-200 shadow-2xl rounded-lg p-6">
+                      <div className="absolute cursor-auto select-text top-16 -left-[296px] -right-[33px] md:-left-[446px] md:-right-[133px] bg-royal-700 text-royal-200 shadow-2xl rounded-lg p-6">
                         {description}
                       </div>
                     </>
@@ -121,20 +121,20 @@ export const Bidwar = ({
                       className={classNames(
                         "flex flex-col md:flex-row items-start md:items-center w-full gap-0 md:gap-4 my-2 md:my-3",
                         {
-                          "[&>span]:opacity-50 [&>span]:first:opacity-100 [&>span]:first:text-blue23-900 [&>span]:[&>div]:opacity-50 [&>span]:[&>div]:first:opacity-100 [&>span]:[&>div]:first:text-blue23-800 [&>div]:[&>div]:opacity-50 [&>div]:[&>div]:first:opacity-100 [&>div]:[&>div]:first:bg-blue23-700":
+                          "[&>span]:opacity-50 [&>span]:first:opacity-100 [&>span]:first:text-royal-900 [&>span]:[&>div]:opacity-50 [&>span]:[&>div]:first:opacity-100 [&>span]:[&>div]:first:text-royal-800 [&>div]:[&>div]:opacity-50 [&>div]:[&>div]:first:opacity-100 [&>div]:[&>div]:first:bg-royal-700":
                             status === "results",
                         }
                       )}
                       title={key}
                       key={"wrapper-" + key}
                     >
-                      <span className="text-lg md:text-xl w-full md:w-52 text-blue23-700 text-left md:text-right shrink-0 text-ellipsis overflow-hidden whitespace-nowrap">
+                      <span className="text-lg md:text-xl w-full md:w-52 text-royal-700 text-left md:text-right shrink-0 text-ellipsis overflow-hidden whitespace-nowrap">
                         #{capitalize(key)}
                       </span>
                       <div className="flex items-center gap-4 shrink-0 w-[calc(100%-6.5rem)] md:w-[calc(100%-21.5rem)]">
                         {maxOptionAmount && (
                           <div
-                            className="self-stretch bg-blue23-500 rounded-md shrink-0"
+                            className="self-stretch bg-royal-500 rounded-md shrink-0"
                             style={{
                               width: `${
                                 (options[key] * 100) / maxOptionAmount
@@ -142,7 +142,7 @@ export const Bidwar = ({
                             }}
                           ></div>
                         )}
-                        <span className="text-xl md:text-2xl font-fat text-blue23-600 w-24 shrink-0">
+                        <span className="text-xl md:text-2xl font-fat text-royal-600 w-24 shrink-0">
                           {formatter.format(options[key] / 100).slice(0, -2)}
                         </span>
                       </div>
@@ -155,13 +155,13 @@ export const Bidwar = ({
         {sortedOptionKeys && sortedOptionKeys.length > 3 && (
           <div className="flex justify-center items-center h-10 p-6">
             <button
-              className="group flex justify-center items-center text-blue23-700 w-32 h-12"
+              className="group flex justify-center items-center text-royal-700 w-32 h-12"
               type="button"
               onClick={toggleExpanded}
             >
               <RoundArrow
                 className={classNames(
-                  "text-blue23-700 w-14 h-16 group-hover:text-blue23-500 transition-transform duration-300",
+                  "text-royal-700 w-14 h-16 group-hover:text-royal-500 transition-transform duration-300",
                   {
                     "-rotate-90": expanded,
                     "rotate-90": !expanded,
@@ -172,7 +172,7 @@ export const Bidwar = ({
           </div>
         )}
         <div className="p-5 pt-0 isolate">
-          <div className="font-round2 font-bold mb-1 text-blue23-900 isolate">
+          <div className="font-round2 font-bold mb-1 text-royal-900 isolate">
             {t("goals.beThere")}
           </div>
           {timeslot && (

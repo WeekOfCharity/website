@@ -83,13 +83,13 @@ export const Stream = ({
           className={classNames(
             "border-2 flex flex-shrink-0 items-center justify-center mr-2 md:mr-4 rounded-md w-12 md:w-16",
             {
-              "bg-white border-green23-900 text-green23-900 woc-active-stream":
+              "bg-white border-mint-900 text-mint-900 woc-active-stream":
                 state === "running" && !highlight,
-              "bg-white border-green23-900 text-green23-900":
+              "bg-white border-mint-900 text-mint-900":
                 state !== "running" && !highlight,
-              "bg-green23-900 border-green23-900 text-white woc-active-highlight-stream":
+              "bg-mint-900 border-mint-900 text-white woc-active-highlight-stream":
                 state === "running" && highlight,
-              "bg-green23-900 border-green23-900 text-white":
+              "bg-mint-900 border-mint-900 text-white":
                 state !== "running" && highlight,
             }
           )}

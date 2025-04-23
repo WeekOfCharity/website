@@ -135,11 +135,11 @@ export const Home = () => {
   return (
     <main className="text-neutral-800">
       <header className="px-5 pt-20 pb-5 relative text-center">
-        <div className="font-round2 font-bold text-pink23-900 uppercase">
+        <div className="font-round2 font-bold text-pink-900 uppercase">
           {t("home.subHeader")}
         </div>
 
-        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink23-500 text-4xl md:text-7xl w-4/5">
+        <h1 className="font-pally font-bold max-w-screen-md mx-auto my-5 text-pink-500 text-4xl md:text-7xl w-4/5">
           {wocStatus === "wocEnded"
             ? t("home.endedText")
             : wocStatus === "wocRunning"
@@ -167,15 +167,15 @@ export const Home = () => {
           configuration.twitch_embed &&
           wocStatus === "wocRunning" && <TwitchEmbed />}
         <div className="flex flex-col gap-5 xl:grid grid-cols-2 grid-rows-2 mx-5 md:mx-10">
-          <section className="bg-pink23-100 bg-opacity-50 pb-5 pt-10 row-span-2">
-            <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-pink23-900 text-center transform-gpu uppercase">
+          <section className="bg-pink-100 bg-opacity-50 pb-5 pt-10 row-span-2">
+            <div className="font-round2 font-bold -rotate-[10deg] -skew-x-[10deg] text-pink-900 text-center transform-gpu uppercase">
               {t("home.weekOfWhat")}
             </div>
             <div className="font-semibold max-w-screen-md mx-auto pt-10 text-3xl md:text-4xl text-center w-4/5">
               {t("home.aboutProject")}
             </div>
 
-            <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-pink23-900 text-opacity-75 w-auto" />
+            <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-pink-900 text-opacity-75 w-auto" />
 
             <div className="leading-relaxed mx-5 text-center">
               {t("home.welcome1")}
@@ -184,7 +184,7 @@ export const Home = () => {
               {`${t("home.welcome2")} `}
               <a
                 href="/projekte"
-                className="underline underline-offset-2 text-pink23-700"
+                className="underline underline-offset-2 text-pink-700"
               >
                 {t("home.here")}
               </a>
@@ -194,11 +194,11 @@ export const Home = () => {
 
           <Link className="contents" to="/streams">
             <div className="group relative">
-              <Brush1 className="absolute pointer-events-none -right-40 sm:-right-24 text-green23-500 -top-8 w-[356px] z-[1]" />
+              <Brush1 className="absolute pointer-events-none -right-40 sm:-right-24 text-mint-500 -top-8 w-[356px] z-[1]" />
 
-              <section className="bg-green23-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 relative hover:text-green23-500 transition-all">
+              <section className="bg-mint-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 relative hover:text-mint-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">
-                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-green23-900 transform-gpu uppercase">
+                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-mint-900 transform-gpu uppercase">
                     {t("home.entertainment1")}
                     <br />
                     {t("home.entertainment2")}
@@ -215,9 +215,9 @@ export const Home = () => {
 
           <Link className="contents" to="/team">
             <div className="relative">
-              <section className="bg-blue23-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 hover:text-blue23-500 transition-all">
+              <section className="bg-royal-100 hover:bg-white bg-opacity-50 cursor-pointer duration-300 flex flex-col h-full justify-end hover:-mx-5 p-5 hover:text-royal-500 transition-all">
                 <div className="pb-5 pt-16 xl:pt-0">
-                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-blue23-900 transform-gpu uppercase">
+                  <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-royal-900 transform-gpu uppercase">
                     {t("home.weAreBehindIt1")}
                     <br />
                     {t("home.weAreBehindIt2")}
@@ -252,7 +252,7 @@ export const Home = () => {
                   className="cursor-pointer"
                   rel="noreferrer"
                 >
-                  <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-blue23-200 hover:bg-blue23-500 text-blue23-500 hover:text-blue23-200 text-4xl md:text-5xl mx-5 -mt-6 md:-mt-16 md:-mb-6 transition-all">
+                  <div className="font-fat text-center tracking-normal hover:tracking-wide rounded-full py-6 md:py-8 px-12 max-w-4xl duration-300 bg-royal-200 hover:bg-royal-500 text-royal-500 hover:text-royal-200 text-4xl md:text-5xl mx-5 -mt-6 md:-mt-16 md:-mb-6 transition-all">
                     {t("home.donateNow")}
                   </div>
                 </a>
@@ -316,8 +316,8 @@ export const Home = () => {
           {faqStatus === "success" && (
             <div className="md:gap-8 md:grid sm:grid-cols-2 md:grid-cols-3 space-y-5 md:space-y-0">
               {faq?.map((item) => (
-                <div key={item.id} className="bg-opacity-70 bg-green23-100 p-5">
-                  <div className="text-green23-900 font-semibold mb-2 text-lg">
+                <div key={item.id} className="bg-opacity-70 bg-mint-100 p-5">
+                  <div className="text-mint-900 font-semibold mb-2 text-lg">
                     {item.question}
                   </div>
                   <div

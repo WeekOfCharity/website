@@ -347,7 +347,7 @@ export const Privacy = () => {
             Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1
             lit. b) DSGVO); <span className="font-semibold">Website:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.paypal.com/de"
               rel="nofollow noreferrer"
               target="_blank"
@@ -356,7 +356,7 @@ export const Privacy = () => {
             </a>
             ; <span className="font-semibold">Datenschutzerklärung: </span>
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full"
               rel="nofollow noreferrer"
               target="_blank"
@@ -456,7 +456,7 @@ export const Privacy = () => {
             Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{" "}
             <span className="font-semibold">Website:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.netcup.de"
               rel="nofollow noreferrer"
               target="_blank"
@@ -465,7 +465,7 @@ export const Privacy = () => {
             </a>
             ; <span className="font-semibold">Datenschutzerklärung:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.netcup.de/kontakt/datenschutzerklaerung.php"
               rel="nofollow noreferrer"
               target="_blank"
@@ -475,7 +475,7 @@ export const Privacy = () => {
             ;{" "}
             <span className="font-semibold">Auftragsverarbeitungsvertrag:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://helpcenter.netcup.com/de/wiki/general/avv"
               rel="nofollow noreferrer"
               target="_blank"
@@ -569,7 +569,7 @@ export const Privacy = () => {
             Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{" "}
             <span className="font-semibold">Website:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.tiktok.com"
               rel="nofollow noreferrer"
               target="_blank"
@@ -578,7 +578,7 @@ export const Privacy = () => {
             </a>
             ; <span className="font-semibold">Datenschutzerklärung:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.tiktok.com/de/privacy-policy"
               rel="nofollow noreferrer"
               target="_blank"
@@ -597,7 +597,7 @@ export const Privacy = () => {
             Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{" "}
             <span className="font-semibold">Datenschutzerklärung:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://twitter.com/privacy"
               rel="nofollow noreferrer"
               target="_blank"
@@ -606,7 +606,7 @@ export const Privacy = () => {
             </a>
             , (Settings:{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://twitter.com/personalization"
               rel="nofollow noreferrer"
               target="_blank"
@@ -624,7 +624,7 @@ export const Privacy = () => {
             Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{" "}
             <span className="font-semibold">Datenschutzerklärung:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://policies.google.com/privacy"
               rel="nofollow noreferrer"
               target="_blank"
@@ -636,7 +636,7 @@ export const Privacy = () => {
               Widerspruchsmöglichkeit (Opt-Out):
             </span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://adssettings.google.com/authenticated"
               rel="nofollow noreferrer"
               target="_blank"
@@ -655,7 +655,7 @@ export const Privacy = () => {
             Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{" "}
             <span className="font-semibold">Datenschutzerklärung:</span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.twitch.tv/p/de-de/legal/privacy-notice"
               rel="nofollow noreferrer"
               target="_blank"
@@ -667,7 +667,7 @@ export const Privacy = () => {
               Widerspruchsmöglichkeit (Opt-Out):
             </span>{" "}
             <a
-              className="text-persian-500 underline"
+              className="text-pink-500 underline"
               href="https://www.twitch.tv/p/de-de/legal/eu-eea-uk-right-of-withdrawal"
               rel="nofollow noreferrer"
               target="_blank"

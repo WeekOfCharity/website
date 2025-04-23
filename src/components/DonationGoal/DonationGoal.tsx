@@ -28,27 +28,27 @@ export const DonationGoal = ({
   return (
     <article
       className={classNames("flex flex-col relative", {
-        "bg-blue23-200": achieved,
+        "bg-royal-200": achieved,
         "bg-neutral-100": !achieved,
       })}
     >
       {achieved &&
         timeslot &&
         getState(timeslot.start, timeslot.end) === "ended" && (
-          <GoalStamp className="absolute text-blue23-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-48" />
+          <GoalStamp className="absolute text-royal-700 -top-4 -right-4 rotate-[15deg] w-40 md:w-48" />
         )}
       <div className="flex items-center my-auto p-5">
         <div className="flex items-center justify-center mr-7 relative">
           <Brush4
             className={classNames("h-24 -ml-1 -my-2 rotate-45 w-auto", {
-              "text-blue23-500": achieved,
+              "text-royal-500": achieved,
               "text-neutral-300": !achieved,
             })}
           />
           <div
             className={classNames("absolute font-fat ml-2 text-5xl z-10", {
               "tracking-[-0.075em]": amount === null,
-              "text-blue23-900": achieved,
+              "text-royal-900": achieved,
               "text-neutral-500": !achieved,
             })}
           >
@@ -66,7 +66,7 @@ export const DonationGoal = ({
       <div className="p-5 pt-0">
         <div
           className={classNames("font-round2 font-bold mb-1", {
-            "text-blue23-900": achieved,
+            "text-royal-900": achieved,
             "text-neutral-500": !achieved,
           })}
         >

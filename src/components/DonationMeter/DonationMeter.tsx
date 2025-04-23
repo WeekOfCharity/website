@@ -63,13 +63,13 @@ export const DonationMeter = ({
     <section className="mx-5 md:mx-10 relative">
       <div className="bg-opacity-50 flex flex-col items-center p-5 md:p-10">
         <div className="pb-10">
-          <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-blue23-900 text-center transform-gpu uppercase">
+          <div className="font-round2 font-bold inline-block -rotate-[10deg] -skew-x-[10deg] text-royal-900 text-center transform-gpu uppercase">
             {t("donationMeter.current")}
             <br />
             {t("donationMeter.amount")}
           </div>
         </div>
-        <div className="font-fat text-blue23-500 text-7xl md:text-9xl">
+        <div className="font-fat text-royal-500 text-7xl md:text-9xl">
           <span
             className={classNames("woc-donation-amount", {
               "is-current": !isAnimatingAmount,
@@ -81,10 +81,10 @@ export const DonationMeter = ({
             })}
           </span>
         </div>
-        <div className="font-semibold mt-4 text-blue23-600 text-lg">EURO</div>
+        <div className="font-semibold mt-4 text-royal-600 text-lg">EURO</div>
 
         <div className="h-10 my-10 w-full">
-          <div className="bg-blue23-100 ring-2 ring-offset-2 ring-blue23-600 ring-offset-white rounded w-full">
+          <div className="bg-royal-100 ring-2 ring-offset-2 ring-royal-600 ring-offset-white rounded w-full">
             <div
               className="bg-no-repeat h-10 rounded woc-donation-meter bg-repeating-linear-gradient"
               style={{

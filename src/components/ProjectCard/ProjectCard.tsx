@@ -58,7 +58,7 @@ export const ProjectCard = ({
             <a
               target="_blank"
               href={textlink}
-              className="underline underline-offset-2 text-blue23-600"
+              className="underline underline-offset-2 text-royal-600"
               rel="noreferrer"
             >
               {t(`projects.${year}.text.t2`)}

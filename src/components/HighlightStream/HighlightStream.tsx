@@ -33,7 +33,7 @@ export const HighlightStream = ({
           backgroundImage: `url("${gameImageUrl}")`,
         }}
       />
-      <div className="bg-green23-600 flex-shrink-0 p-4 rounded-b-md">
+      <div className="bg-mint-600 flex-shrink-0 p-4 rounded-b-md">
         <div
           className="font-semibold text-2xl text-white"
           style={{ textShadow: "0 0 20px #000F1E33, 0 0 3px #000F1E4D" }}
@@ -45,7 +45,7 @@ export const HighlightStream = ({
           <Icon className="-mr-2" path={mdiAccount} size="1rem" />
           <span className="font-round font-bold">{streamer}</span>
           {fellowCount > 0 && (
-            <span className="bg-white font-semibold px-2 py-0.5 rounded text-green23-700 text-xs">
+            <span className="bg-white font-semibold px-2 py-0.5 rounded text-mint-700 text-xs">
               +{fellowCount} {t("program.fellows")}
             </span>
           )}

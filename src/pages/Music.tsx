@@ -13,7 +13,7 @@ export const Music = () => {
     useMusicReleases();
 
   return (
-    <main className="text-neutral-800 woc-accent-green23">
+    <main className="text-neutral-800 woc-accent-mint">
       <header className="px-5 py-20 relative text-center">
         <h1 className="font-pally font-bold max-w-screen-md mx-auto text-accent-500 text-4xl md:text-7xl w-4/5">
           {t("music.mainHeader")}
@@ -23,14 +23,14 @@ export const Music = () => {
       </header>
 
       <div className="flex flex-col items-center mx-10 md:mx-28 lg:mx-32">
-        <section className="max-w-screen-lg mx-0 sm:mx-8 lg:mx-16 mb-6 flex bg-green23-100 bg-opacity-50 py-10 row-span-2">
+        <section className="max-w-screen-lg mx-0 sm:mx-8 lg:mx-16 mb-6 flex bg-mint-100 bg-opacity-50 py-10 row-span-2">
           <div className="leading-relaxed mx-5 md:mx-10 text-left">
             <span className="text-lg font-semibold">{t("music.text.t1")}</span>
             {` ${t("music.text.t2")} `}
             <a
               target="_blank"
               href="https://battleofthebits.com/barracks/Profile/kleeder/"
-              className="cursor-pointer text-green23-800 underline underline-offset-2"
+              className="cursor-pointer text-mint-800 underline underline-offset-2"
               rel="noreferrer"
             >
               Amy
@@ -39,7 +39,7 @@ export const Music = () => {
             <a
               target="_blank"
               href="https://battleofthebits.com/barracks/Profile/mirageofher/"
-              className="cursor-pointer text-green23-800 underline underline-offset-2"
+              className="cursor-pointer text-mint-800 underline underline-offset-2"
               rel="noreferrer"
             >
               Mioh
@@ -48,7 +48,7 @@ export const Music = () => {
           </div>
         </section>
 
-        <section className="max-w-screen-xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto space-y-2 text-center text-green23-700 font-pally font-bold text-3xl">
+        <section className="max-w-screen-xl mb-20 md:mb-40 mt-12 md:mt-20 mx-auto space-y-2 text-center text-mint-700 font-pally font-bold text-3xl">
           <div className="gap-14 grid grid-cols-1 lg:grid-cols-2 mx-5 md:mx-10">
             {musicReleasesStatus === "success" &&
               musicReleases.map((album) => (

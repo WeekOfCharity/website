@@ -52,7 +52,7 @@ export const enTranslation: Translation = {
     welcome1:
       "Welcome! We are the Week of Charity, a project designed to stream once a year for a good cause. For one week, different members of our group will alternate in streaming their activities to collect donations. We have a diverse program: In addition to various video games, real life projects like Dungeons and Dragons and quiz shows will be broadcasted.",
     welcome2:
-      'All donations collected in 2024 went to EXIT-Deutschland, a project that helps people leave the far-right scene. You can find more information',
+      "All donations collected in 2024 went to EXIT-Deutschland, a project that helps people leave the far-right scene. You can find more information",
     here: "here",
     welcome3:
       "Together we were able to collect 5408.38€ for a good cause! Be there next time too!",

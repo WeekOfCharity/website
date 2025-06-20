@@ -15,6 +15,7 @@ import { Team } from "./pages/Team";
 import { Widget } from "./widget";
 import { LayoutBgWidget } from "./pages/LayoutBgWidget";
 import { LayoutOverlayWidget } from "./pages/LayoutOverlayWidget";
+import { IntermissionWidget } from "./pages/IntermissionWidget";
 import { initi18n } from "./i18n/i18n";
 import { ExternalRedirect } from "./components/ExternalRedirect/ExternalRedirect";
 
@@ -41,6 +42,7 @@ root.render(
           <Route path="goal" element={<GoalWidget />} />
           <Route path="layout-bg" element={<LayoutBgWidget />} />
           <Route path="layout-overlay" element={<LayoutOverlayWidget />} />
+          <Route path="intermission" element={<IntermissionWidget />} />
         </Route>
         <Route
           path="spieleshuffle"

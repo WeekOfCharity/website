@@ -75,8 +75,22 @@ module.exports = {
           current: "var(--current-layout-bg)",
         },
       },
+      int: {
+        accent: {
+          primary: "#1486FF",
+          secondary: "#FF94FF",
+        },
+        highlight: {
+          light: "#FFF0F4",
+          dark: "#150477",
+        },
+      },
     },
     extend: {
+      backgroundImage: {
+        "scan-lines":
+          "repeating-linear-gradient(transparent, transparent 3px, black 3px, black 6px)",
+      },
       keyframes: {
         float: {
           "0%, 100%": {

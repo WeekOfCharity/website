@@ -13,9 +13,12 @@ import {
   preloadDonationGifs,
 } from "../utils/widgets/donationAlert";
 
-import backgroundGrid from "../assets/intermission/bg-grid.png";
 import { IntermissionTabButton } from "../components/Intermission/IntermissionTabButton";
 import { IntermissionClock } from "../components/Intermission/IntermissionClock";
+import { IntermissionWindow } from "../components/Intermission/IntermissionWindow";
+
+import backgroundGrid from "../assets/intermission/bg-grid.png";
+import windowRight from "../assets/intermission/window-right.png";
 
 export const IntermissionWidget = () => {
   const [donationAlertGif, setDonationAlertGif] = useState<string>();
@@ -125,7 +128,18 @@ export const IntermissionWidget = () => {
       )}
     >
       <img className="" src={backgroundGrid} />
-      <div className="flex h-[63px] gap-4 bg-int-accent-primary bottom-0 absolute w-full border-t-[3px] border-int-highlight-light pl-2 pr-5 items-center text-int-highlight-light">
+
+      <IntermissionWindow
+        className="absolute left-[1332px] top-[111px]"
+        borderSrc={windowRight}
+        title="Chesster.png"
+      >
+        <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
+          HIER IST EIN BILD
+        </div>
+      </IntermissionWindow>
+
+      <div className="z-10 flex h-[63px] gap-4 bg-int-accent-primary bottom-0 absolute w-full border-t-[3px] border-int-highlight-light pl-2 pr-5 items-center text-int-highlight-light">
         <IntermissionTabButton size="small" preload>
           Start
         </IntermissionTabButton>
@@ -134,7 +148,6 @@ export const IntermissionWidget = () => {
         <IntermissionTabButton>Label 3</IntermissionTabButton>
         <IntermissionClock className="ml-auto" />
       </div>
-
       <div
         className={cn(
           "absolute z-50 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[1500ms]",

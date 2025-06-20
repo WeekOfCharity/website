@@ -102,6 +102,16 @@ module.exports = {
             "animation-timing-function": "cubic-bezier(0,0,0.2,1)",
           },
         },
+        window: {
+          "0%, 100%": {
+            transform: "translateY(-9px)",
+            "animation-timing-function": "cubic-bezier(0.7,0,1,1)",
+          },
+          "50%": {
+            transform: "translateY(0px)",
+            "animation-timing-function": "cubic-bezier(0,0,0.2,1)",
+          },
+        },
         bgmoveX: {
           "0%": { transform: "translate(0)" },
           "100%": { transform: "translate(-2980px)" },
@@ -156,6 +166,7 @@ module.exports = {
         fadeinout2: "fadeinout2 ease-in-out 2s",
         donationAlert: "donationAlert infinite 1920ms",
         float: "float infinite ease-in 3s",
+        window: "window infinite ease-in 3s",
         scrollX: "scrollX 10s cubic-bezier(0.37, 0, 0.63, 1) infinite",
         scrollY: "scrollY 30s ease-in-out infinite",
       },

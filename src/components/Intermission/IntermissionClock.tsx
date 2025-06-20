@@ -30,8 +30,6 @@ export const IntermissionClock = ({ className }: IntermissionClockProps) => {
     return () => clearInterval(interval);
   }, []);
 
-  console.log("RERENDER");
-
   return (
     <span
       className={cn("text-[26px] [text-shadow:_3px_4px_#150477]", className)}

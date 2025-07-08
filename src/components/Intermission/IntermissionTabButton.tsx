@@ -71,14 +71,15 @@ export const IntermissionTabButton = forwardRef(
         {active && (
           <img src={size === "normal" ? normalTabActive : smallTabActive} />
         )}
-        <div
-          className={cn("flex items-center", {
-            "justify-center text-[21px]": size === "small",
-            "px-3.5 text-[18px]": size === "normal",
+        <span
+          className={cn("my-auto py-1.5", {
+            "flex items-center justify-center text-[21px]": size === "small",
+            "inline-block overflow-hidden whitespace-nowrap px-3.5 text-[18px] max-w-[201px] [text-overflow:_'...']":
+              size === "normal",
           })}
         >
-          <span>{children}</span>
-        </div>
+          {children}
+        </span>
       </button>
     );
   }

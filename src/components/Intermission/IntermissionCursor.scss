@@ -1,0 +1,15 @@
+.intermission-cursor {
+  :first-child {
+    display: none;
+  }
+}
+
+.intermission-cursor.clicked {
+  :first-child {
+    display: block;
+  }
+
+  :nth-child(2) {
+    display: none;
+  }
+}

@@ -41,3 +41,15 @@ export const toTimeString = (seconds: number, alwaysShowHours?: boolean) => {
 const padString = (string: number) => {
   return ("0" + string).slice(-2);
 };
+
+export const getGermanTimeInternationalFormat = (offsetSeconds?: number) => {
+  const currentDate = new Date();
+  if (offsetSeconds)
+    currentDate.setSeconds(currentDate.getSeconds() + offsetSeconds);
+  return currentDate
+    .toLocaleString("sv-SE", {
+      timeZone: "Europe/Berlin",
+      hour12: false,
+    })
+    .replace(" ", "T");
+};

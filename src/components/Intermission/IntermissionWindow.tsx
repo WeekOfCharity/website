@@ -21,7 +21,9 @@ export const IntermissionWindow = ({
       ref={windowRef}
       className={cn("grid *:col-start-1 *:row-start-1", className)}
     >
-      <div className="pt-[42px] pr-[12px] pb-[12px] pl-[9px]">{children}</div>
+      <div className="flex pt-[42px] pr-[12px] pb-[12px] pl-[9px] min-h-0 *:w-full">
+        {children}
+      </div>
       <img className="z-10" src={borderSrc} />
       <span
         className={cn("z-10 text-[19px] pl-4 py-2", {

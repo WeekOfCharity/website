@@ -31,10 +31,14 @@ export const IntermissionClock = ({ className }: IntermissionClockProps) => {
   }, []);
 
   return (
-    <span
-      className={cn("text-[26px] [text-shadow:_3px_4px_#150477]", className)}
+    <div
+      className={cn(
+        "flex flex-col items-center w-[90px] [text-shadow:_3px_3px_#150477]",
+        className
+      )}
     >
-      {time}
-    </span>
+      <div className="text-[22px]">{time}</div>
+      <div className="text-[16px]/5 pb-0.5">UTC+2</div>
+    </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import cn from "classnames";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
 import "./LayoutOverlayWidget.scss";
@@ -18,9 +18,22 @@ import { IntermissionClock } from "../components/Intermission/IntermissionClock"
 import { IntermissionWindow } from "../components/Intermission/IntermissionWindow";
 
 import backgroundGrid from "../assets/intermission/bg-grid.png";
+import windowTop from "../assets/intermission/window-top.png";
 import windowRight from "../assets/intermission/window-right.png";
+import windowBottom from "../assets/intermission/window-bottom.png";
+import windowLeft from "../assets/intermission/window-left.png";
+import { IntermissionCursor } from "../components/Intermission/IntermissionCursor";
+import {
+  cursorClick,
+  moveTo,
+  teleportTo,
+  wait,
+} from "../utils/widgets/intermission";
 
 export const IntermissionWidget = () => {
+  const [activeWindow, setActiveWindow] = useState<
+    "donationGoals" | "bidwars" | null
+  >("donationGoals");
   const [donationAlertGif, setDonationAlertGif] = useState<string>();
   const [donationAlertComment, setDonationAlertComment] = useState<
     string | null
@@ -31,6 +44,7 @@ export const IntermissionWidget = () => {
   >();
   const [playDonationAlert, setPlayDonationAlert] = useState(false);
   const [isPreloading, setPreloading] = useState(true);
+  const cursorRef = useRef<HTMLDivElement>(null);
   const [searchParams] = useSearchParams();
   const isEn = searchParams.get("en");
   const testalert = searchParams.get("testalert");
@@ -38,7 +52,6 @@ export const IntermissionWidget = () => {
   const skipAlerts = useRef<boolean>(true);
   const donationAlertQueue = useRef<Donation[]>([]);
   const alreadyQueuedIds = useRef<number[]>([]);
-  const label1Ref = useRef<HTMLButtonElement>(null);
 
   const { data: newestDonations, refetch: refetchNewestDonations } =
     useDonations(DonationSorting.NEWEST, 10);
@@ -115,9 +128,49 @@ export const IntermissionWidget = () => {
     return () => clearTimeout(timeout);
   }, [playDonationAlert]);
 
-  useEffect(() => {
-    setTimeout(() => label1Ref.current?.click(), 4000);
+  const playCursorAnimationCloseBottomWindow = async () => {
+    return new Promise<void>((resolve) => {
+      void moveTo(cursorRef, { x: 1252, y: 649 })
+        .then(() => cursorClick(cursorRef))
+        .then(() => {
+          setActiveWindow(null);
+          return wait(600);
+        })
+        .then(() => {
+          resolve();
+        });
+    });
+  };
+
+  const playCursorAnimationBidwars = useCallback(async () => {
+    await teleportTo(cursorRef, { x: 1400, y: 1200 });
+    await playCursorAnimationCloseBottomWindow();
+    await moveTo(cursorRef, { x: 1098, y: 1041 });
+    await cursorClick(cursorRef);
+    setActiveWindow("bidwars");
+    await wait(800);
+    await moveTo(cursorRef, { x: 2260, y: 764, duration: 1300 });
   }, []);
+
+  const playCursorAnimationDonationGoals = useCallback(async () => {
+    await teleportTo(cursorRef, { x: 1600, y: 1200 });
+    await playCursorAnimationCloseBottomWindow();
+    await moveTo(cursorRef, { x: 885, y: 1041 });
+    await cursorClick(cursorRef);
+    setActiveWindow("donationGoals");
+    await wait(800);
+    await moveTo(cursorRef, { x: 2260, y: 764, duration: 1300 });
+  }, []);
+
+  useEffect(() => {
+    let counter: number = 0;
+    const id = setInterval(() => {
+      if (counter % 2 === 0) void playCursorAnimationBidwars();
+      else void playCursorAnimationDonationGoals();
+      counter++;
+    }, 45 * 1000);
+    return () => clearInterval(id);
+  }, [playCursorAnimationBidwars, playCursorAnimationDonationGoals]);
 
   if (isPreloading) return <div className="text-7xl">Loading...</div>;
 
@@ -126,16 +179,71 @@ export const IntermissionWidget = () => {
       className={cn(
         "relative font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden bg-gradient-to-t from-int-accent-secondary to-int-accent-primary"
       )}
+      onClick={(e) => {
+        console.log(
+          `await moveTo(cursorRef, { x: ${e.clientX}, y: ${e.clientY} });`
+        );
+      }}
     >
       <img className="" src={backgroundGrid} />
 
       <IntermissionWindow
+        className="absolute left-[555px] top-[72px]"
+        borderSrc={windowTop}
+        title="UpcomingStreams.xls"
+      >
+        <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
+          HIER SIND UPCOMING STREAMS
+        </div>
+      </IntermissionWindow>
+
+      <IntermissionWindow
         className="absolute left-[1332px] top-[111px]"
         borderSrc={windowRight}
-        title="Chesster.png"
+        title="Chesster.jpg"
       >
         <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
           HIER IST EIN BILD
+        </div>
+      </IntermissionWindow>
+
+      <IntermissionWindow
+        className="z-10 absolute left-[63px] top-[400px]"
+        borderSrc={windowLeft}
+        title="UNTITLED.gif"
+      >
+        <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
+          HIER IST EIN TEXT
+        </div>
+      </IntermissionWindow>
+
+      <IntermissionWindow
+        className={cn(
+          "z-10 absolute left-[687px] top-[630px] transition-[transform,opacity] duration-[800ms]",
+          {
+            "translate-y-[300px] scale-0": activeWindow !== "donationGoals",
+          }
+        )}
+        borderSrc={windowBottom}
+        title="DonationGoals.exe"
+      >
+        <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
+          HIER IST EIN TEXT
+        </div>
+      </IntermissionWindow>
+
+      <IntermissionWindow
+        className={cn(
+          "z-10 absolute left-[687px] top-[630px] transition-[transform,opacity] duration-[800ms]",
+          {
+            "translate-y-[300px] scale-0": activeWindow !== "bidwars",
+          }
+        )}
+        borderSrc={windowBottom}
+        title="Bidwars.exe"
+      >
+        <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
+          HIER IST EIN TEXT
         </div>
       </IntermissionWindow>
 
@@ -143,9 +251,15 @@ export const IntermissionWidget = () => {
         <IntermissionTabButton size="small" preload>
           Start
         </IntermissionTabButton>
-        <IntermissionTabButton>Label 1</IntermissionTabButton>
-        <IntermissionTabButton active>Label 2</IntermissionTabButton>
-        <IntermissionTabButton>Label 3</IntermissionTabButton>
+        <IntermissionTabButton>UNTITLED.gif</IntermissionTabButton>
+        <IntermissionTabButton>UpcomingStreams.xls</IntermissionTabButton>
+        <IntermissionTabButton>Chesster.jpg</IntermissionTabButton>
+        <IntermissionTabButton active={activeWindow === "donationGoals"}>
+          DonationGoals.exe
+        </IntermissionTabButton>
+        <IntermissionTabButton active={activeWindow === "bidwars"}>
+          Bidwars.exe
+        </IntermissionTabButton>
         <IntermissionClock className="ml-auto" />
       </div>
       <div
@@ -183,7 +297,8 @@ export const IntermissionWidget = () => {
           </div>
         </div>
       </div>
-      <div className="size-full absolute z-30 bg-scan-lines opacity-[0.1] animate-scanlines bg-[0_3px] pointer-events-none" />
+      <IntermissionCursor ref={cursorRef} className="z-[90]" />
+      <div className="size-full absolute z-[100] bg-scan-lines opacity-[0.1] animate-scanlines bg-[0_3px] pointer-events-none" />
     </div>
   );
 };

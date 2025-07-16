@@ -29,6 +29,7 @@ import {
   teleportTo,
   wait,
 } from "../utils/widgets/intermission";
+import { UpcomingStreams } from "../components/Intermission/UpcomingStreams";
 
 export const IntermissionWidget = () => {
   const [activeWindow, setActiveWindow] = useState<
@@ -188,13 +189,11 @@ export const IntermissionWidget = () => {
       <img className="" src={backgroundGrid} />
 
       <IntermissionWindow
-        className="absolute left-[555px] top-[72px]"
+        className="absolute left-[555px] top-[72px] h-[540px] w-[756px]"
         borderSrc={windowTop}
         title="UpcomingStreams.xls"
       >
-        <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
-          HIER SIND UPCOMING STREAMS
-        </div>
+        <UpcomingStreams className="p-4 text-int-highlight-light bg-int-highlight-dark/40 backdrop-blur-[7px]" />
       </IntermissionWindow>
 
       <IntermissionWindow
@@ -247,7 +246,7 @@ export const IntermissionWidget = () => {
         </div>
       </IntermissionWindow>
 
-      <div className="z-10 flex h-[63px] gap-4 bg-int-accent-primary bottom-0 absolute w-full border-t-[3px] border-int-highlight-light pl-2 pr-5 items-center text-int-highlight-light">
+      <div className="z-10 flex h-[63px] gap-4 bg-int-accent-primary bottom-0 absolute w-full border-t-[3px] border-int-highlight-light pl-2 pr-4 items-center text-int-highlight-light">
         <IntermissionTabButton size="small" preload>
           Start
         </IntermissionTabButton>

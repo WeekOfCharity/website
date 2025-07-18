@@ -4,7 +4,7 @@ import cn from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
-import "./LayoutOverlayWidget.scss";
+import "./IntermissionWidget.css";
 import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
 import {
   getAlertGifFromDonationAmount,
@@ -33,6 +33,9 @@ import {
   wait,
 } from "../utils/widgets/intermission";
 import { UpcomingStreams } from "../components/Intermission/UpcomingStreams";
+import { GoalWidget } from "../components/Intermission/GoalWidget";
+
+const CURSOR_ANIMATION = true;
 
 export const IntermissionWidget = () => {
   const [activeWindow, setActiveWindow] = useState<
@@ -169,6 +172,7 @@ export const IntermissionWidget = () => {
   useEffect(() => {
     let counter: number = 0;
     const id = setInterval(() => {
+      if (!CURSOR_ANIMATION) return;
       if (counter % 2 === 0) void playCursorAnimationBidwars();
       else void playCursorAnimationDonationGoals();
       counter++;
@@ -181,7 +185,7 @@ export const IntermissionWidget = () => {
   return (
     <div
       className={cn(
-        "relative font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden bg-gradient-to-t from-int-accent-secondary to-int-accent-primary"
+        "relative font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden bg-int-accent-gradient"
       )}
       onClick={(e) => {
         console.log(
@@ -224,7 +228,7 @@ export const IntermissionWidget = () => {
 
       <IntermissionWindow
         className={cn(
-          "z-10 absolute left-[687px] top-[630px] transition-[transform,opacity] duration-[800ms]",
+          "z-10 absolute left-[687px] top-[630px] transition-[transform,opacity] duration-[800ms] w-[675px]",
           {
             "translate-y-[300px] scale-0": activeWindow !== "donationGoals",
           }
@@ -233,7 +237,7 @@ export const IntermissionWidget = () => {
         title="DonationGoals.exe"
       >
         <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
-          HIER IST EIN TEXT
+          <GoalWidget />
         </div>
       </IntermissionWindow>
 
@@ -288,7 +292,8 @@ export const IntermissionWidget = () => {
               {donationAlertAmount != null && (
                 <LayoutMoneyText
                   amount={donationAlertAmount / 100}
-                  customEuroClassName="w-5"
+                  variant="layout24"
+                  customEuroClassName="!w-5"
                 />
               )}
             </span>

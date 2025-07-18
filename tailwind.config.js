@@ -154,6 +154,10 @@ module.exports = {
           "0%": { maskPosition: "0px 0px" },
           "100%": { maskPosition: "252px 126px" },
         },
+        bgDonationGoals25: {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "1728px 0" }, // 576 * 3
+        },
       },
       transitionTimingFunction: {
         "in-out-back": "cubic-bezier(0.68, -0.6, 0.32, 1.6)",
@@ -161,6 +165,7 @@ module.exports = {
       },
       dropShadow: {
         "layout-text": "var(--drop-shadow-layout-text)",
+        "layout-dark": "3px 3px 0 #150477",
       },
       animation: {
         clouds: "bgmoveX linear infinite",
@@ -174,6 +179,7 @@ module.exports = {
         scrollX: "scrollX 10s cubic-bezier(0.37, 0, 0.63, 1) infinite",
         scrollY: "scrollY 30s ease-in-out infinite",
         gridIntermission: "gridIntermission 20s linear infinite",
+        bgDonationGoals25: "bgDonationGoals25 10s linear infinite",
       },
       fontFamily: {
         sans: [
@@ -280,6 +286,12 @@ module.exports = {
       const newUtilities = {
         ".bg-repeating-linear-gradient": {
           backgroundImage: `repeating-linear-gradient(-45deg, ${theme("colors.royal.500")} 0 6px, transparent 6px 12px)`,
+        },
+        ".bg-donation-goals-25": {
+          backgroundImage: `repeating-linear-gradient(to right in oklch, #f532c0 0%, #ae41f0 15%, #1486ff 30%, #61d7e7 50%, #1486ff 70%, #ae41f0 85%, #f532c0 100%)`,
+        },
+        ".bg-int-accent-gradient": {
+          background: "linear-gradient(to top in oklch, #FF94FF, #1486FF)",
         },
       };
 

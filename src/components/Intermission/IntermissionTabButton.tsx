@@ -64,7 +64,7 @@ export const IntermissionTabButton = forwardRef(
       <button
         ref={ref}
         className={cn(
-          "grid *:col-start-1 *:row-start-1 [text-shadow:_3px_3px_#150477]",
+          "grid *:col-start-1 *:row-start-1 custom-text-shadow-dark",
           className
         )}
         onClick={handleClick}
@@ -76,7 +76,7 @@ export const IntermissionTabButton = forwardRef(
         <span
           className={cn("my-auto py-1.5", {
             "flex items-center justify-center text-[21px]": size === "small",
-            "inline-block overflow-hidden whitespace-nowrap px-3.5 text-[18px] max-w-[201px] [text-overflow:_'...']":
+            "inline-block overflow-hidden whitespace-nowrap px-3.5 text-[18px] max-w-[201px]":
               size === "normal",
           })}
         >

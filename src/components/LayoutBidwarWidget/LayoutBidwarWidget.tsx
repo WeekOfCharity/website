@@ -86,7 +86,7 @@ export const LayoutBidwarWidget = ({
         const difference = 10 + 26 * bidwar.options.length - 88;
         return {
           "--max-scroll-y": difference <= 0 ? "0px" : `-${difference}px`,
-        } as React.CSSProperties;
+        };
       })
     );
 
@@ -209,6 +209,7 @@ export const LayoutBidwarWidget = ({
                           </div>
                         </span>
                         <LayoutMoneyText
+                          variant="layout24"
                           amount={
                             option.amount !== null ? option.amount / 100 : null
                           }

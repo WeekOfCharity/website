@@ -25,7 +25,7 @@ export const IntermissionClock = ({ className }: IntermissionClockProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col items-center w-[90px] [text-shadow:_3px_3px_#150477]",
+        "flex flex-col items-center w-[90px] custom-text-shadow-dark",
         className
       )}
     >

@@ -35,7 +35,7 @@ export const UpcomingStreamItem = ({
           />
         )}
       </div>
-      <div className="grid grid-cols-[1fr_max-content] py-2 gap-3 w-full [text-shadow:_3px_3px_#150477]">
+      <div className="grid grid-cols-[1fr_max-content] py-2 gap-3 w-full custom-text-shadow-dark">
         <div className="flex flex-col justify-center gap-3">
           {activityName && (
             <div

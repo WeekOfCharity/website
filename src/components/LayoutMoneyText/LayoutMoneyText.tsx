@@ -3,6 +3,7 @@ import { PixelEuro } from "../Icons/PixelEuro";
 
 export type LayoutMoneyTextProps = {
   amount: number | null | undefined;
+  variant: "layout24" | "layout25";
   customEuroClassName?: string;
 };
 
@@ -10,6 +11,7 @@ const formatter = new Intl.NumberFormat("de-DE", { minimumFractionDigits: 2 });
 
 export const LayoutMoneyText = ({
   amount,
+  variant,
   customEuroClassName,
 }: LayoutMoneyTextProps) => {
   return (
@@ -17,8 +19,12 @@ export const LayoutMoneyText = ({
       {amount != null ? formatter.format(amount) : "?"}
       <PixelEuro
         className={cn(
-          "ml-px w-3.5 mb-px transition-[filter] duration-[2000ms] ease-in drop-shadow-layout-text",
-          customEuroClassName || "w-3.5"
+          {
+            "transition-[filter] duration-[2000ms] ease-in drop-shadow-layout-text w-3.5 ml-px mb-px":
+              variant === "layout24",
+            "drop-shadow-layout-dark w-[18px] ml-0.5": variant === "layout25",
+          },
+          customEuroClassName
         )}
       />
     </span>

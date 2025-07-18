@@ -76,7 +76,6 @@ export const useStreams = (
         options += `&filter${filter.replace("{NOW}", getGermanTimeInternationalFormat(-30 * 60))}`;
       const reqest = `${BASE_URL}/items/timeslots?fields=*,activity.icon,activity.id,activity.name,activity.name_en,activity.hidden,fellows.people_id.icon,fellows.people_id.id,fellows.people_id.name,fellows.people_id.hide_from_team_page,streamer.icon,streamer.id,streamer.name,streamer.stream_link,streamer.hide_from_team_page${options}`;
 
-      console.log(reqest);
       const { data } = await axios.get<{ data: StreamWithAlternatives[] }>(
         reqest
       );

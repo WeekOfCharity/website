@@ -2,7 +2,6 @@ import {
   ForwardedRef,
   forwardRef,
   MouseEventHandler,
-  PropsWithChildren,
   useEffect,
   useRef,
   useState,
@@ -15,17 +14,18 @@ import normalTab from "../../assets/intermission/window-button.png";
 import normalTabActive from "../../assets/intermission/window-button-active.png";
 import { preloadImages } from "../../utils/widgets/preloadImage";
 
-type IntermissionTabButtonProps = PropsWithChildren<{
+type IntermissionTabButtonProps = {
+  label: string;
   size?: "normal" | "small";
   preload?: boolean;
   active?: boolean;
   className?: string;
-}>;
+};
 
 export const IntermissionTabButton = forwardRef(
   (
     {
-      children,
+      label,
       size = "normal",
       preload,
       active: activeFromProps = false,
@@ -35,6 +35,8 @@ export const IntermissionTabButton = forwardRef(
   ) => {
     const activeTimeout = useRef<ReturnType<typeof setTimeout>>();
     const [active, setActive] = useState(activeFromProps);
+
+    const visualLabel = label.length <= 12 ? label : label.slice(0, 10) + "...";
 
     useEffect(() => {
       setActive(activeFromProps);
@@ -78,7 +80,7 @@ export const IntermissionTabButton = forwardRef(
               size === "normal",
           })}
         >
-          {children}
+          {visualLabel}
         </span>
       </button>
     );

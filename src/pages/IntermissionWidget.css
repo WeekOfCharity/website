@@ -1,0 +1,13 @@
+.custom-text-shadow-dark {
+  text-shadow: 3px 3px #150477;
+}
+
+@property --goalProgress {
+  initial-value: 0%;
+  inherits: false;
+  syntax: "<percentage>";
+}
+
+.goal-widget-25-mask {
+  transition: --goalProgress 1s ease-in-out;
+}

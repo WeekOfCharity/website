@@ -54,6 +54,7 @@ export const LayoutDonationList = ({
               isEn={isEn}
             />
             <LayoutMoneyText
+              variant="layout24"
               amount={
                 donation.donated_amount_in_cents !== null
                   ? donation.donated_amount_in_cents / 100

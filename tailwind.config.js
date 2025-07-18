@@ -150,6 +150,10 @@ module.exports = {
           "0%, 100%": { transform: "translate(0, 0)" },
           "50%": { transform: "translate(0, var(--max-scroll-y))" },
         },
+        gridIntermission: {
+          "0%": { maskPosition: "0px 0px" },
+          "100%": { maskPosition: "252px 126px" },
+        },
       },
       transitionTimingFunction: {
         "in-out-back": "cubic-bezier(0.68, -0.6, 0.32, 1.6)",
@@ -169,6 +173,7 @@ module.exports = {
         window: "window infinite ease-in 3s",
         scrollX: "scrollX 10s cubic-bezier(0.37, 0, 0.63, 1) infinite",
         scrollY: "scrollY 30s ease-in-out infinite",
+        gridIntermission: "gridIntermission 20s linear infinite",
       },
       fontFamily: {
         sans: [

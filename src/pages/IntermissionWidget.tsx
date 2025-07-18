@@ -17,7 +17,8 @@ import { IntermissionTabButton } from "../components/Intermission/IntermissionTa
 import { IntermissionClock } from "../components/Intermission/IntermissionClock";
 import { IntermissionWindow } from "../components/Intermission/IntermissionWindow";
 
-import backgroundGrid from "../assets/intermission/bg-grid.png";
+import backgroundGrid from "../assets/intermission/bg-grid-small.png";
+import gridGradient from "../assets/intermission/bg-grid-gradient.png";
 import windowTop from "../assets/intermission/window-top.png";
 import windowRight from "../assets/intermission/window-right.png";
 import windowBottom from "../assets/intermission/window-bottom.png";
@@ -186,7 +187,12 @@ export const IntermissionWidget = () => {
         );
       }}
     >
-      <img className="" src={backgroundGrid} />
+      <div
+        className="w-[1920px] h-[1080px] bg-repeat animate-gridIntermission"
+        style={{ maskImage: `url("${backgroundGrid}")` }}
+      >
+        <img src={gridGradient} alt="" width="1920" height="1080p" />
+      </div>
 
       <IntermissionWindow
         className="absolute left-[555px] top-[72px] h-[540px] w-[756px]"
@@ -247,18 +253,18 @@ export const IntermissionWidget = () => {
       </IntermissionWindow>
 
       <div className="z-10 flex h-[63px] gap-4 bg-int-accent-primary bottom-0 absolute w-full border-t-[3px] border-int-highlight-light pl-2 pr-4 items-center text-int-highlight-light">
-        <IntermissionTabButton size="small" preload>
-          Start
-        </IntermissionTabButton>
-        <IntermissionTabButton>UNTITLED.gif</IntermissionTabButton>
-        <IntermissionTabButton>UpcomingStreams.xls</IntermissionTabButton>
-        <IntermissionTabButton>Chesster.jpg</IntermissionTabButton>
-        <IntermissionTabButton active={activeWindow === "donationGoals"}>
-          DonationGoals.exe
-        </IntermissionTabButton>
-        <IntermissionTabButton active={activeWindow === "bidwars"}>
-          Bidwars.exe
-        </IntermissionTabButton>
+        <IntermissionTabButton size="small" preload label="Start" />
+        <IntermissionTabButton label="UNTITLED.gif" />
+        <IntermissionTabButton label="UpcomingStreams.xls" />
+        <IntermissionTabButton label="Chesster.jpg" />
+        <IntermissionTabButton
+          active={activeWindow === "donationGoals"}
+          label="DonationGoals.exe"
+        />
+        <IntermissionTabButton
+          active={activeWindow === "bidwars"}
+          label="Bidwars.exe"
+        />
         <IntermissionClock className="ml-auto" />
       </div>
       <div

@@ -4,4 +4,9 @@ declare namespace React {
     // extends React's HTMLAttributes
     inert?: string;
   }
+  interface CSSProperties {
+    "--goalProgress"?: `${number}%` | undefined;
+    "--max-scroll-y"?: `${number}px` | `-${number}px` | undefined;
+    [varName: `--${string}`]: string | number | undefined;
+  }
 }

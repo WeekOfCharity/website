@@ -339,7 +339,8 @@ export const LayoutOverlayWidget = () => {
                 {donationAlertAmount != null && (
                   <LayoutMoneyText
                     amount={donationAlertAmount / 100}
-                    customEuroClassName="w-5"
+                    variant="layout24"
+                    customEuroClassName="!w-5"
                   />
                 )}
               </span>

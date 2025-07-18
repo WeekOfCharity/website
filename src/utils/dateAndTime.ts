@@ -1,5 +1,19 @@
 import { Language } from "../i18n/i18n";
 
+const options: Intl.DateTimeFormatOptions = {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  timeZone: "Europe/Berlin",
+};
+
+export const germanTimeFormatter = new Intl.DateTimeFormat("de-DE", options);
+
+export const formatTimestampInGermany = (dateString?: string) =>
+  dateString
+    ? germanTimeFormatter.format(new Date(dateString + "+02:00"))
+    : dateString;
+
 export const formatDay = (value: string, language: Language) => {
   const date = new Date(value + "+02:00");
 

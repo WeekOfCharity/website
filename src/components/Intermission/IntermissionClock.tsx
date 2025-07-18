@@ -1,5 +1,6 @@
 import cn from "classnames";
 import { useEffect, useState } from "react";
+import { germanTimeFormatter } from "../../utils/dateAndTime";
 
 type IntermissionClockProps = {
   className?: string;
@@ -7,22 +8,13 @@ type IntermissionClockProps = {
 
 const UPDATE_RATE = 1000;
 
-const options: Intl.DateTimeFormatOptions = {
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false,
-  timeZone: "Europe/Berlin",
-};
-
-const formatter = new Intl.DateTimeFormat("de-DE", options);
-
 export const IntermissionClock = ({ className }: IntermissionClockProps) => {
   const [time, setTime] = useState("");
 
   useEffect(() => {
     const updateTime = () => {
       const date = new Date();
-      setTime(formatter.format(date));
+      setTime(germanTimeFormatter.format(date));
     };
 
     updateTime();

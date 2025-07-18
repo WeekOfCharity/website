@@ -30,9 +30,9 @@ function Countdown({ timerZeroCallback }: CountdownProps) {
       configurationStatus === "success" &&
       configuration.schedule_complete
     ) {
-      woc_start_date = new Date(streams[0].start);
+      woc_start_date = new Date(streams[0].start + "+02:00");
     } else if (configurationStatus === "success" && configuration.woc_start) {
-      woc_start_date = new Date(configuration.woc_start);
+      woc_start_date = new Date(configuration.woc_start + "+02:00");
     } else {
       setTimeLeft(null);
       return;

@@ -20,10 +20,17 @@ export const SPEED = 1;
 const UPDATE_RATE = 5000;
 
 const getMsOfDay = (currentTime: Date) => {
+  const timeString = currentTime.toLocaleString("de", {
+    timeZone: "Europe/Berlin",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  });
+  const [hours, minutes, seconds] = timeString.split(":");
   const totalMs =
-    currentTime.getHours() * 60 * 60 * 1000 +
-    currentTime.getMinutes() * 60 * 1000 +
-    currentTime.getSeconds() * 1000 +
+    parseInt(hours) * 60 * 60 * 1000 +
+    parseInt(minutes) * 60 * 1000 +
+    parseInt(seconds) * 1000 +
     currentTime.getMilliseconds();
 
   return (totalMs * SPEED) % MS_IN_A_DAY;

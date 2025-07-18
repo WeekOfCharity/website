@@ -23,6 +23,8 @@ import windowTop from "../assets/intermission/window-top.png";
 import windowRight from "../assets/intermission/window-right.png";
 import windowBottom from "../assets/intermission/window-bottom.png";
 import windowLeft from "../assets/intermission/window-left.png";
+import bigArtwork from "../assets/intermission/placeholder-chesster.png";
+
 import { IntermissionCursor } from "../components/Intermission/IntermissionCursor";
 import {
   cursorClick,
@@ -191,7 +193,7 @@ export const IntermissionWidget = () => {
         className="w-[1920px] h-[1080px] bg-repeat animate-gridIntermission"
         style={{ maskImage: `url("${backgroundGrid}")` }}
       >
-        <img src={gridGradient} alt="" width="1920" height="1080p" />
+        <img src={gridGradient} alt="" width="1920" height="1080" />
       </div>
 
       <IntermissionWindow
@@ -207,9 +209,7 @@ export const IntermissionWidget = () => {
         borderSrc={windowRight}
         title="Chesster.jpg"
       >
-        <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
-          HIER IST EIN BILD
-        </div>
+        <img src={bigArtwork} alt="" className="crisp-rendering" />
       </IntermissionWindow>
 
       <IntermissionWindow

@@ -50,12 +50,12 @@ export const deTranslation: Translation = {
     weekOfWhat: "Week of Was?",
     aboutProject: "Über das Projekt",
     welcome1:
-      "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten.",
+      "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Im September wird eine Woche lang abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten. Das konkrete Startdatum wird noch angekündigt!",
     welcome2:
-      "Alle Spenden, die 2024 gesammelt wurden, gingen an EXIT-Deutschland, ein Projekt, das Menschen beim Ausstieg aus der rechtsextremen Szene unterstützt. Weitere Informationen findet ihr",
+      "Alle Spenden, die wir dieses Jahr sammeln, gehen an das Projekt “Nothilfe Nahost” von Islamic Relief, bei dem Hilfsgüter an die Zivilbevölkerung in Gaza verteilt werden. Weitere Informationen findet ihr",
     here: "hier",
     welcome3:
-      "Zusammen konnten wir 5408,38€ für einen guten Zweck sammeln! Seid beim nächsten Mal auch dabei!",
+      "Wir hoffen, dass ihr auch dieses Jahr wieder dabei seid und wünschen euch viel Spaß beim Zuschauen!",
     entertainment1: "Entertainment",
     entertainment2: "ohne Ende",
     fullProgram: "Das ganze Programm",
@@ -116,17 +116,25 @@ export const deTranslation: Translation = {
       t1: "Die Week of Charity",
       t2: "ist ein Dauerstreamprojekt für einen guten Zweck! Eine Woche lang wird abwechselnd auf den Twitch-Kanälen unserer",
       t3: "Mitglieder",
-      t4: "durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter Anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten. Was wann wo zu sehen war, sowie die Links zu unseren VODs, findet ihr in unserem",
+      t4: "durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter Anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten. Was wann wo zu sehen ist, sowie die Links zu unseren VODs, findet ihr in unserem",
       t5: "Zeitplan",
       t6: ".",
       t7: "Unser Projekt",
-      t8: "wurde zuerst 2021 auf die Beine gestellt und ging 2024 schon in die vierte Runde! Alle Spenden, die in dieser Woche gesammelt wurden, gingen an EXIT-Deutschland. Über 5400€ konnten über direkte",
+      t8: "wurde zuerst 2021 auf die Beine gestellt und geht 2025 schon in die fünfte Runde! Alle Spenden, die wir in dieser Woche sammeln, gehen dieses Jahr an die Nahost-Nothilfe von Islamic Relief. Unterstützen könnt ihr das Projekt sowohl über direkte",
       t9: "Spenden",
-      t10: "während der Streams, und aus unserem Gewinn-Anteil unseres",
-      t11: "Merch-Shops",
-      t12: " gesammelt werden! Wir bedanken uns für die wohl erfolgreichste Week Of Charity bis dato! Auf dass wir nächstes Mal erneut sowas tolles gemeinsam auf die Beine stellen können!",
+      t10: "während der Streams, als auch über unseren",
+      t11: "Merch-Shop",
+      t12: "! All unsere Gewinn-Anteile aus dem Merch gehen direkt an die Charity. Wir hoffen, dass ihr auch dieses Jahr wieder dabei seid und wünschen euch viel Spaß beim Zuschauen!",
     },
     ourProjects: "Unsere Projekte",
+    "2025": {
+      header: "Islamic Relief",
+      text: {
+        t1: "Für die fünfte Week of Charity arbeiten wir mit",
+        t2: "Islamic Relief",
+        t3: " zusammen und spenden an das Projekt “Nothilfe Nahost”. Die international anerkannte gemeinnützige Organisation arbeitet eng mit lokalen hilfsbedürftigen Gemeinschaften zusammen und genießt das enge Vertrauen der Betroffenen. Da die humanitäre Not der Zivilbevölkerung in Gaza immer weiter zunimmt, sind die Menschen auf Hilfsorganisationen wie Islamic Relief angewiesen, um mit lebensnotwendigen Hilfsgütern wie Essen und Medizin versorgt zu werden. Islamic Relief konnte bereits unter Anderem über 13 Millionen warme Mahlzeiten verteilen und über 2 Millionen Menschen medizinisch versorgen. Dafür kooperiert Islamic Relief mit dem Welternährungsprogramm der Vereinten Nationen. Auch ihre psychosoziale Hilfe ist gerade für Kinder essentiell. Wir hoffen, dass ihr gemeinsam mit uns Islamic Relief unterstützt, indem ihr fleißig einschaltet und spendet!",
+      },
+    },
     "2024": {
       header: "EXIT-Deutschland",
       text: {

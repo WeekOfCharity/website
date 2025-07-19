@@ -50,12 +50,12 @@ export const enTranslation: Translation = {
     weekOfWhat: "Week of What?",
     aboutProject: "About the project",
     welcome1:
-      "Welcome! We are the Week of Charity, a project designed to stream once a year for a good cause. For one week, different members of our group will alternate in streaming their activities to collect donations. We have a diverse program: In addition to various video games, real life projects like Dungeons and Dragons and quiz shows will be broadcasted.",
+      "Welcome! We are the Week of Charity, an annual streaming project for a good cause! During one week in September, members of our group will alternate streaming all kinds of activities while collecting donations. We have a diverse program: In addition to various video games, special events like Dungeons and Dragons and quiz shows are also on the agenda! The specific start date will be announced later.",
     welcome2:
-      "All donations collected in 2024 went to EXIT-Deutschland, a project that helps people leave the far-right scene. You can find more information",
+      "This year, all proceeds will be donated to Islamic Relief's emergency aid for the middle east, which distributes crucial goods to the civilian population of Gaza. You can find more information",
     here: "here",
     welcome3:
-      "Together we were able to collect 5408.38€ for a good cause! Be there next time too!",
+      "We hope to see you there and that you'll enjoy the show!",
     entertainment1: "Entertainment",
     entertainment2: "without end",
     fullProgram: "The full program",
@@ -114,19 +114,27 @@ export const enTranslation: Translation = {
     mainHeader: "The Week of Charity",
     text: {
       t1: "The Week of Charity",
-      t2: "is a continuous streaming project for a good cause! For one week, the Twitch channels of our",
+      t2: "is an annual streaming project for a good cause! During one week,",
       t3: "members",
-      t4: "will stream continuously to collect donations. The program is made up of a variety of entertaining streams containing different video games, Dungeons and Dragons and even multiple quiz shows! What was shown where and when, as well as the links to our VODs, can be found in our",
+      t4: "of our group will alternate streaming all kinds of activities while collecting donations. We have a diverse program: In addition to various video games, special events like Dungeons and Dragons and quiz shows are also on the agenda! What is shown where and when, as well as the links to our VODs, can be found in our",
       t5: "schedule",
       t6: ".",
       t7: "Our project",
-      t8: "was established in 2021 and entered its fourth round in 2024! All donations collected this week went to EXIT-Deutschland. We collected over 5400€ via direct ",
-      t9: "donations",
-      t10: "during the streams and from our share of the profits from our ",
-      t11: "merch shop",
-      t12: "! Thank you for the most successful Week Of Charity to date! Let's hope that we can pull off something great together again next time!",
+      t8: "first launched in 2021, with 2025 representing the fifth iteration. All donations collected during the week this year benefit emergency relief in the middle east by Islamic Relief. You can support the project by ",
+      t9: "donating",
+      t10: "during our streams as well as buying ",
+      t11: "merchandise",
+      t12: " from our store! Our share of the revenue goes directly towards the charity. We hope to see you there and that you'll enjoy the show!",
     },
     ourProjects: "Our Projects",
+    "2025": {
+      header: "Islamic Relief",
+      text: {
+        t1: "For the Week of Charity's fifth iteration, we're working together with",
+        t2: "Islamic Relief",
+        t3: ", collecting donations for emergency relief in Gaza. This internationally recognized charitable organisation works closely with local communities in need and has formed strong bonds of trust. As the humanitarian crisis in Gaza continually worsens, the local population depends on organisations such as Islamic Relief supplying them with aid such as food and medicine. Islamic Relief has already distributed over 13 million warm meals and provided medical assistance to over 2 million people. In addition, they cooperate with the UN World Food Programme. Their psychosocial assistance is also essential, especially for children. We hope you'll join us in supporting Islamic Relief by tuning in and donating!",
+      },
+    },
     "2024": {
       header: "EXIT-Deutschland",
       text: {

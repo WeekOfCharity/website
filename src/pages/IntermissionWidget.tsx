@@ -34,6 +34,7 @@ import {
 } from "../utils/widgets/intermission";
 import { UpcomingStreams } from "../components/Intermission/UpcomingStreams";
 import { GoalWidget } from "../components/Intermission/GoalWidget";
+import { TextDocumentWidget } from "../components/Intermission/TextDocumentWidget";
 
 const CURSOR_ANIMATION = true;
 
@@ -217,12 +218,12 @@ export const IntermissionWidget = () => {
       </IntermissionWindow>
 
       <IntermissionWindow
-        className="z-10 absolute left-[63px] top-[400px]"
+        className="z-10 absolute left-[63px] top-[400px] w-[543px] h-[531px]"
         borderSrc={windowLeft}
-        title="UNTITLED.gif"
+        title="Messages.txt"
       >
         <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
-          HIER IST EIN TEXT
+          <TextDocumentWidget />
         </div>
       </IntermissionWindow>
 
@@ -258,7 +259,7 @@ export const IntermissionWidget = () => {
 
       <div className="z-10 flex h-[63px] gap-4 bg-int-accent-primary bottom-0 absolute w-full border-t-[3px] border-int-highlight-light pl-2 pr-4 items-center text-int-highlight-light">
         <IntermissionTabButton size="small" preload label="Start" />
-        <IntermissionTabButton label="UNTITLED.gif" />
+        <IntermissionTabButton label="Messages.txt" />
         <IntermissionTabButton label="UpcomingStreams.xls" />
         <IntermissionTabButton label="Chesster.jpg" />
         <IntermissionTabButton

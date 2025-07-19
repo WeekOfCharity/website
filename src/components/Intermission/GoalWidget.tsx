@@ -100,7 +100,7 @@ export const GoalWidget = ({ isEn, className }: GoalWidgetProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col custom-text-shadow-dark gap-5 items-center",
+        "flex flex-col custom-text-shadow-dark gap-6 items-center h-full justify-center",
         className
       )}
     >

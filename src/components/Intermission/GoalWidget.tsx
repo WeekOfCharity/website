@@ -104,9 +104,16 @@ export const GoalWidget = ({ isEn, className }: GoalWidgetProps) => {
         className
       )}
     >
-      <div className="text-[21px] text-center">{donationGoalText}</div>
+      <div
+        className={cn("text-center text-balance", {
+          "text-2xl/9": donationGoalText.length <= 40,
+          "text-lg": donationGoalText.length > 40,
+        })}
+      >
+        {donationGoalText}
+      </div>
       <div className="relative w-[576px] h-[63px]">
-        <div className="absolute rounded-[32px] overflow-hidden size-full bg-[rgba(45,5,104,0.45)]">
+        <div className="absolute rounded-[32px] overflow-hidden size-full bg-[#2d056873]">
           <div
             className="goal-widget-25-mask size-full bar-test bg-donation-goals-25 animate-bgDonationGoals25 bg-repeat bg-[length:300%_100%]"
             style={{

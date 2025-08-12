@@ -2,6 +2,7 @@ import cn from "classnames";
 import { BASE_URL } from "../../utils/constants";
 import { getShortTwitchUrl } from "../../utils/formatting";
 import { formatTimestampInGermany } from "../../utils/dateAndTime";
+import streamFrame from "../../assets/intermission/stream-frame.png";
 
 type UpcomingStreamItemProps = {
   activityIcon?: string;
@@ -26,15 +27,20 @@ export const UpcomingStreamItem = ({
     timeUntilStart < 0 ? "Now!" : formatTimestampInGermany(start);
 
   return (
-    <div className={cn("flex gap-6 px-3 items-center", className)}>
-      <div className="rounded-lg overflow-hidden shrink-0 size-28">
+    <div className={cn("relative flex gap-6 px-3 items-center", className)}>
+      <div className="rounded-lg overflow-hidden shrink-0 size-[112px]">
         {activityIcon && (
           <img
-            src={`${BASE_URL}/assets/${activityIcon}?width=256&height=256&quality=50&fit=cover&format=webp`}
+            src={`${BASE_URL}/assets/${activityIcon}?width=256&height=256&quality=75&fit=cover&format=webp`}
             alt=""
           />
         )}
       </div>
+      <img
+        className="absolute left-[7px] top-[14px] size-[123px]"
+        src={streamFrame}
+        alt=""
+      />
       <div className="grid grid-cols-[1fr_max-content] py-2 gap-3 w-full custom-text-shadow-dark">
         <div className="flex flex-col justify-center gap-3">
           {activityName && (

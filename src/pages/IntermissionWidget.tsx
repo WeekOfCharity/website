@@ -202,7 +202,7 @@ export const IntermissionWidget = () => {
       </div>
 
       <IntermissionWindow
-        className="absolute left-[555px] top-[72px] h-[540px] w-[756px]"
+        className="absolute left-[549px] top-[72px] h-[540px] w-[756px]"
         borderSrc={windowTop}
         title="UpcomingStreams.xls"
       >
@@ -218,7 +218,7 @@ export const IntermissionWidget = () => {
       </IntermissionWindow>
 
       <IntermissionWindow
-        className="z-10 absolute left-[63px] top-[400px] w-[543px] h-[531px]"
+        className="z-10 absolute left-[63px] top-[424px] w-[543px] h-[531px]"
         borderSrc={windowLeft}
         title="Messages.txt"
       >

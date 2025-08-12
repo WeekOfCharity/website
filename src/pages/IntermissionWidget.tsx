@@ -25,6 +25,10 @@ import windowBottom from "../assets/intermission/window-bottom.png";
 import windowLeft from "../assets/intermission/window-left.png";
 import bigArtwork from "../assets/intermission/placeholder-chesster.png";
 
+import headerPause from "../assets/intermission/header-pause.png";
+import headerStart from "../assets/intermission/header-start.png";
+import headerFin from "../assets/intermission/header-fin.png";
+
 import { IntermissionCursor } from "../components/Intermission/IntermissionCursor";
 import {
   cursorClick,
@@ -37,6 +41,15 @@ import { GoalWidget } from "../components/Intermission/GoalWidget";
 import { TextDocumentWidget } from "../components/Intermission/TextDocumentWidget";
 
 const CURSOR_ANIMATION = true;
+
+const validHeaderTypes = ["pause", "start", "fin"];
+type HeaderType = (typeof validHeaderTypes)[number];
+const headerMap: Record<HeaderType, string> = {
+  pause: headerPause,
+  start: headerStart,
+  fin: headerFin,
+};
+const defaultHeader = headerMap.pause;
 
 export const IntermissionWidget = () => {
   const [activeWindow, setActiveWindow] = useState<
@@ -56,6 +69,9 @@ export const IntermissionWidget = () => {
   const [searchParams] = useSearchParams();
   const isEn = searchParams.get("en");
   const testalert = searchParams.get("testalert");
+  const type = searchParams.get("type");
+  const headerImage =
+    type && validHeaderTypes.includes(type) ? headerMap[type] : defaultHeader;
 
   const skipAlerts = useRef<boolean>(true);
   const donationAlertQueue = useRef<Donation[]>([]);
@@ -201,6 +217,9 @@ export const IntermissionWidget = () => {
         <img src={gridGradient} alt="" width="1920" height="1080" />
       </div>
 
+      <div className="absolute w-[450px] flex justify-center left-[49px] top-[156px]">
+        <img src={headerImage} alt="" />
+      </div>
       <IntermissionWindow
         className="absolute left-[549px] top-[72px] h-[540px] w-[756px]"
         borderSrc={windowTop}

@@ -7,6 +7,7 @@ declare namespace React {
   interface CSSProperties {
     "--goalProgress"?: `${number}%` | undefined;
     "--max-scroll-y"?: `${number}px` | `-${number}px` | undefined;
+    "--icon-size"?: `${number}px` | undefined;
     [varName: `--${string}`]: string | number | undefined;
   }
 }

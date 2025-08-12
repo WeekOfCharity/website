@@ -37,7 +37,7 @@ export const UpcomingStreamItem = ({
         )}
       </div>
       <img
-        className="absolute left-[7px] top-[14px] size-[123px]"
+        className="absolute left-[7px] top-[10px] size-[123px]"
         src={streamFrame}
         alt=""
       />

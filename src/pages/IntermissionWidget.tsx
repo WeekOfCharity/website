@@ -39,8 +39,10 @@ import {
 import { UpcomingStreams } from "../components/Intermission/UpcomingStreams";
 import { GoalWidget } from "../components/Intermission/GoalWidget";
 import { TextDocumentWidget } from "../components/Intermission/TextDocumentWidget";
+import { IntermissionBidwarWidget } from "../components/Intermission/IntermissionBidwarWidget";
 
 const CURSOR_ANIMATION = true;
+const CURSOR_ANIMATION_INTERVAL = 45 * 1000;
 
 const validHeaderTypes = ["pause", "start", "fin"];
 type HeaderType = (typeof validHeaderTypes)[number];
@@ -67,7 +69,8 @@ export const IntermissionWidget = () => {
   const [isPreloading, setPreloading] = useState(true);
   const cursorRef = useRef<HTMLDivElement>(null);
   const [searchParams] = useSearchParams();
-  const isEn = searchParams.get("en");
+  const enParam = searchParams.get("en");
+  const isEn = enParam !== null;
   const testalert = searchParams.get("testalert");
   const type = searchParams.get("type");
   const headerImage =
@@ -193,7 +196,7 @@ export const IntermissionWidget = () => {
       if (counter % 2 === 0) void playCursorAnimationBidwars();
       else void playCursorAnimationDonationGoals();
       counter++;
-    }, 45 * 1000);
+    }, CURSOR_ANIMATION_INTERVAL);
     return () => clearInterval(id);
   }, [playCursorAnimationBidwars, playCursorAnimationDonationGoals]);
 
@@ -225,7 +228,7 @@ export const IntermissionWidget = () => {
         borderSrc={windowTop}
         title="UpcomingStreams.xls"
       >
-        <UpcomingStreams className="p-4 text-int-highlight-light bg-int-highlight-dark/40 backdrop-blur-[7px]" />
+        <UpcomingStreams className="px-4 py-7 text-int-highlight-light bg-int-highlight-dark/40 backdrop-blur-[7px]" />
       </IntermissionWindow>
 
       <IntermissionWindow
@@ -242,7 +245,7 @@ export const IntermissionWidget = () => {
         title="Messages.txt"
       >
         <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
-          <TextDocumentWidget />
+          <TextDocumentWidget isEn={isEn} />
         </div>
       </IntermissionWindow>
 
@@ -257,13 +260,13 @@ export const IntermissionWidget = () => {
         title="DonationGoals.exe"
       >
         <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
-          <GoalWidget />
+          <GoalWidget isEn={isEn} />
         </div>
       </IntermissionWindow>
 
       <IntermissionWindow
         className={cn(
-          "z-10 absolute left-[687px] top-[630px] transition-[transform,opacity] duration-[800ms]",
+          "z-10 absolute left-[687px] top-[630px] transition-[transform,opacity] duration-[800ms] w-[675px]",
           {
             "translate-y-[300px] scale-0": activeWindow !== "bidwars",
           }
@@ -272,7 +275,10 @@ export const IntermissionWidget = () => {
         title="Bidwars.exe"
       >
         <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
-          HIER IST EIN TEXT
+          <IntermissionBidwarWidget
+            totalBidwarDuration={CURSOR_ANIMATION_INTERVAL}
+            isEn={isEn}
+          />
         </div>
       </IntermissionWindow>
 
@@ -307,12 +313,12 @@ export const IntermissionWidget = () => {
           />
           <div className="flex flex-col gap-4 rounded-2xl py-5 px-5 animate-donationAlert [box-shadow:0_0_16px_black] bg-layout-bg-green-day/[0.93]">
             <span className="text-[1.5rem] px-2">
-              {donationAlertName || (isEn !== null ? "Anonymous" : "Anonym")}{" "}
-              {isEn !== null ? "donates" : "spendet"}{" "}
+              {donationAlertName || (isEn ? "Anonymous" : "Anonym")}{" "}
+              {isEn ? "donates" : "spendet"}{" "}
               {donationAlertAmount != null && (
                 <LayoutMoneyText
                   amount={donationAlertAmount / 100}
-                  variant="layout24"
+                  variant="layout25"
                   customEuroClassName="!w-5"
                 />
               )}

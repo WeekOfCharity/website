@@ -149,12 +149,12 @@ export const LayoutBidwarWidget = ({
             )}
           >
             <div className="w-[44%] h-full text-base relative top-0">
-              {preparedBidwars.map((bidwar, bidwar_index) => (
+              {preparedBidwars.map((bidwar, index) => (
                 <span
-                  key={`${bidwar.name}-${bidwar_index}`}
+                  key={`${bidwar.name}-${index}`}
                   className={cn(
                     "absolute flex items-center px-3 justify-center size-full left-0 transition-opacity ease-in duration-[2000ms]",
-                    { "opacity-0": bidwar_index !== currentBidwarIndex }
+                    { "opacity-0": index !== currentBidwarIndex }
                   )}
                 >
                   ! bidwar: {bidwar.name}
@@ -185,22 +185,22 @@ export const LayoutBidwarWidget = ({
             </div>
             <div className="text-[15px] w-[56%] h-full animate-scrollY relative">
               <div className="grid w-full">
-                {preparedBidwars.map((bidwar, bidwar_index) => (
+                {preparedBidwars.map((bidwar, index) => (
                   <div
-                    key={`${bidwar.name}-${bidwar_index}`}
+                    key={`${bidwar.name}-${index}`}
                     className={cn(
                       "col-start-1 row-start-1 animate-scrollY pl-3 pr-4 py-[5px] w-full h-fit top-0 transition-opacity ease-in duration-[2000ms]",
-                      { "opacity-0": bidwar_index !== currentBidwarIndex }
+                      { "opacity-0": index !== currentBidwarIndex }
                     )}
-                    style={styleList[bidwar_index]}
+                    style={styleList[index]}
                   >
-                    {bidwar.options.map((option, option_index) => (
+                    {bidwar.options.map((option, optionIndex) => (
                       <span
                         key={option.name}
                         className="flex justify-between w-full h-[26px] relative"
                       >
                         <span className="flex items-center">
-                          {option_index + 1}.
+                          {optionIndex + 1}.
                           <div className="w-[230px] text-left overflow-x-hidden no-scrollbar flex items-center text-nowrap px-2 translate-x-5 absolute h-full">
                             <LayoutBidwarOptionText
                               text={option.name}

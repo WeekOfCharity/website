@@ -2,7 +2,7 @@ import cn from "classnames";
 import { useTranslation } from "react-i18next";
 
 type ProjectCardProps = {
-  image: string;
+  image?: string;
   year: string;
   textlink: string;
   imageWrapperClassName?: string;
@@ -20,28 +20,31 @@ export const ProjectCard = ({
 
   return (
     <div className="group card relative md:ml-8">
-      <div
-        className={cn(
-          "relative mx-2",
-          {
-            "float-right": imageSide === "right",
-            "float-left": imageSide === "left",
-          },
-          imageWrapperClassName
-        )}
-      >
-        <img
+      {image && (
+        <div
           className={cn(
-            "object-contain size-full hover:scale-105 group-has-[.hover-target:hover]:scale-105 transition-transform duration-300",
+            "relative mx-2",
             {
-              "object-left-top": imageSide === "right",
-              "object-right-top": imageSide === "left",
-            }
+              "float-right": imageSide === "right",
+              "float-left": imageSide === "left",
+            },
+            imageWrapperClassName
           )}
-          src={image}
-          role="presentation"
-        />
-      </div>
+        >
+          <img
+            className={cn(
+              "object-contain size-full hover:scale-105 group-has-[.hover-target:hover]:scale-105 transition-transform duration-300",
+              {
+                "object-left-top": imageSide === "right",
+                "object-right-top": imageSide === "left",
+              }
+            )}
+            src={image}
+            role="presentation"
+          />
+        </div>
+      )}
+
       <div className="p-10 lg:px-20">
         <div
           className={cn(

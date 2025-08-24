@@ -96,6 +96,11 @@ export const Projects = () => {
             <div className="line"></div>
             <div className="card-container flex flex-col">
               <ProjectCard
+                year="2025"
+                textlink="https://www.islamicrelief.de/"
+                imageSide="right"
+              />
+              <ProjectCard
                 image={chesster2024.toString()}
                 year="2024"
                 textlink="https://www.exit-deutschland.de/"

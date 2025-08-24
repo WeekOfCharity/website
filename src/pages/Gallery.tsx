@@ -72,6 +72,11 @@ export const Gallery = () => {
     );
   }, [galleryImages, sortMethod]);
 
+  const imageGroupKeysOrder =
+    sortMethod === "year"
+      ? Object.keys(galleryImagesGrouped).reverse()
+      : Object.keys(galleryImagesGrouped);
+
   const galleryImageOrder = useMemo(() => {
     if (!galleryImagesGrouped) return [];
     const order: number[] = [];
@@ -149,7 +154,7 @@ export const Gallery = () => {
         )}
         {galleryImagesStatus === "success" &&
           galleryImagesGrouped &&
-          Object.keys(galleryImagesGrouped).map((categoryValue) => (
+          imageGroupKeysOrder.map((categoryValue) => (
             <div className="space-y-4" key={categoryValue}>
               <div className="font-semibold mb-6 mt-12 md:mt-20 text-3xl md:text-4xl text-center md:text-left">
                 {categoryValue}

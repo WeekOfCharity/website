@@ -50,7 +50,7 @@ export const deTranslation: Translation = {
     weekOfWhat: "Week of Was?",
     aboutProject: "Über das Projekt",
     welcome1:
-      "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Im September wird eine Woche lang abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten. Das konkrete Startdatum wird noch angekündigt!",
+      "Willkommen! Wir sind die Week of Charity, ein Dauerstreamprojekt für einen guten Zweck! Im September wird eine Woche lang abwechselnd auf den Twitch-Kanälen unserer Mitglieder durchgängig gestreamt, um Spenden zu sammeln. Das Programm ist breit gefächert: Neben diversen Videospielen wird unter anderem Dungeons and Dragons gespielt und es werden Quizshows abgehalten.",
     welcome2:
       "Alle Spenden, die wir dieses Jahr sammeln, gehen an das Projekt “Nothilfe Nahost” von Islamic Relief, bei dem Hilfsgüter an die Zivilbevölkerung in Gaza verteilt werden. Weitere Informationen findet ihr",
     here: "hier",

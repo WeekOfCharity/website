@@ -50,12 +50,11 @@ export const enTranslation: Translation = {
     weekOfWhat: "Week of What?",
     aboutProject: "About the project",
     welcome1:
-      "Welcome! We are the Week of Charity, an annual streaming project for a good cause! During one week in September, members of our group will alternate streaming all kinds of activities while collecting donations. We have a diverse program: In addition to various video games, special events like Dungeons and Dragons and quiz shows are also on the agenda! The specific start date will be announced later.",
+      "Welcome! We are the Week of Charity, an annual streaming project for a good cause! During one week in September, members of our group will alternate streaming all kinds of activities while collecting donations. We have a diverse program: In addition to various video games, special events like Dungeons and Dragons and quiz shows are also on the agenda!",
     welcome2:
       "This year, all proceeds will be donated to Islamic Relief's emergency aid for the middle east, which distributes crucial goods to the civilian population of Gaza. You can find more information",
     here: "here",
-    welcome3:
-      "We hope to see you there and that you'll enjoy the show!",
+    welcome3: "We hope to see you there and that you'll enjoy the show!",
     entertainment1: "Entertainment",
     entertainment2: "without end",
     fullProgram: "The full program",

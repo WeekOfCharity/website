@@ -1,0 +1,27 @@
+.overlay-root[data-theme='blue-day'] {
+  --text-r: 16;
+  --text-g: 16;
+  --text-b: 93;
+}
+
+.overlay-root[data-theme='blue-night'] {
+  --text-r: 201;
+  --text-g: 208;
+  --text-b: 255;
+}
+
+.overlay-root[data-theme='pink-day'] {
+  --text-r: 91;
+  --text-g: 18;
+  --text-b: 82;
+}
+
+.overlay-root[data-theme='pink-night'] {
+  --text-r: 255;
+  --text-g: 188;
+  --text-b: 250;
+}
+
+.overlay-root {
+  color: rgba(var(--text-r),var(--text-g),var(--text-b),1);
+}

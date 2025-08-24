@@ -4,7 +4,7 @@ import { CSSProperties } from "react";
 
 export type LayoutMoneyTextProps = {
   amount: number | null | undefined;
-  variant: "layout24" | "layout25";
+  variant: "layout24" | "layout25" | "intermission25";
   customEuroClassName?: string;
   style?: CSSProperties;
 };
@@ -24,9 +24,9 @@ export const LayoutMoneyText = ({
         className={cn(
           {
             "transition-[filter] duration-[2000ms] ease-in drop-shadow-layout-text w-3.5 ml-px mb-px":
-              variant === "layout24",
+              variant === "layout24" || variant === "layout25",
             "drop-shadow-layout-dark w-[var(--icon-size,_18px)] ml-0.5":
-              variant === "layout25",
+              variant === "intermission25",
           },
           customEuroClassName
         )}

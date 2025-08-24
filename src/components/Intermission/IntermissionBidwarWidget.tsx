@@ -140,7 +140,7 @@ export const IntermissionBidwarWidget = ({
                       </div>
                       <div className="flex justify-end items-start">
                         <LayoutMoneyText
-                          variant="layout25"
+                          variant="intermission25"
                           amount={
                             option.amount !== null ? option.amount / 100 : null
                           }

@@ -1,27 +1,27 @@
 .overlay-root[data-theme='green-day'] {
-    --text-r: 32;
-    --text-g: 55;
-    --text-b: 55;
-  }
+  --text-r: 32;
+  --text-g: 55;
+  --text-b: 55;
+}
 
-  .overlay-root[data-theme='green-night'] {
-    --text-r: 175;
-    --text-g: 226;
-    --text-b: 181;
-  }
+.overlay-root[data-theme='green-night'] {
+  --text-r: 175;
+  --text-g: 226;
+  --text-b: 181;
+}
 
-  .overlay-root[data-theme='red-day'] {
-    --text-r: 69;
-    --text-g: 24;
-    --text-b: 33;
-  }
+.overlay-root[data-theme='red-day'] {
+  --text-r: 69;
+  --text-g: 24;
+  --text-b: 33;
+}
 
-  .overlay-root[data-theme='red-night'] {
-    --text-r: 234;
-    --text-g: 192;
-    --text-b: 192;
-  }
+.overlay-root[data-theme='red-night'] {
+  --text-r: 234;
+  --text-g: 192;
+  --text-b: 192;
+}
 
-  .overlay-root {
-    color: rgba(var(--text-r),var(--text-g),var(--text-b),1);
-  }
+.overlay-root {
+  color: rgba(var(--text-r),var(--text-g),var(--text-b),1);
+}

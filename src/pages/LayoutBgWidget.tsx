@@ -5,7 +5,9 @@ import sky_red from "../assets/layout/sky_red.png";
 import clouds from "../assets/layout/clouds.png";
 import stars from "../assets/layout/stars.png";
 import {
-  HOURINMS,
+  BRIGHTEST_DAY,
+  DEEPEST_NIGHT,
+  MS_IN_HALF_A_DAY,
   STARS_FADE_IN_START,
   STARS_FADE_IN_STOP,
   STARS_FADE_OUT_START,
@@ -18,11 +20,6 @@ import { isBetweenMod } from "../utils/isBetweenMod";
 
 const cutout =
   "path('m0 0 0 1080 1920 0 0-178-1576 0 0-6-12 0 0-4-8 0 0-16-6 0 0-878-354 0z')";
-
-const MS_IN_HALF_A_DAY = 12 * HOURINMS;
-
-const DEEPEST_NIGHT = 1.5 * HOURINMS;
-const BRIGHTEST_DAY = 13.5 * HOURINMS;
 
 // default 1
 const CLOUD_SPEED_AMPLIFIER = 1;

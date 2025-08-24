@@ -72,6 +72,14 @@ module.exports = {
             day: "#E9BDBD",
             night: "#370514",
           },
+          blue: {
+            day: "#707AF2",
+            night: "#120950",
+          },
+          pink: {
+            day: "#E17FD7",
+            night: "#320A30",
+          },
           current: "var(--current-layout-bg)",
         },
       },
@@ -154,6 +162,10 @@ module.exports = {
           "0%": { maskPosition: "0px 0px" },
           "100%": { maskPosition: "252px 126px" },
         },
+        gridLayout: {
+          "0%": { maskPosition: "252px 126px" },
+          "100%": { maskPosition: "0px 0px" },
+        },
         bgDonationGoals25: {
           "0%": { backgroundPosition: "0 0" },
           "100%": { backgroundPosition: "1728px 0" }, // 576 * 3
@@ -179,6 +191,7 @@ module.exports = {
         scrollX: "scrollX 10s cubic-bezier(0.37, 0, 0.63, 1) infinite",
         scrollY: "scrollY 30s ease-in-out infinite",
         gridIntermission: "gridIntermission 20s linear infinite",
+        gridLayout: "gridLayout 60s linear infinite",
         bgDonationGoals25: "bgDonationGoals25 10s linear infinite",
       },
       fontFamily: {

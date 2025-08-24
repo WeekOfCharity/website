@@ -1,5 +1,8 @@
 import cn from "classnames";
-import { StreamLayoutTheme } from "../../hooks/useCurrentMsOfDay";
+import {
+  StreamLayoutTheme,
+  StreamLayoutTheme25,
+} from "../../hooks/useCurrentMsOfDay";
 import { useBidwarResults } from "../../hooks/useBidwarResults";
 import { useContext, useEffect, useState } from "react";
 
@@ -12,7 +15,8 @@ import { LayoutBidwarOptionText } from "./LayoutBidwarOptionText";
 import { IsDayContext } from "../../utils/IsDayContext";
 
 export type LayoutBidwarWidgetProps = {
-  theme: StreamLayoutTheme;
+  theme: StreamLayoutTheme | StreamLayoutTheme25;
+  layout: "layout24" | "layout25";
   isEn?: boolean;
   donationGoalsText?: string;
   className?: string;
@@ -44,6 +48,7 @@ type PreparedBidwar = {
 
 export const LayoutBidwarWidget = ({
   theme,
+  layout,
   isEn,
   donationGoalsText,
   className,
@@ -161,28 +166,31 @@ export const LayoutBidwarWidget = ({
                 </span>
               ))}
             </div>
-            <div className="absolute z-10 h-full w-2 left-[286px]">
-              <img
-                className={cn(
-                  "absolute transition-[opacity,filter] ease-in duration-[2000ms] drop-shadow-layout-text",
-                  {
-                    "opacity-0": !isDay,
-                  }
-                )}
-                alt=""
-                src={dividers[theme].day}
-              />
-              <img
-                className={cn(
-                  "absolute transition-[opacity,filter] ease-in duration-[2000ms] drop-shadow-layout-text",
-                  {
-                    "opacity-0": isDay,
-                  }
-                )}
-                alt=""
-                src={dividers[theme].night}
-              />
-            </div>
+            {(theme === StreamLayoutTheme.GREEN ||
+              theme === StreamLayoutTheme.RED) && (
+              <div className="absolute z-10 h-full w-2 left-[286px]">
+                <img
+                  className={cn(
+                    "absolute transition-[opacity,filter] ease-in duration-[2000ms] drop-shadow-layout-text",
+                    {
+                      "opacity-0": !isDay,
+                    }
+                  )}
+                  alt=""
+                  src={dividers[theme].day}
+                />
+                <img
+                  className={cn(
+                    "absolute transition-[opacity,filter] ease-in duration-[2000ms] drop-shadow-layout-text",
+                    {
+                      "opacity-0": isDay,
+                    }
+                  )}
+                  alt=""
+                  src={dividers[theme].night}
+                />
+              </div>
+            )}
             <div className="text-[15px] w-[56%] h-full animate-scrollY relative">
               <div className="grid w-full">
                 {preparedBidwars.map((bidwar, index) => (
@@ -209,7 +217,7 @@ export const LayoutBidwarWidget = ({
                           </div>
                         </span>
                         <LayoutMoneyText
-                          variant="layout24"
+                          variant={layout}
                           amount={
                             option.amount !== null ? option.amount / 100 : null
                           }

@@ -124,9 +124,12 @@ export const GoalWidget = ({ isEn, className }: GoalWidgetProps) => {
           />
         </div>
         <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px text-xl">
-          <LayoutMoneyText amount={currentDonation || 0} variant="layout25" />
+          <LayoutMoneyText
+            amount={currentDonation || 0}
+            variant="intermission25"
+          />
           <span>{isEn ? "of" : "von"}</span>
-          <LayoutMoneyText amount={moneyTarget} variant="layout25" />
+          <LayoutMoneyText amount={moneyTarget} variant="intermission25" />
         </div>
         <img src={goalBorder} alt="" className="absolute" />
       </div>

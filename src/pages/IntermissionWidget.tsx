@@ -318,7 +318,7 @@ export const IntermissionWidget = () => {
               {donationAlertAmount != null && (
                 <LayoutMoneyText
                   amount={donationAlertAmount / 100}
-                  variant="layout25"
+                  variant="intermission25"
                   customEuroClassName="!w-5"
                 />
               )}
@@ -334,7 +334,7 @@ export const IntermissionWidget = () => {
         </div>
       </div>
       <IntermissionCursor ref={cursorRef} className="z-[90]" />
-      <div className="size-full absolute z-[100] bg-scan-lines opacity-[0.1] animate-scanlines bg-[0_3px] pointer-events-none" />
+      <div className="size-full absolute z-[100] bg-scan-lines opacity-[0.1] bg-[0_3px] pointer-events-none" />
     </div>
   );
 };

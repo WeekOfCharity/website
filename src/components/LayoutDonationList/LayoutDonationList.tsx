@@ -6,6 +6,7 @@ import { LayoutDonationName } from "./LayoutDonationName";
 
 export type LayoutDonationListProps = {
   headline: string;
+  layout: "layout24" | "layout25";
   donations: Donation[] | undefined;
   isEn: boolean;
   className?: string;
@@ -14,6 +15,7 @@ export type LayoutDonationListProps = {
 
 export const LayoutDonationList = ({
   headline,
+  layout,
   donations = [],
   isEn,
   className,
@@ -54,7 +56,7 @@ export const LayoutDonationList = ({
               isEn={isEn}
             />
             <LayoutMoneyText
-              variant="layout24"
+              variant={layout}
               amount={
                 donation.donated_amount_in_cents !== null
                   ? donation.donated_amount_in_cents / 100

@@ -3,12 +3,16 @@ import { DonationGoal, useDonationGoals } from "../../hooks/useDonationGoals";
 import { useExternalDonationTotal } from "../../hooks/useExternalDonationTotal";
 import { Language } from "../../i18n/i18n";
 import cn from "classnames";
-import { StreamLayoutTheme } from "../../hooks/useCurrentMsOfDay";
+import {
+  StreamLayoutTheme,
+  StreamLayoutTheme25,
+} from "../../hooks/useCurrentMsOfDay";
 import { LayoutMoneyText } from "../LayoutMoneyText/LayoutMoneyText";
 import { IsDayContext } from "../../utils/IsDayContext";
 
 export type GoalWidget24Props = {
-  theme: StreamLayoutTheme;
+  theme: StreamLayoutTheme | StreamLayoutTheme25;
+  layout: "layout24" | "layout25";
   isEn?: boolean;
   onDonationTextChange?: (donationGoalText: string) => void;
   className?: string;
@@ -26,6 +30,14 @@ const fillColorClasses = {
     day: "bg-[#A94C56]",
     night: "bg-[#832C37]",
   },
+  [StreamLayoutTheme25.BLUE]: {
+    day: "bg-[#C1C7FF]",
+    night: "bg-[#534DDC]",
+  },
+  [StreamLayoutTheme25.PINK]: {
+    day: "bg-[#EEC8EA]",
+    night: "bg-[#953286]",
+  },
 } as const;
 
 const getHighestDonationGoalAmount = (goals: DonationGoal[] | undefined) => {
@@ -35,6 +47,7 @@ const getHighestDonationGoalAmount = (goals: DonationGoal[] | undefined) => {
 
 export const GoalWidget24 = ({
   theme,
+  layout,
   isEn,
   onDonationTextChange,
   className,
@@ -133,11 +146,7 @@ export const GoalWidget24 = ({
 
   return (
     <div className={cn("flex flex-col", className)}>
-      <div
-        className={cn(
-          "relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in bg-layout-bg-current"
-        )}
-      >
+      <div className="relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in bg-layout-bg-current">
         <div
           className={cn(
             "h-full absolute transition-[background-color] duration-[2000ms] ease-in",
@@ -148,9 +157,9 @@ export const GoalWidget24 = ({
           }}
         />
         <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px">
-          <LayoutMoneyText amount={currentDonation || 0} variant="layout24" />
+          <LayoutMoneyText amount={currentDonation || 0} variant={layout} />
           <span>{isEn ? "of" : "von"}</span>
-          <LayoutMoneyText amount={moneyTarget} variant="layout24" />
+          <LayoutMoneyText amount={moneyTarget} variant={layout} />
         </div>
       </div>
     </div>

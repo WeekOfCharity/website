@@ -2,26 +2,26 @@ import { useSearchParams } from "react-router-dom";
 import cn from "classnames";
 import {
   getIsDay,
-  StreamLayoutTheme,
+  StreamLayoutTheme25,
   useCurrentMsOfDay,
 } from "../hooks/useCurrentMsOfDay";
 
-import overlayGreenDay from "../assets/layout/overlay_green_day.png";
-import overlayGreenNight from "../assets/layout/overlay_green_night.png";
-import overlayRedDay from "../assets/layout/overlay_red_day.png";
-import overlayRedNight from "../assets/layout/overlay_red_night.png";
+import overlayBlueDay from "../assets/layout25/overlay_blue_day.png";
+import overlayBlueNight from "../assets/layout25/overlay_blue_night.png";
+import overlayPinkDay from "../assets/layout25/overlay_pink_day.png";
+import overlayPinkNight from "../assets/layout25/overlay_pink_night.png";
 
-import bannerGreenDay from "../assets/layout/banner_green_day.png";
-import bannerGreenNight from "../assets/layout/banner_green_night.png";
-import bannerRedDay from "../assets/layout/banner_red_day.png";
-import bannerRedNight from "../assets/layout/banner_red_night.png";
+import bannerBlueDay from "../assets/layout25/banner_blue_day.png";
+import bannerBlueNight from "../assets/layout25/banner_blue_night.png";
+import bannerPinkDay from "../assets/layout25/banner_pink_day.png";
+import bannerPinkNight from "../assets/layout25/banner_pink_night.png";
 
 import { GoalWidget24 } from "../components/GoalWidget24/GoalWidget24";
 import { useEffect, useRef, useState } from "react";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
 import { LayoutDonationList } from "../components/LayoutDonationList/LayoutDonationList";
 import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
-import "./LayoutOverlayWidget.scss";
+import "./LayoutOverlayWidget25.scss";
 import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
 import { AnimatedStreamBanner } from "../components/AnimatedStreamBanner/AnimatedStreamBanner";
 import { LayoutBidwarWidget } from "../components/LayoutBidwarWidget/LayoutBidwarWidget";
@@ -34,36 +34,36 @@ import {
 } from "../utils/widgets/donationAlert";
 
 const overlays = {
-  [StreamLayoutTheme.GREEN]: {
-    day: overlayGreenDay,
-    night: overlayGreenNight,
+  [StreamLayoutTheme25.BLUE]: {
+    day: overlayBlueDay,
+    night: overlayBlueNight,
   },
-  [StreamLayoutTheme.RED]: {
-    day: overlayRedDay,
-    night: overlayRedNight,
+  [StreamLayoutTheme25.PINK]: {
+    day: overlayPinkDay,
+    night: overlayPinkNight,
   },
 } as const;
 
 const banners = {
-  [StreamLayoutTheme.GREEN]: {
-    day: bannerGreenDay,
-    night: bannerGreenNight,
+  [StreamLayoutTheme25.BLUE]: {
+    day: bannerBlueDay,
+    night: bannerBlueNight,
   },
-  [StreamLayoutTheme.RED]: {
-    day: bannerRedDay,
-    night: bannerRedNight,
+  [StreamLayoutTheme25.PINK]: {
+    day: bannerPinkDay,
+    night: bannerPinkNight,
   },
 } as const;
 
-const getTheme = (theme: StreamLayoutTheme | string | null) => {
-  if (!theme) return StreamLayoutTheme.GREEN;
-  const layoutTheme = theme as StreamLayoutTheme;
-  if (Object.values(StreamLayoutTheme).includes(layoutTheme))
+const getTheme = (theme: StreamLayoutTheme25 | string | null) => {
+  if (!theme) return StreamLayoutTheme25.BLUE;
+  const layoutTheme = theme as StreamLayoutTheme25;
+  if (Object.values(StreamLayoutTheme25).includes(layoutTheme))
     return layoutTheme;
-  return StreamLayoutTheme.GREEN;
+  return StreamLayoutTheme25.BLUE;
 };
 
-export const LayoutOverlayWidget = () => {
+export const LayoutOverlayWidget25 = () => {
   const [donationGoalText, setDonationGoalText] = useState("");
   const [donationAlertGif, setDonationAlertGif] = useState<string>();
   const [donationAlertComment, setDonationAlertComment] = useState<
@@ -183,22 +183,22 @@ export const LayoutOverlayWidget = () => {
           {
             "[text-shadow:0_0_0.5rem_rgba(var(--text-r),var(--text-g),var(--text-b),0.55)] [--drop-shadow-layout-text:0_0_5px_rgba(var(--text-r),var(--text-g),var(--text-b),0.6)]":
               !isDay,
-            "[--current-layout-bg:#E1DFAC]":
-              isDay && layoutTheme === StreamLayoutTheme.GREEN,
-            "[--current-layout-bg:#00141E]":
-              !isDay && layoutTheme === StreamLayoutTheme.GREEN,
-            "[--current-layout-bg:#E9BDBD]":
-              isDay && layoutTheme === StreamLayoutTheme.RED,
-            "[--current-layout-bg:#370514]":
-              !isDay && layoutTheme === StreamLayoutTheme.RED,
+            "[--current-layout-bg:#707AF2]":
+              isDay && layoutTheme === StreamLayoutTheme25.BLUE,
+            "[--current-layout-bg:#120950]":
+              !isDay && layoutTheme === StreamLayoutTheme25.BLUE,
+            "[--current-layout-bg:#E17FD7]":
+              isDay && layoutTheme === StreamLayoutTheme25.PINK,
+            "[--current-layout-bg:#320A30]":
+              !isDay && layoutTheme === StreamLayoutTheme25.PINK,
           }
         )}
       >
         {alertonly === null && (
           <>
             <GoalWidget24
-              className="absolute w-[665px] left-[348px] top-[916px] h-[150px] text-center"
-              layout="layout24"
+              layout="layout25"
+              className="absolute w-[667px] left-[346px] top-[916px] h-[153px] text-center"
               isEn={isEn !== null}
               theme={layoutTheme}
               onDonationTextChange={setDonationGoalText}
@@ -227,7 +227,7 @@ export const LayoutOverlayWidget = () => {
             />
             <LayoutBidwarWidget
               className="z-10 absolute text-[1.1875rem] w-[664px] left-[348px] top-[920px] h-[88px] flex justify-center items-center text-center overflow-hidden"
-              layout="layout24"
+              layout="layout25"
               theme={layoutTheme}
               isEn={isEn !== null}
               donationGoalsText={donationGoalText}
@@ -254,28 +254,14 @@ export const LayoutOverlayWidget = () => {
             )}
             <LayoutDonationList
               className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1060px] top-[922px] overflow-hidden whitespace-nowrap"
-              layout="layout24"
-              listClassName={cn({
-                "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
-                "animate-fadeinout1":
-                  isDay && layoutTheme === StreamLayoutTheme.RED,
-                "animate-fadeinout2":
-                  !isDay && layoutTheme === StreamLayoutTheme.RED,
-              })}
+              layout="layout25"
               headline={isEn !== null ? "Top Donations" : "Höchste Spenden"}
               donations={highestDonations}
               isEn={isEn !== null}
             />
             <LayoutDonationList
               className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1508px] top-[922px] overflow-hidden whitespace-nowrap"
-              layout="layout24"
-              listClassName={cn({
-                "text-[#E9BDBD]": layoutTheme === StreamLayoutTheme.RED,
-                "animate-fadeinout1":
-                  isDay && layoutTheme === StreamLayoutTheme.RED,
-                "animate-fadeinout2":
-                  !isDay && layoutTheme === StreamLayoutTheme.RED,
-              })}
+              layout="layout25"
               headline={isEn !== null ? "Last Donations" : "Letzte Spenden"}
               donations={newestDonations?.slice(0, 3)}
               isEn={isEn !== null}
@@ -326,14 +312,14 @@ export const LayoutOverlayWidget = () => {
               className={cn(
                 "flex flex-col gap-4 rounded-2xl py-5 px-5 animate-donationAlert [box-shadow:0_0_16px_black]",
                 {
-                  "bg-layout-bg-green-night/[0.99]":
-                    layoutTheme === StreamLayoutTheme.GREEN && !isDay,
-                  "bg-layout-bg-red-night/[0.98]":
-                    layoutTheme === StreamLayoutTheme.RED && !isDay,
-                  "bg-layout-bg-green-day/[0.93]":
-                    layoutTheme === StreamLayoutTheme.GREEN && isDay,
-                  "bg-layout-bg-red-day/[0.93]":
-                    layoutTheme === StreamLayoutTheme.RED && isDay,
+                  "bg-layout-bg-blue-night/[0.99]":
+                    layoutTheme === StreamLayoutTheme25.BLUE && !isDay,
+                  "bg-layout-bg-pink-night/[0.98]":
+                    layoutTheme === StreamLayoutTheme25.PINK && !isDay,
+                  "bg-layout-bg-blue-day/[0.93]":
+                    layoutTheme === StreamLayoutTheme25.BLUE && isDay,
+                  "bg-layout-bg-pink-day/[0.93]":
+                    layoutTheme === StreamLayoutTheme25.PINK && isDay,
                 }
               )}
             >
@@ -343,7 +329,7 @@ export const LayoutOverlayWidget = () => {
                 {donationAlertAmount != null && (
                   <LayoutMoneyText
                     amount={donationAlertAmount / 100}
-                    variant="layout24"
+                    variant="layout25"
                     customEuroClassName="!w-5"
                   />
                 )}

@@ -1,6 +1,5 @@
 import { mdiInstagram, mdiYoutube, mdiMastodon } from "@mdi/js";
 import Icon from "@mdi/react";
-import { LayoutSponsorImage } from "../LayoutSponsorImage/LayoutSponsorImage";
 
 type MultiLanguageBanner = {
   de?: React.ReactNode;
@@ -15,17 +14,12 @@ const blueSkyPath =
 
 export const streamBanners: MultiLanguageBanner[] = [
   {
-    de: <span className="text-lg">Gesponsert von</span>,
-    en: <span className="text-lg">Sponsored by</span>,
-    both: <LayoutSponsorImage />,
-  },
-  {
     de: "Alle Spenden gehen an",
     en: "All donations go to",
     both: (
       <>
         <br />
-        <span className="text-xl mt-1">EXIT-Deutschland</span>
+        <span className="text-xl mt-1">Islamic Relief</span>
       </>
     ),
   },

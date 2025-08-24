@@ -1,4 +1,4 @@
-import { mdiInstagram, mdiTwitter, mdiYoutube, mdiMastodon } from "@mdi/js";
+import { mdiInstagram, mdiYoutube, mdiMastodon } from "@mdi/js";
 import Icon from "@mdi/react";
 import { LayoutSponsorImage } from "../LayoutSponsorImage/LayoutSponsorImage";
 
@@ -71,14 +71,6 @@ export const streamBanners: MultiLanguageBanner[] = [
             size="1.35rem"
           />
           chesster.weekofcharity.de
-        </span>
-        <span className="gap-2 tracking-tighter" key="twitter">
-          <Icon
-            className="drop-shadow-layout-text transition-[filter] ease-in duration-[2000ms]"
-            path={mdiTwitter}
-            size="1.5rem"
-          />
-          @WeekOfCharity
         </span>
       </div>
     ),

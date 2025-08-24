@@ -1,21 +1,10 @@
 import { useSearchParams } from "react-router-dom";
+import cn from "classnames";
 import {
   HOURINMS,
   StreamLayoutTheme,
   useCurrentMsOfDay,
 } from "../hooks/useCurrentMsOfDay";
-
-import alertSound1 from "../assets/layout/donation_alert/alert_1.mp3";
-import alertSound2 from "../assets/layout/donation_alert/alert_2.mp3";
-import alertSound3 from "../assets/layout/donation_alert/alert_3.mp3";
-import alertSound4 from "../assets/layout/donation_alert/alert_4.mp3";
-import alertSound5 from "../assets/layout/donation_alert/alert_5.mp3";
-
-import alertGif1 from "../assets/layout/donation_alert/Chesster_Animation_01.gif";
-import alertGif2 from "../assets/layout/donation_alert/Chesster_Animation_02.gif";
-import alertGif3 from "../assets/layout/donation_alert/Chesster_Animation_03.gif";
-import alertGif4 from "../assets/layout/donation_alert/Chesster_Animation_04.gif";
-import alertGif5 from "../assets/layout/donation_alert/Chesster_Animation_05.gif";
 
 import overlayGreenDay from "../assets/layout/overlay_green_day.png";
 import overlayGreenNight from "../assets/layout/overlay_green_night.png";
@@ -27,7 +16,6 @@ import bannerGreenNight from "../assets/layout/banner_green_night.png";
 import bannerRedDay from "../assets/layout/banner_red_day.png";
 import bannerRedNight from "../assets/layout/banner_red_night.png";
 
-import cn from "classnames";
 import { GoalWidget24 } from "../components/GoalWidget24/GoalWidget24";
 import { useEffect, useRef, useState } from "react";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
@@ -38,6 +26,12 @@ import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
 import { AnimatedStreamBanner } from "../components/AnimatedStreamBanner/AnimatedStreamBanner";
 import { LayoutBidwarWidget } from "../components/LayoutBidwarWidget/LayoutBidwarWidget";
 import { IsDayContext } from "../utils/IsDayContext";
+import {
+  getAlertGifFromDonationAmount,
+  getAlertLengthFromDonationAmount,
+  playSound,
+  preloadDonationGifs,
+} from "../utils/widgets/donationAlert";
 
 const overlays = {
   [StreamLayoutTheme.GREEN]: {
@@ -67,60 +61,6 @@ const getTheme = (theme: StreamLayoutTheme | string | null) => {
   if (Object.values(StreamLayoutTheme).includes(layoutTheme))
     return layoutTheme;
   return StreamLayoutTheme.GREEN;
-};
-
-const getAlertLengthFromDonationAmount = (
-  donated_amount_in_cents: number | null | undefined
-) => {
-  if (!donated_amount_in_cents || donated_amount_in_cents < 500) return 10000;
-  if (donated_amount_in_cents < 1000) return 10000;
-  if (donated_amount_in_cents < 2000) return 10000;
-  if (donated_amount_in_cents < 5000) return 12000;
-  return 13000;
-};
-
-const getAlertSoundFromDonationAmount = (
-  donated_amount_in_cents: number | null | undefined
-) => {
-  if (!donated_amount_in_cents || donated_amount_in_cents < 500)
-    return alertSound1;
-  if (donated_amount_in_cents < 1000) return alertSound2;
-  if (donated_amount_in_cents < 2000) return alertSound3;
-  if (donated_amount_in_cents < 5000) return alertSound4;
-  return alertSound5;
-};
-
-const preloadImage = (src: string) =>
-  new Promise((resolve, reject) => {
-    const image = new Image();
-    image.onload = resolve;
-    image.onerror = reject;
-    image.src = src;
-  });
-
-const preloadImages = async () => {
-  await Promise.all(
-    [alertGif1, alertGif2, alertGif3, alertGif4, alertGif5].map((image) =>
-      preloadImage(image)
-    )
-  );
-};
-
-const playSound = (donated_amount_in_cents: number | null | undefined) => {
-  const audioUrl = getAlertSoundFromDonationAmount(donated_amount_in_cents);
-  const audio = new Audio(audioUrl);
-  void audio.play();
-};
-
-const getAlertGifFromDonationAmount = (
-  donated_amount_in_cents: number | null | undefined
-) => {
-  if (!donated_amount_in_cents || donated_amount_in_cents < 500)
-    return alertGif1;
-  if (donated_amount_in_cents < 1000) return alertGif2;
-  if (donated_amount_in_cents < 2000) return alertGif3;
-  if (donated_amount_in_cents < 5000) return alertGif4;
-  return alertGif5;
 };
 
 export const LayoutOverlayWidget = () => {
@@ -157,7 +97,7 @@ export const LayoutOverlayWidget = () => {
   const { currentMsOfDay } = useCurrentMsOfDay({ customHours });
 
   useEffect(() => {
-    preloadImages()
+    preloadDonationGifs()
       .then(() => {
         setPreloading(false);
         setTimeout(() => {
@@ -399,7 +339,8 @@ export const LayoutOverlayWidget = () => {
                 {donationAlertAmount != null && (
                   <LayoutMoneyText
                     amount={donationAlertAmount / 100}
-                    customEuroClassName="w-5"
+                    variant="layout24"
+                    customEuroClassName="!w-5"
                   />
                 )}
               </span>

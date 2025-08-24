@@ -1,49 +1,26 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DonationGoal, useDonationGoals } from "../../hooks/useDonationGoals";
 import { useExternalDonationTotal } from "../../hooks/useExternalDonationTotal";
 import { Language } from "../../i18n/i18n";
 import cn from "classnames";
-import { StreamLayoutTheme } from "../../hooks/useCurrentMsOfDay";
 import { LayoutMoneyText } from "../LayoutMoneyText/LayoutMoneyText";
-import { IsDayContext } from "../../utils/IsDayContext";
+import goalBorder from "../../assets/intermission/goal-bar.png";
 
-export type GoalWidget24Props = {
-  theme: StreamLayoutTheme;
+export type GoalWidgetProps = {
   isEn?: boolean;
-  onDonationTextChange?: (donationGoalText: string) => void;
   className?: string;
 };
-
-// const goalCutout =
-//   "path('m12 0 0 4-8 0 0 8-4 0 0 11 4 0 0 8 8 0 0 4 607 0 0-4 8 0 0-8 4 0 0-11-4 0 0-8-8 0 0-4-607 0')";
-
-const fillColorClasses = {
-  [StreamLayoutTheme.GREEN]: {
-    day: "bg-[#7B9C66]",
-    night: "bg-[#325B45]",
-  },
-  [StreamLayoutTheme.RED]: {
-    day: "bg-[#A94C56]",
-    night: "bg-[#832C37]",
-  },
-} as const;
 
 const getHighestDonationGoalAmount = (goals: DonationGoal[] | undefined) => {
   if (!goals || goals.length === 0) return undefined;
   return goals[goals.length - 1].reached_at;
 };
 
-export const GoalWidget24 = ({
-  theme,
-  isEn,
-  onDonationTextChange,
-  className,
-}: GoalWidget24Props) => {
+export const GoalWidget = ({ isEn, className }: GoalWidgetProps) => {
   const [currentDonation, setCurrentDonation] = useState<number>(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number>();
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string>();
   const [lastReachedGoalAmount, setLastReachedGoalAmount] = useState<number>(0);
-  const isDay = useContext(IsDayContext);
 
   const {
     data: donations,
@@ -105,53 +82,53 @@ export const GoalWidget24 = ({
     return () => clearInterval(id);
   }, [refetchDonationGoals]);
 
-  useEffect(() => {
-    const getDonationGoalsText = () => {
-      if (typeof nextDonationGoal !== "undefined")
-        return nextDonationGoalText || "";
-      if (donationsStatus !== "success" || donationGoalsStatus !== "success")
-        return "";
-      return donationGoals && donationGoals.length > 0
-        ? isEn
-          ? "All goals have been met!"
-          : "Alle Goals wurden erreicht!"
-        : isEn
-          ? "Currently there are no goals!"
-          : "Es gibt aktuell keine Goals!";
-    };
+  const getDonationGoalsText = () => {
+    if (typeof nextDonationGoal !== "undefined")
+      return nextDonationGoalText || "";
+    if (donationsStatus !== "success" || donationGoalsStatus !== "success")
+      return "";
+    return donationGoals && donationGoals.length > 0
+      ? isEn
+        ? "All goals have been met!"
+        : "Alle Goals wurden erreicht!"
+      : isEn
+        ? "Currently there are no goals!"
+        : "Es gibt aktuell keine Goals!";
+  };
 
-    onDonationTextChange?.(getDonationGoalsText());
-  }, [
-    donationGoals,
-    donationGoalsStatus,
-    donationsStatus,
-    isEn,
-    nextDonationGoal,
-    nextDonationGoalText,
-    onDonationTextChange,
-  ]);
-
+  const donationGoalText = getDonationGoalsText();
   return (
-    <div className={cn("flex flex-col", className)}>
+    <div
+      className={cn(
+        "flex flex-col custom-text-shadow-dark gap-6 items-center h-full justify-center",
+        className
+      )}
+    >
       <div
-        className={cn(
-          "relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in bg-layout-bg-current"
-        )}
+        className={cn("text-center text-balance", {
+          "text-2xl/9": donationGoalText.length <= 40,
+          "text-lg": donationGoalText.length > 40,
+        })}
       >
-        <div
-          className={cn(
-            "h-full absolute transition-[background-color] duration-[2000ms] ease-in",
-            fillColorClasses[theme][isDay ? "day" : "night"]
-          )}
-          style={{
-            width: targetProgress ? `calc(min(${targetProgress}%, 100%))` : "",
-          }}
-        />
-        <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px">
-          <LayoutMoneyText amount={currentDonation || 0} variant="layout24" />
-          <span>{isEn ? "of" : "von"}</span>
-          <LayoutMoneyText amount={moneyTarget} variant="layout24" />
+        {donationGoalText}
+      </div>
+      <div className="relative w-[576px] h-[63px]">
+        <div className="absolute rounded-[32px] overflow-hidden size-full bg-[#2d056873]">
+          <div
+            className="goal-widget-25-mask size-full bar-test bg-donation-goals-25 animate-bgDonationGoals25 bg-repeat bg-[length:300%_100%]"
+            style={{
+              "--goalProgress": `${targetProgress}%`,
+              maskImage:
+                "linear-gradient(to right, black var(--goalProgress), transparent var(--goalProgress))",
+            }}
+          />
         </div>
+        <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px text-xl">
+          <LayoutMoneyText amount={currentDonation || 0} variant="layout25" />
+          <span>{isEn ? "of" : "von"}</span>
+          <LayoutMoneyText amount={moneyTarget} variant="layout25" />
+        </div>
+        <img src={goalBorder} alt="" className="absolute" />
       </div>
     </div>
   );

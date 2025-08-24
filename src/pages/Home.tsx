@@ -65,7 +65,7 @@ export const Home = () => {
         setWocStatus("wocUpcomingSoon");
         return;
       }
-      const woc_start_date = new Date(configuration.woc_start);
+      const woc_start_date = new Date(configuration.woc_start + "+02:00");
       if (time < woc_start_date) {
         setWocStatus("wocUpcoming");
       } else {
@@ -77,8 +77,8 @@ export const Home = () => {
       streams &&
       streams.length > 0
     ) {
-      const woc_start_date = new Date(streams[0].start);
-      const woc_end_date = new Date(streams[streams.length - 1].end);
+      const woc_start_date = new Date(streams[0].start + "+02:00");
+      const woc_end_date = new Date(streams[streams.length - 1].end + "+02:00");
       if (time < woc_start_date) {
         setWocStatus("wocUpcoming");
       } else if (time > woc_start_date && time < woc_end_date) {

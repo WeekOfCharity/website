@@ -1,0 +1,17 @@
+.custom-text-shadow-dark {
+  text-shadow: 3px 3px #150477;
+}
+
+.text-gradient-bidwars {
+  background-image: linear-gradient(to top in oklch, #ff94ff 0%, white 70%);
+}
+
+@property --goalProgress {
+  initial-value: 0%;
+  inherits: false;
+  syntax: "<percentage>";
+}
+
+.goal-widget-25-mask {
+  transition: --goalProgress 1s ease-in-out;
+}

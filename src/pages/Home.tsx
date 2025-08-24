@@ -178,17 +178,17 @@ export const Home = () => {
             <Brush5 className="h-4 mx-auto md:mb-10 md:mt-5 my-10 -rotate-2 text-pink-900 text-opacity-75 w-auto" />
 
             <div className="leading-relaxed mx-5 text-center">
-              {t("home.welcome1")}
-              <br />
-              <br />
-              {`${t("home.welcome2")} `}
-              <a
-                href="/projekte"
-                className="underline underline-offset-2 text-pink-700"
-              >
-                {t("home.here")}
-              </a>
-              {`. ${t("home.welcome3")}`}
+              <p className="mb-5">{t("home.welcome1")}</p>
+              <p>
+                {`${t("home.welcome2")} `}
+                <Link
+                  to="/projekte"
+                  className="underline underline-offset-2 text-pink-700"
+                >
+                  {t("home.here")}
+                </Link>
+                {`. ${t("home.welcome3")}`}
+              </p>
             </div>
           </section>
 

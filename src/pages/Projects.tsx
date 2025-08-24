@@ -5,6 +5,7 @@ import "./Projects.scss";
 import { DONATION_URL } from "../utils/constants";
 
 import { ProjectCard } from "../components/ProjectCard/ProjectCard";
+import { Link } from "react-router-dom";
 
 const chessterMain = new URL("../assets/chesster-main.webp", import.meta.url);
 const chesster2021 = new URL("../assets/chesster-2021.webp", import.meta.url);
@@ -45,19 +46,19 @@ export const Projects = () => {
                     {`${t("projects.text.t1")} `}
                   </span>
                   {`${t("projects.text.t2")} `}
-                  <a
-                    href="/team"
+                  <Link
+                    to="/team"
                     className="underline underline-offset-2 text-royal-600"
                   >
                     {t("projects.text.t3")}
-                  </a>
+                  </Link>
                   {` ${t("projects.text.t4")} `}
-                  <a
-                    href="/streams"
+                  <Link
+                    to="/streams"
                     className="underline underline-offset-2 text-royal-600"
                   >
                     {t("projects.text.t5")}
-                  </a>
+                  </Link>
                   {`${t("projects.text.t6")}`}
                 </p>
                 <p className="mb-4">

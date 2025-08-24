@@ -27,7 +27,7 @@ export const Privacy = () => {
           verarbeiten.
         </p>
         <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
-        <p>Stand: 18. September 2022</p>
+        <p>Stand: 24. August 2025</p>
 
         <div className="font-round2 font-bold pt-6 text-xl">
           Inhaltsübersicht
@@ -588,34 +588,6 @@ export const Privacy = () => {
             .
           </li>
           <li>
-            <span className="font-semibold">Twitter: </span>Soziales Netzwerk;{" "}
-            <span className="font-semibold">Dienstanbieter:</span> Twitter
-            International Company, One Cumberland Place, Fenian Street, Dublin 2
-            D02 AX07, Irland, Mutterunternehmen: Twitter Inc., 1355 Market
-            Street, Suite 900, San Francisco, CA 94103, USA;{" "}
-            <span className="font-semibold">Rechtsgrundlagen:</span> Berechtigte
-            Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO);{" "}
-            <span className="font-semibold">Datenschutzerklärung:</span>{" "}
-            <a
-              className="text-pink-500 underline"
-              href="https://twitter.com/privacy"
-              rel="nofollow noreferrer"
-              target="_blank"
-            >
-              https://twitter.com/privacy
-            </a>
-            , (Settings:{" "}
-            <a
-              className="text-pink-500 underline"
-              href="https://twitter.com/personalization"
-              rel="nofollow noreferrer"
-              target="_blank"
-            >
-              https://twitter.com/personalization
-            </a>
-            ).
-          </li>
-          <li>
             <span className="font-semibold">YouTube: </span>Soziales Netzwerk
             und Videoplattform;{" "}
             <span className="font-semibold">Dienstanbieter:</span> Google
@@ -677,7 +649,7 @@ export const Privacy = () => {
             .
           </li>
         </ul>
-        <h2 id="m328">Plugins und eingebettete Funktionen sowie Inhalte</h2>
+        <h2>Plugins und eingebettete Funktionen sowie Inhalte</h2>
         <p>
           Wir binden in unser Onlineangebot Funktions- und Inhaltselemente ein,
           die von den Servern ihrer jeweiligen Anbieter (nachfolgend bezeichnet

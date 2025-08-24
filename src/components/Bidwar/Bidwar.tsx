@@ -132,7 +132,7 @@ export const Bidwar = ({
                         #{capitalize(key)}
                       </span>
                       <div className="flex items-center gap-4 shrink-0 w-[calc(100%-6.5rem)] md:w-[calc(100%-21.5rem)]">
-                        {maxOptionAmount && (
+                        {!!maxOptionAmount && !!options[key] && (
                           <div
                             className="self-stretch bg-royal-500 rounded-md shrink-0"
                             style={{

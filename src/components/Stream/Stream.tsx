@@ -9,7 +9,7 @@ import "./Stream.scss";
 import { useTranslation } from "react-i18next";
 import { StreamLanguageBadge } from "../StreamLanguageBadge/StreamLanguageBadge";
 import { StreamLanguage } from "../../hooks/useStreams";
-import { getValidLanguage } from "../../i18n/i18n";
+import { getValidLanguage, Language } from "../../i18n/i18n";
 
 type StreamProps = {
   activityId: number;
@@ -81,7 +81,7 @@ export const Stream = ({
       {!condensed && (
         <div
           className={classNames(
-            "border-2 flex flex-shrink-0 items-center justify-center mr-2 md:mr-4 rounded-md w-12 md:w-16",
+            "border-2 flex flex-shrink-0 items-center justify-center mr-2 md:mr-4 rounded-md",
             {
               "bg-white border-mint-900 text-mint-900 woc-active-stream":
                 state === "running" && !highlight,
@@ -91,15 +91,15 @@ export const Stream = ({
                 state === "running" && highlight,
               "bg-mint-900 border-mint-900 text-white":
                 state !== "running" && highlight,
+              "w-12 md:w-16": validLang === Language.DE,
+              "w-14 md:w-20": validLang === Language.EN,
             }
           )}
         >
-          <div className="font-round font-bold leading-none -rotate-6 -skew-x-6 text-sm text-center">
-            {formatTime(startTime, validLang)}
-            <br />
-            &mdash;
-            <br />
-            {formatTime(endTime, validLang)}
+          <div className="flex flex-col font-round font-bold leading-none -rotate-6 -skew-x-6 text-sm text-center">
+            <span>{formatTime(startTime, validLang)}</span>
+            <span>&mdash;</span>
+            <span>{formatTime(endTime, validLang)}</span>
           </div>
         </div>
       )}

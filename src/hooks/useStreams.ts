@@ -85,17 +85,19 @@ export const useStreams = (
 
   const translatedData = useMemo(() => {
     if (!rawQueryResult.data) return undefined;
-    return rawQueryResult.data.map((dataEntry) => {
-      const { activity, ...rest } = dataEntry;
-      const { name, name_en, ...restActivity } = activity;
-      return {
-        ...rest,
-        activity: {
-          ...restActivity,
-          name: lang === Language.DE || !name_en ? name : name_en,
-        },
-      } as Stream;
-    });
+    return rawQueryResult.data
+      .filter((dataEntry) => dataEntry.activity)
+      .map((dataEntry) => {
+        const { activity, ...rest } = dataEntry;
+        const { name, name_en, ...restActivity } = activity;
+        return {
+          ...rest,
+          activity: {
+            ...restActivity,
+            name: lang === Language.DE || !name_en ? name : name_en,
+          },
+        } as Stream;
+      });
   }, [lang, rawQueryResult.data]);
 
   return { ...rawQueryResult, data: translatedData };

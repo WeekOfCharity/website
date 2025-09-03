@@ -67,12 +67,16 @@ export const Stream = ({
   return (
     <RootElement
       className={classNames("flex select-none", {
-        "cursor-pointer duration-300 hover:-mx-1.5 transition-all":
+        "cursor-pointer duration-300 hover:-mx-1.5 transition-[margin]":
           condensed && !activityHidden,
         "opacity-50": state === "ended",
         "pointer-events-none": clickDisabled || (noLink && !vodLink),
       })}
-      to={RootElement === Link ? `/streams?id=${activityId}` : ""}
+      to={
+        RootElement === Link
+          ? `/streams?id=${activityId}`
+          : (undefined as unknown as string)
+      }
       href={RootElement === "a" ? vodLink : undefined}
       title={RootElement === "a" ? t("program.toVOD") : undefined}
       rel={RootElement === "a" ? "nofollow noreferrer" : undefined}
@@ -108,7 +112,7 @@ export const Stream = ({
         className={classNames(
           "flex flex-col md:flex-row relative md:rounded-md w-full",
           {
-            "cursor-pointer duration-300 hover:-mx-2 transition-all":
+            "cursor-pointer duration-300 hover:-mx-2 transition-[margin]":
               !condensed && !activityHidden,
           }
         )}

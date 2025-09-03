@@ -10,9 +10,9 @@ export enum Breakpoint {
 
 const getBreakPoint = (windowWidth: number): Breakpoint => {
   if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.xxl;
-  if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.xl;
-  if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.lg;
-  if (windowWidth >= Breakpoint.xxl.valueOf()) return Breakpoint.md;
+  if (windowWidth >= Breakpoint.xl.valueOf()) return Breakpoint.xl;
+  if (windowWidth >= Breakpoint.lg.valueOf()) return Breakpoint.lg;
+  if (windowWidth >= Breakpoint.md.valueOf()) return Breakpoint.md;
   return Breakpoint.sm;
 };
 

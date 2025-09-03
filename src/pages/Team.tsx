@@ -245,7 +245,7 @@ export const Team = () => {
       <OutsideAlerter active={activeMember !== undefined} onClick={closeMember}>
         <aside
           className={classNames(
-            "bg-neutral-800 duration-300 ease-in-out fixed h-screen overflow-hidden right-0 top-0 transform-gpu transition w-full sm:w-2/3 lg:w-1/2 2xl:w-1/3 z-[99999]",
+            "bg-neutral-800 duration-300 ease-in-out fixed h-screen overflow-hidden right-0 top-0 transform-gpu transition-transform w-full sm:w-2/3 lg:w-1/2 2xl:w-1/3 z-[99999]",
             {
               "translate-x-0": typeof activeMember !== "undefined",
               "translate-x-full": typeof activeMember === "undefined",

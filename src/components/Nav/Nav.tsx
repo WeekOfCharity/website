@@ -202,7 +202,7 @@ export const Nav = () => {
       </button>
       <aside
         className={classNames(
-          "absolute bg-neutral-800 duration-300 ease-in-out h-screen overflow-hidden p-5 right-0 top-0 transform-gpu transition w-full z-[99999]",
+          "absolute bg-neutral-800 duration-300 ease-in-out h-screen overflow-hidden p-5 right-0 top-0 transform-gpu transition-transform w-full z-[99999]",
           {
             "translate-x-0": isMenuOpen,
             "translate-x-full": !isMenuOpen,

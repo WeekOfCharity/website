@@ -60,7 +60,7 @@ export const LayoutBgWidget25 = () => {
   const [skyPosition, setSkyPosition] = useState(0);
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
-  const noThemeSelected = theme === null;
+  const noThemeSelected = theme === null || theme === "";
   const fullBg = searchParams.get("full");
   const customHours = parseIntSearchParam(searchParams.get("time"));
   const validTheme = getValidTheme(theme);
@@ -100,7 +100,7 @@ export const LayoutBgWidget25 = () => {
           </div>
         </div>
       </div>
-      {!theme && (
+      {noThemeSelected && (
         <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] px-4 py-2 top-[5px] right-[5px]">
           No theme provided on the{" "}
           <span className="font-black">Layout Background</span>. Please provide

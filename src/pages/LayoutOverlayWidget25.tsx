@@ -77,7 +77,7 @@ export const LayoutOverlayWidget25 = () => {
   const [isPreloading, setPreloading] = useState(true);
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
-  const noThemeSelected = theme === null;
+  const noThemeSelected = theme === null || theme === "";
   const name = searchParams.get("name");
   const pronouns = searchParams.get("pronouns");
   const isEn = searchParams.get("en");

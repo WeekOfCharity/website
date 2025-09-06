@@ -19,3 +19,7 @@
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
 }
+
+.custom-text-shadow-dark {
+  text-shadow: 3px 3px #150477;
+}

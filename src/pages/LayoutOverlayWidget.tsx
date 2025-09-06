@@ -27,11 +27,13 @@ import { AnimatedStreamBanner } from "../components/AnimatedStreamBanner/Animate
 import { LayoutBidwarWidget } from "../components/LayoutBidwarWidget/LayoutBidwarWidget";
 import { IsDayContext } from "../utils/IsDayContext";
 import {
-  getAlertGifFromDonationAmount,
   getAlertLengthFromDonationAmount,
   playSound,
+} from "../utils/widgets/donationAlertSounds24";
+import {
+  getAlertGifFromDonationAmount,
   preloadDonationGifs,
-} from "../utils/widgets/donationAlert";
+} from "../utils/widgets/donationAlertGifs";
 
 const overlays = {
   [StreamLayoutTheme.GREEN]: {

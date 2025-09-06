@@ -22,16 +22,16 @@ import { parseIntSearchParam } from "../utils/parseSearchParameters";
 import { LayoutDonationList } from "../components/LayoutDonationList/LayoutDonationList";
 import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
 import "./LayoutOverlayWidget25.scss";
-import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
+
 import { AnimatedStreamBanner } from "../components/AnimatedStreamBanner/AnimatedStreamBanner";
 import { LayoutBidwarWidget } from "../components/LayoutBidwarWidget/LayoutBidwarWidget";
 import { IsDayContext } from "../utils/IsDayContext";
 import {
-  getAlertGifFromDonationAmount,
   getAlertLengthFromDonationAmount,
   playSound,
-  preloadDonationGifs,
-} from "../utils/widgets/donationAlert";
+} from "../utils/widgets/donationAlertSounds25";
+import { preloadDonationGifs } from "../utils/widgets/donationAlertGifs";
+import { DonationAlert } from "../components/DonationAlert25/DonationAlert";
 
 const overlays = {
   [StreamLayoutTheme25.BLUE]: {
@@ -65,7 +65,6 @@ const getTheme = (theme: StreamLayoutTheme25 | string | null) => {
 
 export const LayoutOverlayWidget25 = () => {
   const [donationGoalText, setDonationGoalText] = useState("");
-  const [donationAlertGif, setDonationAlertGif] = useState<string>();
   const [donationAlertComment, setDonationAlertComment] = useState<
     string | null
   >();
@@ -107,10 +106,9 @@ export const LayoutOverlayWidget25 = () => {
           if (alreadyQueuedIds.current.includes(-1)) return;
           donationAlertQueue.current.unshift({
             id: -1,
-            donator_name: "Chesster",
-            donated_amount_in_cents: 556,
-            donation_comment:
-              "Das ist eine Testdonation! Hier steht der Kommentar, der einer Spende hinzugefügt werden kann.",
+            donator_name: "LaaaangerBinarischerName",
+            donated_amount_in_cents: testalert ? parseInt(testalert) : 556,
+            donation_comment: "56",
           });
           alreadyQueuedIds.current.push(-1);
           setPlayDonationAlert(true);
@@ -159,7 +157,6 @@ export const LayoutOverlayWidget25 = () => {
     setDonationAlertComment(donation_comment);
     setDonationAlertName(donator_name);
     setDonationAlertAmount(donated_amount_in_cents);
-    setDonationAlertGif(getAlertGifFromDonationAmount(donated_amount_in_cents));
     playSound(donated_amount_in_cents);
 
     const timeout = setTimeout(
@@ -284,53 +281,18 @@ export const LayoutOverlayWidget25 = () => {
 
         <div
           className={cn(
-            "absolute z-10 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[1500ms]",
+            "absolute z-10 text-lg top-[140px] left-[1200px] w-[606px] transition-[transform,opacity] duration-[500ms] overflow-hidden",
             {
-              "opacity-0 translate-x-[700px]": !playDonationAlert,
+              "opacity-0 scale-[0.4]": !playDonationAlert,
             }
           )}
         >
-          <div className="flex flex-col items-center justify-center text-center -rotate-6">
-            <img
-              className="size-96 object-contain object-top -mb-6"
-              src={donationAlertGif}
-              alt=""
-            />
-            <div
-              className={cn(
-                "flex flex-col gap-4 rounded-2xl py-5 px-5 animate-donationAlert [box-shadow:0_0_16px_black]",
-                {
-                  "bg-layout-bg-blue-night/[0.99]":
-                    layoutTheme === StreamLayoutTheme25.BLUE && !isDay,
-                  "bg-layout-bg-pink-night/[0.98]":
-                    layoutTheme === StreamLayoutTheme25.PINK && !isDay,
-                  "bg-layout-bg-blue-day/[0.93]":
-                    layoutTheme === StreamLayoutTheme25.BLUE && isDay,
-                  "bg-layout-bg-pink-day/[0.93]":
-                    layoutTheme === StreamLayoutTheme25.PINK && isDay,
-                }
-              )}
-            >
-              <span className="text-[1.5rem] px-2">
-                {donationAlertName || (isEn !== null ? "Anonymous" : "Anonym")}{" "}
-                {isEn !== null ? "donates" : "spendet"}{" "}
-                {donationAlertAmount != null && (
-                  <LayoutMoneyText
-                    amount={donationAlertAmount / 100}
-                    variant="layout25"
-                    customEuroClassName="!w-5"
-                  />
-                )}
-              </span>
-              {donationAlertComment && (
-                <span className="max-w-[550px] max-h-32 text-[1.1875rem] leading-8">
-                  {donationAlertComment.length > 150
-                    ? `${donationAlertComment?.slice(0, 150)}...`
-                    : donationAlertComment}
-                </span>
-              )}
-            </div>
-          </div>
+          <DonationAlert
+            amount={donationAlertAmount}
+            comment={donationAlertComment}
+            name={donationAlertName}
+            isEn={isEn !== null}
+          />
         </div>
       </div>
       {!name && (

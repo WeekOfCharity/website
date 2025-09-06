@@ -5,13 +5,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Donation, DonationSorting, useDonations } from "../hooks/useDonations";
 import "./IntermissionWidget.css";
-import { LayoutMoneyText } from "../components/LayoutMoneyText/LayoutMoneyText";
 import {
-  getAlertGifFromDonationAmount,
   getAlertLengthFromDonationAmount,
   playSound,
-  preloadDonationGifs,
-} from "../utils/widgets/donationAlert";
+} from "../utils/widgets/donationAlertSounds25";
 
 import { IntermissionTabButton } from "../components/Intermission/IntermissionTabButton";
 import { IntermissionClock } from "../components/Intermission/IntermissionClock";
@@ -40,6 +37,8 @@ import { UpcomingStreams } from "../components/Intermission/UpcomingStreams";
 import { GoalWidget } from "../components/Intermission/GoalWidget";
 import { TextDocumentWidget } from "../components/Intermission/TextDocumentWidget";
 import { IntermissionBidwarWidget } from "../components/Intermission/IntermissionBidwarWidget";
+import { preloadDonationGifs } from "../utils/widgets/donationAlertGifs";
+import { DonationAlert } from "../components/DonationAlert25/DonationAlert";
 
 const CURSOR_ANIMATION = true;
 const CURSOR_ANIMATION_INTERVAL = 45 * 1000;
@@ -57,7 +56,6 @@ export const IntermissionWidget = () => {
   const [activeWindow, setActiveWindow] = useState<
     "donationGoals" | "bidwars" | null
   >("donationGoals");
-  const [donationAlertGif, setDonationAlertGif] = useState<string>();
   const [donationAlertComment, setDonationAlertComment] = useState<
     string | null
   >();
@@ -144,7 +142,6 @@ export const IntermissionWidget = () => {
     setDonationAlertComment(donation_comment);
     setDonationAlertName(donator_name);
     setDonationAlertAmount(donated_amount_in_cents);
-    setDonationAlertGif(getAlertGifFromDonationAmount(donated_amount_in_cents));
     playSound(donated_amount_in_cents);
 
     const timeout = setTimeout(
@@ -220,7 +217,7 @@ export const IntermissionWidget = () => {
         <img src={gridGradient} alt="" width="1920" height="1080" />
       </div>
 
-      <div className="absolute w-[450px] flex justify-center left-[49px] top-[156px]">
+      <div className="absolute w-[450px] flex justify-center left-[49px] top-[156px] animate-floatXL">
         <img src={headerImage} alt="" />
       </div>
       <IntermissionWindow
@@ -305,39 +302,19 @@ export const IntermissionWidget = () => {
       </div>
       <div
         className={cn(
-          "absolute z-50 text-lg top-[240px] left-[1200px] w-[600px] transition-[transform,opacity] ease-in-out duration-[1500ms]",
+          "absolute z-50 text-lg top-[258px] left-[120px] w-[606px] transition-[transform,opacity] duration-[500ms] overflow-hidden",
           {
-            "opacity-0 translate-x-[700px]": !playDonationAlert,
+            "opacity-0 scale-[0.4]": !playDonationAlert,
           }
         )}
       >
-        <div className="flex flex-col items-center justify-center text-center -rotate-6">
-          <img
-            className="size-96 object-contain object-top -mb-6"
-            src={donationAlertGif}
-            alt=""
-          />
-          <div className="flex flex-col gap-4 rounded-2xl py-5 px-5 animate-donationAlert [box-shadow:0_0_16px_black] bg-layout-bg-green-day/[0.93]">
-            <span className="text-[1.5rem] px-2">
-              {donationAlertName || (isEn ? "Anonymous" : "Anonym")}{" "}
-              {isEn ? "donates" : "spendet"}{" "}
-              {donationAlertAmount != null && (
-                <LayoutMoneyText
-                  amount={donationAlertAmount / 100}
-                  variant="intermission25"
-                  customEuroClassName="!w-5"
-                />
-              )}
-            </span>
-            {donationAlertComment && (
-              <span className="max-w-[550px] max-h-32 text-[1.1875rem] leading-8">
-                {donationAlertComment.length > 150
-                  ? `${donationAlertComment?.slice(0, 150)}...`
-                  : donationAlertComment}
-              </span>
-            )}
-          </div>
-        </div>
+        <DonationAlert
+          amount={donationAlertAmount}
+          comment={donationAlertComment}
+          name={donationAlertName}
+          isEn={isEn !== null}
+          withBgBlur
+        />
       </div>
       <IntermissionCursor ref={cursorRef} className="z-[90]" />
       <div className="size-full absolute z-[100] bg-scan-lines opacity-[0.1] bg-[0_3px] pointer-events-none" />

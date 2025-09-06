@@ -106,9 +106,10 @@ export const LayoutOverlayWidget25 = () => {
           if (alreadyQueuedIds.current.includes(-1)) return;
           donationAlertQueue.current.unshift({
             id: -1,
-            donator_name: "LaaaangerBinarischerName",
+            donator_name: "Chesster",
             donated_amount_in_cents: testalert ? parseInt(testalert) : 556,
-            donation_comment: "56",
+            donation_comment:
+              "Das ist eine Testdonation! Hier steht der Kommentar, der einer Spende hinzugefügt werden kann.",
           });
           alreadyQueuedIds.current.push(-1);
           setPlayDonationAlert(true);

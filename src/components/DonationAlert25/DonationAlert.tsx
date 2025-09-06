@@ -14,8 +14,8 @@ export type DonationAlertProps = {
 };
 
 const getDonationCommentFontSize = (comment: string | null | undefined) => {
-  if (!comment) return 22;
-  if (comment.length < 40) return 21;
+  if (!comment) return 20;
+  if (comment.length < 40) return 20;
   if (comment.length < 80) return 19;
   if (comment.length < 120) return 17;
   return 15;
@@ -73,7 +73,7 @@ export const DonationAlert = ({
           />
           <div className="flex">
             <div className="flex flex-col gap-2 my-auto">
-              <div className="text-[1.5rem]">
+              <div className="text-[1.375rem]">
                 <span className="break-all">
                   {name || (isEn ? "Anonymous" : "Anonym")}
                 </span>{" "}

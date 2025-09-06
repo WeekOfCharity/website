@@ -77,6 +77,7 @@ export const LayoutOverlayWidget25 = () => {
   const [isPreloading, setPreloading] = useState(true);
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
+  const noThemeSelected = theme === null || theme === "";
   const name = searchParams.get("name");
   const pronouns = searchParams.get("pronouns");
   const isEn = searchParams.get("en");
@@ -191,6 +192,7 @@ export const LayoutOverlayWidget25 = () => {
               isDay && layoutTheme === StreamLayoutTheme25.PINK,
             "[--current-layout-bg:#320A30]":
               !isDay && layoutTheme === StreamLayoutTheme25.PINK,
+            grayscale: noThemeSelected,
           }
         )}
       >
@@ -235,23 +237,9 @@ export const LayoutOverlayWidget25 = () => {
             <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
               {name === "empty" ? "" : name}
             </div>
-            {!name && (
-              <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[5px] left-[5px]">
-                No name provided. Please provide your name by adding
-                &name=[example] to the layout URL.
-                <br /> Or add &name=empty to not show a name.
-              </div>
-            )}
             <div className="z-10 absolute text-[0.9375rem] w-80 text-center top-[59px] overflow-hidden whitespace-nowrap leading-relaxed">
               {pronouns === "empty" ? "" : pronouns}
             </div>
-            {!pronouns && (
-              <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] text-center p-2 top-[110px] left-[5px]">
-                No pronouns provided. Please provide your pronouns by adding
-                &pronouns=[example] to the layout URL.
-                <br /> Or add &pronouns=empty to not show any pronouns.
-              </div>
-            )}
             <LayoutDonationList
               className="z-10 absolute text-[1.1875rem] w-96 text-center left-[1060px] top-[922px] overflow-hidden whitespace-nowrap"
               layout="layout25"
@@ -345,6 +333,28 @@ export const LayoutOverlayWidget25 = () => {
           </div>
         </div>
       </div>
+      {!name && (
+        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] px-4 py-2 top-[5px] left-[5px]">
+          No name provided. Please provide your name by adding &name=[example]
+          to the layout URL.
+          <br /> Or add &name=empty to not show a name.
+        </div>
+      )}
+      {!pronouns && (
+        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] px-4 py-2 top-[110px] left-[5px]">
+          No pronouns provided. Please provide your pronouns by adding
+          &pronouns=[example] to the layout URL.
+          <br /> Or add &pronouns=empty to not show any pronouns.
+        </div>
+      )}
+      {noThemeSelected && (
+        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] px-4 py-2 top-[110px] right-[5px]">
+          No theme provided on the{" "}
+          <span className="font-black">Layout Overlay</span>. Please provide
+          your preferred theme by adding &theme=blue or &theme=pink to the
+          layout URL.
+        </div>
+      )}
     </IsDayContext.Provider>
   );
 };

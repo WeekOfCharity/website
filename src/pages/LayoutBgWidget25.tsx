@@ -13,6 +13,7 @@ import {
   useCurrentMsOfDay,
 } from "../hooks/useCurrentMsOfDay";
 import { parseIntSearchParam } from "../utils/parseSearchParameters";
+import classNames from "classnames";
 
 const cutout =
   "path('m0 0 0 1080 1920 0 0-182-1584 0 0-3-8 0 0-6-6 0 0-8-2 0 0-882-320 0z')";
@@ -59,6 +60,7 @@ export const LayoutBgWidget25 = () => {
   const [skyPosition, setSkyPosition] = useState(0);
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
+  const noThemeSelected = theme === null || theme === "";
   const fullBg = searchParams.get("full");
   const customHours = parseIntSearchParam(searchParams.get("time"));
   const validTheme = getValidTheme(theme);
@@ -71,28 +73,41 @@ export const LayoutBgWidget25 = () => {
   }, [currentMsOfDay]);
 
   return (
-    <div
-      className="grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden"
-      style={{
-        clipPath: CLIP_PATH_ENABLED && fullBg === null ? cutout : undefined,
-      }}
-    >
+    <>
       <div
+        className={classNames(
+          "grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden",
+          { grayscale: noThemeSelected }
+        )}
         style={{
-          backgroundImage: `url(${getBackground(validTheme)})`,
-          backgroundPositionY: `${skyPosition}%`,
+          clipPath: CLIP_PATH_ENABLED && fullBg === null ? cutout : undefined,
         }}
       >
         <div
-          className="w-[1920px] h-[1080px] bg-repeat animate-gridLayout mix-blend-screen opacity-50"
-          style={{ maskImage: `url("${backgroundGrid}")` }}
+          style={{
+            backgroundImage: `url(${getBackground(validTheme)})`,
+            backgroundPositionY: `${skyPosition}%`,
+          }}
         >
           <div
-            className="size-full transition-colors duration-[2000ms]"
-            style={{ backgroundColor: getGridColor(validTheme, isDay) }}
-          />
+            className="w-[1920px] h-[1080px] bg-repeat animate-gridLayout mix-blend-screen opacity-50"
+            style={{ maskImage: `url("${backgroundGrid}")` }}
+          >
+            <div
+              className="size-full transition-colors duration-[2000ms]"
+              style={{ backgroundColor: getGridColor(validTheme, isDay) }}
+            />
+          </div>
         </div>
       </div>
-    </div>
+      {noThemeSelected && (
+        <div className="font-sans font-semibold z-10 text-white bg-[#990000] absolute text-xl max-w-[520px] px-4 py-2 top-[5px] right-[5px]">
+          No theme provided on the{" "}
+          <span className="font-black">Layout Background</span>. Please provide
+          your preferred theme by adding &theme=blue or &theme=pink to the
+          layout URL.
+        </div>
+      )}
+    </>
   );
 };

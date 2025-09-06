@@ -60,7 +60,7 @@ export const DonationAlert = ({
             "flex size-full p-4 text-int-highlight-light custom-text-shadow-dark gap-4",
             {
               "bg-int-highlight-dark/40 backdrop-blur-[7px]": withBgBlur,
-              "bg-int-highlight-dark/70": !withBgBlur,
+              "bg-int-highlight-dark/85": !withBgBlur,
             }
           )}
         >

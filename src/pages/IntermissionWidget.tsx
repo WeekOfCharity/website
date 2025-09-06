@@ -23,7 +23,7 @@ import windowTop from "../assets/intermission/window-top.png";
 import windowRight from "../assets/intermission/window-right.png";
 import windowBottom from "../assets/intermission/window-bottom.png";
 import windowLeft from "../assets/intermission/window-left.png";
-import bigArtwork from "../assets/intermission/placeholder-chesster.png";
+import bigArtwork from "../assets/intermission/chesster.png";
 
 import headerPause from "../assets/intermission/header-pause.png";
 import headerStart from "../assets/intermission/header-start.png";
@@ -232,11 +232,17 @@ export const IntermissionWidget = () => {
       </IntermissionWindow>
 
       <IntermissionWindow
-        className="absolute left-[1332px] top-[111px]"
+        className="absolute left-[1332px] top-[111px] h-[864px] w-[522px]"
         borderSrc={windowRight}
         title="Chesster.jpg"
       >
-        <img src={bigArtwork} alt="" className="crisp-rendering" />
+        <div className="size-full bg-int-highlight-dark/40 backdrop-blur-[7px]">
+          <img
+            src={bigArtwork}
+            alt=""
+            className="h-full object-cover object-[35%_50%]"
+          />
+        </div>
       </IntermissionWindow>
 
       <IntermissionWindow

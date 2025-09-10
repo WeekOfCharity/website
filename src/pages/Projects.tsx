@@ -12,6 +12,7 @@ const chesster2021 = new URL("../assets/chesster-2021.webp", import.meta.url);
 const chesster2022 = new URL("../assets/chesster-2022.webp", import.meta.url);
 const chesster2023 = new URL("../assets/chesster-2023.webp", import.meta.url);
 const chesster2024 = new URL("../assets/chesster-2024.webp", import.meta.url);
+const chesster2025 = new URL("../assets/chesster-2025.webp", import.meta.url);
 
 export const Projects = () => {
   const { t } = useTranslation();
@@ -97,8 +98,10 @@ export const Projects = () => {
             <div className="line"></div>
             <div className="card-container flex flex-col">
               <ProjectCard
+                image={chesster2025.toString()}
                 year="2025"
                 textlink="https://www.islamicrelief.de/"
+                imageWrapperClassName="h-[254px] md:h-[304px] lg:h-[352px]"
                 imageSide="right"
               />
               <ProjectCard

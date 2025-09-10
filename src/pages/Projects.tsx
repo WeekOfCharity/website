@@ -101,20 +101,20 @@ export const Projects = () => {
                 image={chesster2025.toString()}
                 year="2025"
                 textlink="https://www.islamicrelief.de/"
-                imageWrapperClassName="h-[254px] md:h-[304px] lg:h-[352px]"
+                imageWrapperClassName="h-[224px] md:h-[300px] lg:h-[312px]"
                 imageSide="right"
               />
               <ProjectCard
                 image={chesster2024.toString()}
                 year="2024"
                 textlink="https://www.exit-deutschland.de/"
-                imageWrapperClassName="h-[228px] md:h-[284px] lg:h-[338px]"
+                imageWrapperClassName="h-[228px] md:h-[294px] lg:h-[338px]"
               />
               <ProjectCard
                 image={chesster2023.toString()}
                 year="2023"
                 textlink="https://tierschutz-berlin.de/"
-                imageWrapperClassName="h-[254px] md:h-[304px] lg:h-[352px]"
+                imageWrapperClassName="h-[254px] md:h-[314px] lg:h-[352px]"
                 imageSide="right"
               />
               <ProjectCard

@@ -34,6 +34,7 @@
     "react-twitch-embed": "^3.0.1"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20.4.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

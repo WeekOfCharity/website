@@ -18,28 +18,6 @@ export type GoalWidget24Props = {
   className?: string;
 };
 
-// const goalCutout =
-//   "path('m12 0 0 4-8 0 0 8-4 0 0 11 4 0 0 8 8 0 0 4 607 0 0-4 8 0 0-8 4 0 0-11-4 0 0-8-8 0 0-4-607 0')";
-
-const fillColorClasses = {
-  [StreamLayoutTheme.GREEN]: {
-    day: "bg-[#7B9C66]",
-    night: "bg-[#325B45]",
-  },
-  [StreamLayoutTheme.RED]: {
-    day: "bg-[#A94C56]",
-    night: "bg-[#832C37]",
-  },
-  [StreamLayoutTheme25.BLUE]: {
-    day: "bg-[#C1C7FF]",
-    night: "bg-[#534DDC]",
-  },
-  [StreamLayoutTheme25.PINK]: {
-    day: "bg-[#EEC8EA]",
-    night: "bg-[#953286]",
-  },
-} as const;
-
 const getHighestDonationGoalAmount = (goals: DonationGoal[] | undefined) => {
   if (!goals || goals.length === 0) return undefined;
   return goals[goals.length - 1].reached_at;
@@ -146,12 +124,7 @@ export const GoalWidget24 = ({
 
   return (
     <div className={cn("flex flex-col", className)}>
-      <div
-        className={cn(
-          "relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in",
-          fillColorClasses[theme][isDay ? "day" : "night"]
-        )}
-      >
+      <div className="relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in bg-layout-bg-current">
         <div
           className={cn(
             "absolute goal-widget-25-progress-transition size-full animate-bgDonationGoals25layout bg-repeat bg-[length:200%_100%]",
@@ -172,10 +145,18 @@ export const GoalWidget24 = ({
               "linear-gradient(to right, black var(--goalProgress), transparent var(--goalProgress))",
           }}
         />
-        <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px">
-          <LayoutMoneyText amount={currentDonation || 0} variant={layout} />
+        <div className="absolute size-full pb-px flex gap-2.5 justify-center items-center text-[19px]">
+          <LayoutMoneyText
+            amount={currentDonation || 0}
+            variant={layout}
+            customEuroClassName="!w-[18px]"
+          />
           <span>{isEn ? "of" : "von"}</span>
-          <LayoutMoneyText amount={moneyTarget} variant={layout} />
+          <LayoutMoneyText
+            amount={moneyTarget}
+            variant={layout}
+            customEuroClassName="!w-[18px]"
+          />
         </div>
       </div>
     </div>

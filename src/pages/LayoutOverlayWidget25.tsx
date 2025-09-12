@@ -32,6 +32,7 @@ import {
 } from "../utils/widgets/donationAlertSounds25";
 import { preloadDonationGifs } from "../utils/widgets/donationAlertGifs";
 import { DonationAlert } from "../components/DonationAlert25/DonationAlert";
+import { customConfetti } from "../utils/widgets/confettiEffect";
 
 const overlays = {
   [StreamLayoutTheme25.BLUE]: {
@@ -122,6 +123,7 @@ export const LayoutOverlayWidget25 = () => {
     const id = setInterval(() => {
       void refetchHighestDonations();
       void refetchNewestDonations();
+      customConfetti();
     }, 5 * 1000);
     return () => clearInterval(id);
   }, [refetchHighestDonations, refetchNewestDonations]);
@@ -182,11 +184,11 @@ export const LayoutOverlayWidget25 = () => {
           {
             "[text-shadow:0_0_0.5rem_rgba(var(--text-r),var(--text-g),var(--text-b),0.55)] [--drop-shadow-layout-text:0_0_5px_rgba(var(--text-r),var(--text-g),var(--text-b),0.6)]":
               !isDay,
-            "[--current-layout-bg:#707AF2]":
+            "[--current-layout-bg:#c1c7ff]":
               isDay && layoutTheme === StreamLayoutTheme25.BLUE,
             "[--current-layout-bg:#120950]":
               !isDay && layoutTheme === StreamLayoutTheme25.BLUE,
-            "[--current-layout-bg:#E17FD7]":
+            "[--current-layout-bg:#eec8ea]":
               isDay && layoutTheme === StreamLayoutTheme25.PINK,
             "[--current-layout-bg:#320A30]":
               !isDay && layoutTheme === StreamLayoutTheme25.PINK,

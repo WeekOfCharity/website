@@ -136,10 +136,10 @@ export const LayoutBidwarWidget = ({
   }, [refetchBidwarResults]);
 
   return (
-    <div className={cn(className)}>
+    <div className={className}>
       <div
         className={cn(
-          "absolute flex justify-center items-center size-full transition-opacity ease-in duration-[2000ms]",
+          "px-4 absolute flex justify-center items-center size-full transition-opacity ease-in duration-[2000ms]",
           { "opacity-0": showBidwards }
         )}
       >

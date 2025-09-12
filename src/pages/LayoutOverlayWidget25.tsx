@@ -32,7 +32,6 @@ import {
 } from "../utils/widgets/donationAlertSounds25";
 import { preloadDonationGifs } from "../utils/widgets/donationAlertGifs";
 import { DonationAlert } from "../components/DonationAlert25/DonationAlert";
-import { customConfetti } from "../utils/widgets/confettiEffect";
 
 const overlays = {
   [StreamLayoutTheme25.BLUE]: {
@@ -74,6 +73,8 @@ export const LayoutOverlayWidget25 = () => {
     number | null
   >();
   const [playDonationAlert, setPlayDonationAlert] = useState(false);
+  const [announcingGoalReached, setAnnouncingGoalReached] = useState<string>();
+  const [displayedGoalReached, setDisplayedGoalReached] = useState<string>("");
   const [isPreloading, setPreloading] = useState(true);
   const [searchParams] = useSearchParams();
   const theme = searchParams.get("theme");
@@ -123,7 +124,6 @@ export const LayoutOverlayWidget25 = () => {
     const id = setInterval(() => {
       void refetchHighestDonations();
       void refetchNewestDonations();
-      customConfetti();
     }, 5 * 1000);
     return () => clearInterval(id);
   }, [refetchHighestDonations, refetchNewestDonations]);
@@ -170,6 +170,10 @@ export const LayoutOverlayWidget25 = () => {
     return () => clearTimeout(timeout);
   }, [playDonationAlert]);
 
+  useEffect(() => {
+    if (announcingGoalReached) setDisplayedGoalReached(announcingGoalReached);
+  }, [announcingGoalReached]);
+
   const isDay = getIsDay(currentMsOfDay);
   const layoutTheme = getTheme(theme);
 
@@ -204,6 +208,7 @@ export const LayoutOverlayWidget25 = () => {
               isEn={isEn !== null}
               theme={layoutTheme}
               onDonationTextChange={setDonationGoalText}
+              onGoalReachedTextChange={setAnnouncingGoalReached}
             />
             <div
               className={cn(
@@ -228,12 +233,26 @@ export const LayoutOverlayWidget25 = () => {
               }}
             />
             <LayoutBidwarWidget
-              className="z-10 absolute text-[1.1875rem] w-[664px] left-[348px] top-[920px] h-[88px] flex justify-center items-center text-center overflow-hidden"
+              className={cn(
+                "z-10 absolute text-[18px] w-[664px] left-[348px] top-[920px] h-[88px] flex justify-center items-center text-center overflow-hidden transition-opacity duration-1000",
+                { "opacity-0": announcingGoalReached }
+              )}
               layout="layout25"
               theme={layoutTheme}
               isEn={isEn !== null}
               donationGoalsText={donationGoalText}
             />
+            <div
+              className={cn(
+                "z-10 absolute text-[18px] w-[664px] left-[348px] top-[920px] h-[88px] flex justify-center items-center px-4 transition-opacity duration-1000 text-center overflow-hidden animate-donationAlert",
+                {
+                  "opacity-0": !announcingGoalReached,
+                }
+              )}
+            >
+              {isEn !== null ? "GOAL REACHED:" : "ZIEL ERREICHT:"}{" "}
+              {displayedGoalReached.split(" - ")[1] || displayedGoalReached}
+            </div>
             <div className="z-10 absolute text-2xl w-80 text-center px-5 top-[21px] overflow-hidden whitespace-nowrap leading-relaxed">
               {name === "empty" ? "" : name}
             </div>

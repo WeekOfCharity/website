@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { DonationGoal, useDonationGoals } from "../../hooks/useDonationGoals";
 import { useExternalDonationTotal } from "../../hooks/useExternalDonationTotal";
 import { Language } from "../../i18n/i18n";
@@ -9,12 +9,14 @@ import {
 } from "../../hooks/useCurrentMsOfDay";
 import { LayoutMoneyText } from "../LayoutMoneyText/LayoutMoneyText";
 import { IsDayContext } from "../../utils/IsDayContext";
+import { customConfetti } from "../../utils/widgets/confettiEffect";
 
 export type GoalWidget24Props = {
   theme: StreamLayoutTheme | StreamLayoutTheme25;
   layout: "layout24" | "layout25";
   isEn?: boolean;
   onDonationTextChange?: (donationGoalText: string) => void;
+  onGoalReachedTextChange?: (announcingName: string | undefined) => void;
   className?: string;
 };
 
@@ -28,13 +30,19 @@ export const GoalWidget24 = ({
   layout,
   isEn,
   onDonationTextChange,
+  onGoalReachedTextChange,
   className,
 }: GoalWidget24Props) => {
+  const [announcingGoalReached, setAnnouncingGoalReached] = useState(false);
   const [currentDonation, setCurrentDonation] = useState<number>(0);
   const [nextDonationGoal, setNextDonationGoal] = useState<number>();
   const [nextDonationGoalText, setNextDonationGoalText] = useState<string>();
   const [lastReachedGoalAmount, setLastReachedGoalAmount] = useState<number>(0);
   const isDay = useContext(IsDayContext);
+
+  const skipReachedQueue = useRef<boolean>(true);
+  const goalReachedQueue = useRef<DonationGoal[]>([]);
+  const alreadyQueuedIds = useRef<number[]>([]);
 
   const {
     data: donations,
@@ -111,7 +119,7 @@ export const GoalWidget24 = ({
           : "Es gibt aktuell keine Goals!";
     };
 
-    onDonationTextChange?.(getDonationGoalsText());
+    setTimeout(() => onDonationTextChange?.(getDonationGoalsText()), 2000);
   }, [
     donationGoals,
     donationGoalsStatus,
@@ -121,6 +129,65 @@ export const GoalWidget24 = ({
     nextDonationGoalText,
     onDonationTextChange,
   ]);
+
+  useEffect(() => {
+    if (
+      !donationGoals ||
+      donationGoalsStatus !== "success" ||
+      typeof donations === "undefined" ||
+      donations === null ||
+      donationsStatus !== "success"
+    )
+      return;
+
+    const current = donations.donated_amount_in_cents / 100;
+
+    if (skipReachedQueue.current) {
+      donationGoals.forEach((goal) => {
+        if (goal.reached_at <= current) alreadyQueuedIds.current.push(goal.id);
+      });
+
+      skipReachedQueue.current = false;
+      return;
+    }
+
+    donationGoals.forEach((goal) => {
+      if (
+        goal.reached_at <= current &&
+        !alreadyQueuedIds.current.some((id) => id === goal.id)
+      )
+        goalReachedQueue.current.unshift(goal);
+    });
+
+    if (goalReachedQueue.current.length > 0) {
+      setTimeout(() => setAnnouncingGoalReached(true), 1000);
+    }
+  }, [donationGoals, donationGoalsStatus, donations, donationsStatus]);
+
+  useEffect(() => {
+    if (skipReachedQueue.current) return;
+    if (!announcingGoalReached) {
+      if (goalReachedQueue.current.length > 0) {
+        setAnnouncingGoalReached(true);
+        return;
+      }
+    }
+
+    const currentGoalReached = goalReachedQueue.current.pop();
+    alreadyQueuedIds.current.push(currentGoalReached?.id || -1);
+    if (!currentGoalReached) return;
+    const { name } = currentGoalReached;
+
+    onGoalReachedTextChange?.(name);
+    void customConfetti();
+
+    const timeout = setTimeout(() => {
+      setAnnouncingGoalReached(false);
+      onGoalReachedTextChange?.(undefined);
+    }, 10000);
+
+    return () => clearTimeout(timeout);
+  }, [announcingGoalReached, onGoalReachedTextChange]);
 
   return (
     <div className={cn("flex flex-col", className)}>

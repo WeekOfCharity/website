@@ -8,9 +8,9 @@ export type ExternalDonationTotal = {
 };
 
 export const useExternalDonationTotal = () => {
-  return useQuery(["donation_total_test"], async () => {
+  return useQuery(["external_donation_total"], async () => {
     const { data } = await axios.get<{ data: ExternalDonationTotal }>(
-      `${BASE_URL}/items/donation_total_test`
+      `${BASE_URL}/items/external_donation_total`
     );
     return data.data;
   });

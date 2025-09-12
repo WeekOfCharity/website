@@ -115,7 +115,7 @@ export const GoalWidget = ({ isEn, className }: GoalWidgetProps) => {
       <div className="relative w-[576px] h-[63px]">
         <div className="absolute rounded-[32px] overflow-hidden size-full bg-[#2d056873]">
           <div
-            className="goal-widget-25-mask size-full bar-test bg-donation-goals-25 animate-bgDonationGoals25 bg-repeat bg-[length:300%_100%]"
+            className="goal-widget-25-progress-transition size-full bg-donation-goals-25 animate-bgDonationGoals25 bg-repeat bg-[length:300%_100%]"
             style={{
               "--goalProgress": `${targetProgress}%`,
               maskImage:

@@ -41,7 +41,7 @@ import { preloadDonationGifs } from "../utils/widgets/donationAlertGifs";
 import { DonationAlert } from "../components/DonationAlert25/DonationAlert";
 
 const CURSOR_ANIMATION = true;
-const CURSOR_ANIMATION_INTERVAL = 45 * 1000;
+const CURSOR_ANIMATION_INTERVAL = 70 * 1000;
 
 const validHeaderTypes = ["pause", "start", "fin"];
 type HeaderType = (typeof validHeaderTypes)[number];

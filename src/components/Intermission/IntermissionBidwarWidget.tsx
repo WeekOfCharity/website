@@ -42,7 +42,7 @@ export const IntermissionBidwarWidget = ({
     const bidwars = bidwarResults?.results;
     const newPreparedBidwars: PreparedBidwar[] =
       bidwars
-        ?.filter((bidwar) => bidwar.status === "inactive")
+        ?.filter((bidwar) => bidwar.status === "active")
         ?.map((bidwar) => {
           const optionNames = Object.keys(bidwar.options);
           return {
@@ -64,7 +64,7 @@ export const IntermissionBidwarWidget = ({
 
   const individualBidwarDuration =
     preparedBidwars.length > 0
-      ? totalBidwarDuration / preparedBidwars.length
+      ? (totalBidwarDuration - 5 * 1000) / preparedBidwars.length
       : totalBidwarDuration;
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export const IntermissionBidwarWidget = ({
                 }
               )}
             >
-              <div className="text-2xl leading-none mt-1 mb-3 text-center grid relative">
+              <div className="text-xl/7 text-center grid relative">
                 <div className="col-start-1 row-start-1 grid *:col-start-1 *:row-start-1 ![text-shadow:none]">
                   <div>
                     <span className="text-gradient-bidwars bg-clip-text text-transparent font-bold">
@@ -124,7 +124,7 @@ export const IntermissionBidwarWidget = ({
                   className={cn(
                     "absolute grid grid-cols-[max-content_1fr_max-content] w-full pr-3 pl-1 gap-x-2 *:-mb-1.5 top-0",
                     {
-                      "text-[15px]/[32px]": bidwar.options.length > 3,
+                      "text-[15px]/[30px]": bidwar.options.length > 3,
                       "text-[17px]/[35px]": bidwar.options.length <= 3,
                     }
                   )}

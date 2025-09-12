@@ -178,6 +178,10 @@ module.exports = {
           "0%": { backgroundPosition: "0 0" },
           "100%": { backgroundPosition: "1728px 0" }, // 576 * 3
         },
+        bgDonationGoals25layout: {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "1270px 0" }, // 635 * 2
+        },
       },
       transitionTimingFunction: {
         "in-out-back": "cubic-bezier(0.68, -0.6, 0.32, 1.6)",
@@ -202,6 +206,7 @@ module.exports = {
         gridIntermission: "gridIntermission 20s linear infinite",
         gridLayout: "gridLayout 60s linear infinite",
         bgDonationGoals25: "bgDonationGoals25 10s linear infinite",
+        bgDonationGoals25layout: "bgDonationGoals25layout 80s linear infinite",
       },
       fontFamily: {
         sans: [
@@ -311,6 +316,18 @@ module.exports = {
         },
         ".bg-donation-goals-25": {
           backgroundImage: `repeating-linear-gradient(to right in oklch, #f532c0 0%, #ae41f0 15%, #1486ff 30%, #61d7e7 50%, #1486ff 70%, #ae41f0 85%, #f532c0 100%)`,
+        },
+        ".bg-donation-goals-25-blue-day": {
+          backgroundImage: `repeating-linear-gradient(-60deg, #8f97f5 0 32px, #a2a9f6 32px 64.6px)`,
+        },
+        ".bg-donation-goals-25-blue-night": {
+          backgroundImage: `repeating-linear-gradient(-60deg, #180c6a 0 32px, #2e1e85 32px 64.6px)`,
+        },
+        ".bg-donation-goals-25-pink-day": {
+          backgroundImage: `repeating-linear-gradient(-60deg, #edb0e5 0 32px, #e99fdf 32px 64.6px)`,
+        },
+        ".bg-donation-goals-25-pink-night": {
+          backgroundImage: `repeating-linear-gradient(-60deg, #6d2163 0 32px, #561a4e 32px 64.6px)`,
         },
         ".bg-int-accent-gradient": {
           background: "linear-gradient(to top in oklch, #FF94FF, #1486FF)",

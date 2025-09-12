@@ -146,14 +146,30 @@ export const GoalWidget24 = ({
 
   return (
     <div className={cn("flex flex-col", className)}>
-      <div className="relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in bg-layout-bg-current">
+      <div
+        className={cn(
+          "relative mt-auto h-10 rounded-[18px] overflow-hidden mx-4 transition-[background-color] duration-[2000ms] ease-in",
+          fillColorClasses[theme][isDay ? "day" : "night"]
+        )}
+      >
         <div
           className={cn(
-            "h-full absolute transition-[background-color] duration-[2000ms] ease-in",
-            fillColorClasses[theme][isDay ? "day" : "night"]
+            "absolute goal-widget-25-progress-transition size-full animate-bgDonationGoals25layout bg-repeat bg-[length:200%_100%]",
+            {
+              "bg-donation-goals-25-blue-day":
+                isDay && theme === StreamLayoutTheme25.BLUE,
+              "bg-donation-goals-25-blue-night":
+                !isDay && theme === StreamLayoutTheme25.BLUE,
+              "bg-donation-goals-25-pink-day":
+                isDay && theme === StreamLayoutTheme25.PINK,
+              "bg-donation-goals-25-pink-night":
+                !isDay && theme === StreamLayoutTheme25.PINK,
+            }
           )}
           style={{
-            width: targetProgress ? `calc(min(${targetProgress}%, 100%))` : "",
+            "--goalProgress": `${targetProgress}%`,
+            maskImage:
+              "linear-gradient(to right, black var(--goalProgress), transparent var(--goalProgress))",
           }}
         />
         <div className="absolute size-full flex gap-2.5 justify-center items-center mt-px">

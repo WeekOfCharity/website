@@ -23,3 +23,15 @@
 .custom-text-shadow-dark {
   text-shadow: 3px 3px #150477;
 }
+
+@property --goalProgress {
+  initial-value: 0%;
+  inherits: false;
+  syntax: "<percentage>";
+}
+
+.goal-widget-25-progress-transition {
+  transition-property: --goalProgress, background-image;
+  transition-timing-function: ease-in-out;
+  transition-duration: 2000ms;
+}

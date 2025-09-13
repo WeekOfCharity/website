@@ -204,11 +204,6 @@ export const IntermissionWidget = () => {
       className={cn(
         "relative font-pixel grid w-[1920px] h-[1080px] *:col-start-1 *:row-start-1 overflow-hidden bg-int-accent-gradient"
       )}
-      onClick={(e) => {
-        console.log(
-          `await moveTo(cursorRef, { x: ${e.clientX}, y: ${e.clientY} });`
-        );
-      }}
     >
       <div
         className="w-[1920px] h-[1080px] bg-repeat animate-gridIntermission"
@@ -245,7 +240,7 @@ export const IntermissionWidget = () => {
       <IntermissionWindow
         className="z-10 absolute left-[63px] top-[424px] w-[543px] h-[531px]"
         borderSrc={windowLeft}
-        title="Messages.txt"
+        title="MessageBoard.txt"
       >
         <div className="p-4 text-int-highlight-light bg-int-highlight-dark/40 h-full backdrop-blur-[7px]">
           <TextDocumentWidget isEn={isEn} />

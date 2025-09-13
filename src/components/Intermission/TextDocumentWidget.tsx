@@ -17,7 +17,10 @@ const randomIntInclusive = (min: number, max: number) => {
 
 const getMessagesString = (messages: ChatDocumentMessage[] | undefined) => {
   if (!messages) return "";
-  return messages.map((message) => message.message).join(" ");
+  return [...messages]
+    .reverse()
+    .map((message) => message.message)
+    .join(" ");
 };
 
 export const TextDocumentWidget = ({
@@ -30,7 +33,7 @@ export const TextDocumentWidget = ({
   const animationIntervalId = useRef<ReturnType<typeof setInterval>>();
 
   const { data: messages, refetch: refetchMessages } =
-    useChatDocumentMessages(100);
+    useChatDocumentMessages();
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -73,11 +76,11 @@ export const TextDocumentWidget = ({
   return (
     <div className={cn("flex flex-col items-start h-full", className)}>
       <img src={textTools} alt="" />
-      <div className="mt-2 flex flex-col overflow-hidden">
+      <div className="mt-2 flex flex-col overflow-hidden w-full">
         <div className="text-[#d7d4ff] border-y-[3px] border-[#d7d4ff] pt-2 pb-1.5 mb-4 text-center">
           {helperText}
         </div>
-        <div className="custom-text-shadow-dark text-[#d7d4ff] text-base/7 overflow-y-hidden flex flex-col-reverse pb-3">
+        <div className="max-w-[488px] custom-text-shadow-dark text-[#d7d4ff] text-base/7 overflow-hidden flex flex-col-reverse pb-3">
           <div>
             <span>{visibleDocumentText}</span>
             <span className="inline-flex pl-0.5">

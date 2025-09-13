@@ -15,6 +15,10 @@
     "format": "prettier --write",
     "format:all": "prettier . --write"
   },
+  "engines": {
+    "npm": ">=10 <12",
+    "node": ">=20.0.0 <25"
+  },
   "dependencies": {
     "@fontsource/ubuntu": "^5.0.8",
     "@mdi/js": "^7.4.47",

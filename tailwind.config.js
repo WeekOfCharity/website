@@ -266,6 +266,7 @@ module.exports = {
           "sans-serif",
         ],
         pixel: [
+          "PixelSupersoft",
           "DepixelHalbfett",
           "Ubuntu",
           '"Source Sans 3"',
